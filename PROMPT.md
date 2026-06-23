@@ -22,3 +22,18 @@ Outcome: scaffolded a no-build static site (`index.html` + `styles.css` +
 `topics/`), a copy-paste `templates/topic-template.html`, a `CLAUDE.md` workflow
 contract, supporting docs, a dev-only `tests/check_site.py`, and a seeded sample
 topic page (Transformers).
+
+---
+
+## 2026-06-23 — Add topic
+
+> - Add a new topic - starting a new bank.
+> - Don't focus too much on the regulatory part.
+
+(When asked which lens to lead with, the user chose "all three" — fintech/neobank
+builder playbook, bank-as-a-business economics, and a light regulatory pointer.)
+
+Outcome: added `topics/starting-a-new-bank.html` (blended overview + curated,
+web-verified resources across books, a single light regulatory primary reference,
+articles, videos, courses, BaaS tools, and further reading) and a linked,
+alphabetically-placed card in `index.html`.
