@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+  ===========================================================================
+  TOPIC PAGE TEMPLATE
+  ---------------------------------------------------------------------------
+  Copy this file to ../topics/<slug>.html and fill in every {{PLACEHOLDER}}.
+  Rules of thumb (see ../CLAUDE.md for the full workflow):
+    - <slug> is kebab-case, e.g. "graph-neural-networks".
+    - The DESCRIPTION block always comes first, before any resources.
+    - Use real, verified links only. Delete whole sections that have no
+      genuinely good resources — never pad a section to look complete.
+    - Each resource row: linked title — source, a one-line note, level pill.
+    - Set the "Last updated" date to today (YYYY-MM-DD).
+  Remove these HTML comments from the finished page (or keep the section
+  markers if you find them helpful — they don't render).
+  ===========================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{TOPIC TITLE}} — Topic References</title>
+  <meta name="description" content="{{ONE-LINE META DESCRIPTION}}" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>{{TOPIC TITLE}}</h1>
+      <p class="last-updated">Last updated: {{YYYY-MM-DD}}</p>
+    </div>
+
+    <!-- DESCRIPTION: 2–4 sentences. What it is + why it matters. Plain language. -->
+    <section class="description">
+      <p>{{WHAT THE TOPIC IS — one or two sentences.}}</p>
+      <p>{{WHY IT MATTERS / WHERE IT'S USED — one or two sentences.}}</p>
+
+      <!-- Optional. Delete if there are no real prerequisites. -->
+      <div class="prereq">
+        <strong>Good to know first:</strong> {{PREREQUISITE TOPICS OR SKILLS}}
+      </div>
+    </section>
+
+    <!-- ===================== RESOURCE SECTIONS ===========================
+         Keep this order. DELETE any section you can't fill with quality links.
+         Resource row pattern:
+           <li class="resource-item">
+             <a class="res-title" href="URL" target="_blank" rel="noopener">Title</a>
+             <span class="res-source">— Author / Publisher / Year</span>
+             <span class="level" data-level="beginner|intermediate|advanced">Level</span>
+             <p class="resource-note">One line on why it's worth your time.</p>
+           </li>
+    ==================================================================== -->
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="{{URL}}" target="_blank" rel="noopener">{{Book title}}</a>
+          <span class="res-source">— {{Author, Year}}</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">{{Why this book is worth reading.}}</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="{{URL}}" target="_blank" rel="noopener">{{Paper title}}</a>
+          <span class="res-source">— {{Authors, Venue/Year}}</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">{{Why this paper matters.}}</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="{{URL}}" target="_blank" rel="noopener">{{Article title}}</a>
+          <span class="res-source">— {{Author / Site}}</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">{{What this explains well.}}</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="{{URL}}" target="_blank" rel="noopener">{{Video title}}</a>
+          <span class="res-source">— {{Channel / Speaker}}</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">{{Why to watch.}}</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="{{URL}}" target="_blank" rel="noopener">{{Course title}}</a>
+          <span class="res-source">— {{Provider / Instructor}}</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">{{What you'll learn / format.}}</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Optional section — delete if not relevant. -->
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="{{URL}}" target="_blank" rel="noopener">{{Tool name}}</a>
+          <span class="res-source">— {{What it is}}</span>
+          <p class="resource-note">{{How it helps you learn.}}</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="{{URL}}" target="_blank" rel="noopener">{{Resource title}}</a>
+          <span class="res-source">— {{Source}}</span>
+          <p class="resource-note">{{Where this takes you next.}}</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>

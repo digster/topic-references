@@ -1,0 +1,302 @@
+/* ==========================================================================
+   Topic References — shared stylesheet
+   --------------------------------------------------------------------------
+   One stylesheet powers both the landing page (index.html) and every topic
+   page (topics/*.html). There is no build step: this file is linked directly.
+   Theming is done with CSS custom properties; dark mode is automatic via
+   `prefers-color-scheme` so we never ship a theme-toggle script.
+   ========================================================================== */
+
+/* ---- Design tokens: light theme (default) -------------------------------- */
+:root {
+  --bg:            #fbfbfa;   /* page background                              */
+  --bg-elev:       #ffffff;   /* raised surfaces: cards, search box          */
+  --text:          #1f2328;   /* primary text                                */
+  --text-muted:    #5b636c;   /* secondary text, notes, metadata             */
+  --border:        #e6e6e3;   /* hairline borders                            */
+  --accent:        #2563eb;   /* links, focus, primary accent                */
+  --accent-soft:   #eff4ff;   /* tinted accent background (hover, pills)      */
+  --tag-bg:        #f0f0ee;   /* neutral tag/pill background                  */
+  --tag-text:      #4a5159;   /* neutral tag/pill text                       */
+  --shadow:        0 1px 2px rgba(16, 24, 40, .04),
+                   0 4px 16px rgba(16, 24, 40, .06);
+  --shadow-hover:  0 2px 4px rgba(16, 24, 40, .06),
+                   0 12px 28px rgba(16, 24, 40, .10);
+
+  /* Level pills get distinct, low-saturation colors for quick scanning. */
+  --level-beg-bg:  #e7f6ec;  --level-beg-fg:  #1a7f44;
+  --level-int-bg:  #fff3e0;  --level-int-fg:  #9a6207;
+  --level-adv-bg:  #fdeaea;  --level-adv-fg:  #b3261e;
+
+  --maxw: 880px;             /* readable content column width                */
+  --radius: 12px;
+}
+
+/* ---- Design tokens: dark theme ------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:           #0f1115;
+    --bg-elev:      #171a21;
+    --text:         #e7e9ee;
+    --text-muted:   #9aa3af;
+    --border:       #262b34;
+    --accent:       #7aa2ff;
+    --accent-soft:  #1a2336;
+    --tag-bg:       #222731;
+    --tag-text:     #b6bdc7;
+    --shadow:       0 1px 2px rgba(0, 0, 0, .3),
+                    0 4px 16px rgba(0, 0, 0, .35);
+    --shadow-hover: 0 2px 4px rgba(0, 0, 0, .35),
+                    0 12px 28px rgba(0, 0, 0, .5);
+
+    --level-beg-bg: #14301f;  --level-beg-fg: #6fd998;
+    --level-int-bg: #322411;  --level-int-fg: #f0b86b;
+    --level-adv-bg: #341818;  --level-adv-fg: #f08a83;
+  }
+}
+
+/* ---- Base ---------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+               "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 0 20px;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---- Site header --------------------------------------------------------- */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.site-header .container {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-block: 18px;
+}
+.site-title {
+  font-size: 1.1rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.site-title:hover { text-decoration: none; }
+.site-tagline {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---- Hero (landing) ------------------------------------------------------ */
+.hero {
+  padding-block: 48px 28px;
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+.hero p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 60ch;
+}
+
+/* ---- Search -------------------------------------------------------------- */
+.search-wrap { margin: 28px 0 8px; }
+.search-input {
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.search-input::placeholder { color: var(--text-muted); }
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.results-count {
+  margin: 12px 2px 22px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ---- Topic cards grid (landing) ------------------------------------------ */
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  padding-bottom: 56px;
+}
+.topic-card {
+  display: block;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.topic-card:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+.topic-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.08rem;
+  font-weight: 620;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.topic-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Shown by the filter JS when nothing matches the query. */
+.no-results {
+  display: none;
+  padding: 40px 4px;
+  color: var(--text-muted);
+}
+
+/* ---- Topic page ---------------------------------------------------------- */
+.back-link {
+  display: inline-block;
+  margin: 26px 0 4px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.topic-header { margin: 8px 0 4px; }
+.topic-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.last-updated {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-top: 6px;
+}
+
+/* Description / overview block sits before any resources. */
+.description {
+  margin: 22px 0 8px;
+  font-size: 1.06rem;
+}
+.description p { margin: 0 0 12px; }
+.prereq {
+  margin: 16px 0;
+  padding: 12px 16px;
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border));
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.prereq strong { font-weight: 620; }
+
+/* Resource sections */
+.resource-section { margin: 34px 0; }
+.resource-section h2 {
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.resource-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.resource-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+.resource-item .res-title { font-weight: 580; }
+.resource-item .res-source { color: var(--text-muted); }
+.resource-note {
+  flex-basis: 100%;
+  margin: 2px 0 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ---- Tags & level pills -------------------------------------------------- */
+.tag,
+.level {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.tag { background: var(--tag-bg); color: var(--tag-text); }
+.level[data-level="beginner"]     { background: var(--level-beg-bg); color: var(--level-beg-fg); }
+.level[data-level="intermediate"] { background: var(--level-int-bg); color: var(--level-int-fg); }
+.level[data-level="advanced"]     { background: var(--level-adv-bg); color: var(--level-adv-fg); }
+
+/* ---- Footer -------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+  padding-block: 28px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ---- Responsive tweaks --------------------------------------------------- */
+@media (max-width: 540px) {
+  body { font-size: 16px; }
+  .hero { padding-block: 32px 20px; }
+  .topic-grid { grid-template-columns: 1fr; }
+}

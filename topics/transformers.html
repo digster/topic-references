@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transformers (Deep Learning) — Topic References</title>
+  <meta name="description" content="The attention-based neural network architecture behind modern large language models — a short overview plus curated books, papers, videos and courses." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Transformers (Deep Learning)</h1>
+      <p class="last-updated">Last updated: 2026-06-22</p>
+    </div>
+
+    <section class="description">
+      <p>
+        The <strong>Transformer</strong> is a neural network architecture, introduced in 2017,
+        that processes sequences (like text) using a mechanism called <em>self-attention</em>
+        rather than the recurrence or convolutions used by earlier models. Self-attention lets
+        every token in a sequence directly weigh the relevance of every other token, which makes
+        the architecture highly parallelizable and very effective at modeling long-range context.
+      </p>
+      <p>
+        Transformers are the backbone of nearly all modern large language models (GPT, BERT, Llama,
+        Claude, and more) and have since spread far beyond text — into vision, audio, code, and even
+        protein folding. Understanding them is the single highest-leverage topic for making sense of
+        today's AI systems.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> basic neural networks and backpropagation, a little
+        linear algebra (vectors, matrices, dot products), and some Python/PyTorch if you want to
+        follow the hands-on resources.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.manning.com/books/build-a-large-language-model-from-scratch" target="_blank" rel="noopener">Build a Large Language Model (From Scratch)</a>
+          <span class="res-source">— Sebastian Raschka, Manning (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Codes a GPT-style transformer step by step in PyTorch, no LLM libraries. Free companion code at <a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank" rel="noopener">github.com/rasbt/LLMs-from-scratch</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://web.stanford.edu/~jurafsky/slp3/" target="_blank" rel="noopener">Speech and Language Processing (3rd ed., draft)</a>
+          <span class="res-source">— Dan Jurafsky &amp; James H. Martin</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free, authoritative NLP textbook with clear, math-grounded chapters on transformers and LLMs.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention Is All You Need</a>
+          <span class="res-source">— Vaswani et al., NeurIPS 2017</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The original paper that introduced the Transformer. Worth reading once you have the intuition from the explainers below.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer</a>
+          <span class="res-source">— Jay Alammar</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The most popular visual walkthrough of the architecture — the best place to start.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="http://nlp.seas.harvard.edu/annotated-transformer/" target="_blank" rel="noopener">The Annotated Transformer</a>
+          <span class="res-source">— Harvard NLP</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A line-by-line PyTorch implementation woven through the text of the original paper.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/" target="_blank" rel="noopener">The Transformer Family v2.0</a>
+          <span class="res-source">— Lilian Weng</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A thorough survey of transformer variants and improvements that came after the original.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=eMlx5fFNoYc" target="_blank" rel="noopener">Attention in transformers, visually explained (Ch. 6)</a>
+          <span class="res-source">— 3Blue1Brown</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Beautiful animated intuition for what attention actually computes and why.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank" rel="noopener">Let's build GPT: from scratch, in code, spelled out</a>
+          <span class="res-source">— Andrej Karpathy</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Builds and trains a working GPT from zero in ~2 hours; the canonical hands-on video.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://huggingface.co/learn/llm-course/" target="_blank" rel="noopener">Hugging Face LLM Course</a>
+          <span class="res-source">— Hugging Face</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free, hands-on course covering how transformers work and how to use them in practice.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://d2l.ai/chapter_attention-mechanisms-and-transformers/index.html" target="_blank" rel="noopener">Dive into Deep Learning — Ch. 11: Attention &amp; Transformers</a>
+          <span class="res-source">— Zhang, Lipton, Li &amp; Smola</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Interactive open book with runnable code that derives attention and the full transformer.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://poloclub.github.io/transformer-explainer/" target="_blank" rel="noopener">Transformer Explainer</a>
+          <span class="res-source">— Polo Club, Georgia Tech</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Runs a live GPT-2 in your browser — type text and watch attention weights and next-token predictions update in real time.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2018-06-24-attention/" target="_blank" rel="noopener">Attention? Attention!</a>
+          <span class="res-source">— Lilian Weng</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Background on attention mechanisms before and around the Transformer.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://huggingface.co/docs/transformers/en/index" target="_blank" rel="noopener">🤗 Transformers — Library Documentation</a>
+          <span class="res-source">— Hugging Face</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Practical reference for loading, fine-tuning, and running transformer models in code.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>

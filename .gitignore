@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python (dev tooling for tests/check_site.py)
+__pycache__/
+*.pyc
+.venv/
+.python-version
+
+# Test/screenshot artifacts
+*.png
+*.jpg
+*.jpeg
+!**/assets/**
+
+# Logs
+*.log
