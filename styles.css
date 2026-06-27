@@ -37,6 +37,7 @@
   --maxw: 880px;             /* readable content column width                 */
   --radius: 0;               /* brutalist: square everything                  */
   --frame: 3px;              /* standard thick-border weight                  */
+  --page-gap: 16px;          /* gutter between the frame and the viewport edge*/
 
   /* System stacks — no web fonts (Golden Rule: self-contained, no CDNs). */
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, "Cascadia Code",
@@ -57,7 +58,11 @@ html {
 /* The <body> IS the frame: a white panel with a thick black border floating
    on the warm-gray page. Works on every page with no extra wrapper markup. */
 body {
-  margin: 16px;
+  margin: var(--page-gap);
+  /* Fill at least the viewport so the framed panel never ends mid-page on
+     short content; min-height (not height) still lets it grow when content
+     is taller than the screen. */
+  min-height: calc(100vh - 2 * var(--page-gap));
   background: var(--bg-elev);
   color: var(--text);
   border: var(--frame) solid var(--text);
@@ -317,7 +322,8 @@ a:hover { text-decoration: underline; }
 
 /* ---- Responsive tweaks --------------------------------------------------- */
 @media (max-width: 540px) {
-  body { margin: 8px; font-size: 15px; }
+  :root { --page-gap: 8px; }   /* tighter gutter on small screens (drives margin + min-height) */
+  body { font-size: 15px; }
   .container { padding: 0 16px; }
   .hero { padding-block: 32px 20px; }
   .topic-grid { grid-template-columns: 1fr; }
