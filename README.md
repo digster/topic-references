@@ -15,7 +15,9 @@ file, and a tiny bit of vanilla JavaScript for search.
 
 - [`index.html`](index.html) is the landing page: a searchable grid of topic cards.
 - Each topic is its own page under [`topics/`](topics/), e.g. `topics/transformers.html`.
-- [`styles.css`](styles.css) styles everything (light/dark theme follows your OS automatically).
+- [`styles.css`](styles.css) styles everything with a single shared **"Brutalist Mono"** theme —
+  monospace type, thick black borders, hard offset shadows, a yellow header, and a cobalt-blue
+  accent. It's a fixed light look (no OS dark-mode variant), built entirely from system fonts.
 - The search box on the landing page filters cards instantly, entirely client-side — so it works
   whether you open the file locally or visit the hosted site.
 

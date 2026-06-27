@@ -44,9 +44,17 @@ zero configuration. The filter logic is generic — it reads all `.topic-card` e
 card requires **no JS changes**.
 
 ### One shared stylesheet + CSS custom properties
-All pages link the same `styles.css`. Theming uses CSS variables defined in `:root`, with a dark
-palette swapped in under `@media (prefers-color-scheme: dark)`. This gives automatic light/dark
-support with **no toggle script** and guarantees visual consistency across every topic page.
+All pages link the same `styles.css`. Theming uses CSS variables defined in `:root` (colors,
+hard-offset shadows, fonts, border weight), so restyling the whole site is mostly a token remap and
+visual consistency is guaranteed across every topic page.
+
+The active theme is **"Brutalist Mono"**: a monospace UI font and heavy system-sans display
+headings (system stacks only — **no web fonts/CDNs**, per the no-build constraint), thick black
+borders, hard offset drop shadows (solid color, zero blur), a warm-gray page framing a white
+content panel (the `<body>` itself is the frame), a yellow header band, and a cobalt-blue accent
+used for links, the result count, and the card-hover fill. It is a deliberate **fixed light**
+statement: there is intentionally **no** `prefers-color-scheme: dark` variant, so the look is
+identical in light and dark OS modes.
 
 ### Consistent topic-page anatomy
 Every topic page follows the same structure (description block first, then a fixed taxonomy of

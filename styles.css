@@ -1,58 +1,47 @@
 /* ==========================================================================
-   Topic References — shared stylesheet
+   Topic References — shared stylesheet  ·  "Brutalist Mono" theme
    --------------------------------------------------------------------------
    One stylesheet powers both the landing page (index.html) and every topic
    page (topics/*.html). There is no build step: this file is linked directly.
-   Theming is done with CSS custom properties; dark mode is automatic via
-   `prefers-color-scheme` so we never ship a theme-toggle script.
+
+   Design language: brutalist. Monospace UI type, heavy black display headings,
+   thick black borders, hard offset drop shadows (solid, no blur), a warm-gray
+   page that frames a white content panel, and a cobalt-blue accent. The theme
+   is a single, intentional light statement — there is deliberately no dark
+   variant. All colors/shadows/fonts are tokens, so the look stays consistent.
+
+   Self-contained by rule: no CDNs / no web fonts. The "mono" and heavy display
+   looks come from system font stacks only.
    ========================================================================== */
 
-/* ---- Design tokens: light theme (default) -------------------------------- */
+/* ---- Design tokens ------------------------------------------------------- */
 :root {
-  --bg:            #fbfbfa;   /* page background                              */
-  --bg-elev:       #ffffff;   /* raised surfaces: cards, search box          */
-  --text:          #1f2328;   /* primary text                                */
-  --text-muted:    #5b636c;   /* secondary text, notes, metadata             */
-  --border:        #e6e6e3;   /* hairline borders                            */
-  --accent:        #2563eb;   /* links, focus, primary accent                */
-  --accent-soft:   #eff4ff;   /* tinted accent background (hover, pills)      */
-  --tag-bg:        #f0f0ee;   /* neutral tag/pill background                  */
-  --tag-text:      #4a5159;   /* neutral tag/pill text                       */
-  --shadow:        0 1px 2px rgba(16, 24, 40, .04),
-                   0 4px 16px rgba(16, 24, 40, .06);
-  --shadow-hover:  0 2px 4px rgba(16, 24, 40, .06),
-                   0 12px 28px rgba(16, 24, 40, .10);
+  --bg:            #eceae6;   /* warm gray — the gutter around the frame      */
+  --bg-elev:       #ffffff;   /* white content panel + cards                  */
+  --text:          #111111;   /* near-black ink: text + all borders          */
+  --text-muted:    #3a3d42;   /* secondary text (still high-contrast)         */
+  --border:        #111111;   /* borders are solid black, not hairlines       */
+  --accent:        #2f56d8;   /* cobalt blue: links, count, card-hover fill   */
+  --accent-contrast: #ffffff; /* text/icons that sit on the accent            */
+  --yellow:        #f6d645;   /* header band + prereq box                     */
 
-  /* Level pills get distinct, low-saturation colors for quick scanning. */
-  --level-beg-bg:  #e7f6ec;  --level-beg-fg:  #1a7f44;
-  --level-int-bg:  #fff3e0;  --level-int-fg:  #9a6207;
-  --level-adv-bg:  #fdeaea;  --level-adv-fg:  #b3261e;
+  /* Hard offset shadows — solid color, zero blur (the brutalist hallmark).   */
+  --shadow:        6px 6px 0 var(--text);   /* resting                        */
+  --shadow-hover:  3px 3px 0 var(--text);   /* "pressed" (paired w/ translate)*/
 
-  --maxw: 880px;             /* readable content column width                */
-  --radius: 12px;
-}
+  /* Level pills: distinct hues, squared off, black-bordered. */
+  --level-beg-bg:  #b8f0c8;  --level-beg-fg:  #0b5d2a;
+  --level-int-bg:  #ffe08a;  --level-int-fg:  #6b4e00;
+  --level-adv-bg:  #ffc2bd;  --level-adv-fg:  #8a1a12;
 
-/* ---- Design tokens: dark theme ------------------------------------------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:           #0f1115;
-    --bg-elev:      #171a21;
-    --text:         #e7e9ee;
-    --text-muted:   #9aa3af;
-    --border:       #262b34;
-    --accent:       #7aa2ff;
-    --accent-soft:  #1a2336;
-    --tag-bg:       #222731;
-    --tag-text:     #b6bdc7;
-    --shadow:       0 1px 2px rgba(0, 0, 0, .3),
-                    0 4px 16px rgba(0, 0, 0, .35);
-    --shadow-hover: 0 2px 4px rgba(0, 0, 0, .35),
-                    0 12px 28px rgba(0, 0, 0, .5);
+  --maxw: 880px;             /* readable content column width                 */
+  --radius: 0;               /* brutalist: square everything                  */
+  --frame: 3px;              /* standard thick-border weight                  */
 
-    --level-beg-bg: #14301f;  --level-beg-fg: #6fd998;
-    --level-int-bg: #322411;  --level-int-fg: #f0b86b;
-    --level-adv-bg: #341818;  --level-adv-fg: #f08a83;
-  }
+  /* System stacks — no web fonts (Golden Rule: self-contained, no CDNs). */
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, "Cascadia Code",
+               "Roboto Mono", Consolas, "Liberation Mono", monospace;
+  --font-display: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
 }
 
 /* ---- Base ---------------------------------------------------------------- */
@@ -60,16 +49,21 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--bg);             /* warm gray shows around the framed body */
+}
 
+/* The <body> IS the frame: a white panel with a thick black border floating
+   on the warm-gray page. Works on every page with no extra wrapper markup. */
 body {
-  margin: 0;
-  background: var(--bg);
+  margin: 16px;
+  background: var(--bg-elev);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
-               "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-  font-size: 17px;
-  line-height: 1.65;
+  border: var(--frame) solid var(--text);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -78,55 +72,70 @@ body {
   width: 100%;
   max-width: var(--maxw);
   margin-inline: auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: var(--frame) solid var(--accent);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 0;
+}
+
+/* Shared display-type treatment for headings + wordmark. */
+.site-title,
+.hero h1,
+.topic-header h1,
+.topic-card h3,
+.resource-section h2 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
 /* ---- Site header --------------------------------------------------------- */
 .site-header {
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--yellow);
+  border-bottom: var(--frame) solid var(--text);
 }
 .site-header .container {
   display: flex;
   align-items: baseline;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 6px 14px;
   padding-block: 18px;
 }
 .site-title {
-  font-size: 1.1rem;
-  font-weight: 650;
-  letter-spacing: -0.01em;
+  font-size: 1.25rem;
+  font-weight: 800;
   color: var(--text);
 }
 .site-title:hover { text-decoration: none; }
 .site-tagline {
-  color: var(--text-muted);
+  font-family: var(--font-mono);
+  color: var(--text);
   font-size: 0.9rem;
 }
+/* Echo the "TOPIC REFERENCES // study further" lead-in from the reference. */
+.site-tagline::before { content: "// "; opacity: 0.7; }
 
 /* ---- Hero (landing) ------------------------------------------------------ */
 .hero {
   padding-block: 48px 28px;
 }
 .hero h1 {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin: 0 0 10px;
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  line-height: 1.05;
+  font-weight: 900;
+  margin: 0 0 14px;
 }
 .hero p {
   margin: 0;
+  font-family: var(--font-mono);
   color: var(--text-muted);
-  font-size: 1.05rem;
+  font-size: 1rem;
   max-width: 60ch;
 }
 
@@ -134,59 +143,67 @@ a:hover { text-decoration: underline; }
 .search-wrap { margin: 28px 0 8px; }
 .search-input {
   width: 100%;
-  padding: 13px 16px;
+  padding: 14px 16px;
+  font-family: var(--font-mono);
   font-size: 1rem;
   color: var(--text);
   background: var(--bg-elev);
-  border: 1px solid var(--border);
+  border: var(--frame) solid var(--text);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  transition: border-color .15s ease, box-shadow .15s ease;
+  transition: transform .12s ease, box-shadow .12s ease;
 }
-.search-input::placeholder { color: var(--text-muted); }
+.search-input::placeholder { color: var(--text-muted); opacity: 0.8; }
 .search-input:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  /* "Press" the box into its shadow rather than adding a soft glow. */
+  transform: translate(3px, 3px);
+  box-shadow: var(--shadow-hover);
 }
 .results-count {
-  margin: 12px 2px 22px;
-  color: var(--text-muted);
-  font-size: 0.85rem;
+  margin: 14px 2px 24px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* ---- Topic cards grid (landing) ------------------------------------------ */
 .topic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 16px;
+  gap: 22px;
   padding-bottom: 56px;
 }
 .topic-card {
   display: block;
   background: var(--bg-elev);
-  border: 1px solid var(--border);
+  color: var(--text);
+  border: var(--frame) solid var(--text);
   border-radius: var(--radius);
-  padding: 18px 20px;
+  padding: 20px 22px;
   box-shadow: var(--shadow);
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
 }
+/* Brutalist "press": fill blue, invert text, slide into the shadow. */
 .topic-card:hover {
   text-decoration: none;
-  transform: translateY(-2px);
+  background: var(--accent);
+  transform: translate(3px, 3px);
   box-shadow: var(--shadow-hover);
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
 }
+.topic-card:hover h3,
+.topic-card:hover p { color: var(--accent-contrast); }
 .topic-card h3 {
-  margin: 0 0 6px;
-  font-size: 1.08rem;
-  font-weight: 620;
-  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  font-weight: 800;
   color: var(--text);
 }
 .topic-card p {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.55;
 }
@@ -202,47 +219,50 @@ a:hover { text-decoration: underline; }
 .back-link {
   display: inline-block;
   margin: 26px 0 4px;
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 .topic-header { margin: 8px 0 4px; }
 .topic-header h1 {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.06;
+  font-weight: 900;
   margin: 0;
 }
 .last-updated {
   color: var(--text-muted);
-  font-size: 0.82rem;
-  margin-top: 6px;
+  font-size: 0.8rem;
+  margin-top: 8px;
 }
 
 /* Description / overview block sits before any resources. */
 .description {
   margin: 22px 0 8px;
-  font-size: 1.06rem;
+  font-size: 1rem;
 }
 .description p { margin: 0 0 12px; }
 .prereq {
-  margin: 16px 0;
-  padding: 12px 16px;
-  background: var(--accent-soft);
-  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border));
+  margin: 18px 0;
+  padding: 14px 16px;
+  background: var(--yellow);
+  border: var(--frame) solid var(--text);
   border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
   font-size: 0.95rem;
   color: var(--text);
 }
-.prereq strong { font-weight: 620; }
+.prereq strong { font-weight: 800; }
 
 /* Resource sections */
-.resource-section { margin: 34px 0; }
+.resource-section { margin: 38px 0; }
 .resource-section h2 {
-  font-size: 1.25rem;
-  letter-spacing: -0.01em;
-  margin: 0 0 14px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: var(--frame) solid var(--text);
 }
 .resource-list {
   list-style: none;
@@ -250,7 +270,7 @@ a:hover { text-decoration: underline; }
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 .resource-item {
   display: flex;
@@ -258,13 +278,13 @@ a:hover { text-decoration: underline; }
   align-items: baseline;
   gap: 8px;
 }
-.resource-item .res-title { font-weight: 580; }
+.resource-item .res-title { font-weight: 700; }
 .resource-item .res-source { color: var(--text-muted); }
 .resource-note {
   flex-basis: 100%;
   margin: 2px 0 0;
   color: var(--text-muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.5;
 }
 
@@ -272,31 +292,33 @@ a:hover { text-decoration: underline; }
 .tag,
 .level {
   display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   padding: 2px 8px;
-  border-radius: 999px;
+  border: 2px solid var(--text);
+  border-radius: var(--radius);
   white-space: nowrap;
 }
-.tag { background: var(--tag-bg); color: var(--tag-text); }
+.tag { background: var(--bg); color: var(--text); }
 .level[data-level="beginner"]     { background: var(--level-beg-bg); color: var(--level-beg-fg); }
 .level[data-level="intermediate"] { background: var(--level-int-bg); color: var(--level-int-fg); }
 .level[data-level="advanced"]     { background: var(--level-adv-bg); color: var(--level-adv-fg); }
 
 /* ---- Footer -------------------------------------------------------------- */
 .site-footer {
-  border-top: 1px solid var(--border);
+  border-top: var(--frame) solid var(--text);
   margin-top: 40px;
-  padding-block: 28px;
+  padding-block: 24px;
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 
 /* ---- Responsive tweaks --------------------------------------------------- */
 @media (max-width: 540px) {
-  body { font-size: 16px; }
+  body { margin: 8px; font-size: 15px; }
+  .container { padding: 0 16px; }
   .hero { padding-block: 32px 20px; }
   .topic-grid { grid-template-columns: 1fr; }
 }

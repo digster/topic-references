@@ -37,3 +37,22 @@ Outcome: added `topics/starting-a-new-bank.html` (blended overview + curated,
 web-verified resources across books, a single light regulatory primary reference,
 articles, videos, courses, BaaS tools, and further reading) and a linked,
 alphabetically-placed card in `index.html`.
+
+---
+
+## 2026-06-26 — Re-theme to "Brutalist Mono"
+
+> Update the homepage to this theme. _(supplied a reference mockup: monospace UI,
+> yellow header band, heavy black headings, thick black borders, hard offset
+> shadows, warm-gray frame, cobalt-blue accent)_
+
+(When asked: chose to apply the theme **site-wide** — not homepage-only — since
+`styles.css` and the header/footer are shared; and chose a **fixed light** look
+with no dark-mode variant.)
+
+Outcome: rewrote `styles.css` only — remapped the `:root` design tokens to the
+brutalist palette/fonts/shadows, removed the `prefers-color-scheme: dark` block,
+and restyled the structural rules (body-as-frame, yellow header, square cards with
+hard offset shadows + blue hover-fill, blue uppercase result count, squared
+black-bordered level pills). No HTML and no JS changed; the search filter is
+untouched. Verified homepage + topic page + hover/search/mobile in a browser.
