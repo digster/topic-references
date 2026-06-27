@@ -56,3 +56,16 @@ and restyled the structural rules (body-as-frame, yellow header, square cards wi
 hard offset shadows + blue hover-fill, blue uppercase result count, squared
 black-bordered level pills). No HTML and no JS changed; the search filter is
 untouched. Verified homepage + topic page + hover/search/mobile in a browser.
+
+---
+
+## 2026-06-26 — Remove homepage footer text
+
+> Remove this text from the footer. _(the "Built as a static site… see CLAUDE.md"
+> line in the landing-page footer)_
+
+Outcome: removed the entire `<footer class="site-footer">` block from `index.html`
+(rather than leaving an empty bordered band, which would look like a glitch in the
+framed layout). The card grid's `padding-bottom` keeps breathing room before the
+frame's bottom border. Topic-page footers (the "← Back to all topics" link) and the
+shared `.site-footer` CSS are untouched. Verified in a browser.
