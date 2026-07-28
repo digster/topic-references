@@ -69,3 +69,22 @@ Outcome: removed the entire `<footer class="site-footer">` block from `index.htm
 framed layout). The card grid's `padding-bottom` keeps breathing room before the
 frame's bottom border. Topic-page footers (the "← Back to all topics" link) and the
 shared `.site-footer` CSS are untouched. Verified in a browser.
+
+---
+
+## 2026-07-28 — Add topic
+
+> Add a new topic on data structures and algorithms.
+
+(Asked which lens to lead with — CS fundamentals, interview prep, or competitive
+programming. The question went unanswered, so the page uses the **balanced**
+framing, matching the "all three" choice made for the bank topic.)
+
+Outcome: added `topics/data-structures-and-algorithms.html` (25 web-verified
+resources across all seven sections, ordered as a learning path) and an
+alphabetically-first card in `index.html`. Core sections lead with CS
+fundamentals; practice platforms sit in Tools, and contest/advanced material in
+Further Reading. Dropped Hoare's *Quicksort* (paywalled), the Stanford Coursera
+specialization (not free — linked Roughgarden's own free video site instead), and
+two unverifiable single-page apps. Verified with `check_site.py` and 21 Playwright
+browser checks.

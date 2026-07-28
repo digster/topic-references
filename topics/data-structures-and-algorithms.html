@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Structures and Algorithms — Topic References</title>
+  <meta name="description" content="The core toolkit of computer science — how to store data and compute over it efficiently — with curated books, papers, articles, videos, courses and visualizers." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Data Structures and Algorithms</h1>
+      <p class="last-updated">Last updated: 2026-07-28</p>
+    </div>
+
+    <section class="description">
+      <p>
+        <strong>Data structures</strong> are the standard ways of organizing data in memory — arrays,
+        linked lists, hash tables, trees, heaps, graphs — and <strong>algorithms</strong> are the
+        standard procedures for computing over them: sorting, searching, traversing, and optimizing.
+        The two are studied together because the choice of structure determines which algorithms are
+        even possible, and <em>asymptotic analysis</em> (Big-O notation) is the shared language for
+        saying how the cost of a choice grows as the input gets bigger.
+      </p>
+      <p>
+        This is the most transferable subject in computer science: it is what separates a program
+        that works on a hundred items from one that still works on a hundred million. It underpins
+        every database index, compiler, router and search engine you have ever used, it is the
+        substance of most technical interviews, and it is the vocabulary engineers reach for when
+        arguing about why something is slow.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> comfort writing loops and functions in at least one
+        programming language, familiarity with arrays and lists, and light math — exponents and
+        logarithms are enough to read a Big-O bound. No advanced mathematics is needed to start.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.manning.com/books/grokking-algorithms-second-edition" target="_blank" rel="noopener">Grokking Algorithms (2nd ed.)</a>
+          <span class="res-source">— Aditya Y. Bhargava, Manning (2024)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Over 400 hand-drawn illustrations make the classic algorithms click; the friendliest possible on-ramp.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://opendatastructures.org/" target="_blank" rel="noopener">Open Data Structures</a>
+          <span class="res-source">— Pat Morin, Carleton University</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free and Creative Commons–licensed, with the same text available in Java, C++, Python and pseudocode editions.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.algorist.com/" target="_blank" rel="noopener">The Algorithm Design Manual (3rd ed.)</a>
+          <span class="res-source">— Steven S. Skiena, Springer (2020)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The practitioner's book: half design techniques, half a catalog of 75 problems that actually come up, with war stories throughout.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://jeffe.cs.illinois.edu/teaching/algorithms/" target="_blank" rel="noopener">Algorithms</a>
+          <span class="res-source">— Jeff Erickson, University of Illinois (2019)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A free, full-color textbook that is unusually good on recursion, backtracking and dynamic programming — and genuinely fun to read.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/" target="_blank" rel="noopener">Introduction to Algorithms (4th ed.)</a>
+          <span class="res-source">— Cormen, Leiserson, Rivest &amp; Stein, MIT Press (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">"CLRS" — the standard reference. Dense and proof-heavy; best used to look things up rather than read cover to cover.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cs.cmu.edu/~sleator/papers/self-adjusting.pdf" target="_blank" rel="noopener">Self-Adjusting Binary Search Trees</a>
+          <span class="res-source">— Daniel Sleator &amp; Robert Tarjan, JACM (1985)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Introduces the splay tree and, more importantly, shows what amortized analysis buys you — a structure with no balance information that is still O(log n) per operation.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://cs.fit.edu/~pkc/classes/writing/samples/bentley93engineering.pdf" target="_blank" rel="noopener">Engineering a Sort Function</a>
+          <span class="res-source">— Jon Bentley &amp; Douglas McIlroy (1993)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The gap between a textbook quicksort and a production one, written by the people who closed it. The best case study in algorithm engineering there is.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.bigocheatsheet.com/" target="_blank" rel="noopener">Big-O Cheat Sheet</a>
+          <span class="res-source">— Eric Drowell</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">One-page time and space complexity tables for every common data structure and sorting algorithm — the reference you'll keep open.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://medium.com/basecs" target="_blank" rel="noopener">basecs</a>
+          <span class="res-source">— Vaidehi Joshi</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A year-long series explaining one CS fundamental a week, in plain language with drawings. Excellent for filling gaps if you skipped a CS degree.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://research.google/blog/extra-extra-read-all-about-it-nearly-all-binary-searches-and-mergesorts-are-broken/" target="_blank" rel="noopener">Nearly All Binary Searches and Mergesorts Are Broken</a>
+          <span class="res-source">— Joshua Bloch, Google Research (2006)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">An overflow bug that survived decades in <em>Programming Pearls</em> and the Java standard library — a short, humbling lesson in why "obviously correct" isn't.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O" target="_blank" rel="noopener">Algorithms (playlist)</a>
+          <span class="res-source">— Abdul Bari</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Patient whiteboard walkthroughs of each algorithm, traced by hand on real inputs. The go-to when a written explanation isn't landing.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/video_galleries/lecture-videos/" target="_blank" rel="noopener">6.006 Introduction to Algorithms — Lecture Videos</a>
+          <span class="res-source">— Erik Demaine, Jason Ku &amp; Justin Solomon, MIT OCW (Spring 2020)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">21 lectures of a real MIT course, free and complete — rigorous but taught with unusual clarity about <em>why</em> each structure exists.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/learn/algorithms-part1" target="_blank" rel="noopener">Algorithms, Part I</a>
+          <span class="res-source">— Robert Sedgewick &amp; Kevin Wayne, Princeton (Coursera)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Union-find, sorting, searching, BSTs and hash tables, with famously well-designed programming assignments. Free in full.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/learn/algorithms-part2" target="_blank" rel="noopener">Algorithms, Part II</a>
+          <span class="res-source">— Robert Sedgewick &amp; Kevin Wayne, Princeton (Coursera)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The graph and string half — shortest paths, spanning trees, max-flow, tries, substring search and compression. Also free.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://algs4.cs.princeton.edu/home/" target="_blank" rel="noopener">Algorithms, 4th Edition booksite (algs4)</a>
+          <span class="res-source">— Robert Sedgewick &amp; Kevin Wayne, Princeton</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The companion site to the two courses above: complete Java implementations, exercises with solutions, and excerpts. Useful standalone.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/" target="_blank" rel="noopener">6.006 Introduction to Algorithms (full course)</a>
+          <span class="res-source">— MIT OpenCourseWare</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Everything behind the lectures — notes, recitations, problem sets, exams and solutions — if you want to actually do the course rather than watch it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.algorithmsilluminated.org/" target="_blank" rel="noopener">Algorithms Illuminated</a>
+          <span class="res-source">— Tim Roughgarden, Stanford / Columbia</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A four-part book series whose lecture videos and slides are free on the site — the accessible route to Roughgarden's Stanford course, whose Coursera version is paid.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://visualgo.net/en" target="_blank" rel="noopener">VisuAlgo</a>
+          <span class="res-source">— Steven Halim, National University of Singapore</span>
+          <p class="resource-note">24 animated modules covering everything from sorting to suffix arrays and max-flow, and you can feed in your own inputs.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank" rel="noopener">Data Structure Visualizations</a>
+          <span class="res-source">— David Galles, University of San Francisco</span>
+          <p class="resource-note">Step-by-step animations you drive one operation at a time — the clearest way to finally understand AVL and red-black tree rotations.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://cses.fi/problemset/" target="_blank" rel="noopener">CSES Problem Set</a>
+          <span class="res-source">— Antti Laaksonen, University of Helsinki</span>
+          <p class="resource-note">400+ problems grouped by technique rather than difficulty, so you can drill one topic at a time instead of grinding random puzzles.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://cses.fi/book/book.pdf" target="_blank" rel="noopener">Competitive Programmer's Handbook</a>
+          <span class="res-source">— Antti Laaksonen (free PDF)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The companion to the CSES problem set, and the most efficient summary anywhere of the techniques contests actually test.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://cp-algorithms.com/" target="_blank" rel="noopener">CP-Algorithms</a>
+          <span class="res-source">— community-maintained</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Encyclopedic write-ups with working code for algorithms most textbooks skip — segment trees, heavy-light decomposition, suffix automata.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/" target="_blank" rel="noopener">6.851 Advanced Data Structures</a>
+          <span class="res-source">— Erik Demaine, MIT OCW</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The research frontier: persistence, retroactivity, cache-oblivious structures and succinct encodings. Where to go after CLRS stops.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cs.cmu.edu/~rwh/students/okasaki.pdf" target="_blank" rel="noopener">Purely Functional Data Structures</a>
+          <span class="res-source">— Chris Okasaki, CMU thesis (1996)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">How to build efficient structures when nothing can be mutated — essential if you work in a functional language or care about persistence.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www-cs-faculty.stanford.edu/~knuth/taocp.html" target="_blank" rel="noopener">The Art of Computer Programming</a>
+          <span class="res-source">— Donald Knuth, Stanford</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The definitive multi-volume treatment, still being written after 60 years. Volume 3 on sorting and searching is the one to reach for first.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>
