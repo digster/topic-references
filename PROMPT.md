@@ -88,3 +88,22 @@ Further Reading. Dropped Hoare's *Quicksort* (paywalled), the Stanford Coursera
 specialization (not free — linked Roughgarden's own free video site instead), and
 two unverifiable single-page apps. Verified with `check_site.py` and 21 Playwright
 browser checks.
+
+---
+
+## 2026-07-28 — Paid resources are allowed
+
+> Regarding Stanford's Coursera Algorithms Specialization, If a resource is good
+> enough, it should be mentioned even though it's paid. So add it as a resource
+> and also update this directive in the project's claude file.
+
+Outcome: rewrote the rule in `CLAUDE.md` — golden rule 3 no longer drops
+"paywalled-with-no-value" links, and a new golden rule 4 says paid resources
+belong on the page when they're genuinely among the best, with the cost
+disclosed in the note and a free equivalent linked alongside where one exists.
+The research step in the workflow was reworded to match: prefer a free version
+of the *same* resource, but never exclude a resource for being paid. Applied to
+`topics/data-structures-and-algorithms.html`: added the Stanford/Roughgarden
+Coursera specialization (Courses) and Hoare's *Quicksort* (Papers) — the two
+resources previously dropped on paywall grounds — each flagged as paid in its
+note. Page now carries 27 resources.

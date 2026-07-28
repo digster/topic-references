@@ -18,9 +18,14 @@ out consistent and trustworthy.
    (what it is + why it matters) before any resources.
 3. **Real, verified links only.** Use live web search to find and confirm URLs, combined with your
    own knowledge of canonical resources (the classic book, the official docs, the seminal paper).
-   **Open/verify every URL before including it.** Drop anything dead, paywalled-with-no-value, or
-   uncertain. A short list of real links beats a long list of guesses.
-4. **Never pad.** Omit any resource section you can't fill with genuinely good links. Quality and
+   **Open/verify every URL before including it.** Drop anything dead or uncertain. A short list of
+   real links beats a long list of guesses.
+4. **Paid is fine — quality is the only filter.** If a resource is genuinely one of the best ways to
+   learn the topic, list it even though it costs money. Say so in the note (e.g. "paid course",
+   "paywalled — free preprint at …") so the reader knows what they're clicking, and link a free
+   equivalent alongside it when a real one exists. Never drop a seminal paper or a definitive book
+   just because it sits behind a paywall.
+5. **Never pad.** Omit any resource section you can't fill with genuinely good links. Quality and
    accuracy over volume.
 
 ---
@@ -37,8 +42,9 @@ out consistent and trustworthy.
 - Use `WebSearch` / `WebFetch` to gather candidate resources and **confirm each link resolves**.
 - Combine with your knowledge of canonical/standard resources for the topic (famous books,
   official documentation, foundational papers, well-known explainers).
-- Prefer primary and authoritative sources; prefer free/accessible versions when they exist
-  (e.g. an author's free draft over a paywall).
+- Prefer primary and authoritative sources. Where a free version of the *same* resource exists
+  (e.g. an author's free draft), link that. Where the best resource is simply paid, list it anyway
+  and flag the cost in its note — cost is a caveat to disclose, not grounds for exclusion.
 - Aim for a useful spread across levels (Beginner → Advanced) and formats.
 
 ### 3. Write the page from the template
