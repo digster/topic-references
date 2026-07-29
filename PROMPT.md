@@ -153,3 +153,18 @@ throughout the session) and was dropped rather than shipped broken; Breiman's
 *Two Cultures* turned out to be paywalled on Project Euclid, so a content-verified
 free university copy is linked instead; Papers with Code is sunset (302s to
 Hugging Face) and was excluded.
+
+---
+
+## 2026-07-29 — No dark mode
+
+> we are not going to have dark mode for now for this site.
+
+Outcome: settled the stale verification step that had been flagged in the two
+previous sessions. `CLAUDE.md`'s "Verifying your work" section no longer tells
+you to check that dark mode works — it now checks the level pills are colored
+and states that the theme is deliberately fixed light, with a pointer to
+`ARCHITECTURE.md`. Nothing else needed changing: `ARCHITECTURE.md` already
+documented the fixed-light decision, `styles.css` has had no
+`prefers-color-scheme: dark` block since the Brutalist Mono re-theme, and the
+earlier `PROMPT.md` mention is a historical record that stays as written.
