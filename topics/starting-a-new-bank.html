@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Starting a New Bank — Topic References</title>
-  <meta name="description" content="What it takes to start a bank or neobank today — charter vs. sponsor-bank/BaaS paths, the underlying business, and the tech — plus curated books, articles, videos, courses and tools." />
+  <meta name="description" content="What it takes to start a bank or neobank — the two paths (own licence vs. partner bank), the economics underneath, and the tech — plus curated books, primary sources, articles, videos, courses and tools." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
@@ -21,28 +21,31 @@
 
     <div class="topic-header">
       <h1>Starting a New Bank</h1>
-      <p class="last-updated">Last updated: 2026-06-23</p>
+      <p class="last-updated">Last updated: 2026-07-29</p>
     </div>
 
     <section class="description">
       <p>
-        "Starting a bank" today splits into two very different paths. You can <strong>charter a brand-new
-        bank</strong> — a <em>de novo</em> bank that holds its own license, takes deposits and makes loans
-        (a slow, capital-heavy process) — or you can <strong>launch a neobank or embedded-finance product
-        on top of an existing licensed "sponsor" bank</strong> using Banking-as-a-Service (BaaS), which is
-        how most modern fintech "banks" actually get off the ground.
+        Starting a bank splits into two paths almost everywhere in the world. You can
+        <strong>get your own licence</strong> — a <em>de novo</em> bank that holds regulated capital,
+        takes deposits and lends against them, which is slow and capital-heavy — or you can
+        <strong>build on someone else's licence</strong>, running a neobank or embedded-finance product
+        on top of a partner or "sponsor" bank through Banking-as-a-Service APIs. Almost every modern
+        "bank" you can name started on the second path; a growing number are now buying their way onto
+        the first.
       </p>
       <p>
-        Either way the real work is the same business underneath: gathering deposits cheaply, lending or
-        investing them profitably (the <em>net interest margin</em>), moving money safely, and earning fees —
-        while staying trustworthy. Understanding that business, the API building blocks that now let you
-        assemble it, and where a real banking license still matters is what separates a durable bank from a
-        thin app sitting on someone else's rails.
+        Underneath, the business is the same in every jurisdiction: gather deposits cheaply, lend or
+        invest them profitably (the <em>net interest margin</em>), move money safely, earn fees, and
+        stay solvent and trusted while doing it. What changes by country is the licence — the FDIC and
+        OCC in the US, the PRA and FCA in the UK, the RBI in India — and whether a standalone digital
+        bank is a thing the regulator will even license. The resources below lead with the business and
+        the plumbing, then point at the specific rulebooks.
       </p>
       <div class="prereq">
         <strong>Good to know first:</strong> a little balance-sheet literacy (assets vs. liabilities,
-        deposits vs. loans) and a rough mental model of how card payments move money will make everything
-        below click faster — but neither is required.
+        deposits vs. loans) and a rough mental model of how a card payment moves money will make
+        everything below click faster — but neither is required.
       </div>
     </section>
 
@@ -50,22 +53,34 @@
       <h2>📚 Books</h2>
       <ul class="resource-list">
         <li class="resource-item">
-          <a class="res-title" href="https://www.goodreads.com/book/show/40722446-bank-4-0" target="_blank" rel="noopener">Bank 4.0: Banking Everywhere, Never at a Bank</a>
+          <a class="res-title" href="https://www.penguin.co.uk/books/442174/banking-on-it-by-boden-anne/9780241986011" target="_blank" rel="noopener">Banking On It: How I Disrupted an Industry</a>
+          <span class="res-source">— Anne Boden, Penguin (2020)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The founder of Starling on actually getting a banking licence and building the bank behind it — the closest thing to a first-hand log of the whole process. Paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.wiley.com/en-us/Bank+4+0%3A+Banking+Everywhere%2C+Never+at+a+Bank-p-9781119506508" target="_blank" rel="noopener">Bank 4.0: Banking Everywhere, Never at a Bank</a>
           <span class="res-source">— Brett King, Wiley (2018)</span>
           <span class="level" data-level="beginner">Beginner</span>
-          <p class="resource-note">The big-picture case for why banking is becoming embedded in technology rather than branches — the worldview behind every neobank.</p>
+          <p class="resource-note">The argument that banking is becoming a utility embedded in software rather than a place you visit — the worldview most neobanks are built on. Paid.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://chrisskinner.global/book/digital-bank-strategies-launch-become-digital-bank/" target="_blank" rel="noopener">Digital Bank: Strategies to Launch or Become a Digital Bank</a>
-          <span class="res-source">— Chris Skinner (2014)</span>
-          <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">Exactly what the title says: a strategy-level playbook for standing up a digital bank, with real challenger-bank case studies.</p>
-        </li>
-        <li class="resource-item">
-          <a class="res-title" href="https://www.goodreads.com/book/show/53521551-the-anatomy-of-the-swipe" target="_blank" rel="noopener">The Anatomy of the Swipe: Making Money Move</a>
+          <a class="res-title" href="https://www.anatomyoftheswipe.com/" target="_blank" rel="noopener">The Anatomy of the Swipe: Making Money Move</a>
           <span class="res-source">— Ahmed Siddiqui (2020)</span>
           <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">A clear, builder-focused tour of how card payments and money movement actually work — essential plumbing if you'll issue accounts or cards.</p>
+          <p class="resource-note">A builder's tour of what happens between tapping a card and money landing — issuers, acquirers, networks, interchange. Essential if you'll issue accounts or cards. Paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://glenbrook.com/payments-essentials/payments-systems-in-the-us/" target="_blank" rel="noopener">Payments Systems in the U.S.</a>
+          <span class="res-source">— Carol Coye Benson, Scott Loftesness &amp; Russ Jones, Glenbrook (3rd ed.)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The reference that explains every US payment rail — cards, ACH, wires, real-time — in one consistent vocabulary. US-specific, but the mental model transfers. Paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://press.princeton.edu/books/paperback/9780691251707/the-bankers-new-clothes" target="_blank" rel="noopener">The Bankers' New Clothes</a>
+          <span class="res-source">— Anat Admati &amp; Martin Hellwig, Princeton University Press</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Why bank capital exists and why thin equity keeps blowing banks up, argued without jargon. Read it before deciding how much of your balance sheet to fund with debt. Paid.</p>
         </li>
       </ul>
     </section>
@@ -74,10 +89,28 @@
       <h2>📄 Papers &amp; Primary References</h2>
       <ul class="resource-list">
         <li class="resource-item">
-          <a class="res-title" href="https://www.fdic.gov/bank-examinations/applications-deposit-insurance" target="_blank" rel="noopener">Applying for Deposit Insurance — A Handbook for Organizers of De Novo Institutions</a>
-          <span class="res-source">— FDIC</span>
+          <a class="res-title" href="https://www.bankofengland.co.uk/prudential-regulation/new-bank-start-up-unit" target="_blank" rel="noopener">New Bank Start-up Unit</a>
+          <span class="res-source">— Bank of England (PRA) &amp; FCA, United Kingdom</span>
           <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">The FDIC's own plain-language guide to the steps of forming a brand-new U.S. bank — the one regulatory document worth skimming if you take the full-charter route.</p>
+          <p class="resource-note">The most readable "how to start a bank" material any regulator publishes: should-I-become-a-bank guides, alternatives, business-plan expectations, and the mobilisation route that lets you authorise with restrictions first.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.fdic.gov/bank-examinations/applications-deposit-insurance" target="_blank" rel="noopener">Applying for Deposit Insurance — A Handbook for Organizers of De Novo Institutions</a>
+          <span class="res-source">— FDIC, United States</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The US equivalent, written for organizers: what a de novo application contains, what examiners look for, and how long each stage takes.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=37658" target="_blank" rel="noopener">Guidelines for 'on tap' Licensing of Universal Banks in the Private Sector</a>
+          <span class="res-source">— Reserve Bank of India (2016)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">India's standing framework for new private banks — eligible promoters, ₹5bn minimum capital, shareholding lock-ins. Worth reading alongside the fact that the RBI still licenses no standalone neobanks, so Indian neobanks all sit on a partner bank.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.federalreserve.gov/newsevents/pressreleases/bcreg20230606a.htm" target="_blank" rel="noopener">Interagency Guidance on Third-Party Relationships: Risk Management</a>
+          <span class="res-source">— Federal Reserve, FDIC &amp; OCC (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The rules a sponsor bank is judged against when it lets you build on its charter — which is to say, the real constraints behind every BaaS contract you'll sign.</p>
         </li>
       </ul>
     </section>
@@ -89,13 +122,31 @@
           <a class="res-title" href="https://a16z.com/every-company-will-be-a-fintech-company/" target="_blank" rel="noopener">Every Company Will Be a Fintech Company</a>
           <span class="res-source">— Angela Strange, Andreessen Horowitz (2020)</span>
           <span class="level" data-level="beginner">Beginner</span>
-          <p class="resource-note">The influential thesis that financial infrastructure is now available "as a service," letting almost any company embed banking — the backdrop for today's neobanks.</p>
+          <p class="resource-note">The essay that named the shift: financial infrastructure became available as APIs, so launching banking products stopped requiring a bank.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.bitsaboutmoney.com/archive/the-alchemy-of-deposits/" target="_blank" rel="noopener">The alchemy of deposits</a>
+          <span class="res-source">— Patrick McKenzie, Bits about Money (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">What a deposit actually is, why it is the most valuable liability in business, and why the whole edifice of regulation exists to keep it money-good. Start here for the economics.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.bitsaboutmoney.com/archive/seeing-like-a-bank/" target="_blank" rel="noopener">Seeing like a Bank</a>
+          <span class="res-source">— Patrick McKenzie, Bits about Money</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How banks perceive customers, risk and compliance from the inside — the mindset that explains decisions that look irrational from a product team's seat.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://www.lithic.com/blog/bank-partners" target="_blank" rel="noopener">A Fintech Guide to Bank Partners and Sponsors</a>
           <span class="res-source">— Lithic</span>
           <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">Practical walkthrough of the most common path to "a bank" today: finding, vetting and working with a sponsor bank, including the three partnership models.</p>
+          <p class="resource-note">The practical version of the second path: how to find and vet a sponsor bank, the partnership models available, and what each one costs you in control.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.fintechbrainfood.com/p/everyone-wants-to-be-a-bank" target="_blank" rel="noopener">Everyone wants to be a bank</a>
+          <span class="res-source">— Simon Taylor, Fintech Brainfood (2026)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The current turn: after the sponsor-bank shocks, fintechs are buying charters for the economics and control. The clearest read on when owning the licence is worth it.</p>
         </li>
       </ul>
     </section>
@@ -104,16 +155,28 @@
       <h2>🎥 Videos &amp; Talks</h2>
       <ul class="resource-list">
         <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=fTTGALaRZoc" target="_blank" rel="noopener">Banking Explained — Money and Credit</a>
+          <span class="res-source">— Kurzgesagt</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Six animated minutes on what banks do with your money and how lending creates it. The fastest possible foundation if the balance sheet is new to you.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=ncWRe-JIWRs" target="_blank" rel="noopener">Building the bank of the future with Monzo, N26 and Revolut</a>
+          <span class="res-source">— TechCrunch Disrupt Berlin (2017)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Three founders comparing routes at the moment they were taking them — prepaid card on someone else's licence, full charter, EU passporting. Dated in detail, still the best account of the decision.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://www.youtube.com/watch?v=fJQF93zL9PA" target="_blank" rel="noopener">What to Expect in Fintech's Next 10 Years</a>
           <span class="res-source">— Angela Strange, fintech_devcon (2021)</span>
           <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">The case that open financial infrastructure lets startups launch banking products without becoming a bank — and what gets built next.</p>
+          <p class="resource-note">The infrastructure thesis delivered to builders, with the stack laid out layer by layer — a good map of which parts you'd buy rather than build.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://www.youtube.com/watch?v=1FJPdARRPV0" target="_blank" rel="noopener">Bank on It — Financial Service Firm Valuation</a>
+          <a class="res-title" href="https://www.youtube.com/watch?v=1FJPdARRPV0" target="_blank" rel="noopener">Bank on it — Financial Service Firm Valuation</a>
           <span class="res-source">— Aswath Damodaran, NYU Stern</span>
           <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">NYU's renowned valuation professor on what actually drives a bank's economics and value — the rigorous "bank as a business" lens.</p>
+          <p class="resource-note">Why banks are valued differently from every other business — debt is raw material, regulation is a constraint, and book value actually means something.</p>
         </li>
       </ul>
     </section>
@@ -123,15 +186,33 @@
       <ul class="resource-list">
         <li class="resource-item">
           <a class="res-title" href="https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking" target="_blank" rel="noopener">Banking &amp; Money</a>
-          <span class="res-source">— Khan Academy (free)</span>
+          <span class="res-source">— Khan Academy</span>
           <span class="level" data-level="beginner">Beginner</span>
-          <p class="resource-note">Short, free videos that build the fundamentals from scratch: what a bank does, balance sheets, and how lending creates money.</p>
+          <p class="resource-note">Free short videos building the fundamentals from zero: bank balance sheets, fractional reserve lending, and how deposits become loans.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://www.coursera.org/specializations/wharton-fintech" target="_blank" rel="noopener">FinTech: Foundations &amp; Applications of Financial Technology</a>
-          <span class="res-source">— Wharton / University of Pennsylvania, Coursera</span>
+          <a class="res-title" href="https://www.moderntreasury.com/learn" target="_blank" rel="noopener">Modern Treasury Learn</a>
+          <span class="res-source">— Modern Treasury</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free primers on the money-movement vocabulary you'll be expected to know — payment rails, ACH, FedNow, reconciliation, ledgers — each a short standalone read.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://glenbrook.com/payments-education/" target="_blank" rel="noopener">Payments Boot Camp</a>
+          <span class="res-source">— Glenbrook Partners</span>
           <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">A four-course series on payments, lending, regulation and the technologies reshaping financial services (auditable for free).</p>
+          <p class="resource-note">The industry's standard two-day grounding in how payments work and who earns what along the way, in person or on demand. Paid, and priced for employers — the free alternative is the Modern Treasury primers above.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/specializations/financialtechnology" target="_blank" rel="noopener">Financial Technology (Fintech) Innovations Specialization</a>
+          <span class="res-source">— University of Michigan, Coursera</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Four structured courses across payments, blockchain, credit and investment tech. Paid — the FAQ states it cannot be audited free, though financial aid is available.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/webcastvalonline.htm" target="_blank" rel="noopener">Valuation — free online class</a>
+          <span class="res-source">— Aswath Damodaran, NYU Stern</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Twenty-five free sessions with slides and tests, including the financial-services material. Take it if you need to defend your own numbers to an investor or a regulator.</p>
         </li>
       </ul>
     </section>
@@ -140,29 +221,29 @@
       <h2>🔧 Tools &amp; Interactive</h2>
       <ul class="resource-list">
         <li class="resource-item">
-          <a class="res-title" href="https://unit.co/" target="_blank" rel="noopener">Unit</a>
-          <span class="res-source">— Embedded-finance platform</span>
-          <p class="resource-note">Spin up accounts, cards and money movement via API on top of partner banks — a concrete look at what BaaS gives you out of the box.</p>
+          <a class="res-title" href="https://column.com/" target="_blank" rel="noopener">Column</a>
+          <span class="res-source">— Nationally chartered US bank with a developer API</span>
+          <p class="resource-note">A bank that owns its charter and exposes it directly — the clearest example of what disappears from the stack when there's no middleman between you and the rails.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://www.treasuryprime.com/" target="_blank" rel="noopener">Treasury Prime</a>
-          <span class="res-source">— Embedded banking / BaaS</span>
-          <p class="resource-note">Connects fintechs to a network of sponsor banks through one API — useful for seeing how the bank-partner layer is packaged.</p>
+          <a class="res-title" href="https://unit.co/" target="_blank" rel="noopener">Unit</a>
+          <span class="res-source">— Embedded-finance platform</span>
+          <p class="resource-note">Accounts, cards and payments by API on top of partner banks. Read the docs to see exactly which primitives BaaS hands you out of the box.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://stripe.com/treasury" target="_blank" rel="noopener">Stripe Treasury</a>
           <span class="res-source">— Banking-as-a-service by Stripe</span>
-          <p class="resource-note">Lets platforms embed FDIC-insured accounts, cards and payouts for their own customers — the productized version of "a bank as an API."</p>
+          <p class="resource-note">Lets a platform embed FDIC-insured accounts and payouts for its own customers — the most productized version of "a bank as an API".</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://www.marqeta.com/" target="_blank" rel="noopener">Marqeta</a>
           <span class="res-source">— Modern card issuing</span>
-          <p class="resource-note">The card-issuing layer behind many fintech debit/credit programs — shows how cards, controls and authorizations are built.</p>
+          <p class="resource-note">The issuing layer behind many fintech debit and credit programs; its docs are a practical education in authorizations, controls and card economics.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://plaid.com/" target="_blank" rel="noopener">Plaid</a>
-          <span class="res-source">— Financial data connectivity</span>
-          <p class="resource-note">Connects apps to users' existing bank accounts for verification, balances and transfers — a staple of the modern fintech stack.</p>
+          <a class="res-title" href="https://banks.data.fdic.gov/bankfind-suite/bankfind" target="_blank" rel="noopener">FDIC BankFind Suite</a>
+          <span class="res-source">— FDIC</span>
+          <p class="resource-note">Every US bank's real financials, free: deposits, loans, capital, income. The fastest way to sanity-check your business plan against banks that already exist.</p>
         </li>
       </ul>
     </section>
@@ -174,25 +255,25 @@
           <a class="res-title" href="https://www.netinterest.co/" target="_blank" rel="noopener">Net Interest</a>
           <span class="res-source">— Marc Rubinstein</span>
           <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">Weekly deep dives on how banks and financial firms actually make (and lose) money — the best ongoing read for the economics.</p>
+          <p class="resource-note">Weekly deep dives on how financial firms make and lose money, by a former analyst. The best ongoing read for the economics of the thing you're building.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.bitsaboutmoney.com/archive/" target="_blank" rel="noopener">Bits about Money — archive</a>
+          <span class="res-source">— Patrick McKenzie</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The full back catalogue on financial infrastructure — deposit insurance, debit rails, loan origination, bank operations. Almost every piece is worth reading.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://www.fintechbrainfood.com/" target="_blank" rel="noopener">Fintech Brainfood</a>
           <span class="res-source">— Simon Taylor</span>
           <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">Weekly analysis of banking/payments infrastructure, sponsor-bank models and what's shifting under fintech.</p>
+          <p class="resource-note">Weekly analysis of banking and payments infrastructure, sponsor-bank models and what's shifting underneath fintech, written by someone who has built inside both worlds.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://a16z.com/category/fintech/" target="_blank" rel="noopener">a16z Fintech</a>
-          <span class="res-source">— Andreessen Horowitz</span>
-          <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">Essays, podcasts and market maps on where fintech and banking are heading, from one of the field's most active investors.</p>
-        </li>
-        <li class="resource-item">
-          <a class="res-title" href="https://www.ycombinator.com/library?categories=Fintech" target="_blank" rel="noopener">YC Startup Library — Fintech</a>
-          <span class="res-source">— Y Combinator</span>
-          <span class="level" data-level="beginner">Beginner</span>
-          <p class="resource-note">Founder-focused essays and talks on building fintech and banking startups, from companies that have done it.</p>
+          <a class="res-title" href="https://fintechbusinessweekly.substack.com/" target="_blank" rel="noopener">Fintech Business Weekly</a>
+          <span class="res-source">— Jason Mikula</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Follows enforcement actions and BaaS failures in detail — the corrective to any plan that assumes the sponsor-bank route is the easy one.</p>
         </li>
       </ul>
     </section>
