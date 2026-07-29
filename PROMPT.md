@@ -107,3 +107,25 @@ of the *same* resource, but never exclude a resource for being paid. Applied to
 Coursera specialization (Courses) and Hoare's *Quicksort* (Papers) — the two
 resources previously dropped on paywall grounds — each flagged as paid in its
 note. Page now carries 27 resources.
+
+---
+
+## 2026-07-29 — Redo the first two topic pages
+
+> The first two topics in the repo were done in a non opus 5 model. I want to
+> redo them. It's also fine if resources from the previous version get repeated.
+
+(Asked three scoping questions. Answers: Transformers → **foundations + modern
+stack**; Starting a New Bank → **options 1 and 4 blended**, i.e. a
+jurisdiction-agnostic business core with the US as the worked example plus UK/EU
+and India pointers; depth → **match the DSA page**.)
+
+Outcome: full rewrites of `topics/transformers.html` (32 resources) and
+`topics/starting-a-new-bank.html` (32 resources) from the template, every URL
+re-verified live. The Transformers page now carries the post-2017 architecture
+(RoPE, FlashAttention, MoE, scaling laws, interpretability, Mamba) alongside the
+fundamentals; the bank page leads with economics that hold in any jurisdiction
+and adds UK (PRA/FCA New Bank Start-up Unit) and India (RBI) primary sources next
+to the US ones. Both landing-page cards refreshed with new descriptions and
+`data-tags`. Fixed two rotten links inherited from the old pages (a 404 Coursera
+specialization, a plain-`http://` Annotated Transformer URL).
