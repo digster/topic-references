@@ -112,8 +112,9 @@ Add **one card** to the `#topic-grid` in `index.html`, kept in **alphabetical or
 ## Verifying your work
 - Open `index.html` in a browser: cards render, search filters live, the count updates, and a
   nonsense query shows the "no matches" message.
-- Open the new `topics/<slug>.html`: description appears first, sections render, dark mode works
-  (it follows the OS setting), and the back link returns home.
+- Open the new `topics/<slug>.html`: description appears first, sections render, the level pills are
+  colored, and the back link returns home. The theme is deliberately **fixed light** — there is no
+  dark mode to check (see `ARCHITECTURE.md`), and the site should look identical in either OS mode.
 - Optional structural check: `uv run tests/check_site.py` (verifies every topic page is linked from
   `index.html` and vice-versa).
 

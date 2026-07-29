@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning — Topic References</title>
+  <meta name="description" content="How systems learn patterns from data — a short overview plus curated books, papers, articles, videos, courses and tools covering classical models, honest evaluation, and running machine learning in production." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Machine Learning</h1>
+      <p class="last-updated">Last updated: 2026-07-29</p>
+    </div>
+
+    <section class="description">
+      <p>
+        <strong>Machine learning</strong> is the practice of fitting models to data so they make
+        useful predictions about examples they have never seen, instead of following rules a
+        programmer wrote out by hand. You pick a model family — a linear model, a decision tree, an
+        ensemble of trees — and an algorithm searches for the parameters that best explain the
+        training data. The central question is never "does it fit?" but <em>does it generalise?</em>
+      </p>
+      <p>
+        Fitting the model is usually the easy part. Most of the difficulty lives around it: getting
+        clean and representative data, building features that carry signal, and evaluating honestly
+        enough to know whether a result will survive contact with reality. And a model that ships
+        becomes a system — one that has to be monitored, retrained and debugged as the data
+        underneath it drifts. This page follows that whole arc, staying on classical (largely
+        tabular) machine learning and the practice of running it in production; deep learning has
+        its own page.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> comfortable Python, a little linear algebra (vectors,
+        matrices) and probability/statistics (distributions, expectation, variance). Some pandas and
+        NumPy if you want to follow the hands-on resources.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://themlbook.com/" target="_blank" rel="noopener">The Hundred-Page Machine Learning Book</a>
+          <span class="res-source">— Andriy Burkov (2019, still maintained)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Genuinely about a hundred pages, and it names every important idea without drowning you in any of them. Read-first-buy-later: chapters are free to download, the book is paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.statlearning.com/" target="_blank" rel="noopener">An Introduction to Statistical Learning</a>
+          <span class="res-source">— James, Witten, Hastie &amp; Tibshirani, Springer (Python ed. 2023)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The standard first textbook, and the single best use of your time here. Free PDF on the site, in both Python (ISLP) and R (ISLR) editions, with labs for each.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/" target="_blank" rel="noopener">Hands-On Machine Learning with Scikit-Learn, Keras &amp; TensorFlow (3rd ed.)</a>
+          <span class="res-source">— Aurélien Géron, O'Reilly (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Part I is the reason it's here: the most practical tour of classical ML in scikit-learn there is, end-to-end project included. Paid, but every notebook is free at <a href="https://github.com/ageron/handson-ml3" target="_blank" rel="noopener">ageron/handson-ml3</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/" target="_blank" rel="noopener">Designing Machine Learning Systems</a>
+          <span class="res-source">— Chip Huyen, O'Reilly (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The book about everything that surrounds the model — data pipelines, training-serving skew, deployment, drift, monitoring. Paid; the author's earlier free notes are at <a href="https://huyenchip.com/machine-learning-systems-design/toc.html" target="_blank" rel="noopener">Machine Learning Systems Design</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://hastie.su.domains/ElemStatLearn/" target="_blank" rel="noopener">The Elements of Statistical Learning (2nd ed.)</a>
+          <span class="res-source">— Hastie, Tibshirani &amp; Friedman, Springer (2009)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">ISL's rigorous older sibling and the field's reference text — same authors, full mathematics. The free PDF is linked from the book's download page.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/" target="_blank" rel="noopener">Understanding Machine Learning: From Theory to Algorithms</a>
+          <span class="res-source">— Shalev-Shwartz &amp; Ben-David, Cambridge University Press (2014)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Where "why does generalisation work at all?" gets a real answer: PAC learning, VC dimension, and the bias-complexity tradeoff. Full book free as a PDF from the authors.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf" target="_blank" rel="noopener">A Few Useful Things to Know About Machine Learning</a>
+          <span class="res-source">— Pedro Domingos, Communications of the ACM (2012)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Ten pages of the folk wisdom that usually takes years to accumulate — why more data beats a cleverer algorithm, why intuition fails in high dimensions. Read it early, then again later.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.stat.uchicago.edu/~lekheng/courses/191f09/breiman.pdf" target="_blank" rel="noopener">Statistical Modeling: The Two Cultures</a>
+          <span class="res-source">— Leo Breiman, Statistical Science (2001)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The essay that named the split between assuming a data model and simply predicting well — and largely called how the field would go. Free course copy; the journal version on Project Euclid is paywalled.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf" target="_blank" rel="noopener">Random Forests</a>
+          <span class="res-source">— Leo Breiman, Machine Learning (2001)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The original paper for the algorithm that is still a superb default on tabular data, and still the best explanation of why averaging decorrelated trees works.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1603.02754" target="_blank" rel="noopener">XGBoost: A Scalable Tree Boosting System</a>
+          <span class="res-source">— Chen &amp; Guestrin, KDD (2016)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Gradient-boosted trees remain the thing to beat on tabular problems. This is the paper behind the implementation that made them fast enough to win everything.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html" target="_blank" rel="noopener">Hidden Technical Debt in Machine Learning Systems</a>
+          <span class="res-source">— Sculley et al., Google, NIPS (2015)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">"Only a tiny fraction of real-world ML systems is composed of the ML code." The paper that gave the industry its vocabulary for entanglement, feedback loops and pipeline jungles. Free PDF.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.jmlr.org/papers/v12/pedregosa11a.html" target="_blank" rel="noopener">Scikit-learn: Machine Learning in Python</a>
+          <span class="res-source">— Pedregosa et al., JMLR (2011)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The design paper for the library you'll actually use — worth reading for where the fit/transform/predict API came from and why it's shaped that way.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://mlu-explain.github.io/" target="_blank" rel="noopener">MLU-Explain</a>
+          <span class="res-source">— Amazon Machine Learning University</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Interactive visual essays on the core ideas — bias-variance, cross-validation, decision trees, random forest, ROC/AUC. Drag the sliders until the concept clicks.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://developers.google.com/machine-learning/guides/rules-of-ml" target="_blank" rel="noopener">Rules of Machine Learning: Best Practices for ML Engineering</a>
+          <span class="res-source">— Martin Zinkevich, Google</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">43 hard-won rules, in order, starting with "don't be afraid to launch a product without machine learning". The most useful thing to read before your first real project.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://scikit-learn.org/stable/common_pitfalls.html" target="_blank" rel="noopener">Common Pitfalls and Recommended Practices</a>
+          <span class="res-source">— scikit-learn documentation</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Data leakage, preprocessing outside the cross-validation loop, misused random state — the specific mistakes that silently inflate your scores, with code showing right and wrong.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning" target="_blank" rel="noopener">MLOps: Continuous delivery and automation pipelines in machine learning</a>
+          <span class="res-source">— Google Cloud Architecture Center</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The reference description of MLOps maturity levels 0 → 1 → 2, from manual notebooks to automated retraining and CI/CD. Vendor-hosted but largely vendor-neutral.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF" target="_blank" rel="noopener">Machine Learning (playlist)</a>
+          <span class="res-source">— StatQuest with Josh Starmer</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Every algorithm and evaluation idea broken into a short, cheerful, unusually clear video. The standard rescue when a concept refuses to land.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU" target="_blank" rel="noopener">Stanford CS229: Machine Learning</a>
+          <span class="res-source">— Andrew Ng, Stanford (Autumn 2018)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The full graduate lectures, free, with the derivations left in. Course notes and problem sets are public at <a href="https://cs229.stanford.edu/" target="_blank" rel="noopener">cs229.stanford.edu</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://work.caltech.edu/telecourse.html" target="_blank" rel="noopener">Learning From Data</a>
+          <span class="res-source">— Yaser S. Abu-Mostafa, Caltech</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">18 free lectures built around one question: when is learning even possible? The clearest lecture treatment of VC dimension, overfitting and regularisation you'll find.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://developers.google.com/machine-learning/crash-course" target="_blank" rel="noopener">Machine Learning Crash Course</a>
+          <span class="res-source">— Google</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free, self-paced, and heavy on interactive widgets and short exercises. The fastest route from nothing to training and evaluating your first models.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank" rel="noopener">Kaggle Learn: Intro to Machine Learning</a>
+          <span class="res-source">— Kaggle</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A few hours, entirely in the browser, entirely hands-on. Follow it with <a href="https://www.kaggle.com/learn/intermediate-machine-learning" target="_blank" rel="noopener">Intermediate ML</a> and <a href="https://www.kaggle.com/learn/feature-engineering" target="_blank" rel="noopener">Feature Engineering</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank" rel="noopener">Machine Learning Specialization</a>
+          <span class="res-source">— Andrew Ng, Stanford &amp; DeepLearning.AI (Coursera)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The 2022 rebuild of the course that taught a generation this subject, now in Python. Paid subscription with financial aid available; the same ground is covered free by CS229 above.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://scikit-learn.org/stable/user_guide.html" target="_blank" rel="noopener">scikit-learn User Guide</a>
+          <span class="res-source">— scikit-learn developers</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Not just API docs — a genuine textbook on each model family, with the assumptions and failure modes stated. The page you'll keep open for years.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://madewithml.com/" target="_blank" rel="noopener">Made With ML</a>
+          <span class="res-source">— Goku Mohandas</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A free, code-first course on taking one project all the way to production: design, data, testing, reproducibility, deployment, monitoring. Paid live cohorts exist; the written course doesn't need them.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops" target="_blank" rel="noopener">Machine Learning Engineering for Production (MLOps)</a>
+          <span class="res-source">— DeepLearning.AI (Coursera)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Four courses on scoping, data-centric development, and deployment lifecycle — the structured counterpart to Made With ML. Paid subscription, financial aid available.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://scikit-learn.org/stable/auto_examples/index.html" target="_blank" rel="noopener">scikit-learn Examples Gallery</a>
+          <span class="res-source">— runnable examples for every estimator</span>
+          <p class="resource-note">Hundreds of short, plotted scripts. The quickest way to see how a model behaves is to find it here and change the numbers.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.kaggle.com/" target="_blank" rel="noopener">Kaggle</a>
+          <span class="res-source">— datasets, competitions and free hosted notebooks</span>
+          <p class="resource-note">Real datasets to practise on and public solutions to read afterwards — the comparison against a strong baseline is where most of the learning happens.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://seeing-theory.brown.edu/" target="_blank" rel="noopener">Seeing Theory</a>
+          <span class="res-source">— Brown University</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Animated, interactive probability and statistics — distributions, estimation, regression. Fill the gaps underneath everything above.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://christophm.github.io/interpretable-ml-book/" target="_blank" rel="noopener">Interpretable Machine Learning</a>
+          <span class="res-source">— Christoph Molnar</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free online book on getting an answer out of a model, not just a prediction: partial dependence, permutation importance, LIME, SHAP, and where each one misleads.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://applyingml.com/" target="_blank" rel="noopener">Applying ML</a>
+          <span class="res-source">— Eugene Yan</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Curated papers, company write-ups and practitioner interviews about ML that actually shipped. Useful antidote to tutorial-shaped problems.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://mml-book.github.io/" target="_blank" rel="noopener">Mathematics for Machine Learning</a>
+          <span class="res-source">— Deisenroth, Faisal &amp; Ong, Cambridge University Press (2020)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free PDF covering exactly the linear algebra, calculus, probability and optimisation the other books assume — and no more.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://probml.github.io/pml-book/book1.html" target="_blank" rel="noopener">Probabilistic Machine Learning: An Introduction</a>
+          <span class="res-source">— Kevin P. Murphy, MIT Press (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The modern encyclopedic treatment, unified under a probabilistic view. Free draft PDF, with a second volume on advanced topics. Where to go when you want everything.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="transformers.html">Transformers (Deep Learning)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Where to go next when the data stops being tabular — text, images, audio — and hand-built features give way to learned representations.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>

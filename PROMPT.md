@@ -129,3 +129,42 @@ and adds UK (PRA/FCA New Bank Start-up Unit) and India (RBI) primary sources nex
 to the US ones. Both landing-page cards refreshed with new descriptions and
 `data-tags`. Fixed two rotten links inherited from the old pages (a 404 Coursera
 specialization, a plain-`http://` Annotated Transformer URL).
+
+---
+
+## 2026-07-29 — Add topic: Machine Learning
+
+> Add a topic on ml(machine learning).  Don't focus too much on ai, we are going
+> to add it separately.
+
+(Asked three scoping questions. Answers: deep-learning scope → **classical ML +
+production/MLOps**, no DL block; theory depth → **balanced ladder** from gentle
+intros to genuinely rigorous texts; card title → plain **"Machine Learning"**.)
+
+Outcome: new `topics/machine-learning.html` with **33 resources** across all
+seven sections, plus one card added to `index.html` in alphabetical position 2.
+The page deliberately stays on classical, largely tabular ML and the practice of
+running it in production — ISL/ESL, trees and ensembles, honest evaluation, then
+Rules of ML, the hidden-technical-debt paper, Made With ML and MLOps courses.
+Deep learning appears once, as a cross-link to the existing Transformers page, to
+leave room for the AI topic coming separately. Three link problems found and
+handled: R2D3's *A Visual Introduction to Machine Learning* was down (HTTP 522
+throughout the session) and was dropped rather than shipped broken; Breiman's
+*Two Cultures* turned out to be paywalled on Project Euclid, so a content-verified
+free university copy is linked instead; Papers with Code is sunset (302s to
+Hugging Face) and was excluded.
+
+---
+
+## 2026-07-29 — No dark mode
+
+> we are not going to have dark mode for now for this site.
+
+Outcome: settled the stale verification step that had been flagged in the two
+previous sessions. `CLAUDE.md`'s "Verifying your work" section no longer tells
+you to check that dark mode works — it now checks the level pills are colored
+and states that the theme is deliberately fixed light, with a pointer to
+`ARCHITECTURE.md`. Nothing else needed changing: `ARCHITECTURE.md` already
+documented the fixed-light decision, `styles.css` has had no
+`prefers-color-scheme: dark` block since the Brutalist Mono re-theme, and the
+earlier `PROMPT.md` mention is a historical record that stays as written.
