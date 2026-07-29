@@ -168,3 +168,45 @@ and states that the theme is deliberately fixed light, with a pointer to
 documented the fixed-light decision, `styles.css` has had no
 `prefers-color-scheme: dark` block since the Brutalist Mono re-theme, and the
 earlier `PROMPT.md` mention is a historical record that stays as written.
+
+---
+
+## 2026-07-29 — Add topic: Large Language Models
+
+> Add a topic on llms in generative ai. don't focus on the non llm parts of
+> generative ai, it will be added in a future topic.
+
+(Asked three scoping questions. The picker returned empty twice — the answers
+never arrived — so they were re-sent as plain text and answered `1b / 2c / 3a`:
+card title → plain **"Large Language Models"**, no parenthetical; overlap with
+the existing Transformers page → **self-contained, overlap freely**; emphasis →
+**balanced ladder** across internals, training and application practice.)
+
+Outcome: new `topics/large-language-models.html` with **49 resources** across all
+seven sections, plus one card added to `index.html` in alphabetical position 2.
+The page runs the full arc — next-token prediction, scaling laws, RLHF/DPO
+alignment, prompting, chain-of-thought, RAG, agents, evals, local inference — and
+states in its description that image, audio and video generation are a separate
+topic still to come. Per answer 2c it deliberately repeats ~11 rows that also
+appear on the Transformers page (Attention Is All You Need, GPT-3, Chinchilla,
+the Illustrated Transformer, Karpathy's videos, the HF LLM Course, nanochat,
+Jurafsky & Martin) so a reader landing here is never sent elsewhere for the
+fundamentals; the two pages stay differently shaped, and both cross-link.
+
+Two link problems found and handled. Stephen Wolfram's *What Is ChatGPT Doing …
+and Why Does It Work?* was unreachable from this container on three attempts
+(HTTP 503 via WebFetch, connection failure via curl with a browser UA) and was
+dropped — then added back on a follow-up instruction:
+
+> You can add the most probable Wolfram's link now(based on search) and if it
+> does not work, we can update it later.
+
+Search corroborates the URL and its title, so it reads as a container
+reachability problem, not link rot; it is the only row on the page not opened
+end-to-end, and the page now carries 50 resources. `aiengineeringbook.com`
+turned out to be
+a **parked domain for sale** ("A Brand New Domain!"), so *AI Engineering* is
+linked via Chip Huyen's own book page instead — a 200 that would have shipped a
+dead link. Stochastic Parrots 403s behind Cloudflare on the ACM DOI from here, so
+a content-verified free PDF is linked (confirmed 14 pages with the correct four
+authors via `pypdf`) with the ACM proceedings noted in the note.

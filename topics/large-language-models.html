@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Large Language Models — Topic References</title>
+  <meta name="description" content="How next-token prediction became a general-purpose tool — a short overview plus curated books, papers, articles, videos, courses and tools covering pretraining, alignment, prompting, retrieval, agents and evaluation." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Large Language Models</h1>
+      <p class="last-updated">Last updated: 2026-07-29</p>
+    </div>
+
+    <section class="description">
+      <p>
+        A <strong>large language model</strong> is a neural network trained on an enormous amount of
+        text to do one deceptively simple thing: predict the next token. Do that well enough, at
+        enough scale, and the model has to internalise grammar, facts, styles of argument and a
+        working amount of world knowledge along the way. A second stage — <em>post-training</em>,
+        where the model is fine-tuned on demonstrations and then shaped by human or AI preference
+        signals — turns that raw predictor into something that answers questions and follows
+        instructions instead of merely continuing your sentence.
+      </p>
+      <p>
+        What makes this worth studying is the collapse of the old pipeline. Where you once trained a
+        separate model per task, one pretrained model now handles translation, summarising,
+        classification and code by being <em>asked</em>, in plain language. That shifts the
+        engineering problem: less architecture design, more prompting, retrieval, tool use,
+        evaluation and cost. This page follows that arc end to end — how the models work, how they
+        are trained and aligned, and how to build something reliable on top of one. It stays on
+        <strong>language</strong> models throughout; image, audio and video generation are a separate
+        topic.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> comfortable Python, and enough neural-network
+        familiarity to know what a layer, a loss and a gradient are. No transformer knowledge is
+        assumed — several resources below build it up from nothing.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/" target="_blank" rel="noopener">Co-Intelligence: Living and Working with AI</a>
+          <span class="res-source">— Ethan Mollick, Portfolio (2024)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">No maths at all — it's about what these systems are actually good and bad at, and how to work with one. Paid; the gentlest possible entry point.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.llm-book.com/" target="_blank" rel="noopener">Hands-On Large Language Models</a>
+          <span class="res-source">— Jay Alammar &amp; Maarten Grootendorst, O'Reilly (2024)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Nearly a thousand illustrations doing the explaining — the best visual on-ramp there is. Paid, but the notebooks are free on the book's site.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.manning.com/books/build-a-large-language-model-from-scratch" target="_blank" rel="noopener">Build a Large Language Model (From Scratch)</a>
+          <span class="res-source">— Sebastian Raschka, Manning (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Tokenizer, attention, pretraining loop, then fine-tuning — typed out in PyTorch with nothing hidden behind a library. Paid, but every notebook is free at <a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank" rel="noopener">rasbt/LLMs-from-scratch</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2501.09223" target="_blank" rel="noopener">Foundations of Large Language Models</a>
+          <span class="res-source">— Tong Xiao &amp; Jingbo Zhu (2025)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free book-length treatment organised exactly as the field is: pre-training, generative models, prompting, alignment, inference.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://web.stanford.edu/~jurafsky/slp3/" target="_blank" rel="noopener">Speech and Language Processing (3rd ed. draft)</a>
+          <span class="res-source">— Dan Jurafsky &amp; James H. Martin</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The standard NLP textbook, free in draft and steadily rewritten around LLMs — read it when you want the academic grounding under the hype.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://huyenchip.com/books/" target="_blank" rel="noopener">AI Engineering: Building Applications with Foundation Models</a>
+          <span class="res-source">— Chip Huyen, O'Reilly (2025)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The book for the layer above the model: evaluation, prompt and context design, RAG, finetuning decisions, latency and cost. Paid.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention Is All You Need</a>
+          <span class="res-source">— Vaswani et al., NeurIPS (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The transformer. Every model on this page is a descendant, so it's worth reading even though it predates LLMs as a category.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">Language Models are Few-Shot Learners</a>
+          <span class="res-source">— Brown et al., OpenAI / NeurIPS (2020)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The GPT-3 paper, and the moment "just describe the task in the prompt" became a serious alternative to fine-tuning.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2001.08361" target="_blank" rel="noopener">Scaling Laws for Neural Language Models</a>
+          <span class="res-source">— Kaplan et al., OpenAI (2020)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Loss falls as a smooth power law in model size, data and compute — the empirical result that made spending billions look rational.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2203.15556" target="_blank" rel="noopener">Training Compute-Optimal Large Language Models</a>
+          <span class="res-source">— Hoffmann et al., DeepMind (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The "Chinchilla" correction: the previous generation was far too large for how little data it saw. Read it directly after Kaplan.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener">Training language models to follow instructions with human feedback</a>
+          <span class="res-source">— Ouyang et al., OpenAI (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">InstructGPT — the RLHF recipe that turned a text predictor into an assistant. This is the paper that made ChatGPT possible.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2305.18290" target="_blank" rel="noopener">Direct Preference Optimization: Your Language Model is Secretly a Reward Model</a>
+          <span class="res-source">— Rafailov et al., NeurIPS (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Gets RLHF's result with a plain classification loss and no reward model or RL loop — now the default way most teams do alignment.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a>
+          <span class="res-source">— Wei et al., Google (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Asking for intermediate steps unlocks arithmetic and multi-step reasoning the same model otherwise fails — the origin of everything "reasoning".</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener">Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</a>
+          <span class="res-source">— Lewis et al., NeurIPS (2020)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The paper that named RAG. Worth reading before you build one, because most production designs quietly diverge from it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener">LoRA: Low-Rank Adaptation of Large Language Models</a>
+          <span class="res-source">— Hu et al., Microsoft (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Freeze the model, train two small matrices per layer. The reason fine-tuning a useful model no longer needs a datacentre.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2407.21783" target="_blank" rel="noopener">The Llama 3 Herd of Models</a>
+          <span class="res-source">— Grattafiori et al., Meta (2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Ninety-odd pages of what actually goes into a frontier model — data curation, infrastructure failures, post-training. Unusually candid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2501.12948" target="_blank" rel="noopener">DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</a>
+          <span class="res-source">— DeepSeek-AI (2025)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Reasoning behaviour emerging from reinforcement learning with almost no supervised examples — and an open recipe others could reproduce.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://s10251.pcdn.co/pdf/2021-bender-parrots.pdf" target="_blank" rel="noopener">On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?</a>
+          <span class="res-source">— Bender, Gebru, McMillan-Major &amp; Shmitchell, FAccT (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The most influential critique of the scaling story — training-data bias, environmental cost, and fluency mistaken for understanding. Free PDF; also in the ACM proceedings.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer</a>
+          <span class="res-source">— Jay Alammar</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Still the clearest picture-by-picture walk through attention ever written. Read this before any paper on this page.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/" target="_blank" rel="noopener">What Is ChatGPT Doing … and Why Does It Work?</a>
+          <span class="res-source">— Stephen Wolfram (2023)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Book-length and free to read online, building up from "it just adds one word at a time" to embeddings and attention without assuming any background.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://simonwillison.net/2025/Dec/31/the-year-in-llms/" target="_blank" rel="noopener">2025: The year in LLMs</a>
+          <span class="res-source">— Simon Willison</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Twenty-six sections of what actually changed, by someone who tested it all. The fastest way to catch up on the current state of play.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/" target="_blank" rel="noopener">Prompt Engineering</a>
+          <span class="res-source">— Lilian Weng, Lil'Log</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Prompting treated as a research area rather than a list of tricks, with the papers behind each technique cited.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank" rel="noopener">LLM Powered Autonomous Agents</a>
+          <span class="res-source">— Lilian Weng, Lil'Log</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The reference decomposition of an agent into planning, memory and tool use — the vocabulary most later writing assumes.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building Effective AI Agents</a>
+          <span class="res-source">— Anthropic (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Argues most "agents" should be simple composable workflows instead, and names the five patterns worth knowing. Refreshingly anti-framework.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://magazine.sebastianraschka.com/p/understanding-reasoning-llms" target="_blank" rel="noopener">Understanding Reasoning LLMs</a>
+          <span class="res-source">— Sebastian Raschka (2025)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The four ways reasoning models get built — inference-time scaling, pure RL, SFT+RL, distillation — separated cleanly. Free to read.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://hamel.dev/blog/posts/evals/" target="_blank" rel="noopener">Your AI Product Needs Evals</a>
+          <span class="res-source">— Hamel Husain</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The corrective to endless prompt-fiddling: without a measurement loop you cannot tell whether a change helped. The single most useful post here if you're shipping.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=wjZofJX0v4M" target="_blank" rel="noopener">Transformers, the tech behind LLMs (Deep Learning Chapter 5)</a>
+          <span class="res-source">— 3Blue1Brown</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Animated linear algebra that makes the shape of the computation obvious. Twenty-seven minutes very well spent.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=7xTGNNLPyMI" target="_blank" rel="noopener">Deep Dive into LLMs like ChatGPT</a>
+          <span class="res-source">— Andrej Karpathy</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Three and a half hours covering the whole pipeline — tokens, pretraining, post-training, hallucination, reasoning — with no code required. Start here.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=bZQun8Y4L2A" target="_blank" rel="noopener">State of GPT</a>
+          <span class="res-source">— Andrej Karpathy, Microsoft Build (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The pretraining → SFT → reward model → RLHF pipeline in forty minutes. Older, but still the tightest summary of how assistants are made.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank" rel="noopener">Let's build GPT: from scratch, in code, spelled out</a>
+          <span class="res-source">— Andrej Karpathy</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A working GPT typed live in two hours. Type along rather than watch — the understanding is in the keystrokes.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=zduSFxRajkE" target="_blank" rel="noopener">Let's build the GPT Tokenizer</a>
+          <span class="res-source">— Andrej Karpathy</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Tokenization explains a startling share of LLM weirdness — spelling failures, arithmetic errors, non-English cost. Build one and it stops being mysterious.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_" target="_blank" rel="noopener">Stanford CS336: Language Modeling from Scratch (2025 lectures)</a>
+          <span class="res-source">— Tatsunori Hashimoto &amp; Percy Liang, Stanford</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Full lecture recordings of the build-it-yourself course below, free on YouTube — tokenization through GPU kernels through alignment.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank" rel="noopener">ChatGPT Prompt Engineering for Developers</a>
+          <span class="res-source">— Isa Fulford &amp; Andrew Ng, DeepLearning.AI</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Ninety free minutes of notebooks that get you productive with the API immediately. The cheapest useful first step.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank" rel="noopener">Prompt Engineering Interactive Tutorial</a>
+          <span class="res-source">— Anthropic</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Nine chapters of exercises with an answer key, written by the people who trained the model. Free, and unusually opinionated about what actually works.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://huggingface.co/learn/llm-course/" target="_blank" rel="noopener">The Hugging Face LLM Course</a>
+          <span class="res-source">— Hugging Face</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free, code-first, and the fastest route to fine-tuning and shipping your own model with the libraries everyone actually uses.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://karpathy.ai/zero-to-hero.html" target="_blank" rel="noopener">Neural Networks: Zero to Hero</a>
+          <span class="res-source">— Andrej Karpathy</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Backpropagation from scratch up to a working GPT, in eight video lectures. Free, and the best foundation if the maths still feels like magic.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/mlabonne/llm-course" target="_blank" rel="noopener">LLM Course</a>
+          <span class="res-source">— Maxime Labonne</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Roadmaps plus runnable Colab notebooks across fundamentals, fine-tuning, quantization and deployment. Free, and kept current.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://stanford-cs336.github.io/spring2025/" target="_blank" rel="noopener">Stanford CS336: Language Modeling from Scratch</a>
+          <span class="res-source">— Tatsunori Hashimoto &amp; Percy Liang, Stanford (Spring 2025)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Five assignments that make you build the whole stack — tokenizer, architecture, GPU optimisation, data pipeline, alignment. Materials free; expect to rent a GPU.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://tiktokenizer.vercel.app/" target="_blank" rel="noopener">Tiktokenizer</a>
+          <span class="res-source">— live tokenizer playground</span>
+          <p class="resource-note">Paste text and watch it split into tokens across different models. Five minutes here explains a lot of otherwise baffling model behaviour.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://bbycroft.net/llm" target="_blank" rel="noopener">LLM Visualization</a>
+          <span class="res-source">— Brendan Bycroft</span>
+          <p class="resource-note">A 3D walkthrough of a real GPT executing, one matrix multiply at a time. The best answer to "but what is it actually doing?"</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/karpathy/nanochat" target="_blank" rel="noopener">nanochat</a>
+          <span class="res-source">— Andrej Karpathy</span>
+          <p class="resource-note">The full pipeline — tokenize, pretrain, finetune, evaluate, serve — in minimal hackable code, for roughly $100 of GPU time.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ollama.com/" target="_blank" rel="noopener">Ollama</a>
+          <span class="res-source">— run open-weight models locally</span>
+          <p class="resource-note">One command to get a model running on your own machine. Removes the API bill from experimentation, which changes how much you experiment.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://llm.datasette.io/" target="_blank" rel="noopener">llm (CLI)</a>
+          <span class="res-source">— Simon Willison</span>
+          <p class="resource-note">Talk to any model from the terminal, pipe files in, log every response to SQLite. Ideal for building intuition through sheer volume of prompts.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lmarena.ai/" target="_blank" rel="noopener">LM Arena</a>
+          <span class="res-source">— blind head-to-head model comparison</span>
+          <p class="resource-note">Vote on anonymised answers from two models, then see the leaderboard. The quickest calibration of which models are genuinely ahead.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.promptingguide.ai/" target="_blank" rel="noopener">Prompt Engineering Guide</a>
+          <span class="res-source">— DAIR.AI</span>
+          <p class="resource-note">A free, well-cited reference for prompting techniques — the place to look up a method rather than learn one from scratch.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2303.18223" target="_blank" rel="noopener">A Survey of Large Language Models</a>
+          <span class="res-source">— Zhao et al. (2023, revised since)</span>
+          <p class="resource-note">A heavily updated map of the whole field with hundreds of references. Use it to find the papers this page had to leave out.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://transformer-circuits.pub/" target="_blank" rel="noopener">Transformer Circuits Thread</a>
+          <span class="res-source">— Anthropic</span>
+          <p class="resource-note">Ongoing interpretability research trying to read what individual features and circuits inside a model actually represent.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener">The AI Index Report</a>
+          <span class="res-source">— Stanford HAI, annual</span>
+          <p class="resource-note">Numbers instead of narrative: training costs, benchmark trends, adoption, policy. The antidote to arguing about AI from vibes.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="transformers.html">Transformers (Deep Learning)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Go here for the architecture in depth — positional encodings, KV caching, mixture of experts, and what a 2026 model does differently.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="machine-learning.html">Machine Learning</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The ground underneath all of this: fitting models, honest evaluation, and why generalisation is the only question that matters.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>
