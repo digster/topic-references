@@ -196,7 +196,15 @@ fundamentals; the two pages stay differently shaped, and both cross-link.
 Two link problems found and handled. Stephen Wolfram's *What Is ChatGPT Doing …
 and Why Does It Work?* was unreachable from this container on three attempts
 (HTTP 503 via WebFetch, connection failure via curl with a browser UA) and was
-dropped rather than shipped unverified. `aiengineeringbook.com` turned out to be
+dropped — then added back on a follow-up instruction:
+
+> You can add the most probable Wolfram's link now(based on search) and if it
+> does not work, we can update it later.
+
+Search corroborates the URL and its title, so it reads as a container
+reachability problem, not link rot; it is the only row on the page not opened
+end-to-end, and the page now carries 50 resources. `aiengineeringbook.com`
+turned out to be
 a **parked domain for sale** ("A Brand New Domain!"), so *AI Engineering* is
 linked via Chip Huyen's own book page instead — a 200 that would have shipped a
 dead link. Stochastic Parrots 403s behind Cloudflare on the ACM DOI from here, so
