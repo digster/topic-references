@@ -210,3 +210,34 @@ linked via Chip Huyen's own book page instead — a 200 that would have shipped 
 dead link. Stochastic Parrots 403s behind Cloudflare on the ACM DOI from here, so
 a content-verified free PDF is linked (confirmed 14 pages with the correct four
 authors via `pypdf`) with the ACM proceedings noted in the note.
+
+---
+
+## 2026-07-29 — Add topic: Generative AI (Beyond LLMs)
+
+> Add a topic on non llm parts of generative ai. Think image, video, audio,
+> diffusion models, GANs etc(haven't listed everything).
+
+Three clarifying questions were asked and answered by the user. **Title:** the
+user supplied their own wording, *Generative AI (Beyond LLMs)*, rather than any
+of the three offered — it names the boundary with the existing LLM page instead
+of just listing modalities, so the page's first paragraph opens on that contrast.
+**Scope:** audio/music, video *and* 3D/neural rendering each get full resource
+rows; ethics/copyright was not selected, so it stays a single pointer row in
+Further Reading. **Emphasis:** balanced — intuition, then papers, then hands-on,
+with a Tools & Interactive section.
+
+The user also pushed back on an artificial cap: an earlier draft of the plan said
+to trim the papers section to ~14 to match the LLM page's 12. That was invented,
+not required — `CLAUDE.md` rule 5 forbids *padding*, which is not a ceiling on
+genuine quality. The section ships all 23 verified papers, grouped into six
+labelled runs (foundations, diffusion lineage, text-to-image, audio, video, 3D),
+because the topic spans more model families *and* more modalities than any other
+page on the site.
+
+Outcome: `topics/generative-ai-beyond-llms.html` with **55 resources** across all
+seven sections, a card added second in the landing-page grid, and one new Further
+Reading row on `topics/large-language-models.html` so its "image, audio and video
+generation are a separate topic" sentence finally resolves. Every link opened
+before shipping: 25 arXiv pages content-checked via `citation_title`, 20 other
+URLs by page title, 5 YouTube IDs via `oembed`, 4 GitHub repos via `WebFetch`.

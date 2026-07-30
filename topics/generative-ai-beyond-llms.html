@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generative AI (Beyond LLMs) — Topic References</title>
+  <meta name="description" content="Diffusion, GANs, VAEs and the models that generate images, audio, video and 3D — a short overview plus curated books, papers, articles, videos, courses and tools." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Generative AI (Beyond LLMs)</h1>
+      <p class="last-updated">Last updated: 2026-07-29</p>
+    </div>
+
+    <section class="description">
+      <p>
+        A language model is trained to predict the next token. The models on this page are trained to
+        do something different: learn the <em>distribution</em> that a pile of images, sounds or video
+        frames was drawn from, then <strong>sample</strong> a new one out of it. Same deep-learning
+        toolbox, genuinely different problem — there is no obvious "next item" in a picture, so
+        instead of predicting forward you learn to turn noise into structure. Four families have
+        answered that in turn: <strong>variational autoencoders</strong>, <strong>GANs</strong>,
+        autoregressive models over discrete tokens, and <strong>diffusion</strong> models.
+      </p>
+      <p>
+        Diffusion is the one that won. It displaced GANs on image quality and stability around 2021
+        and now underpins essentially all of text-to-image, text-to-video and text-to-audio
+        generation, while converging with <em>flow matching</em> into a single framework. That
+        convergence is what makes the topic worth studying as a whole rather than one modality at a
+        time: the same denoising objective, guidance trick and sampler design reappear whether the
+        output is a photograph, a cello line or a 3D scene.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> comfortable Python, and enough neural-network
+        familiarity to know what a layer, a loss and a gradient are. Be warned that the maths runs
+        heavier here than for language models — expectations, KL divergence and a little stochastic
+        calculus all show up. Prince and Murphy below build that groundwork from scratch, for free.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.oreilly.com/library/view/generative-deep-learning/9781098134174/" target="_blank" rel="noopener">Generative Deep Learning (2nd ed.)</a>
+          <span class="res-source">— David Foster, O'Reilly (2023)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The gentlest way in: VAEs, GANs, diffusion and music generation each built up and coded. Paid, but every notebook is free at <a href="https://github.com/davidADSP/Generative_Deep_Learning_2nd_Edition" target="_blank" rel="noopener">davidADSP/Generative_Deep_Learning_2nd_Edition</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.oreilly.com/library/view/hands-on-generative-ai/9781098149239/" target="_blank" rel="noopener">Hands-On Generative AI with Transformers and Diffusion Models</a>
+          <span class="res-source">— Sanseviero, Cuenca, Passos &amp; Whitaker, O'Reilly (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Written by four of the people behind Hugging Face's diffusion stack, and the most current book here on actually shipping image and audio generation. Paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://udlbook.github.io/udlbook/" target="_blank" rel="noopener">Understanding Deep Learning</a>
+          <span class="res-source">— Simon J.D. Prince, MIT Press (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free PDF with a clean chapter per family — GANs, normalizing flows, VAEs, diffusion — and the best diagrams of any textbook on this list.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://probml.github.io/pml-book/book2.html" target="_blank" rel="noopener">Probabilistic Machine Learning: Advanced Topics</a>
+          <span class="res-source">— Kevin P. Murphy, MIT Press (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Free PDF, and the reference to reach for when you want generative models placed rigorously inside probability theory rather than explained by analogy.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1312.6114" target="_blank" rel="noopener">Auto-Encoding Variational Bayes</a>
+          <span class="res-source">— Kingma &amp; Welling, ICLR (2014)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The VAE, and the paper that made "learn a latent space you can sample from" a practical proposition. The reparameterisation trick here is reused everywhere below.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1406.2661" target="_blank" rel="noopener">Generative Adversarial Networks</a>
+          <span class="res-source">— Goodfellow et al., NeurIPS (2014)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Two networks in a minimax game — the idea that dominated generative imagery for six years. Read it for the framing even though diffusion has since overtaken it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1812.04948" target="_blank" rel="noopener">A Style-Based Generator Architecture for Generative Adversarial Networks</a>
+          <span class="res-source">— Karras, Laine &amp; Aila, CVPR (2019)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">StyleGAN — the high-water mark of GAN image quality, and the origin of the disentangled latent space behind all those "this person does not exist" demos.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1711.00937" target="_blank" rel="noopener">Neural Discrete Representation Learning</a>
+          <span class="res-source">— van den Oord, Vinyals &amp; Kavukcuoglu, NeurIPS (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">VQ-VAE: compress continuous data into discrete tokens. This is the trick that lets a transformer generate images and audio at all, and it powers modern audio codecs.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1503.03585" target="_blank" rel="noopener">Deep Unsupervised Learning using Nonequilibrium Thermodynamics</a>
+          <span class="res-source">— Sohl-Dickstein et al., ICML (2015)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The original diffusion paper, five years before anyone noticed. Destroy structure with noise, learn to reverse it — the whole idea is already here.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1907.05600" target="_blank" rel="noopener">Generative Modeling by Estimating Gradients of the Data Distribution</a>
+          <span class="res-source">— Song &amp; Ermon, NeurIPS (2019)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Score matching plus annealed Langevin dynamics — the other half of the diffusion story, arrived at independently. Read it alongside DDPM to see two routes to one method.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2006.11239" target="_blank" rel="noopener">Denoising Diffusion Probabilistic Models</a>
+          <span class="res-source">— Ho, Jain &amp; Abbeel, NeurIPS (2020)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The paper that made diffusion work, by simplifying the loss to plain noise prediction. If you read only one paper on this page, read this one.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2010.02502" target="_blank" rel="noopener">Denoising Diffusion Implicit Models</a>
+          <span class="res-source">— Song, Meng &amp; Ermon, ICLR (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">DDIM cut sampling from a thousand steps to a few dozen and made the latent space interpolable — the first reason diffusion became usable interactively.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2011.13456" target="_blank" rel="noopener">Score-Based Generative Modeling through Stochastic Differential Equations</a>
+          <span class="res-source">— Song et al., ICLR (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Unifies DDPM and score matching as discretisations of one SDE. This is the paper that turns a bag of tricks into a theory you can reason about.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2207.12598" target="_blank" rel="noopener">Classifier-Free Diffusion Guidance</a>
+          <span class="res-source">— Ho &amp; Salimans (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Short, and responsible for the single knob you actually turn when prompting an image model. Explains what "guidance scale" is really doing.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2206.00364" target="_blank" rel="noopener">Elucidating the Design Space of Diffusion-Based Generative Models</a>
+          <span class="res-source">— Karras et al., NeurIPS (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Strips the accumulated notation and separates the real design choices — noise schedule, preconditioning, sampler. The clearest paper in the whole literature.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2210.02747" target="_blank" rel="noopener">Flow Matching for Generative Modeling</a>
+          <span class="res-source">— Lipman et al., ICLR (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Learn a velocity field that transports noise to data along straight paths. Simpler than diffusion, and where the newest image and video models have moved.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2103.00020" target="_blank" rel="noopener">Learning Transferable Visual Models From Natural Language Supervision</a>
+          <span class="res-source">— Radford et al., OpenAI / ICML (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">CLIP put images and text in one embedding space. Not generative itself, but it is the component that made "type a prompt, get a picture" possible.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2112.10752" target="_blank" rel="noopener">High-Resolution Image Synthesis with Latent Diffusion Models</a>
+          <span class="res-source">— Rombach et al., CVPR (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Run diffusion in a compressed latent space instead of on pixels. This is Stable Diffusion, and the reason image generation fits on a consumer GPU.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2212.09748" target="_blank" rel="noopener">Scalable Diffusion Models with Transformers</a>
+          <span class="res-source">— Peebles &amp; Xie, ICCV (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Replaces the U-Net with a transformer and shows diffusion obeys familiar scaling laws. The DiT backbone behind Sora and most current video models.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2302.05543" target="_blank" rel="noopener">Adding Conditional Control to Text-to-Image Diffusion Models</a>
+          <span class="res-source">— Zhang, Rao &amp; Agrawala, ICCV (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">ControlNet — condition generation on a pose, depth map or scribble, so you get composition control instead of prompt roulette. Immediately practical.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1609.03499" target="_blank" rel="noopener">WaveNet: A Generative Model for Raw Audio</a>
+          <span class="res-source">— van den Oord et al., DeepMind (2016)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Generating audio one sample at a time was supposed to be impossible. This is where neural speech synthesis stopped sounding robotic.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2306.05284" target="_blank" rel="noopener">Simple and Controllable Music Generation</a>
+          <span class="res-source">— Copet et al., Meta / NeurIPS (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">MusicGen: one transformer over EnCodec tokens, conditioned on text or a melody. The clearest illustration of why discrete audio tokens matter.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2204.03458" target="_blank" rel="noopener">Video Diffusion Models</a>
+          <span class="res-source">— Ho et al., Google / NeurIPS (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Extends diffusion to time with a 3D U-Net and factorised space-time attention. The starting point for every text-to-video system that followed.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2003.08934" target="_blank" rel="noopener">NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis</a>
+          <span class="res-source">— Mildenhall et al., ECCV (2020)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Strictly this <em>reconstructs</em> a scene from photos rather than generating one — but it defines the 3D representation that generative text-to-3D builds on. The <a href="https://www.matthewtancik.com/nerf" target="_blank" rel="noopener">project page</a> has the videos that make it click.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2201.05989" target="_blank" rel="noopener">Instant Neural Graphics Primitives with a Multiresolution Hash Encoding</a>
+          <span class="res-source">— Müller et al., NVIDIA / SIGGRAPH (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Took NeRF training from hours to seconds with a hash-grid encoding. The engineering paper that made neural rendering practical to experiment with.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2308.04079" target="_blank" rel="noopener">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a>
+          <span class="res-source">— Kerbl et al., INRIA / SIGGRAPH (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Drops neural fields for millions of explicit 3D Gaussians and hits real-time rendering. Also reconstruction, and it has largely displaced NeRF in practice — see the <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/" target="_blank" rel="noopener">project page</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2209.14988" target="_blank" rel="noopener">DreamFusion: Text-to-3D using 2D Diffusion</a>
+          <span class="res-source">— Poole et al., Google / ICLR (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Genuinely generative 3D with no 3D training data — distil a 2D image model into a NeRF via score distillation sampling. Results on the <a href="https://dreamfusion3d.github.io/" target="_blank" rel="noopener">project page</a>.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://jalammar.github.io/illustrated-stable-diffusion/" target="_blank" rel="noopener">The Illustrated Stable Diffusion</a>
+          <span class="res-source">— Jay Alammar</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Picture by picture through text encoder, U-Net and decoder, with no maths required. Start here before any paper above.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/" target="_blank" rel="noopener">What are Diffusion Models?</a>
+          <span class="res-source">— Lilian Weng, Lil'Log</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The canonical written explainer — every derivation spelled out, and kept updated through guidance, latent diffusion and consistency models.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://huggingface.co/blog/annotated-diffusion" target="_blank" rel="noopener">The Annotated Diffusion Model</a>
+          <span class="res-source">— Rogge &amp; Rasul, Hugging Face</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">DDPM reimplemented in PyTorch line by line beside the equations. The fastest way to convert reading into working code.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2017-08-20-gan/" target="_blank" rel="noopener">From GAN to WGAN</a>
+          <span class="res-source">— Lilian Weng, Lil'Log</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Why GANs are so hard to train — mode collapse, vanishing gradients — and how Wasserstein distance addresses it. The best single post on GAN failure modes.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://yang-song.net/blog/2021/score/" target="_blank" rel="noopener">Generative Modeling by Estimating Gradients of the Data Distribution</a>
+          <span class="res-source">— Yang Song</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The score-based view written by the author of the SDE paper, with animations. Read this and the SDE paper stops being intimidating.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://sander.ai/2023/07/20/perspectives.html" target="_blank" rel="noopener">Perspectives on diffusion</a>
+          <span class="res-source">— Sander Dieleman</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Diffusion models as autoencoders, latent variable models, score predictors, SDE solvers and flows — all at once. Read it once the mechanics are familiar.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2024-04-12-diffusion-video/" target="_blank" rel="noopener">Diffusion Models for Video Generation</a>
+          <span class="res-source">— Lilian Weng, Lil'Log (2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">What actually changes when you add a time axis — temporal consistency, joint training, and adapting a pretrained image model to video.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=1CIpzeNxIhU" target="_blank" rel="noopener">How AI Image Generators Work (Stable Diffusion / Dall-E)</a>
+          <span class="res-source">— Mike Pound, Computerphile</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Seventeen minutes, a whiteboard, and no equations — the clearest short answer to "how does this actually work?"</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=Dmm4UG-6jxA" target="_blank" rel="noopener">MIT 6.S191: Deep Generative Modeling</a>
+          <span class="res-source">— Alexander Amini, MIT (2024)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">One lecture that places autoencoders, VAEs, GANs and diffusion in a single frame. The best hour for seeing how the families relate.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=HoKDTa5jHvg" target="_blank" rel="noopener">Diffusion Models | Paper Explanation | Math Explained</a>
+          <span class="res-source">— Outlier</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Walks the DDPM derivation with animation, at exactly the pace the paper doesn't. Watch it with the paper open.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=wMmqCMwuM2Q" target="_blank" rel="noopener">Diffusion and Score-Based Generative Models</a>
+          <span class="res-source">— Yang Song, MIT CBMM</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The score-based framework straight from its author, including where the SDE view buys you things the discrete view can't.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://cvpr2022-tutorial-diffusion-models.github.io/" target="_blank" rel="noopener">Denoising Diffusion-based Generative Modeling: Foundations and Applications</a>
+          <span class="res-source">— Karras, Kreis &amp; Vahdat, CVPR tutorial (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Three hours of slides and recordings from people who wrote the key papers. The most thorough free treatment anywhere, and the closest thing to a graduate course.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.deeplearning.ai/short-courses/how-diffusion-models-work/" target="_blank" rel="noopener">How Diffusion Models Work</a>
+          <span class="res-source">— Sharon Zhou, DeepLearning.AI</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free, about an hour, and you build a small diffusion model end to end in notebooks. The cheapest useful first step.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://huggingface.co/learn/diffusion-course/" target="_blank" rel="noopener">Hugging Face Diffusion Models Course</a>
+          <span class="res-source">— Hugging Face</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free and code-first: theory, then notebooks covering fine-tuning, guidance and Stable Diffusion with the library everyone actually uses.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/specializations/generative-adversarial-networks-gans" target="_blank" rel="noopener">Generative Adversarial Networks (GANs) Specialization</a>
+          <span class="res-source">— Sharon Zhou et al., DeepLearning.AI</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Three courses building GANs in PyTorch, including evaluation and bias. Paid for the certificate, free to audit — still the most structured GAN treatment.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://course.fast.ai/Lessons/part2.html" target="_blank" rel="noopener">From Deep Learning Foundations to Stable Diffusion</a>
+          <span class="res-source">— Jeremy Howard et al., fast.ai</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Thirty hours that rebuild Stable Diffusion from matrix multiplication upward, made with Stability.ai and Hugging Face. Free, and the deepest hands-on option here.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://deepgenerativemodels.github.io/" target="_blank" rel="noopener">Stanford CS236: Deep Generative Models</a>
+          <span class="res-source">— Stefano Ermon, Stanford</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Free lecture notes covering every family with the probability done properly. The academic spine under everything else on this page.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://sites.google.com/view/berkeley-cs294-158-sp24/home" target="_blank" rel="noopener">Berkeley CS294-158: Deep Unsupervised Learning</a>
+          <span class="res-source">— Pieter Abbeel et al., UC Berkeley (Spring 2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Slides and lecture videos free, taught partly by DDPM's own authors. Go here when you want research-level depth across autoregressive, flow and diffusion models.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://poloclub.github.io/diffusion-explainer/" target="_blank" rel="noopener">Diffusion Explainer</a>
+          <span class="res-source">— Georgia Tech Polo Club</span>
+          <p class="resource-note">Watch a real Stable Diffusion run in the browser, stepping through the prompt embedding and each denoising pass. Change the prompt and see what moves.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://poloclub.github.io/ganlab/" target="_blank" rel="noopener">GAN Lab</a>
+          <span class="res-source">— Georgia Tech Polo Club</span>
+          <p class="resource-note">Train a GAN in your browser and watch generator and discriminator fight in 2D. Mode collapse stops being an abstraction once you've caused it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/huggingface/diffusers" target="_blank" rel="noopener">🤗 Diffusers</a>
+          <span class="res-source">— Hugging Face</span>
+          <p class="resource-note">The standard library for image, video and audio diffusion in PyTorch — pretrained pipelines for inference, swappable schedulers, and training scripts.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener">ComfyUI</a>
+          <span class="res-source">— node-based generation workflows</span>
+          <p class="resource-note">Wire up samplers, ControlNets and upscalers as a visual graph. Makes the pipeline structure obvious in a way a one-line API call hides.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/facebookresearch/audiocraft" target="_blank" rel="noopener">AudioCraft</a>
+          <span class="res-source">— Meta (MusicGen, AudioGen, EnCodec)</span>
+          <p class="resource-note">Inference and training code for text-to-music and text-to-sound, plus the EnCodec tokenizer underneath. Code is MIT; model weights are non-commercial.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2209.00796" target="_blank" rel="noopener">Diffusion Models: A Comprehensive Survey of Methods and Applications</a>
+          <span class="res-source">— Yang et al. (2022, revised since)</span>
+          <p class="resource-note">A structured map of hundreds of papers, sorted by technique and application. Use it to find whatever this page had to leave out.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2306.04141" target="_blank" rel="noopener">Art and the science of generative AI: A deeper dive</a>
+          <span class="res-source">— Epstein et al. (2023)</span>
+          <p class="resource-note">On training-data consent, authorship and what generative imagery does to creative work. Free extended version; the shorter original is paywalled in <em>Science</em>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="large-language-models.html">Large Language Models</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The other half of generative AI: next-token prediction, alignment, prompting, retrieval and agents.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="transformers.html">Transformers (Deep Learning)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Worth reading alongside DiT above — the architecture has quietly taken over diffusion backbones too.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="machine-learning.html">Machine Learning</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The ground underneath all of this: fitting models, honest evaluation, and why generalisation is the only question that matters.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>
