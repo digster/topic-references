@@ -62,6 +62,26 @@ resource sections). The shape is defined once in `templates/topic-template.html`
 `CLAUDE.md`. Consistency is what makes the site feel like a trustworthy reference rather than a pile
 of pages.
 
+### Cross-links reuse the resource row, not a new component
+Topic pages link to each other from the **end of their 🔗 Further Reading section**, as ordinary
+`.resource-item` rows with `— on this site` as the source. There is deliberately no
+`.related-topics` block and no dedicated CSS: a sibling page *is* a further-reading resource, so it
+gets the same visual weight as an external one and the stylesheet stays unchanged.
+
+Two properties follow from that and are easy to break:
+
+- Internal links use a **bare sibling filename** (`href="transformers.html"`) and carry **no**
+  `target="_blank" rel="noopener"` — they open in the same tab, which is the one attribute-level
+  difference from every other link on the site. They also carry no level pill.
+- Within a family of closely related topics, cross-links are kept **symmetric** — if A links to B,
+  B links back to A. The six AI pages (`artificial-intelligence`, `deep-learning`,
+  `machine-learning`, `transformers`, `large-language-models`, `generative-ai-beyond-llms`) form a
+  complete graph. Unrelated pages stay isolated; symmetry is a rule *inside* a family, not a
+  requirement that every page link to every other.
+
+Note that `tests/check_site.py` cannot see these links — its regex only matches `href="topics/…"`
+from `index.html` — so cross-link correctness is checked in the browser pass, not by the validator.
+
 ## Data flow
 
 There is none at runtime beyond the search filter:
@@ -75,6 +95,7 @@ There is none at runtime beyond the search filter:
 - **Slugs** are kebab-case; topic file = `topics/<slug>.html`.
 - **Topic cards** are kept alphabetical in `index.html`.
 - **External links** use `target="_blank" rel="noopener"`.
+- **Internal cross-links** use a bare sibling filename and *no* `target`/`rel` — same tab.
 - **Level pills** use `data-level="beginner|intermediate|advanced"` (drives pill color).
 - Favicon is an inline SVG emoji data-URI in each page's `<head>` — no asset files.
 

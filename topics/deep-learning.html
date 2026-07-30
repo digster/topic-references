@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deep Learning — Topic References</title>
+  <meta name="description" content="Deep learning end to end — backpropagation, CNNs, RNNs, training dynamics and the architectures behind modern models — plus curated books, papers, articles, videos, courses and tools." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Deep Learning</h1>
+      <p class="last-updated">Last updated: 2026-07-30</p>
+    </div>
+
+    <section class="description">
+      <p>
+        Deep learning builds models out of many stacked layers of simple, differentiable
+        operations, and trains the whole stack at once against a single loss. The word that does
+        the work is <strong>learned</strong>: instead of an engineer deciding which features
+        matter — edges, word counts, hand-tuned filters — the network discovers its own
+        intermediate representations, each layer composing the one below it into something more
+        abstract.
+      </p>
+      <p>
+        The mechanism underneath every model on this page is the same three-part loop. Define a
+        differentiable function with millions of adjustable weights, score its output with a loss,
+        then use <strong>backpropagation</strong> — the chain rule applied efficiently in
+        reverse — to work out how each weight should move, and take a small step. Everything else
+        is a variation on that theme: what shape the function takes, how you keep the gradients
+        healthy, and how you stop it memorising the training set.
+      </p>
+      <p>
+        The ideas are old — backprop was published in 1986, convolutional nets in 1998 — but the
+        field only became inevitable in 2012, when a GPU-trained network halved the ImageNet error
+        rate and made it obvious that depth plus data plus compute beat feature engineering. That
+        recipe has since absorbed vision, speech, language, protein folding and image generation,
+        with surprisingly few changes to the core loop.
+      </p>
+      <p>
+        This page is the end-to-end route: the fundamentals first, then convolutional and
+        recurrent networks, then the attention-based architectures that took over from both. Once
+        you reach the far end, the four sibling pages linked at the bottom pick up individual
+        branches in far more depth than a single page can.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> Python and NumPy, linear algebra up to comfortable
+        matrix multiplication, and calculus through partial derivatives and the chain rule — the
+        chain rule especially, since backpropagation <em>is</em> the chain rule. Basic probability
+        helps for loss functions. The maths floor here is genuinely higher than on the artificial
+        intelligence page; if classical models and evaluation are still shaky, the machine
+        learning page is the better first stop.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="http://neuralnetworksanddeeplearning.com/" target="_blank" rel="noopener">Neural Networks and Deep Learning</a>
+          <span class="res-source">— Michael Nielsen (2015)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free online, and still the clearest explanation of <em>why</em> backpropagation works rather than just what it computes. Builds a digit classifier from scratch in plain Python. Note the site is HTTP-only.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://fleuret.org/francois/lbdl.html" target="_blank" rel="noopener">The Little Book of Deep Learning</a>
+          <span class="res-source">— François Fleuret, University of Geneva (2023)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A free 160-page PDF formatted to read on a phone. The fastest honest overview of the whole field if you already have the maths and want the shape of it in an evening.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://d2l.ai/" target="_blank" rel="noopener">Dive into Deep Learning</a>
+          <span class="res-source">— Zhang, Lipton, Li &amp; Smola, Cambridge University Press</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free, and every equation comes with runnable code in PyTorch, JAX and TensorFlow. Adopted at 500 universities; the best book to work through with an interpreter open beside you.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://udlbook.github.io/udlbook/" target="_blank" rel="noopener">Understanding Deep Learning</a>
+          <span class="res-source">— Simon J.D. Prince, MIT Press (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free PDF from the author, with notebooks and slides. The best-illustrated modern textbook — it covers transformers, diffusion and RL rather than stopping at 2016.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.bishopbook.com/" target="_blank" rel="noopener">Deep Learning: Foundations and Concepts</a>
+          <span class="res-source">— Christopher M. Bishop &amp; Hugh Bishop, Springer (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free to read online. Bishop's successor to <em>Pattern Recognition and Machine Learning</em>, and the most careful treatment of the probabilistic reasoning behind the architectures.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.manning.com/books/deep-learning-with-python-third-edition" target="_blank" rel="noopener">Deep Learning with Python (3rd ed.)</a>
+          <span class="res-source">— François Chollet &amp; Matthew Watson, Manning (2025)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Paid, and worth it: Keras's creator on how to actually build things, now covering Keras 3 across PyTorch and JAX plus generative models. Strong on judgement, not just syntax.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">Deep Learning</a>
+          <span class="res-source">— Goodfellow, Bengio &amp; Courville, MIT Press (2016)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Free in full as HTML. Predates transformers and reads as history on architectures, but Part I on the mathematical foundations and Part II on optimisation and regularisation are still the reference.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cs.toronto.edu/~hinton/absps/naturebp.pdf" target="_blank" rel="noopener">Learning representations by back-propagating errors</a>
+          <span class="res-source">— Rumelhart, Hinton &amp; Williams, Nature 323 (1986)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Four pages that made the whole field possible, and the origin of "representations you didn't design". Free PDF from Hinton's page; the <a href="https://www.nature.com/articles/323533a0" target="_blank" rel="noopener">Nature version</a> is paywalled.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://deeplearning.cs.cmu.edu/F23/document/readings/LSTM.pdf" target="_blank" rel="noopener">Long Short-Term Memory</a>
+          <span class="res-source">— Sepp Hochreiter &amp; Jürgen Schmidhuber, Neural Computation 9 (1997)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The gated cell that solved vanishing gradients and ran sequence modelling for the next twenty years. Free copy hosted by CMU; the journal version is paywalled.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf" target="_blank" rel="noopener">Gradient-Based Learning Applied to Document Recognition</a>
+          <span class="res-source">— LeCun, Bottou, Bengio &amp; Haffner, Proceedings of the IEEE (1998)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">LeNet-5, and the paper that established convolution, pooling and weight sharing as the way to handle images. It was reading cheques commercially fourteen years before ImageNet. HTTP-only host.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html" target="_blank" rel="noopener">ImageNet Classification with Deep Convolutional Neural Networks</a>
+          <span class="res-source">— Krizhevsky, Sutskever &amp; Hinton, NeurIPS (2012)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">AlexNet — the result that ended the argument. Free from the proceedings, and short enough to read in a sitting: ReLUs, dropout, two GPUs, and a ten-point drop in error.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://jmlr.org/papers/v15/srivastava14a.html" target="_blank" rel="noopener">Dropout: A Simple Way to Prevent Neural Networks from Overfitting</a>
+          <span class="res-source">— Srivastava, Hinton, Krizhevsky, Sutskever &amp; Salakhutdinov, JMLR 15 (2014)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Open access. Randomly deleting half your neurons during training sounds like sabotage and works like an ensemble — the clearest example of how odd good regularisation looks.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1412.6980" target="_blank" rel="noopener">Adam: A Method for Stochastic Optimization</a>
+          <span class="res-source">— Diederik P. Kingma &amp; Jimmy Ba, ICLR (2015)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The optimiser you will use by default for years without thinking about it. Worth reading once so the defaults — β₁, β₂, ε — stop being magic numbers.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1502.03167" target="_blank" rel="noopener">Batch Normalization</a>
+          <span class="res-source">— Sergey Ioffe &amp; Christian Szegedy, ICML (2015)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Made deep networks trainable at higher learning rates and turned normalisation into a standard layer. The paper's own explanation has since been challenged — the technique works regardless.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener">Deep Residual Learning for Image Recognition</a>
+          <span class="res-source">— He, Zhang, Ren &amp; Sun, CVPR (2016)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">ResNet. The skip connection is one line of code and it is why networks can be 100+ layers deep — including, later, every transformer. Possibly the highest ratio of impact to complexity in the field.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf" target="_blank" rel="noopener">Deep learning</a>
+          <span class="res-source">— LeCun, Bengio &amp; Hinton, Nature 521 (2015)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The three Turing laureates summarising the field for a general scientific audience. The best single-sitting overview of the first wave. Free PDF from Hinton's page; the <a href="https://www.nature.com/articles/nature14539" target="_blank" rel="noopener">Nature version</a> is paywalled.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1611.03530" target="_blank" rel="noopener">Understanding deep learning requires rethinking generalization</a>
+          <span class="res-source">— Zhang, Bengio, Hardt, Recht &amp; Vinyals, ICLR (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Networks can perfectly memorise randomly-labelled data and still generalise on real data — which breaks the textbook capacity-based explanation. Read it once you're comfortable, to know what the field genuinely doesn't understand.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention Is All You Need</a>
+          <span class="res-source">— Vaswani et al., NeurIPS (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The break with recurrence: drop the sequential dependency, attend over the whole sequence at once, and the model becomes parallelisable enough to scale. The transformers page takes this apart properly.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2006.11239" target="_blank" rel="noopener">Denoising Diffusion Probabilistic Models</a>
+          <span class="res-source">— Ho, Jain &amp; Abbeel, NeurIPS (2020)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The other branch of the modern family: train a network to reverse gradual noising and you get a generative model. Included here for the map — the generative AI page goes deeper.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://karpathy.medium.com/yes-you-should-understand-backprop-e2f06eab496b" target="_blank" rel="noopener">Yes you should understand backprop</a>
+          <span class="res-source">— Andrej Karpathy (2016)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Why autograd is a leaky abstraction, in four concrete failures: saturated sigmoids, dead ReLUs, exploding RNN gradients, and a clipping bug in a published DQN. Read this before you trust a framework.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">Understanding LSTM Networks</a>
+          <span class="res-source">— Christopher Olah (2015)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The diagrams everyone else copies. Walks the cell state through each gate in turn and makes an intimidating equation set feel obvious.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://karpathy.github.io/2015/05/21/rnn-effectiveness/" target="_blank" rel="noopener">The Unreasonable Effectiveness of Recurrent Neural Networks</a>
+          <span class="res-source">— Andrej Karpathy (2015)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A character-level RNN learning to produce Shakespeare, LaTeX and Linux source. Historically the post that convinced a lot of people sequence models were going somewhere — and the direct ancestor of today's language models.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://distill.pub/2017/momentum/" target="_blank" rel="noopener">Why Momentum Really Works</a>
+          <span class="res-source">— Gabriel Goh, Distill (2017)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Interactive throughout: drag the momentum term and watch optimisation paths change. The clearest account of why plain gradient descent struggles and what momentum actually fixes.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://karpathy.github.io/2019/04/25/recipe/" target="_blank" rel="noopener">A Recipe for Training Neural Networks</a>
+          <span class="res-source">— Andrej Karpathy (2019)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">"Neural net training fails silently." A six-stage process — inspect the data, get a dumb baseline, overfit deliberately, then regularise — that will save you more time than any architecture choice.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://distill.pub/2020/circuits/zoom-in/" target="_blank" rel="noopener">Zoom In: An Introduction to Circuits</a>
+          <span class="res-source">— Olah, Cammarata, Schubert, Goh, Petrov &amp; Carter, Distill (2020)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Opens up a trained vision model and finds curve detectors and other interpretable features wired into recognisable circuits. The founding argument for mechanistic interpretability.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank" rel="noopener">Neural networks</a>
+          <span class="res-source">— 3Blue1Brown</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Start here. Grant Sanderson animates what a layer does, what gradient descent is searching, and what backprop is really computing — the visual intuition every other resource assumes you already have.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://karpathy.ai/zero-to-hero.html" target="_blank" rel="noopener">Neural Networks: Zero to Hero</a>
+          <span class="res-source">— Andrej Karpathy</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free, and the best hands-on course in the field: eight long videos building up from a scalar autograd engine to a working GPT, typing every line. Nothing is imported that hasn't been explained.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI" target="_blank" rel="noopener">MIT 6.S191: Introduction to Deep Learning</a>
+          <span class="res-source">— Alexander Amini &amp; Ava Amini, MIT</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">MIT's intensive bootcamp, re-recorded every year and posted free — so the material stays current in a way most university lecture series don't. Labs at <a href="https://introtodeeplearning.com/" target="_blank" rel="noopener">introtodeeplearning.com</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv" target="_blank" rel="noopener">CS231n: Convolutional Neural Networks for Visual Recognition (Spring 2017)</a>
+          <span class="res-source">— Fei-Fei Li, Justin Johnson &amp; Serena Yeung, Stanford</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The complete lecture collection, free. Dated on the newest architectures but unmatched on convolution, backprop through a computational graph, and training mechanics.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLoROMvodv4rOABXSygHTsbvUz4G_YQhOb" target="_blank" rel="noopener">Stanford CS230: Deep Learning</a>
+          <span class="res-source">— Andrew Ng &amp; Kian Katanforoosh, Stanford (Autumn 2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The free lecture recordings for Stanford's deep learning course. Strongest on the part courses usually skip: how to structure a project, diagnose a bad model, and choose what to try next.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://course.fast.ai/" target="_blank" rel="noopener">Practical Deep Learning for Coders</a>
+          <span class="res-source">— Jeremy Howard, fast.ai</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free, and deliberately top-down: you train and deploy a working model in lesson one, and the theory arrives once you care about it. The right course if you can code but the maths intimidates you.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener">Deep Learning Specialization</a>
+          <span class="res-source">— Andrew Ng, DeepLearning.AI on Coursera</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Five courses, bottom-up, building the fundamentals by hand before reaching for a framework. Paid subscription with no free audit, though Coursera offers financial aid — the <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOABXSygHTsbvUz4G_YQhOb" target="_blank" rel="noopener">CS230 recordings</a> above cover much of the same ground free.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://cs231n.github.io/" target="_blank" rel="noopener">CS231n Course Notes</a>
+          <span class="res-source">— Stanford University</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free and famous in their own right. The notes on backpropagation and on optimisation are the ones people send you when you say you don't quite follow the gradient maths.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://atcold.github.io/NYU-DLSP21/" target="_blank" rel="noopener">NYU Deep Learning (DS-GA 1008)</a>
+          <span class="res-source">— Yann LeCun &amp; Alfredo Canziani, NYU</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Free lectures, notes and notebooks from a Turing laureate, with an unusually strong thread on energy-based and self-supervised learning that other courses barely mention.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://pytorch.org/tutorials/beginner/basics/intro.html" target="_blank" rel="noopener">PyTorch: Learn the Basics</a>
+          <span class="res-source">— official PyTorch tutorials</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Tensors, autograd, datasets and a training loop in one sitting. Do this early — nearly every paper implementation and course exercise you meet will be PyTorch.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://uvadlc-notebooks.readthedocs.io/en/latest/" target="_blank" rel="noopener">UvA Deep Learning Tutorials</a>
+          <span class="res-source">— University of Amsterdam</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free, unusually rigorous notebooks in both PyTorch and JAX, covering initialisation, optimisers, normalisation and attention. Good for filling the gaps a top-down course leaves behind.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://playground.tensorflow.org/" target="_blank" rel="noopener">TensorFlow Playground</a>
+          <span class="res-source">— in-browser, no setup</span>
+          <p class="resource-note">Add layers, change the activation, break the learning rate, and watch the decision boundary respond in real time. Ten minutes here teaches more about capacity and overfitting than a chapter.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/karpathy/micrograd" target="_blank" rel="noopener">micrograd</a>
+          <span class="res-source">— Andrej Karpathy, scalar autograd engine</span>
+          <p class="resource-note">A complete reverse-mode autograd engine in about 100 lines, plus a small neural net library on top. Read it once and backpropagation stops being magic.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://poloclub.github.io/cnn-explainer/" target="_blank" rel="noopener">CNN Explainer</a>
+          <span class="res-source">— Polo Club of Data Science, Georgia Tech</span>
+          <p class="resource-note">Click any neuron in a live convolutional network and see the exact patch and kernel that produced it. The best answer to "but what is the convolution actually doing here?"</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch</a>
+          <span class="res-source">— the default research framework</span>
+          <p class="resource-note">What almost everything is written in. Worth installing early even if you're following a Keras-based book, because the code you find on GitHub will assume it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://netron.app/" target="_blank" rel="noopener">Netron</a>
+          <span class="res-source">— model architecture viewer, runs in-browser</span>
+          <p class="resource-note">Drop in an ONNX, PyTorch or Keras file and get a navigable graph of the network with every layer's shapes. Invaluable when a downloaded model doesn't match the paper you're reading.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/google-research/tuning_playbook" target="_blank" rel="noopener">Deep Learning Tuning Playbook</a>
+          <span class="res-source">— Godbole, Dahl, Gilmer, Shallue &amp; Nado, Google Research</span>
+          <p class="resource-note">Free, and the accumulated hyperparameter judgement that normally takes years to acquire — search strategy, batch size, when a result is real and when it's noise.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1803.03635" target="_blank" rel="noopener">The Lottery Ticket Hypothesis</a>
+          <span class="res-source">— Jonathan Frankle &amp; Michael Carbin, ICLR (2019)</span>
+          <p class="resource-note">Dense networks contain small subnetworks that train to the same accuracy alone — if you know the initialisation. A good entry point into pruning, sparsity and why over-parameterisation helps.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://distill.pub/" target="_blank" rel="noopener">Distill</a>
+          <span class="res-source">— archive, on hiatus since 2021</span>
+          <p class="resource-note">No longer publishing, but the back catalogue of interactive explanations — momentum, feature visualisation, circuits, RNN memory — remains some of the best expository work the field has produced.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="machine-learning.html">Machine Learning</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The ground floor: how to fit a model to data, evaluate it honestly, and know when a boosted tree would have beaten your network.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="artificial-intelligence.html">Artificial Intelligence</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The wider field this sits inside — agents, search, logic, planning and reinforcement learning, where learning is one technique among several.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="transformers.html">Transformers</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The architecture sketched above, taken apart properly: attention, positional encoding, the KV cache, and what a current model actually does.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="large-language-models.html">Large Language Models</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Where the sequence-modelling thread ends up — pretraining, alignment, prompting, retrieval and agents.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="generative-ai-beyond-llms.html">Generative AI (Beyond LLMs)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The other branch from the diffusion paper above — images, audio, video and 3D, plus the GANs and VAEs that came before.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>

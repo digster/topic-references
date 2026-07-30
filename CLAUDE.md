@@ -81,6 +81,28 @@ Each resource row uses this exact shape:
 The `level` pill is optional per row but encouraged. Use exactly one of
 `beginner` / `intermediate` / `advanced` in `data-level` (the value styles the pill color).
 
+#### Cross-linking to other topic pages
+When a sibling page on this site is a genuine next step, add it as a resource row at the **end of
+the 🔗 Further Reading section**, after the external rows. Internal rows differ from external ones
+in four ways — get all four right:
+
+```html
+<li class="resource-item">
+  <a class="res-title" href="machine-learning.html">Machine Learning</a>
+  <span class="res-source">— on this site</span>
+  <p class="resource-note">One line on where this takes the reader next.</p>
+</li>
+```
+1. Bare sibling filename — never `./slug.html` or `../topics/slug.html`.
+2. **No** `target="_blank" rel="noopener"` — internal links open in the same tab.
+3. No `level` pill.
+4. `— on this site` verbatim as the source.
+
+**Keep cross-links symmetric within a family of related topics**: if the new page links to a
+sibling, add a reciprocal row on that sibling and bump its `Last updated:` date. Write each note
+from the *source* page's point of view rather than reusing the same sentence in both directions.
+Only link pages that are actually a next step for each other — a shared field is not enough.
+
 ### 4. Link it from the landing page
 Add **one card** to the `#topic-grid` in `index.html`, kept in **alphabetical order by title**:
 ```html
