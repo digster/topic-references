@@ -241,3 +241,37 @@ Reading row on `topics/large-language-models.html` so its "image, audio and vide
 generation are a separate topic" sentence finally resolves. Every link opened
 before shipping: 25 arXiv pages content-checked via `citation_title`, 20 other
 URLs by page title, 5 YouTube IDs via `oembed`, 4 GitHub repos via `WebFetch`.
+
+---
+
+## 2026-07-30 — Add topic: Artificial Intelligence
+
+> Add a topic on AI(think Artificial Intelligence: A modern approach by Peter
+> Norvig)
+
+Four clarifying questions were asked; the user took the recommended option on all
+four. **Scope: umbrella + carve-out.** Four of the six existing pages were already
+AI-adjacent, so the new page sits *above* them rather than beside them: full
+resource coverage for what nothing else covers — agents, search, adversarial
+search, CSPs, logic and knowledge representation, planning, reasoning under
+uncertainty, reinforcement learning, the history of the field, and safety at the
+field level — with depth on statistical learning, deep nets, transformers, LLMs
+and diffusion routed to the sibling pages instead of restated. **Title:** plain
+*Artificial Intelligence*, the canonical umbrella name, which also sorts the card
+first. **Cross-links:** reciprocal, on all four existing AI pages. **Emphasis:**
+balanced and learning-path ordered.
+
+The AIMA framing in the prompt drove the page's structure: the description opens
+on Russell & Norvig's agent definition, then derives the classical toolkit in the
+order the textbook does, and closes by naming explicitly that learning is one
+technique inside that picture rather than the whole of it — the carve-out
+sentence that makes the four cross-links at the bottom read as a map instead of
+an afterthought.
+
+Outcome: `topics/artificial-intelligence.html` with **41 resources** across all
+seven sections, a card added first in the landing-page grid, and one Further
+Reading row added to each of `machine-learning`, `transformers`,
+`large-language-models` and `generative-ai-beyond-llms` (dates bumped to
+2026-07-30), which closes the cross-link web — `transformers.html` had no
+internal cross-links at all before this. All 39 external URLs opened before
+shipping.

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artificial Intelligence — Topic References</title>
+  <meta name="description" content="The parent field of AI — intelligent agents, search, logic, planning, reasoning under uncertainty, reinforcement learning and safety — plus curated books, papers, articles, videos, courses and tools." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Artificial Intelligence</h1>
+      <p class="last-updated">Last updated: 2026-07-30</p>
+    </div>
+
+    <section class="description">
+      <p>
+        Artificial intelligence is the study of building <strong>agents</strong> — things that
+        perceive an environment and act in it to achieve goals. That one definition, which Russell
+        and Norvig put at the front of <em>Artificial Intelligence: A Modern Approach</em>, is what
+        holds an otherwise sprawling field together. A chess engine, a delivery robot, a spam
+        filter and a chatbot are all agents; they differ in what they can observe, how much they
+        know in advance, and whether the world is predictable enough to plan through.
+      </p>
+      <p>
+        From that frame the classical toolkit falls out in order: <strong>search</strong> when you
+        know the rules and need a route to the goal, <strong>adversarial search</strong> when
+        something is playing against you, <strong>constraint satisfaction and logic</strong> when
+        the problem is better stated than explored, <strong>planning</strong> when actions have
+        preconditions and effects, <strong>probability</strong> when you cannot see everything, and
+        <strong>reinforcement learning</strong> when nobody can tell you the right answer but the
+        world will eventually score you.
+      </p>
+      <p>
+        Learning is one technique inside that picture rather than the whole of it — a point worth
+        keeping in view now that "AI" is often used to mean "a large language model." This page is
+        the map and the classical core; the depth on statistical learning, deep networks,
+        transformers, LLMs and image generation lives on the four sibling pages linked at the
+        bottom.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> comfortable programming in some language (Python for
+        most course material), basic data structures and graph algorithms, and enough probability
+        to be at ease with conditional probability and expectation. Linear algebra and calculus
+        only matter once you reach the learning chapters — the maths here is lighter than on the
+        machine learning and generative AI pages.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://melaniemitchell.me/aibook/" target="_blank" rel="noopener">Artificial Intelligence: A Guide for Thinking Humans</a>
+          <span class="res-source">— Melanie Mitchell, Farrar, Straus and Giroux (2019)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The best first book: a working researcher explaining what these systems actually do, what they don't, and why the field keeps over-promising. Paid, no free edition.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://aima.cs.berkeley.edu/" target="_blank" rel="noopener">Artificial Intelligence: A Modern Approach (4th ed.)</a>
+          <span class="res-source">— Stuart Russell &amp; Peter Norvig, Pearson (2020)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The standard text for the whole field, and the spine of this page — agents, search, logic, planning, probability, learning, robotics. The book is paid, but the official site gives away the <a href="https://aimacode.github.io/aima-exercises/" target="_blank" rel="noopener">exercises</a>, pseudocode, figures and errata for free.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://artint.info/" target="_blank" rel="noopener">Artificial Intelligence: Foundations of Computational Agents (3rd ed.)</a>
+          <span class="res-source">— David Poole &amp; Alan Mackworth, Cambridge University Press (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The free alternative to AIMA — full text online, same agent-centred structure, tighter and more current on representation and reasoning. Start here if you'd rather not buy anything.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="http://www.incompleteideas.net/book/the-book-2nd.html" target="_blank" rel="noopener">Reinforcement Learning: An Introduction (2nd ed.)</a>
+          <span class="res-source">— Richard Sutton &amp; Andrew Barto, MIT Press (2018)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The definitive RL text, free as a full PDF from the authors' page. Works up from bandits and MDPs to function approximation without ever hand-waving the derivations.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://projects.laas.fr/planning/" target="_blank" rel="noopener">Acting, Planning, and Learning</a>
+          <span class="res-source">— Ghallab, Nau &amp; Traverso, Cambridge University Press (2025)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Free PDF from the authors, and the current reference on automated planning — the part of AI that AIMA can only sketch in two chapters.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ai.stanford.edu/~nilsson/QAI/qai.pdf" target="_blank" rel="noopener">The Quest for Artificial Intelligence</a>
+          <span class="res-source">— Nils J. Nilsson, Cambridge University Press (2010)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A free PDF history of the field written by someone who helped build it. Read it to understand why symbolic AI, expert systems and the AI winters happened in that order.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://people.eecs.berkeley.edu/~russell/hc.html" target="_blank" rel="noopener">Human Compatible: Artificial Intelligence and the Problem of Control</a>
+          <span class="res-source">— Stuart Russell, Viking (2019)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">AIMA's co-author arguing that the standard model — build a machine that optimises a fixed objective — is the wrong one. Paid; the case for uncertainty about human preferences is worth the money.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://brianchristian.org/the-alignment-problem/" target="_blank" rel="noopener">The Alignment Problem</a>
+          <span class="res-source">— Brian Christian, W. W. Norton (2020)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Reported rather than argued: how bias, reward hacking and specification failures actually showed up in deployed systems. Paid, and the most concrete of the AI-safety books.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/norvig/paip-lisp" target="_blank" rel="noopener">Paradigms of Artificial Intelligence Programming</a>
+          <span class="res-source">— Peter Norvig, Morgan Kaufmann (1992)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Norvig rebuilds the classic AI programs — ELIZA, GPS, a Prolog interpreter — in Common Lisp. Now free under MIT licence, and still the best book on how symbolic AI was actually written.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cs.ox.ac.uk/activities/ieg/e-library/sources/t_article.pdf" target="_blank" rel="noopener">Computing Machinery and Intelligence</a>
+          <span class="res-source">— Alan Turing, Mind 59 (1950)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Where the field starts. Turing replaces "can machines think?" with the imitation game and then answers nine objections in plain English — genuinely readable seventy-five years on. Free copy hosted by Oxford; the <a href="https://academic.oup.com/mind/article/LIX/236/433/986238" target="_blank" rel="noopener">journal version</a> is paywalled.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html" target="_blank" rel="noopener">A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence</a>
+          <span class="res-source">— McCarthy, Minsky, Rochester &amp; Shannon (1955)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The grant application that named the field, and proposed to make substantial progress on it over one summer with ten people. Short, and a useful calibration on AI timelines.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://people.csail.mit.edu/brooks/papers/representation.pdf" target="_blank" rel="noopener">Intelligence Without Representation</a>
+          <span class="res-source">— Rodney Brooks, Artificial Intelligence 47 (1991)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The attack that broke symbolic AI's monopoly: build robots as layered reactive behaviours, and skip the world model entirely. The clearest statement of the case against the sense–model–plan–act pipeline.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.nature.com/articles/nature14236" target="_blank" rel="noopener">Human-level control through deep reinforcement learning</a>
+          <span class="res-source">— Mnih et al., DeepMind / Nature (2015)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Deep Q-Networks: one architecture learning forty-nine Atari games from raw pixels and score alone. The paper that made deep RL a research programme. Paywalled at Nature.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.nature.com/articles/nature16961" target="_blank" rel="noopener">Mastering the game of Go with deep neural networks and tree search</a>
+          <span class="res-source">— Silver et al., DeepMind / Nature (2016)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">AlphaGo — the clearest demonstration that classical search and learned evaluation are complementary, not rivals. Monte Carlo tree search guided by policy and value networks. Paywalled at Nature.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.nature.com/articles/s41586-021-03819-2" target="_blank" rel="noopener">Highly accurate protein structure prediction with AlphaFold</a>
+          <span class="res-source">— Jumper et al., DeepMind / Nature (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Open access, and the strongest case that AI can close a genuine scientific problem rather than a benchmark. Read it when you want an answer to "what has this actually been good for?"</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1606.06565" target="_blank" rel="noopener">Concrete Problems in AI Safety</a>
+          <span class="res-source">— Amodei, Olah, Steinhardt, Christiano, Schulman &amp; Mané (2016)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Turns AI safety from speculation into five engineering problems — side effects, reward hacking, scalable oversight, safe exploration, distributional shift. Still the standard framing.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2104.12871" target="_blank" rel="noopener">Why AI is Harder Than We Think</a>
+          <span class="res-source">— Melanie Mitchell (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Four fallacies behind seventy years of over-confident predictions, including the assumption that narrow progress scales to general intelligence. The best short antidote to hype in either direction.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.redblobgames.com/pathfinding/a-star/introduction.html" target="_blank" rel="noopener">Introduction to the A* Algorithm</a>
+          <span class="res-source">— Amit Patel, Red Blob Games</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Breadth-first to Dijkstra to A*, each step an interactive diagram you can drag. The fastest way to make heuristic search click, and the standard reference for anyone implementing it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank" rel="noopener">The Bitter Lesson</a>
+          <span class="res-source">— Rich Sutton (2019)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Eight hundred words arguing that hand-built human knowledge loses to general methods plus compute, every time. The most-cited essay in modern AI, and the field's own explanation of why it changed shape.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://norvig.com/chomsky.html" target="_blank" rel="noopener">On Chomsky and the Two Cultures of Statistical Learning</a>
+          <span class="res-source">— Peter Norvig (2011)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Norvig answering Chomsky's charge that statistical models aren't science. The clearest account of the split between AI as understanding and AI as engineering — the argument underneath the whole symbolic-versus-statistical story.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://plato.stanford.edu/entries/artificial-intelligence/" target="_blank" rel="noopener">Artificial Intelligence</a>
+          <span class="res-source">— Stanford Encyclopedia of Philosophy</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Book-length and rigorous on the questions engineering texts skip: what would count as intelligence, what the Turing test does and doesn't establish, strong versus weak AI.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=WXuK6gekU1Y" target="_blank" rel="noopener">AlphaGo — The Movie</a>
+          <span class="res-source">— Google DeepMind (2020)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The full documentary, free. No technical prerequisites, and the best ninety minutes for understanding what a search-plus-learning system feels like from the outside.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ocw.mit.edu/courses/6-034-artificial-intelligence-fall-2010/video_galleries/lecture-videos/" target="_blank" rel="noopener">MIT 6.034: Artificial Intelligence — Lecture Videos</a>
+          <span class="res-source">— Patrick Winston, MIT OpenCourseWare (Fall 2010)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Winston's complete course, free. Pre-deep-learning and better for it — search, constraints, logic and learning taught by someone who thought teaching was the point.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/@berkeley-cs188" target="_blank" rel="noopener">CS 188 (Artificial Intelligence) at UC Berkeley</a>
+          <span class="res-source">— UC Berkeley</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Recorded lectures for the course below, updated each semester. The modern counterpart to 6.034 if you want current framing and worked exam-style examples.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ" target="_blank" rel="noopener">Introduction to Reinforcement Learning</a>
+          <span class="res-source">— David Silver, DeepMind × UCL (2015)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Ten lectures from AlphaGo's lead researcher, tracking Sutton &amp; Barto chapter by chapter. Still the standard video course on RL despite its age.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=EBK-a94IFHY" target="_blank" rel="noopener">3 principles for creating safer AI</a>
+          <span class="res-source">— Stuart Russell, TED (2017)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Twenty minutes on why optimising a fixed objective is the wrong design, from the person who wrote the textbook teaching it. The short version of <em>Human Compatible</em>.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.elementsofai.com/" target="_blank" rel="noopener">Elements of AI</a>
+          <span class="res-source">— University of Helsinki &amp; MinnaLearn</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free, no programming required, and honest about limitations. The right starting point if you want the concepts — search, probability, learning — before deciding how deep to go.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://cs50.harvard.edu/ai/" target="_blank" rel="noopener">CS50's Introduction to Artificial Intelligence with Python</a>
+          <span class="res-source">— Brian Yu &amp; David Malan, Harvard</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Seven weeks of projects — minimax tic-tac-toe, a knowledge-base puzzle solver, PageRank, a Minesweeper agent. Free to take; only the certificate costs money.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://inst.eecs.berkeley.edu/~cs188/sp26/" target="_blank" rel="noopener">CS 188: Introduction to Artificial Intelligence</a>
+          <span class="res-source">— UC Berkeley (Spring 2026)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Slides, notes and the famous Pac-Man projects, all public — you implement A*, minimax with alpha-beta, and Q-learning against a real game. The best free hands-on route through AIMA.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.udacity.com/course/intro-to-artificial-intelligence--cs271" target="_blank" rel="noopener">Intro to Artificial Intelligence</a>
+          <span class="res-source">— Peter Norvig &amp; Sebastian Thrun, Udacity</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The 2011 Stanford course that started the MOOC era, taught by AIMA's co-author and the leader of Stanford's DARPA Grand Challenge team. Free to audit.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://stanford-cs221.github.io/autumn2025/" target="_blank" rel="noopener">CS221: Artificial Intelligence — Principles and Techniques</a>
+          <span class="res-source">— Stanford University</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Public slides, notes and assignments, organised around the models rather than the applications — search, MDPs, games, CSPs, logic. Heavier on maths than CS 188.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://spinningup.openai.com/en/latest/" target="_blank" rel="noopener">Spinning Up in Deep RL</a>
+          <span class="res-source">— Joshua Achiam, OpenAI</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Free, and unusually practical: the theory you actually need, clean reference implementations of the key algorithms, and honest advice on why your RL run isn't converging.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://aimacode.github.io/aima-javascript/" target="_blank" rel="noopener">AIMA JavaScript Visualizations</a>
+          <span class="res-source">— aimacode, in-browser</span>
+          <p class="resource-note">Watch AIMA's algorithms run, chapter by chapter, with no setup. Search expanding a frontier is far easier to understand animated than in pseudocode.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/aimacode/aima-python" target="_blank" rel="noopener">aima-python</a>
+          <span class="res-source">— aimacode, official book code</span>
+          <p class="resource-note">Every algorithm in the textbook implemented in Python, with a Jupyter notebook per chapter. The reference to read when the pseudocode is ambiguous.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://gymnasium.farama.org/" target="_blank" rel="noopener">Gymnasium</a>
+          <span class="res-source">— Farama Foundation (maintained fork of OpenAI Gym)</span>
+          <p class="resource-note">The standard environment API for reinforcement learning. Gives you CartPole, Atari and MuJoCo behind one interface, so you can test an agent instead of building a simulator.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener">The 2026 AI Index Report</a>
+          <span class="res-source">— Stanford HAI</span>
+          <p class="resource-note">Free annual audit of the field in numbers — capability benchmarks, compute, investment, policy. Use it to check any claim about where AI currently stands.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ai100.stanford.edu/" target="_blank" rel="noopener">One Hundred Year Study on Artificial Intelligence (AI100)</a>
+          <span class="res-source">— Stanford University</span>
+          <p class="resource-note">A century-long study issuing a panel report every five years on AI's effects on society. The long view, written by researchers rather than commentators.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="machine-learning.html">Machine Learning</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The learning chapters, properly: fitting models to data, honest evaluation, and getting them to survive production.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="transformers.html">Transformers (Deep Learning)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The architecture that carried the statistical turn described above into every modality at once.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="large-language-models.html">Large Language Models</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">What most people now mean by "AI" — next-token prediction, alignment, prompting, retrieval and agents.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="generative-ai-beyond-llms.html">Generative AI (Beyond LLMs)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Diffusion, GANs and the rest of the generative family — images, audio, video and 3D.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>
