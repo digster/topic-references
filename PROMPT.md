@@ -275,3 +275,42 @@ Reading row added to each of `machine-learning`, `transformers`,
 2026-07-30), which closes the cross-link web — `transformers.html` had no
 internal cross-links at all before this. All 39 external URLs opened before
 shipping.
+
+---
+
+## 2026-07-30 — Add topic: Deep Learning
+
+> * add a topic on deep learning
+> * decide on updating cross links for viable existing posts
+
+Three clarifying questions were asked. **Scope: comprehensive standalone**, against
+the recommendation — the alternative was a foundations-only page that deferred
+attention, LLMs and diffusion to the siblings, but the user chose a page that reads
+end to end on its own and accepts the resulting overlap. In practice that means the
+page runs backprop → CNNs → RNNs → attention → diffusion, with the last two carried
+at survey depth (one paper each, framed as pointers) so the overlap stays a map
+rather than a restatement. **Cross-links: full symmetry.** **Title collision:**
+`Transformers (Deep Learning)` renamed to plain `Transformers`.
+
+The second bullet turned out to be the more interesting half. The site's existing
+cross-links were lopsided: `artificial-intelligence`, `large-language-models` and
+`generative-ai-beyond-llms` each linked to all their siblings, but `machine-learning`
+linked to only two and `transformers` to exactly one — an artefact of pages being
+added one at a time and only ever gaining reciprocal rows. Adding an eighth page on
+top of that would have made the web more ragged, so the gaps were filled in the same
+pass: the six AI pages now form a complete graph, five links each. The two
+non-AI pages (`data-structures-and-algorithms`, `starting-a-new-bank`) were
+deliberately left isolated — "both are computer science" is a topical neighbour, not
+a next step, and wiring them in would dilute what a cross-link means here.
+
+The rename had a tail the plan caught but the obvious edit would have missed: four
+sibling pages used `Transformers (Deep Learning)` as the *link text* on their
+cross-link rows, so the old title survived in four places beyond the page's own
+`<h1>` and `<title>`, plus once in `README.md`.
+
+Outcome: `topics/deep-learning.html` with **49 resources** across all seven sections,
+a card added third in the grid, and nine new cross-link rows spread across five
+existing pages (AI +1, gen-AI +1, LLM +1, ML +3, transformers +4). The cross-link
+convention was only ever convention — visible in the shipped pages, absent from
+`CLAUDE.md`, `ARCHITECTURE.md` and the template — so it is now written down in the
+first two. All 47 external URLs opened before shipping; 70 Playwright checks passed.

@@ -21,7 +21,7 @@ file, and a tiny bit of vanilla JavaScript for search.
 - The search box on the landing page filters cards instantly, entirely client-side — so it works
   whether you open the file locally or visit the hosted site.
 
-A sample topic, **[Transformers (Deep Learning)](topics/transformers.html)**, ships as a reference
+A sample topic, **[Transformers](topics/transformers.html)**, ships as a reference
 example. Feel free to delete it once you've added your own.
 
 ## Adding a topic
