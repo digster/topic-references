@@ -314,3 +314,46 @@ existing pages (AI +1, gen-AI +1, LLM +1, ML +3, transformers +4). The cross-lin
 convention was only ever convention — visible in the shipped pages, absent from
 `CLAUDE.md`, `ARCHITECTURE.md` and the template — so it is now written down in the
 first two. All 47 external URLs opened before shipping; 70 Playwright checks passed.
+
+---
+
+## 2026-08-01 — Add topic family: Crypto, Blockchain, DeFi & NFTs
+
+> Add a topic on crypto, blockchain, DeFi, NFT, etc. and related topics from the ecosystem.
+
+The prompt names four topics and then gestures at a fifth category ("related topics from
+the ecosystem"), so the first question was how many pages that should become. Asked, and
+the answers set the shape of the work:
+
+- **Scope: seven pages**, not one omnibus page — matching how this repo already grows a
+  subject area (one page per topic, reciprocally cross-linked).
+- **The economics/governance page is `crypto-economics-and-daos`.** The seven-page option
+  had previewed a `daos-and-token-governance` slug, but the more specific follow-up answer
+  picked "Crypto Economics & DAOs", so that one won.
+- **Stance: neutral, include critique.** Lead with how the technology works, and carry the
+  genuinely good critical material — Diehl, Molly White, Chainalysis crime data, rekt.news
+  post-mortems, the BIS and Fed papers — alongside the builder material rather than in a
+  ghetto section. This follows from the house style ("accuracy first", "neutral tone")
+  rather than being a departure from it.
+
+The interesting design question was the cross-link graph. The AI family is a complete
+graph, and the obvious move was to do the same here — 21 pairs, 42 rows. That would have
+broken `CLAUDE.md`'s actual rule, which is not "link everything in the family" but "only
+link pages that are actually a next step for each other". NFTs↔ZK and Layer 2↔DAOs fail
+that test. So the crypto family is deliberately incomplete: 17 of 21 pairs, with
+`blockchain-and-cryptocurrency` as a hub linking to all six siblings and the remaining
+edges wired only where they earn it. `ARCHITECTURE.md` now says this explicitly, because
+"the AI family is a complete graph" was previously the only worked example and read as a
+requirement.
+
+One edge crosses out of the family: `decentralized-finance` ↔ `starting-a-new-bank`. DeFi
+reimplements deposits, lending and payment rails without a licence, so each page is a real
+next step from the other; the bank page's date was bumped for its new row.
+
+Outcome: seven new pages carrying **170 unique external resources**, seven cards added to
+the grid in alphabetical order (the site goes 8 → 15 topics), 34 cross-link rows inside the
+family plus 2 for the bank edge. Every URL was opened before shipping — which caught a
+guessed arXiv ID that turned out to be a paper on epidemic forecasting, another on
+fractional harmonic functions, and several plausible-looking YouTube IDs that did not
+exist. `ARCHITECTURE.md` updated for the second family; `README.md` left alone, as in
+previous topic-add sessions, since it enumerates neither topics nor a count.

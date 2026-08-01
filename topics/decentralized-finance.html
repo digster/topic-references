@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decentralized Finance (DeFi) — Topic References</title>
+  <meta name="description" content="Lending, exchange and derivatives rebuilt as smart contracts — AMMs, oracles, liquidations and MEV — plus curated books, papers, articles, videos, courses, tools and exploit post-mortems." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Decentralized Finance (DeFi)</h1>
+      <p class="last-updated">Last updated: 2026-08-01</p>
+    </div>
+
+    <section class="description">
+      <p>
+        <strong>DeFi</strong> is what happens when you rebuild financial primitives — exchange,
+        lending, margin, derivatives — as public smart contracts instead of companies. An
+        <em>automated market maker</em> replaces the order book with a formula over two token
+        reserves; a lending pool replaces underwriting with over-collateralisation and automatic
+        liquidation; an <em>oracle</em> pipes in the outside prices all of it depends on. Anyone can
+        call any of it, and every protocol can call every other, which is where the phrase "money
+        legos" comes from.
+      </p>
+      <p>
+        It matters because it is the only part of crypto operating at real scale with real
+        mechanisms worth studying, and because composability turns out to cut both ways: the same
+        property that lets protocols stack lets an attacker chain them together inside a single
+        transaction. Flash loans, oracle manipulation and MEV are not edge cases here, they are the
+        native failure modes. The resources below cover the mechanism design and the exploits as one
+        subject, because that is what they are.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> smart contracts and how a transaction executes (see the
+        Ethereum page below), plus enough finance vocabulary to be comfortable with collateral,
+        leverage, liquidity and interest rates.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.wiley.com/en-us/DeFi+and+the+Future+of+Finance-p-9781119836018" target="_blank" rel="noopener">DeFi and the Future of Finance</a>
+          <span class="res-source">— Campbell R. Harvey, Ashwin Ramachandran &amp; Joey Santoro, Wiley (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The one book on this that a finance academic wrote — problem statement, mechanisms, then risks, without promotion. Paid; the authors' free companion course is <a href="https://www.coursera.org/learn/decentralized-finance-infrastructure-duke" target="_blank" rel="noopener">Decentralized Finance Infrastructure</a> on Coursera.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://app.uniswap.org/whitepaper.pdf" target="_blank" rel="noopener">Uniswap v2 Core</a>
+          <span class="res-source">— Adams, Zinsmeister &amp; Robinson (2020)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The constant-product AMM specified properly. Short, and the single most load-bearing design in DeFi — read it before any explainer about "liquidity pools".</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://app.uniswap.org/whitepaper-v3.pdf" target="_blank" rel="noopener">Uniswap v3 Core</a>
+          <span class="res-source">— Adams, Zinsmeister, Salem, Keefer &amp; Robinson (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Concentrated liquidity: letting providers choose a price range, which turns a passive pool into an active position. The maths is heavier and worth the effort.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2101.08778" target="_blank" rel="noopener">SoK: Decentralized Finance (DeFi)</a>
+          <span class="res-source">— Werner, Perez, Gudgeon, Klages-Mundt, Harz &amp; Knottenbelt (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A systematisation of the whole field — protocol categories, primitives, attack surface — with a proper bibliography. The best single entry point to the literature.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1904.05234" target="_blank" rel="noopener">Flash Boys 2.0: Frontrunning, Transaction Reordering, and Consensus Instability</a>
+          <span class="res-source">— Daian et al., IEEE S&amp;P (2020)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The paper that named MEV and showed arbitrage bots were bidding gas against each other to reorder your trades. It reframed block production as an auction, and the whole field followed.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2003.03810" target="_blank" rel="noopener">Attacking the DeFi Ecosystem with Flash Loans for Fun and Profit</a>
+          <span class="res-source">— Qin, Zhou, Livshits &amp; Gervais (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Dissects two real flash-loan attacks and then optimises them, showing the attacker could have taken far more. The clearest demonstration of why uncollateralised capital breaks assumptions.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2106.06389" target="_blank" rel="noopener">An Empirical Study of DeFi Liquidations</a>
+          <span class="res-source">— Qin, Zhou, Gamito, Jovanovic &amp; Gervais (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Measures what liquidations actually cost borrowers across the major lending protocols, and shows the designs over-punish. Rare quantitative work on a mechanism everyone assumes is fine.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2109.04347" target="_blank" rel="noopener">Clockwork Finance: Automated Analysis of Economic Security in Smart Contracts</a>
+          <span class="res-source">— Babel, Daian, Kelkar &amp; Juels (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Formal framework for reasoning about composed protocols, and it finds attacks automatically. Where DeFi security stops being pattern-matching and starts being verification.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.bis.org/publ/qtrpdf/r_qt2112b.htm" target="_blank" rel="noopener">DeFi risks and the decentralisation illusion</a>
+          <span class="res-source">— Aramonte, Huang &amp; Schrimpf, BIS Quarterly Review (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The central-bank argument that governance tokens and admin keys mean real control is concentrated regardless of the label. Short, and the criticism most worth having an answer to.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.federalreserve.gov/econres/feds/decentralized-finance-defi-transformative-potential-and-associated-risks.htm" target="_blank" rel="noopener">DeFi: Transformative Potential &amp; Associated Risks</a>
+          <span class="res-source">— Carapella et al., Federal Reserve FEDS (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A neutral regulator's map of the stack and its risks — leverage, liquidity mismatch, operational fragility. Useful for how supervisors see this, which increasingly shapes what ships.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/defi/" target="_blank" rel="noopener">Decentralized Finance (DeFi)</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The plain-language overview of what each category of protocol does, with the traditional-finance equivalent named next to it. The right first read.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://finematics.com/impermanent-loss-explained/" target="_blank" rel="noopener">Impermanent Loss Explained</a>
+          <span class="res-source">— Finematics</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The most misunderstood concept in DeFi, worked through with numbers: why providing liquidity can lose against simply holding the two tokens.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://blog.uniswap.org/uniswap-v3-math-primer" target="_blank" rel="noopener">Uniswap v3 Math Primer</a>
+          <span class="res-source">— Uniswap Labs</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The bridge between the v3 whitepaper and the code — ticks, square-root prices, and why the implementation looks nothing like the equations at first.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/developers/docs/mev/" target="_blank" rel="noopener">Maximal Extractable Value (MEV)</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The maintained explanation of sandwich attacks, backrunning, proposer-builder separation and why MEV is a consensus-layer problem, not just a trading one.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://finematics.com/decoding-mev-past-present-future/" target="_blank" rel="noopener">Decoding MEV: Past, Present, Future</a>
+          <span class="res-source">— Finematics</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How extraction evolved from gas-price wars into a structured supply chain of searchers, builders and relays. Good narrative context for the Flash Boys 2.0 paper.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.paradigm.xyz/2021/07/twamm" target="_blank" rel="noopener">TWAMM</a>
+          <span class="res-source">— Dave White, Dan Robinson &amp; Hayden Adams, Paradigm (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A worked example of DeFi mechanism design being invented in public: an AMM that executes one enormous order gradually. Read it for the method as much as the design.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://rekt.news/" target="_blank" rel="noopener">rekt.news</a>
+          <span class="res-source">— rekt</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Post-mortems of hacks and rug pulls, ranked by amount lost, written with contempt and technical accuracy in equal measure. The leaderboard alone is an education.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=k9HYC0EJU6E" target="_blank" rel="noopener">What is DeFi? Decentralized Finance Explained</a>
+          <span class="res-source">— Finematics</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The standard visual introduction, walking through MakerDAO, Compound and Uniswap as concrete examples rather than abstractions.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://defi-learning.org/" target="_blank" rel="noopener">Decentralized Finance MOOC</a>
+          <span class="res-source">— UC Berkeley RDI</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Free lectures from the researchers who wrote much of the literature above — mechanism design, oracles, MEV, security and regulation. The most rigorous course available.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/learn/decentralized-finance-infrastructure-duke" target="_blank" rel="noopener">Decentralized Finance Infrastructure</a>
+          <span class="res-source">— Campbell Harvey, Duke University (Coursera)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free to audit, and the gentler on-ramp of the two: the plumbing explained by a finance professor rather than a cryptographer.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://defillama.com/" target="_blank" rel="noopener">DefiLlama</a>
+          <span class="res-source">— DefiLlama</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Open, ad-free dashboards of value locked, fees and revenue across every chain and protocol. The default place to check whether something is actually used.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://developers.uniswap.org/docs" target="_blank" rel="noopener">Uniswap Documentation</a>
+          <span class="res-source">— Uniswap Labs</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Protocol concepts alongside the contract interfaces and SDKs. The reference for building against the AMM the whitepapers describe.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://aave.com/docs" target="_blank" rel="noopener">Aave Documentation</a>
+          <span class="res-source">— Aave</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How a large lending market is actually parameterised: interest-rate curves, health factors, liquidation thresholds and flash loans, all documented.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.compound.finance/" target="_blank" rel="noopener">Compound Documentation</a>
+          <span class="res-source">— Compound</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The other canonical lending design, worth reading beside Aave — the differences in collateral and rate models are where the interesting trade-offs live.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.makerdao.com/" target="_blank" rel="noopener">MakerDAO Documentation</a>
+          <span class="res-source">— MakerDAO</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The technical documentation for the original crypto-collateralised stablecoin — vaults, the debt auction, the emergency shutdown. Dense but the definitive worked example.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.chain.link/" target="_blank" rel="noopener">Chainlink Documentation</a>
+          <span class="res-source">— Chainlink</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How off-chain prices get on-chain, which is the dependency almost every exploit above ends up abusing. Read the data-feed and VRF sections at minimum.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.flashbots.net/" target="_blank" rel="noopener">Flashbots Documentation</a>
+          <span class="res-source">— Flashbots</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The infrastructure that turned MEV from a gas auction into a private orderflow market — bundles, builders, relays and MEV-Boost, from the people who built it.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.paradigm.xyz/writing" target="_blank" rel="noopener">Paradigm Research</a>
+          <span class="res-source">— Paradigm</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Where a lot of new AMM and auction design gets published first. Investor-affiliated, but the technical writing is serious and usually ahead of the academic literature.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://writings.flashbots.net/" target="_blank" rel="noopener">Flashbots Writings</a>
+          <span class="res-source">— Flashbots</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Ongoing research on orderflow, block building and cross-domain extraction — including the <a href="https://arxiv.org/abs/2112.01472" target="_blank" rel="noopener">cross-domain MEV</a> work. The frontier of this subject.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="ethereum-and-smart-contracts.html">Ethereum and Smart Contracts</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The layer all of this is written in — and the security material you need before deploying anything that holds other people's money.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="blockchain-and-cryptocurrency.html">Blockchain and Cryptocurrency</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Further back: why the settlement layer these protocols assume is trustworthy actually is, and what stablecoins are doing underneath every pool here.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="layer-2-and-scaling.html">Layer 2 and Scaling</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Where most DeFi activity has already migrated, and what cheaper blockspace does to the MEV and liquidation dynamics described above.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="crypto-economics-and-daos.html">Crypto Economics and DAOs</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Who actually controls these protocols: governance tokens, vote-escrow models and the treasuries the fees flow into.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="nfts-and-digital-ownership.html">NFTs and Digital Ownership</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The non-fungible side of the same token machinery, including the lending and fractionalisation markets that grew on top of it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="starting-a-new-bank.html">Starting a New Bank</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The licensed version of the same functions — deposits, lending and payment rails — and a sharp contrast in how each one handles risk and failure.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>

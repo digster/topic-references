@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFTs and Digital Ownership — Topic References</title>
+  <meta name="description" content="What an NFT actually is — ERC-721, metadata and storage — plus on-chain generative art, royalties, the market collapse, and curated specifications, articles and tools." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>NFTs and Digital Ownership</h1>
+      <p class="last-updated">Last updated: 2026-08-01</p>
+    </div>
+
+    <section class="description">
+      <p>
+        A <strong>non-fungible token</strong> is a smart contract entry that maps a unique ID to an
+        owner's address. That is genuinely all it is — the standard, <em>ERC-721</em>, is about 20
+        lines of interface. What the token <em>points at</em> is a separate question, and usually the
+        important one: most NFTs store a URL in the contract and the actual image somewhere else, so
+        "owning" one means owning a ledger entry that references a file you don't control.
+      </p>
+      <p>
+        NFTs matter for two reasons that have nothing to do with the 2021 bubble. First, they are the
+        clearest case study in the gap between what a technology guarantees and what buyers assumed
+        it guaranteed — permanence, copyright, royalties, none of which come for free. Second, the
+        subset that puts the artwork's generating code fully on-chain is a real and durable art
+        form. This page covers the standards, the storage problem, the art, and what the market data
+        showed afterwards.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> smart contracts and token standards — an NFT is an
+        ERC-20 with the fungibility removed, so the Ethereum page below is the natural prerequisite.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://eips.ethereum.org/EIPS/eip-721" target="_blank" rel="noopener">EIP-721: Non-Fungible Token Standard</a>
+          <span class="res-source">— Entriken, Shirley, Evans &amp; Sachs (2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The spec itself, and short enough to read in one sitting. The rationale section is unusually candid about what the authors deliberately left out — including any guarantee about the metadata.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://eips.ethereum.org/EIPS/eip-1155" target="_blank" rel="noopener">EIP-1155: Multi Token Standard</a>
+          <span class="res-source">— Radomski, Cooke, Castonguay, Therien, Binet &amp; Sandford (2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">One contract holding many token types, fungible or not, with batch transfers. The standard games and marketplaces actually use once minting thousands of items gets expensive.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://eips.ethereum.org/EIPS/eip-2981" target="_blank" rel="noopener">EIP-2981: NFT Royalty Standard</a>
+          <span class="res-source">— Burks, Morgan, Malone &amp; Seibel (2020)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A way to *signal* a royalty, which marketplaces then chose whether to honour. The best short illustration that on-chain data is not the same as on-chain enforcement.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://eips.ethereum.org/EIPS/eip-6551" target="_blank" rel="noopener">ERC-6551: Non-fungible Token Bound Accounts</a>
+          <span class="res-source">— Benet, Pandolfi, Chalkias et al. (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Gives every NFT its own smart-contract wallet, so a token can own assets itself. The most interesting recent extension, and a genuine capability rather than a market feature.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/" target="_blank" rel="noopener">ERC-721 — Ethereum developer docs</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The annotated walkthrough of the standard with a worked example contract. Read this alongside the EIP if the raw spec is too terse.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/nft/" target="_blank" rel="noopener">Non-fungible tokens (NFTs)</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The plain explanation of what the token does and doesn't confer, including the copyright point most coverage skipped entirely.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://hbr.org/2021/11/how-nfts-create-value" target="_blank" rel="noopener">How NFTs Create Value</a>
+          <span class="res-source">— Steve Kaczynski &amp; Scott Duke Kominers, Harvard Business Review (2021)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The serious economic argument — that the value is in verifiable membership and community access, not the picture. Written by a market-design economist. Paywalled after a few free articles.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://a16zcrypto.com/posts/article/nft-canon/" target="_blank" rel="noopener">NFT Canon</a>
+          <span class="res-source">— a16z crypto</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A curated reading list across technical foundations, creator economics, law and culture. Investor-published and therefore optimistic, but the links themselves are well chosen.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2022/01/26/soulbound.html" target="_blank" rel="noopener">Soulbound</a>
+          <span class="res-source">— Vitalik Buterin (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The argument for non-transferable tokens as credentials and reputation. The most influential attempt to point this technology at something other than speculation.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.chainalysis.com/blog/2022-crypto-crime-report-preview-nft-wash-trading-money-laundering/" target="_blank" rel="noopener">NFT Wash Trading and Money Laundering</a>
+          <span class="res-source">— Chainalysis (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">On-chain evidence that a meaningful share of reported volume was self-dealing. Essential context for any chart of NFT sales from that period.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.rightclicksave.com/" target="_blank" rel="noopener">Right Click Save</a>
+          <span class="res-source">— Right Click Save</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Criticism and essays treating this as an art movement with a history, by writers who know both the art world and the technology. The antidote to both hype and dismissal.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.artnome.com/" target="_blank" rel="noopener">Artnome</a>
+          <span class="res-source">— Jason Bailey</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Long-form writing on generative and computational art that predates the NFT boom and takes the lineage seriously — Vera Molnár and Harold Cohen, not just 2021.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.christies.com/en/lot/lot-6350394" target="_blank" rel="noopener">Beeple, Everydays: The First 5000 Days</a>
+          <span class="res-source">— Christie's (2021)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The $69m auction lot that made this a mainstream story, still on Christie's site. The lot notes are a useful primary document of how the traditional art market framed it.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.artblocks.io/" target="_blank" rel="noopener">Art Blocks</a>
+          <span class="res-source">— Art Blocks</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Generative art where the script lives on-chain and the output is produced at mint from the transaction hash. The strongest existing argument that the medium is real; <a href="https://docs.artblocks.io/" target="_blank" rel="noopener">the docs</a> explain the mechanism.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.ipfs.tech/" target="_blank" rel="noopener">IPFS Documentation</a>
+          <span class="res-source">— IPFS / Protocol Labs</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Where most NFT metadata actually lives, and why content addressing is not the same as permanence — files vanish when nobody pins them.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.arweave.org/" target="_blank" rel="noopener">Arweave</a>
+          <span class="res-source">— Arweave</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The pay-once-store-forever alternative, with an endowment model instead of ongoing pinning. Worth understanding as the other answer to the storage problem.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.opensea.io/" target="_blank" rel="noopener">OpenSea Developer Documentation</a>
+          <span class="res-source">— OpenSea</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The de facto metadata conventions — how <code>tokenURI</code> should be shaped, what fields marketplaces read — which are convention rather than standard.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://rhizome.org/" target="_blank" rel="noopener">Rhizome</a>
+          <span class="res-source">— Rhizome, New Museum</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Twenty-five years of born-digital art preservation, from an institution that was solving the "how do you keep this alive" problem long before NFTs existed.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="ethereum-and-smart-contracts.html">Ethereum and Smart Contracts</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The layer these standards are written for — and what you need before writing a mint contract that will hold real money on day one.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="blockchain-and-cryptocurrency.html">Blockchain and Cryptocurrency</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The ledger underneath the ownership claim, and why an entry in it is hard to forge in the first place.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="decentralized-finance.html">Decentralized Finance (DeFi)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Where the financial machinery came from once people started lending against, fractionalising and building derivatives on these tokens.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="layer-2-and-scaling.html">Layer 2 and Scaling</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Why minting moved off mainnet: at $50 a transaction, most of what people wanted to do here was never going to work.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="crypto-economics-and-daos.html">Crypto Economics and DAOs</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The mechanism-design view of royalties, token-gated membership and collector governance — the incentive questions this page keeps running into.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>
