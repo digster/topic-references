@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blockchain and Cryptocurrency — Topic References</title>
+  <meta name="description" content="How a blockchain actually works — hashing, signatures, consensus and mining — starting from Bitcoin, plus curated books, papers, articles, videos, courses and tools, including the critical case." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Blockchain and Cryptocurrency</h1>
+      <p class="last-updated">Last updated: 2026-08-01</p>
+    </div>
+
+    <section class="description">
+      <p>
+        A <strong>blockchain</strong> is an append-only ledger that a group of mutually distrusting
+        computers can agree on without anyone being in charge. The trick is not the "chain of blocks"
+        — it's the <em>consensus rule</em> that makes rewriting history expensive: proof of work burns
+        electricity, proof of stake burns capital. Bitcoin, described in a nine-page paper in 2008,
+        was the first system to make this work at all, and everything else on this page descends from it.
+      </p>
+      <p>
+        It matters because it is the first credible answer to a very old question: how do you move
+        value between strangers with no bank, court or government in the middle? Whether that answer
+        is <em>useful</em> is genuinely contested — the same properties that make censorship
+        resistance possible also make fraud irreversible, and the industry has an ugly track record.
+        The resources below teach the mechanism first, then give both the builders' case and the
+        critics' case honestly.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> nothing formal, but a rough idea of what a cryptographic
+        hash function and a digital signature do will make the consensus material click much faster.
+        Basic economics helps for the money side.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.manning.com/books/grokking-bitcoin" target="_blank" rel="noopener">Grokking Bitcoin</a>
+          <span class="res-source">— Kalle Rosenbaum, Manning (2019)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Builds Bitcoin up from a spreadsheet of IOUs to the real protocol, one honest step at a time. The gentlest technical introduction that doesn't lie to you. Paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://bitcoinbook.cs.princeton.edu/" target="_blank" rel="noopener">Bitcoin and Cryptocurrency Technologies</a>
+          <span class="res-source">— Narayanan, Bonneau, Felten, Miller &amp; Goldfeder, Princeton (2016)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The academic textbook, free as a full draft PDF. Treats consensus, mining and anonymity as computer science rather than investment advice — still the best conceptual grounding.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/bitcoinbook/bitcoinbook" target="_blank" rel="noopener">Mastering Bitcoin (3rd edition)</a>
+          <span class="res-source">— Andreas M. Antonopoulos &amp; David A. Harding, O'Reilly (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The reference implementation-level book: keys, addresses, transactions, script, the mempool. Free to read in full on GitHub under CC BY-SA; paid in print.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.harpercollins.com/products/digital-gold-nathaniel-popper" target="_blank" rel="noopener">Digital Gold</a>
+          <span class="res-source">— Nathaniel Popper, Harper (2015)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A reporter's history of Bitcoin's first six years through the people involved. Read it for why the thing exists and who built it, not for how it works. Paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM" target="_blank" rel="noopener">The Blocksize War</a>
+          <span class="res-source">— Jonathan Bier (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A blow-by-blow account of the 2015–17 fight over Bitcoin's block size — the clearest case study anywhere of how a decentralised system actually makes decisions. Paid.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">Bitcoin: A Peer-to-Peer Electronic Cash System</a>
+          <span class="res-source">— Satoshi Nakamoto (2008)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Nine pages that started all of it. Genuinely readable, and short enough that there's no excuse for taking anyone else's word for what it says.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/" target="_blank" rel="noopener">Proof of Stake — Ethereum developer docs</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The maintained explanation of the other major consensus family: validators, staking, attestations, finality and slashing, with the trade-offs against proof of work stated plainly.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://nakamotoinstitute.org/library/bitcoin/" target="_blank" rel="noopener">The Complete Satoshi</a>
+          <span class="res-source">— Nakamoto Institute</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Every known email, forum post and code comment from Bitcoin's pseudonymous author, indexed and dated. Primary source material for the design decisions.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.bis.org/publ/arpdf/ar2022e3.htm" target="_blank" rel="noopener">The Future Monetary System</a>
+          <span class="res-source">— Bank for International Settlements, Annual Economic Report (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The central bankers' technical critique — fragmentation, the scalability trilemma and why they think the structural flaws are inherent rather than fixable. Worth reading precisely because it argues the other side well.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://river.com/learn/" target="_blank" rel="noopener">River Learn</a>
+          <span class="res-source">— River Financial</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A well-organised reference wiki covering terms, mechanics and history in short articles. Published by a Bitcoin company, so read the "why" pages with that in mind.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/stablecoins/" target="_blank" rel="noopener">Stablecoins</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The category that carries most real crypto payment volume: how fiat-backed, crypto-backed and algorithmic designs differ, and how each one breaks.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2024/05/31/blocksize.html" target="_blank" rel="noopener">Some reflections on the Bitcoin block size war</a>
+          <span class="res-source">— Vitalik Buterin (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Ethereum's founder reviewing Bier's book on Bitcoin's civil war, and drawing out what it says about governance in any decentralised system. A good companion to the book.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://gwern.net/bitcoin-is-worse-is-better" target="_blank" rel="noopener">Bitcoin Is Worse Is Better</a>
+          <span class="res-source">— Gwern Branwen (2011)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Why Bitcoin succeeded where decades of cleaner academic e-cash designs failed. The sharpest short essay on what was actually novel about it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.stephendiehl.com/posts/against_crypto/" target="_blank" rel="noopener">The Case Against Crypto</a>
+          <span class="res-source">— Stephen Diehl (2021)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The best-argued short version of the sceptic's position: that the technology is a solution in search of a problem and the economics are negative-sum. He revisited it in <a href="https://www.stephendiehl.com/posts/against_crypto_2025/" target="_blank" rel="noopener">The Case Against Crypto in 2025</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.web3isgoinggreat.com/" target="_blank" rel="noopener">Web3 is Going Just Great</a>
+          <span class="res-source">— Molly White</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A running, sourced timeline of hacks, rug pulls and collapses with dollar figures attached. The single most efficient antidote to reading only the optimistic material.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.chainalysis.com/blog/2025-crypto-crime-report-introduction/" target="_blank" rel="noopener">Crypto Crime Report</a>
+          <span class="res-source">— Chainalysis (annual)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Actual numbers on illicit volume, scams, ransomware and stolen funds, from the firm that does the on-chain forensics. Useful for arguing about crypto crime with data instead of vibes.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.lopp.net/bitcoin-information.html" target="_blank" rel="noopener">Bitcoin Resources</a>
+          <span class="res-source">— Jameson Lopp</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A long-maintained link directory covering everything from cryptography primers to node operation and self-custody. Where to go when you want more depth on one specific piece.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=bBC-nXj3Ng4" target="_blank" rel="noopener">But how does bitcoin actually work?</a>
+          <span class="res-source">— 3Blue1Brown</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Derives the whole design from scratch by asking what a digital ledger between friends would need. If you watch only one thing on this page, watch this.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=fOMVZXLjKYo" target="_blank" rel="noopener">Lecture 1 — Intro to Crypto and Cryptocurrencies</a>
+          <span class="res-source">— Bitcoin and Cryptocurrency Technologies, Princeton</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The opening lecture of the Princeton course that accompanies the textbook above — hash functions and digital signatures built up properly before any coins appear.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/learn/cryptocurrency" target="_blank" rel="noopener">Bitcoin and Cryptocurrency Technologies</a>
+          <span class="res-source">— Princeton University, Coursera</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The full course behind the textbook, free to audit. Eleven weeks from cryptographic primitives to mining economics, altcoins and the politics of the thing.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://developer.bitcoin.org/" target="_blank" rel="noopener">Bitcoin Developer Documentation</a>
+          <span class="res-source">— Bitcoin Project</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The protocol reference: transaction format, script, P2P messages, RPC. Where to go once you want to build against Bitcoin rather than read about it.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://andersbrownworth.com/blockchain/" target="_blank" rel="noopener">Blockchain Demo</a>
+          <span class="res-source">— Anders Brownworth</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Type into a block, watch the hash go red, then watch every later block break. Five minutes here explains immutability better than any paragraph.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://en.bitcoin.it/wiki/Main_Page" target="_blank" rel="noopener">Bitcoin Wiki</a>
+          <span class="res-source">— community-maintained</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The old community reference for opcodes, protocol details and historical trivia. Uneven and sometimes dated, but it has things documented nowhere else.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://nakamotoinstitute.org/" target="_blank" rel="noopener">Satoshi Nakamoto Institute</a>
+          <span class="res-source">— Nakamoto Institute</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The pre-history: Chaum's digital cash, Szabo's bit gold, Dai's b-money, the cypherpunk mailing lists. Bitcoin makes much more sense once you see what it was assembled from.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="ethereum-and-smart-contracts.html">Ethereum and Smart Contracts</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The obvious next step: what happens when the ledger can also run arbitrary programs, and how you write them.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="decentralized-finance.html">Decentralized Finance (DeFi)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The largest thing actually built on this technology — exchanges, lending and stablecoins with no institution behind them.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="nfts-and-digital-ownership.html">NFTs and Digital Ownership</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The other headline use case: using a ledger to track unique items rather than fungible money, and what that did and didn't deliver.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="layer-2-and-scaling.html">Layer 2 and Scaling</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Where the throughput limits described above actually get addressed — rollups, data availability and the modular stack.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="crypto-economics-and-daos.html">Crypto Economics and DAOs</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The incentive design underneath consensus, generalised: token models, governance, and what happens when a protocol tries to govern itself.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="zero-knowledge-proofs.html">Zero-Knowledge Proofs</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The cryptography that lets a chain verify a computation it never ran — now the basis of both privacy and most scaling work.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Layer 2 and Scaling — Topic References</title>
+  <meta name="description" content="How blockchains scale without giving up security — optimistic and ZK rollups, data availability, blobs and the modular stack — plus curated specifications, articles, talks and tools." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Layer 2 and Scaling</h1>
+      <p class="last-updated">Last updated: 2026-08-01</p>
+    </div>
+
+    <section class="description">
+      <p>
+        A blockchain is slow on purpose: every node re-executes every transaction, so throughput is
+        capped by the weakest machine you want to be able to verify the chain. A <strong>layer 2</strong>
+        breaks that trade-off by moving execution off the main chain while still posting enough data
+        back to it that anyone can reconstruct and challenge the result. The dominant design is the
+        <em>rollup</em>, in two flavours — <em>optimistic</em> rollups assume batches are valid and
+        allow a fraud proof during a challenge window, <em>ZK</em> rollups post a validity proof so
+        there is nothing to challenge.
+      </p>
+      <p>
+        This is where Ethereum's roadmap actually went: since 2020 the base layer has been optimised
+        to be a settlement and data-availability layer for rollups rather than an execution layer for
+        users, with EIP-4844's blobs cutting L2 costs by orders of magnitude. It matters because it
+        determines where applications get deployed, what a transaction costs, and — through
+        sequencers, upgrade keys and escape hatches — how much of the security story is real.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> how Ethereum executes transactions and what gas pays for.
+        The ZK rollup material is much easier after a first pass at zero-knowledge proofs, but you can
+        treat validity proofs as a black box on a first read.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698" target="_blank" rel="noopener">A rollup-centric ethereum roadmap</a>
+          <span class="res-source">— Vitalik Buterin, Ethereum Magicians (2020)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The forum post that redirected the entire protocol roadmap away from execution sharding. Short, and everything since follows from it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://eips.ethereum.org/EIPS/eip-4844" target="_blank" rel="noopener">EIP-4844: Shard Blob Transactions</a>
+          <span class="res-source">— Buterin, Feist, Loerakker, Kadianakis, Garnett, Taiwo &amp; Dietrichs (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">"Proto-danksharding": a transaction type carrying data that's cheap, verifiable and deliberately deleted after ~18 days. The change that made L2 fees negligible.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/developers/docs/scaling/" target="_blank" rel="noopener">Scaling — Ethereum developer docs</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The maintained map of every approach and how they compare, with dedicated pages on <a href="https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/" target="_blank" rel="noopener">optimistic rollups</a> and <a href="https://ethereum.org/en/developers/docs/scaling/zk-rollups/" target="_blank" rel="noopener">ZK rollups</a>. Start here.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/developers/docs/data-availability/" target="_blank" rel="noopener">Data Availability</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The problem that decides whether a rollup is a rollup: proving data was actually published without downloading it. Covers sampling and the committee designs.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/roadmap/danksharding/" target="_blank" rel="noopener">Danksharding</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Where the blob design is heading — many more blobs per block, secured by data-availability sampling rather than by every node downloading everything.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1908.04756" target="_blank" rel="noopener">A scalable verification solution for blockchains</a>
+          <span class="res-source">— Jason Teutsch &amp; Christian Reitwießner (2019)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The TrueBit paper, where interactive dispute resolution — bisecting a disagreement down to a single step — was worked out. Every optimistic rollup's fraud proof is a descendant.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/layer-2/" target="_blank" rel="noopener">Layer 2</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The user-facing version: what an L2 is, what bridging means, and what you're actually trusting when you move funds onto one.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2021/01/05/rollup.html" target="_blank" rel="noopener">An Incomplete Guide to Rollups</a>
+          <span class="res-source">— Vitalik Buterin (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The canonical explainer. Derives rollups from first principles, works through the compression tricks with real gas numbers, and states the open problems honestly.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://finematics.com/rollups-explained/" target="_blank" rel="noopener">Rollups — The Ultimate Ethereum Scaling Solution</a>
+          <span class="res-source">— Finematics</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The friendlier walkthrough of the same material, with diagrams. Good to read before Vitalik's piece if the gas arithmetic there is heavy going.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2021/05/23/scaling.html" target="_blank" rel="noopener">The Limits to Blockchain Scalability</a>
+          <span class="res-source">— Vitalik Buterin (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Why "just raise the block size" fails — bandwidth, storage growth and the number of people who can still run a node. The constraint every design on this page is working around.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2021/12/06/endgame.html" target="_blank" rel="noopener">Endgame</a>
+          <span class="res-source">— Vitalik Buterin (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The argument that block production centralises regardless of the design, so the goal should be keeping *validation* cheap and censorship-resistant. Shapes how to read every L2's roadmap.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2022/09/17/layer_3.html" target="_blank" rel="noopener">What kind of layer 3s make sense?</a>
+          <span class="res-source">— Vitalik Buterin (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A sceptical look at stacking rollups on rollups — which layer-3 designs add something and which are just marketing. Useful immunisation against the appchain pitch.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=BWvThjrjTmw" target="_blank" rel="noopener">Ethereum (Roadmap) in 30min</a>
+          <span class="res-source">— Vitalik Buterin, Devconnect (Ethereum Foundation)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The current state of the scaling roadmap straight from the source — what shipped, what blobs changed, and which parts of the L2 security story are still incomplete.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://l2beat.com/scaling/summary" target="_blank" rel="noopener">L2BEAT</a>
+          <span class="res-source">— L2BEAT</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Independent analytics on every L2, and far more useful than the TVL numbers: the <a href="https://l2beat.com/scaling/risk" target="_blank" rel="noopener">risk framework</a> grades each one on proof systems, sequencer failure and upgrade keys. The reality check on marketing claims.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://growthepie.com/" target="_blank" rel="noopener">growthepie</a>
+          <span class="res-source">— growthepie</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Open dashboards on L2 usage, fees and blob consumption over time. The quickest way to see what actually happened to costs after EIP-4844.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.arbitrum.io/" target="_blank" rel="noopener">Arbitrum Documentation</a>
+          <span class="res-source">— Offchain Labs</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The most thoroughly documented optimistic rollup — read the Nitro sections on interactive fraud proofs and the WASM-based dispute game.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.optimism.io/" target="_blank" rel="noopener">Optimism Documentation</a>
+          <span class="res-source">— Optimism</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The OP Stack, documented as a reusable rollup framework rather than one chain. The clearest picture of what building an L2 from parts now involves.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.zksync.io/" target="_blank" rel="noopener">zkSync Documentation</a>
+          <span class="res-source">— Matter Labs</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A production ZK rollup with an EVM-compatible zkVM — useful for seeing where validity proofs force the execution environment to differ from mainnet.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.starknet.io/" target="_blank" rel="noopener">Starknet Documentation</a>
+          <span class="res-source">— StarkWare</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The other end of the design space: a purpose-built language and STARK prover instead of EVM compatibility. The contrast with zkSync is the lesson.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.celestia.org/" target="_blank" rel="noopener">Celestia Documentation</a>
+          <span class="res-source">— Celestia</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Data availability as a standalone layer, with sampling implemented in production. The reference for what "modular blockchain" means concretely.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2019/12/26/mvb.html" target="_blank" rel="noopener">Base Layers and Functionality Escape Velocity</a>
+          <span class="res-source">— Vitalik Buterin (2019)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">How little a base layer needs to do before everything else can be built on top of it. The design philosophy behind pushing functionality upward.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethresear.ch/" target="_blank" rel="noopener">Ethereum Research</a>
+          <span class="res-source">— Ethereum Foundation</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Where sequencer decentralisation, based rollups and DA sampling get argued out before they become documentation. Follow it to see the next section of this page being written.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="zero-knowledge-proofs.html">Zero-Knowledge Proofs</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The cryptography inside the validity proofs above — what a ZK rollup is actually posting, and why it can be checked in milliseconds.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="ethereum-and-smart-contracts.html">Ethereum and Smart Contracts</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The execution environment being scaled, and the settlement layer every rollup here posts back to.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="blockchain-and-cryptocurrency.html">Blockchain and Cryptocurrency</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Why the base layer is throughput-limited in the first place — consensus, block propagation and the cost of verification.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="decentralized-finance.html">Decentralized Finance (DeFi)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">What runs on these chains, and how a centralised sequencer changes the MEV and liquidation picture compared with mainnet.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="nfts-and-digital-ownership.html">NFTs and Digital Ownership</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">One of the clearest beneficiaries of cheap blockspace — minting and trading that were never viable at mainnet gas prices.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zero-Knowledge Proofs — Topic References</title>
+  <meta name="description" content="Proving a statement is true while revealing nothing else — SNARKs, STARKs, circuits and zkVMs — plus curated books, papers, articles, videos, courses and proving tools." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Zero-Knowledge Proofs</h1>
+      <p class="last-updated">Last updated: 2026-08-01</p>
+    </div>
+
+    <section class="description">
+      <p>
+        A <strong>zero-knowledge proof</strong> lets one party convince another that a statement is
+        true while revealing nothing beyond its truth — not the password, not the inputs, not the
+        witness. The idea is from 1985 and sat mostly in theory for thirty years. What changed is
+        <em>succinctness</em>: modern constructions (<em>SNARKs</em> and <em>STARKs</em>) produce
+        proofs of a few hundred bytes that verify in milliseconds no matter how large the computation
+        being proved was.
+      </p>
+      <p>
+        That property turns out to be more useful for <em>scaling</em> than for privacy. If a proof
+        that a million transactions executed correctly is cheaper to check than the transactions are
+        to re-run, a blockchain can verify work it never did — which is exactly what a ZK rollup is.
+        The same machinery underpins private payments, anonymous credentials and proof of solvency.
+        This page follows that arc: intuition first, then the constructions, then writing circuits
+        yourself.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> comfort with modular arithmetic and polynomials is enough
+        for the explainers; the papers assume finite fields, elliptic curves and pairings. You can get
+        a long way on intuition before you need any of it.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://leastauthority.com/community-matters/moonmath-manual/" target="_blank" rel="noopener">The MoonMath Manual to zk-SNARKs</a>
+          <span class="res-source">— Least Authority</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free, and unusual in actually teaching the prerequisite maths as it goes rather than assuming it. The bridge for developers who bounced off the papers.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://people.cs.georgetown.edu/jthaler/ProofsArgsAndZK.pdf" target="_blank" rel="noopener">Proofs, Arguments, and Zero-Knowledge</a>
+          <span class="res-source">— Justin Thaler (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The standard graduate text, free as a PDF from the author. Builds interactive proofs, sumcheck and modern arguments in the right order — the book to work through if you want to do this properly.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://eprint.iacr.org/2016/260" target="_blank" rel="noopener">On the Size of Pairing-based Non-interactive Arguments</a>
+          <span class="res-source">— Jens Groth, EUROCRYPT (2016)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">"Groth16" — three group elements, constant-size proofs, and still the smallest and fastest-to-verify SNARK in production. The cost is a per-circuit trusted setup.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://eprint.iacr.org/2019/953" target="_blank" rel="noopener">PLONK: Permutations over Lagrange-bases for Oecumenical Noninteractive arguments of Knowledge</a>
+          <span class="res-source">— Gabizon, Williamson &amp; Ciobotaru (2019)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">One universal setup for all circuits instead of one per circuit. That single change is why most modern proving stacks are PLONK-shaped rather than Groth16-shaped.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://eprint.iacr.org/2018/046" target="_blank" rel="noopener">Scalable, transparent, and post-quantum secure computational integrity</a>
+          <span class="res-source">— Ben-Sasson, Bentov, Horesh &amp; Riabzev (2018)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The STARK paper: no trusted setup, hash-based so plausibly post-quantum, at the cost of much larger proofs. The other branch of the family tree.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/zero-knowledge-proofs/" target="_blank" rel="noopener">Zero-Knowledge Proofs</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">What the guarantee is, what the trade-offs between SNARKs and STARKs are, and where they're actually used. The right orientation before anything heavier.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://zkintro.com/" target="_blank" rel="noopener">zkIntro</a>
+          <span class="res-source">— zkintro.com</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A friendly, well-paced introduction aimed at developers, building intuition with worked examples before any algebra shows up.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://electriccoin.co/blog/snark-explain/" target="_blank" rel="noopener">Explaining SNARKs</a>
+          <span class="res-source">— Ariel Gabizon, Electric Coin Company</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A seven-part series from homomorphic hidings through to pairings, by one of PLONK's authors. The clearest incremental path into the real construction.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2016/12/10/qap.html" target="_blank" rel="noopener">Quadratic Arithmetic Programs: from Zero to Hero</a>
+          <span class="res-source">— Vitalik Buterin (2016)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How a program becomes an arithmetic circuit, then R1CS, then a polynomial identity. The single most important step to actually understand, and this is where most people finally get it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2017/01/14/exploring_ecp.html" target="_blank" rel="noopener">Exploring Elliptic Curve Pairings</a>
+          <span class="res-source">— Vitalik Buterin (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The second instalment: what a pairing gives you that plain elliptic-curve arithmetic doesn't, explained without the algebraic geometry.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2017/02/01/zk_snarks.html" target="_blank" rel="noopener">zk-SNARKs: Under the Hood</a>
+          <span class="res-source">— Vitalik Buterin (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The payoff post that assembles the previous two into a working scheme, including what the trusted setup's "toxic waste" actually is and why it matters.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2021/01/26/snarks.html" target="_blank" rel="noopener">An approximate introduction to how zk-SNARKs are possible</a>
+          <span class="res-source">— Vitalik Buterin (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A later, self-contained rewrite that gets to the core idea faster than the 2016–17 series. Read this one first if you only read one.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.rareskills.io/post/groth16" target="_blank" rel="noopener">Groth16 Explained</a>
+          <span class="res-source">— RareSkills</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Walks the whole pipeline — circuit to R1CS to QAP to the final pairing check — with the algebra written out. The best companion to Groth's paper.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://a16zcrypto.com/posts/article/zero-knowledge-canon/" target="_blank" rel="noopener">Zero Knowledge Canon</a>
+          <span class="res-source">— a16z crypto</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A large annotated reading list ordered from intuition to research frontier, with each entry's difficulty flagged. Useful as a map once you know what you're looking for.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=fOGdb1CTu5c" target="_blank" rel="noopener">Computer Scientist Explains One Concept in 5 Levels of Difficulty</a>
+          <span class="res-source">— Amit Sahai, WIRED</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A leading cryptographer explaining zero knowledge to a child, then a teenager, then a grad student, then a peer. The best available intuition pump.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=HUs1bH85X9I" target="_blank" rel="noopener">Zero Knowledge Proofs</a>
+          <span class="res-source">— Computerphile</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The classic interactive protocols — cave, graph colouring — worked through on paper. Ten minutes, and it makes the definition concrete.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://zkhack.dev/whiteboard/" target="_blank" rel="noopener">ZK Whiteboard Sessions</a>
+          <span class="res-source">— ZK Hack / Dan Boneh et al.</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A structured whiteboard series from "what is a SNARK?" through PLONK, lookup arguments and zkVMs, taught by the people who built them. Also on <a href="https://www.youtube.com/playlist?list=PLj80z0cJm8QErn3akRcqvxUsyXWC81OGq" target="_blank" rel="noopener">YouTube</a>.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://zk-learning.org/" target="_blank" rel="noopener">ZKP MOOC</a>
+          <span class="res-source">— Boneh, Thaler, Kothapalli et al., UC Berkeley RDI</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A full free university course with lectures, slides and exercises from the researchers who wrote the field's standard references. The most rigorous free option.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://learn.0xparc.org/" target="_blank" rel="noopener">0xPARC Learning Resources</a>
+          <span class="res-source">— 0xPARC</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Practitioner-oriented material on circuit programming and applications, including the halo2 and Circom course notes. Aimed at building rather than proving theorems.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.circom.io/" target="_blank" rel="noopener">Circom Documentation</a>
+          <span class="res-source">— iden3</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The circuit language most people learn first. Working through the tutorial is where constraints stop being abstract and start being something you get wrong.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://noir-lang.org/docs" target="_blank" rel="noopener">Noir Documentation</a>
+          <span class="res-source">— Aztec</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A Rust-like language that hides the constraint system behind ordinary control flow. The gentler on-ramp if Circom's arithmetisation is too raw.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.zkdocs.com/" target="_blank" rel="noopener">ZKDocs</a>
+          <span class="res-source">— Trail of Bits</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Precise, implementation-focused documentation of the primitives — Fiat-Shamir, sigma protocols, commitments — with the footguns called out. The reference for getting details right.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.risczero.com/" target="_blank" rel="noopener">RISC Zero</a>
+          <span class="res-source">— RISC Zero</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A zkVM that proves ordinary Rust execution, so you can produce proofs without writing a circuit at all. The clearest demonstration of where this technology is heading.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.succinct.xyz/" target="_blank" rel="noopener">SP1 Documentation</a>
+          <span class="res-source">— Succinct</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The other production zkVM, with good writing on proof aggregation and recursion. Worth reading beside RISC Zero for the design contrasts.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="layer-2-and-scaling.html">Layer 2 and Scaling</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The application that funded most of the last decade of work here — ZK rollups, and what a validity proof buys over a fraud proof.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="ethereum-and-smart-contracts.html">Ethereum and Smart Contracts</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Where proofs get verified in practice: the precompiles and verifier contracts that make on-chain checking cheap enough to matter.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="blockchain-and-cryptocurrency.html">Blockchain and Cryptocurrency</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The setting that made this cryptography urgent — public-by-default ledgers where every transaction you make is permanently visible to everyone.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>

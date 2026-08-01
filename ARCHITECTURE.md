@@ -74,10 +74,30 @@ Two properties follow from that and are easy to break:
   `target="_blank" rel="noopener"` — they open in the same tab, which is the one attribute-level
   difference from every other link on the site. They also carry no level pill.
 - Within a family of closely related topics, cross-links are kept **symmetric** — if A links to B,
-  B links back to A. The six AI pages (`artificial-intelligence`, `deep-learning`,
-  `machine-learning`, `transformers`, `large-language-models`, `generative-ai-beyond-llms`) form a
-  complete graph. Unrelated pages stay isolated; symmetry is a rule *inside* a family, not a
+  B links back to A. Unrelated pages stay isolated; symmetry is a rule *inside* a family, not a
   requirement that every page link to every other.
+
+There are currently two families, and they are shaped differently on purpose:
+
+- The six **AI** pages (`artificial-intelligence`, `deep-learning`, `machine-learning`,
+  `transformers`, `large-language-models`, `generative-ai-beyond-llms`) form a **complete graph** —
+  five links each. Every pair really is a next step for the other, so nothing had to be left out.
+- The seven **crypto** pages (`blockchain-and-cryptocurrency`, `ethereum-and-smart-contracts`,
+  `decentralized-finance`, `nfts-and-digital-ownership`, `layer-2-and-scaling`,
+  `zero-knowledge-proofs`, `crypto-economics-and-daos`) are **deliberately not complete** — 17 of
+  the 21 possible pairs. `blockchain-and-cryptocurrency` is the hub and links to all six others;
+  the rest are wired only where one page is genuinely the next step from the other. ZK↔DeFi,
+  ZK↔NFTs, ZK↔DAOs and L2↔DAOs are omitted for that reason.
+
+**Symmetry is not the same as completeness.** A family being cross-linked never means every page in
+it links to every other — forcing the missing edges would put rows on the page that no reader
+actually wants, which is the same failure as padding a resource section. Add an edge only when
+`CLAUDE.md`'s test is met ("actually a next step for each other — a shared field is not enough"),
+then make it reciprocal.
+
+Families are also not sealed off from each other: `decentralized-finance` ↔ `starting-a-new-bank`
+is a single edge between the crypto family and an otherwise isolated page, because each really is
+the next step from the other. `data-structures-and-algorithms` remains fully isolated.
 
 Note that `tests/check_site.py` cannot see these links — its regex only matches `href="topics/…"`
 from `index.html` — so cross-link correctness is checked in the browser pass, not by the validator.

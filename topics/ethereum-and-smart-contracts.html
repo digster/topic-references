@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ethereum and Smart Contracts — Topic References</title>
+  <meta name="description" content="Ethereum as a programmable ledger — the EVM, gas, Solidity and the tooling — plus curated books, specifications, articles, videos, courses and security resources." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Ethereum and Smart Contracts</h1>
+      <p class="last-updated">Last updated: 2026-08-01</p>
+    </div>
+
+    <section class="description">
+      <p>
+        <strong>Ethereum</strong> took Bitcoin's idea of a shared ledger and made it programmable. Every
+        node runs the same virtual machine — the <em>EVM</em> — over the same transactions, so a
+        program deployed to the chain (a <strong>smart contract</strong>) executes identically for
+        everyone and its results are as tamper-resistant as the ledger itself. Users pay for that
+        execution in <em>gas</em>, which is what stops anyone from deploying an infinite loop.
+      </p>
+      <p>
+        This is the layer almost everything else in the ecosystem is built on: DeFi protocols, NFTs,
+        DAOs and rollups are all just contracts. It is also where the risk concentrates — contracts
+        are immutable by default, publicly readable, and hold money, so a single logic bug is a
+        permanent, exploitable, funded bug. Learning to write them and learning to attack them are
+        genuinely the same skill, which is why the security material below is not an afterthought.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> how a blockchain reaches consensus (see the blockchain
+        page below), plus programming experience in any language — Solidity is easy to read and
+        unusually easy to get subtly wrong.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://masteringethereum.xyz/" target="_blank" rel="noopener">Mastering Ethereum</a>
+          <span class="res-source">— Antonopoulos, Wood et al. (2nd edition)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The standard developer's book — accounts, transactions, the EVM, contract patterns and security — readable free online. Source at <a href="https://github.com/ethereumbook/ethereumbook" target="_blank" rel="noopener">ethereumbook/ethereumbook</a>; also sold in print.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/whitepaper/" target="_blank" rel="noopener">Ethereum Whitepaper</a>
+          <span class="res-source">— Vitalik Buterin (2014)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The original pitch for a general-purpose blockchain, written before any of it existed. Still the clearest statement of why programmability was the point.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.github.io/yellowpaper/paper.pdf" target="_blank" rel="noopener">Ethereum Yellow Paper</a>
+          <span class="res-source">— Gavin Wood</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The formal specification of the EVM, in full mathematical notation. Dense and not a tutorial, but it is the authority when the docs are ambiguous.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/developers/docs/" target="_blank" rel="noopener">Ethereum Developer Documentation</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The maintained reference for the whole stack, and the correct default answer to most "how does X work" questions. Start with <a href="https://ethereum.org/en/developers/docs/accounts/" target="_blank" rel="noopener">accounts</a>, <a href="https://ethereum.org/en/developers/docs/gas/" target="_blank" rel="noopener">gas</a> and <a href="https://ethereum.org/en/developers/docs/evm/" target="_blank" rel="noopener">the EVM</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.soliditylang.org/en/latest/" target="_blank" rel="noopener">Solidity Documentation</a>
+          <span class="res-source">— Solidity team</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The language reference. The "Security Considerations" and "Common Patterns" chapters are worth reading start to finish before you deploy anything.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://eips.ethereum.org/EIPS/eip-20" target="_blank" rel="noopener">EIP-20: Token Standard</a>
+          <span class="res-source">— Fabian Vogelsteller &amp; Vitalik Buterin (2015)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Six functions and two events that became the interface every fungible token implements. A short, instructive example of how a standard beats a protocol change.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/developers/docs/smart-contracts/" target="_blank" rel="noopener">Introduction to Smart Contracts</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">What a contract is, what it can and can't do, and the limitations people usually discover the hard way — no randomness, no scheduled execution, no outside data.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://fravoll.github.io/solidity-patterns/" target="_blank" rel="noopener">Solidity Patterns</a>
+          <span class="res-source">— Franz Volland</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A catalogue of the standard idioms — checks-effects-interactions, pull payments, guard checks — each with rationale and sample code. Short and high value per page.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://consensysdiligence.github.io/smart-contract-best-practices/" target="_blank" rel="noopener">Smart Contract Best Practices</a>
+          <span class="res-source">— Consensys Diligence</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The long-running practitioner guide to known attacks and defensive patterns, maintained by a team that audits for a living.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://blog.ethereum.org/2016/06/17/critical-update-re-dao-vulnerability" target="_blank" rel="noopener">CRITICAL UPDATE Re: DAO Vulnerability</a>
+          <span class="res-source">— Vitalik Buterin, Ethereum Foundation (2016)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The live post announcing the reentrancy exploit that drained The DAO and split the chain. The founding document of smart-contract security, written mid-crisis.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://samczsun.com/" target="_blank" rel="noopener">samczsun's blog</a>
+          <span class="res-source">— samczsun</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">First-hand write-ups of real vulnerabilities found and disclosed, with the reasoning shown. The closest thing to watching an expert think about contract security.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2023/06/09/three_transitions.html" target="_blank" rel="noopener">The Three Transitions</a>
+          <span class="res-source">— Vitalik Buterin (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Why L2 scaling, smart-contract wallets and privacy have to happen together, and what breaks if they don't. Useful for seeing where contract development is headed.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=ZE2HxTmxfrI" target="_blank" rel="noopener">Smart contracts — Simply Explained</a>
+          <span class="res-source">— Simply Explained</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Five minutes, no jargon, no token pitch. The right thing to send someone who has heard the phrase and wants to know what it actually means.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=pWGLtjG-F5c" target="_blank" rel="noopener">Code Is Law? Smart Contracts Explained</a>
+          <span class="res-source">— Finematics</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Covers the mechanics and then the uncomfortable part — what "code is law" meant in practice when The DAO was drained and the chain forked anyway.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=ei3tDRMjw6k" target="_blank" rel="noopener">Ethereum in 30 minutes</a>
+          <span class="res-source">— Vitalik Buterin, Devcon SEA (Ethereum Foundation)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The whole system explained by its founder in one sitting — what it is, what it's for, and which parts he thinks are still unsolved.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://cryptozombies.io/" target="_blank" rel="noopener">CryptoZombies</a>
+          <span class="res-source">— Loom Network</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free interactive Solidity lessons framed as building a zombie game. Silly, effective, and the standard first thing people do.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://solidity-by-example.org/" target="_blank" rel="noopener">Solidity by Example</a>
+          <span class="res-source">— solidity-by-example.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Every language feature and common pattern as a minimal annotated contract. The fastest reference when you half-remember the syntax.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://speedrunethereum.com/" target="_blank" rel="noopener">Speed Run Ethereum</a>
+          <span class="res-source">— BuidlGuidl</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A ladder of build-and-deploy challenges — staking app, token, DEX, NFT — using <a href="https://docs.scaffoldeth.io/" target="_blank" rel="noopener">Scaffold-ETH</a>. Learn by shipping rather than reading.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://updraft.cyfrin.io/" target="_blank" rel="noopener">Cyfrin Updraft</a>
+          <span class="res-source">— Cyfrin</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A free, genuinely comprehensive curriculum from Solidity basics through Foundry, advanced patterns and security auditing. The most complete free path available.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.rareskills.io/learn-solidity" target="_blank" rel="noopener">Learn Solidity</a>
+          <span class="res-source">— RareSkills</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">For people who can already write contracts and want gas optimisation, assembly and the EVM-level detail underneath the language.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://book.getfoundry.sh/" target="_blank" rel="noopener">The Foundry Book</a>
+          <span class="res-source">— Foundry</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Documentation for the toolchain most teams now use — Forge for building and testing in Solidity itself, Cast for chain interaction, Anvil for a local node.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://hardhat.org/docs" target="_blank" rel="noopener">Hardhat</a>
+          <span class="res-source">— Nomic Foundation</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The JavaScript/TypeScript development environment, with the richest plugin ecosystem. Still the right choice if your stack is already Node.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.openzeppelin.com/contracts/5.x/" target="_blank" rel="noopener">OpenZeppelin Contracts</a>
+          <span class="res-source">— OpenZeppelin</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The audited standard-library implementations of tokens, access control and upgradeability. Reading them is also one of the better ways to learn idiomatic Solidity.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.evm.codes/" target="_blank" rel="noopener">evm.codes</a>
+          <span class="res-source">— Smlxl</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">An interactive opcode reference with gas costs and a playground that steps through execution. Indispensable once you're reading bytecode or writing assembly.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethernaut.openzeppelin.com/" target="_blank" rel="noopener">Ethernaut</a>
+          <span class="res-source">— OpenZeppelin</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A wargame where each level is a deployed contract you have to break. The standard way to convert "I know the vulnerabilities" into "I can find them".</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.damnvulnerabledefi.xyz/" target="_blank" rel="noopener">Damn Vulnerable DeFi</a>
+          <span class="res-source">— The Red Guild</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The harder sequel: flash loans, oracle manipulation, governance takeovers and vault exploits, all as Foundry challenges. Do Ethernaut first.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://secure-contracts.com/" target="_blank" rel="noopener">Building Secure Contracts</a>
+          <span class="res-source">— Trail of Bits</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Program-analysis-driven security guidance from a serious audit firm — fuzzing with Echidna, symbolic execution, and how to actually run a review.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://swcregistry.io/" target="_blank" rel="noopener">Smart Contract Weakness Classification</a>
+          <span class="res-source">— SWC Registry</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A CWE-style taxonomy of contract vulnerability classes with test cases. Useful as a checklist, though it is no longer actively expanded.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethresear.ch/" target="_blank" rel="noopener">Ethereum Research</a>
+          <span class="res-source">— Ethereum Foundation</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Where protocol changes get argued out in public years before they ship. The forum to follow if you want to see the roadmap being made rather than announced.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="blockchain-and-cryptocurrency.html">Blockchain and Cryptocurrency</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The layer underneath: why the ledger this all runs on is hard to rewrite in the first place, starting from Bitcoin.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="decentralized-finance.html">Decentralized Finance (DeFi)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The biggest thing people build with these contracts — and where the exploits above stop being hypothetical.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="nfts-and-digital-ownership.html">NFTs and Digital Ownership</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Where the token standards go next: ERC-721 and ERC-1155, metadata, royalties and on-chain art.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="layer-2-and-scaling.html">Layer 2 and Scaling</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Where your contracts increasingly get deployed, and why gas costs a fraction of what it does on mainnet.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="crypto-economics-and-daos.html">Crypto Economics and DAOs</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">What happens when the contract owns itself: governance modules, voting, treasuries and the failure modes of on-chain organisations.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="zero-knowledge-proofs.html">Zero-Knowledge Proofs</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The other direction contracts are moving: verifying a proof on-chain instead of re-executing the computation that produced it.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>

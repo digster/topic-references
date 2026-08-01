@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Economics and DAOs — Topic References</title>
+  <meta name="description" content="Token design, mechanism design and on-chain governance — quadratic funding, vote-escrow models and DAOs — plus curated books, papers, articles and tools, including the failure modes." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Crypto Economics and DAOs</h1>
+      <p class="last-updated">Last updated: 2026-08-01</p>
+    </div>
+
+    <section class="description">
+      <p>
+        <strong>Crypto economics</strong> is mechanism design with a compiler. Because a blockchain
+        can hold funds and execute rules automatically, incentive schemes that economists could only
+        write down can now be deployed and tested against people who want the money — mining rewards,
+        staking penalties, fee markets, token emissions. A <strong>DAO</strong> is the same idea
+        applied to the organisation itself: a treasury and a rulebook held in smart contracts, with
+        decisions made by token holders rather than a board.
+      </p>
+      <p>
+        It matters because this is where crypto's claims are ultimately settled. Most protocol
+        failures are not cryptographic — they are incentive failures: governance captured by whoever
+        bought the most tokens, emissions that pay for mercenary liquidity, voters who rationally
+        don't vote. The honest version of this subject includes the results that didn't work, and
+        the resources below are chosen accordingly.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> smart contracts, and enough game theory to be comfortable
+        with incentives, equilibria and collusion. Some background in public-goods economics helps for
+        the quadratic funding material.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://token.kitchen/token-economy" target="_blank" rel="noopener">Token Economy (3rd edition)</a>
+          <span class="res-source">— Shermin Voshmgir (2025)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The broadest survey of token types and their economics — money, NFTs, DeFi, DAOs and purpose-driven tokens — readable free online, print editions paid. Written by an academic, not a promoter.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1809.06421" target="_blank" rel="noopener">A Flexible Design for Funding Public Goods</a>
+          <span class="res-source">— Vitalik Buterin, Zoë Hitzig &amp; E. Glen Weyl (2019)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The quadratic funding paper: match donations by the square of the sum of square roots, so the number of contributors matters more than their wealth. The most genuinely novel mechanism to come out of this space.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/en/dao/" target="_blank" rel="noopener">Decentralized Autonomous Organisations (DAOs)</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The maintained reference: what a DAO is, how membership and voting are typically implemented, and the legal status question that has no clean answer yet.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://blog.ethereum.org/2014/05/06/daos-dacs-das-and-more-an-incomplete-terminology-guide" target="_blank" rel="noopener">DAOs, DACs, DAs and More: An Incomplete Terminology Guide</a>
+          <span class="res-source">— Vitalik Buterin, Ethereum Foundation (2014)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Where the vocabulary was set, two years before anyone built one. Worth reading to see how much of the original definition survived contact with reality.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2022/09/20/daos.html" target="_blank" rel="noopener">DAOs are not corporations</a>
+          <span class="res-source">— Vitalik Buterin (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Argues decentralised governance is the right choice for censorship resistance and *wrong* for efficiency, so the question is which decisions need which. The most useful framing on this page.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2021/08/16/voting3.html" target="_blank" rel="noopener">Moving beyond coin voting governance</a>
+          <span class="res-source">— Vitalik Buterin (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A direct critique of one-token-one-vote by the person most associated with it — vote buying, whale dominance, and why bribery attacks are cheap. Read this before designing any governance.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vitalik.eth.limo/general/2017/12/17/voting.html" target="_blank" rel="noopener">Notes on Blockchain Governance</a>
+          <span class="res-source">— Vitalik Buterin (2017)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">On why on-chain voting is not automatically more legitimate than rough consensus, and what "governance" is even supposed to be deciding.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://a16zcrypto.com/posts/article/dao-canon/" target="_blank" rel="noopener">DAO Canon</a>
+          <span class="res-source">— a16z crypto</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A curated reading list across governance design, legal structure and operations, including the practical entity-wrapper material that is hard to find elsewhere.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.wtfisqf.com/" target="_blank" rel="noopener">WTF is Quadratic Funding?</a>
+          <span class="res-source">— Gitcoin</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">An interactive explainer with sliders — move the contributions and watch the match change. The fastest way to understand the paper above without the algebra.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.radicalxchange.org/" target="_blank" rel="noopener">RadicalxChange</a>
+          <span class="res-source">— RadicalxChange Foundation</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The wider mechanism-design movement quadratic voting and funding came out of — partial common ownership, plural voting, data dignity. The intellectual source, largely outside crypto.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.tally.xyz/" target="_blank" rel="noopener">Tally Documentation</a>
+          <span class="res-source">— Tally</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How on-chain governance is actually wired: Governor contracts, proposal lifecycles, timelocks, quorum and delegation. The concrete counterpart to the essays above.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.curve.finance/" target="_blank" rel="noopener">Curve Documentation</a>
+          <span class="res-source">— Curve</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The vote-escrow model — lock tokens for up to four years to get voting power over emissions — and the whole bribe economy that grew around it. The most-copied and most-studied token design in DeFi.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://gitcoin.co/" target="_blank" rel="noopener">Gitcoin</a>
+          <span class="res-source">— Gitcoin</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Quadratic funding running at scale for years, with published results and documented sybil-resistance problems. The largest live experiment in any mechanism on this page.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://ethresear.ch/" target="_blank" rel="noopener">Ethereum Research</a>
+          <span class="res-source">— Ethereum Foundation</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The economics categories cover fee markets, staking incentives and proposer-builder separation — mechanism design being argued out at protocol scale, in public.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="decentralized-finance.html">Decentralized Finance (DeFi)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Where these token models are deployed and stress-tested: the protocols whose emissions, treasuries and governance votes are the subject matter above.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="ethereum-and-smart-contracts.html">Ethereum and Smart Contracts</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The code a DAO actually is — Governor contracts, timelocks and treasuries — and the security review any of it needs before it holds funds.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="blockchain-and-cryptocurrency.html">Blockchain and Cryptocurrency</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The original crypto-economic mechanism: block rewards and difficulty adjustment, which are the reason any of this is more than a thought experiment.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="nfts-and-digital-ownership.html">NFTs and Digital Ownership</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Non-fungible tokens as membership and credentials — token-gated governance, soulbound identity, and the royalty enforcement problem.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>
