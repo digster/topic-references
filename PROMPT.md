@@ -357,3 +357,42 @@ guessed arXiv ID that turned out to be a paper on epidemic forecasting, another 
 fractional harmonic functions, and several plausible-looking YouTube IDs that did not
 exist. `ARCHITECTURE.md` updated for the second family; `README.md` left alone, as in
 previous topic-add sessions, since it enumerates neither topics nor a count.
+
+---
+
+## 2026-09-14 — Add topic: Structuralism and Post-Structuralism
+
+> add a new topic for structuralism and post-structuralism
+
+One page, not two. The prompt says "a new topic" (singular), and the two movements are
+defined against each other — post-structuralism is what you get when structuralism's own
+premise is applied to structuralism — so splitting them would have forced both pages to
+re-explain the other. The page is ordered as one argument: Saussure's sign, the method
+exported to myth and advertising, then Derrida's 1966 lecture as the hinge, then Foucault
+on discourse and power.
+
+This is the site's **first humanities topic**, and the useful finding is that the template
+needed no changes at all — the same seven-section taxonomy, level pills and one-line notes
+carry a philosophy page as well as a technical one. What *did* change is the link-rot
+profile. Technical pages lean on arXiv, GitHub and author sites; here the good free primary
+texts live on the Marxists Internet Archive, the Internet Archive, and university library
+repositories, while the definitive books are all paid and behind publisher sites that block
+scripted requests. Six publisher pages had to be verified in a real browser because curl and
+`WebFetch` both get a Cloudflare interstitial or a silent 202.
+
+Two links were dropped rather than shipped on a guess, and both are worth recording. The
+JSTOR stable ID recalled for Lévi-Strauss's "The Structural Study of Myth" resolves to
+*Traditional Ballads from Utah* — a live 200 for an unrelated 1951 article — so the essay is
+not on the page at all. And two canonical essay PDFs on a university faculty page turned out,
+once the first page was rendered and read, to be scans of whole in-copyright books rather
+than standalone essays; both were dropped in favour of publisher pages plus legitimate free
+excerpts.
+
+Outcome: one new page with **41 resources across six sections** (no Tools & Interactive
+section — nothing interactive exists for this topic that isn't padding), one card added in
+alphabetical order between *Starting a New Bank* and *Transformers*, taking the site 15 → 16
+topics. No cross-links: there is a tempting Saussure → distributional-semantics → word
+embeddings line to the AI family, but a reader studying structuralism is not thereby ready
+for `large-language-models`, and `CLAUDE.md`'s test is "a next step for each other", not a
+shared idea. `ARCHITECTURE.md` updated to record the first humanities page and why it is
+isolated; `README.md` left alone, as in previous topic-add sessions.

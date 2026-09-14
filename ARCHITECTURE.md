@@ -97,7 +97,16 @@ then make it reciprocal.
 
 Families are also not sealed off from each other: `decentralized-finance` ↔ `starting-a-new-bank`
 is a single edge between the crypto family and an otherwise isolated page, because each really is
-the next step from the other. `data-structures-and-algorithms` remains fully isolated.
+the next step from the other. `data-structures-and-algorithms` and
+`structuralism-and-post-structuralism` remain fully isolated.
+
+`structuralism-and-post-structuralism` is worth calling out because it is the site's first
+**humanities** topic, and it shows the taxonomy is domain-agnostic rather than tech-only: the same
+seven sections, level pills and prose conventions carry a philosophy page without modification.
+It is isolated on purpose. There is a tempting line from Saussure's "language is a system of
+differences" to the distributional semantics behind word embeddings, but a reader studying
+structuralism is not thereby ready for `large-language-models`, and vice versa — an intellectual
+resemblance is not a next step, so no edge was added in either direction.
 
 Note that `tests/check_site.py` cannot see these links — its regex only matches `href="topics/…"`
 from `index.html` — so cross-link correctness is checked in the browser pass, not by the validator.
