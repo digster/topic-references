@@ -111,6 +111,47 @@ resemblance is not a next step, so no edge was added in either direction.
 Note that `tests/check_site.py` cannot see these links — its regex only matches `href="topics/…"`
 from `index.html` — so cross-link correctness is checked in the browser pass, not by the validator.
 
+### Landing page card order: clusters, not alphabetical
+Cards in `#topic-grid` are ordered so that **related topics sit next to each other**. The grid was
+alphabetical until 2026-09-15; alphabetical order scattered the families (`Deep Learning` sat
+between `Decentralized Finance` and `Ethereum`, and the six AI pages were split across the whole
+grid), which made a browsable index read as an arbitrary list.
+
+The clustering is **read off the cross-link graph above rather than invented** — a page belongs
+beside the pages it links to. Current order:
+
+| # | Cluster | Pages |
+|---|---|---|
+| 1 | AI & machine learning | `artificial-intelligence` → `machine-learning` → `deep-learning` → `transformers` → `large-language-models` → `generative-ai-beyond-llms` |
+| 2 | Crypto & blockchain | `blockchain-and-cryptocurrency` → `ethereum-and-smart-contracts` → `layer-2-and-scaling` → `zero-knowledge-proofs` → `nfts-and-digital-ownership` → `crypto-economics-and-daos` → `decentralized-finance` |
+| 3 | Traditional finance | `starting-a-new-bank` |
+| 4 | Standalone | `data-structures-and-algorithms`, `structuralism-and-post-structuralism` |
+
+Within a cluster the order is a **learning path** — the parent field first, then what builds on it
+— mirroring how resources are ordered inside a topic page. Two adjacencies are load-bearing and
+should survive future edits: `layer-2-and-scaling` next to `zero-knowledge-proofs` (the strongest
+edge in the crypto family), and `decentralized-finance` immediately before `starting-a-new-bank`,
+which puts the site's only cross-family edge side by side on the page.
+
+Three constraints shaped the implementation:
+
+- **Grouping is source order only — there are no per-cluster containers.** The grid is
+  `repeat(auto-fill, minmax(250px, 1fr))` over an 832px content column, so it renders 3 columns on
+  desktop, 2 when narrower and 1 below 540px, with cards flowing in document order. Source
+  adjacency is the only thing that holds a cluster together at every width; cluster boundaries are
+  marked by HTML comments, which create no boxes and so cannot disturb the layout.
+- **No headings inside the grid.** A `<h2>` in `#topic-grid` would become a grid item, and the
+  search filter only toggles `.topic-card` — so filtering would strand headings above hidden
+  cards. Fixing that would mean editing the inline `<script>`, which `CLAUDE.md` forbids. A flat,
+  reordered grid gets the grouping for free and keeps the filter generic.
+- **The filter is order-independent**, indexing cards positionally (`cards[i]` ↔ `haystacks[i]`),
+  so reordering the DOM reorders both together. A side benefit: filtered results now come back in
+  cluster order too — searching `attention` lists Deep Learning, Transformers, LLMs in that order.
+
+The group sizes happen to land well on the grid: at 3 columns the AI cluster fills rows 1–2
+exactly, and at 2 columns **every** cluster boundary falls on a row boundary. That is a bonus, not
+a constraint to preserve — adding a topic will shift it, and linear adjacency is what matters.
+
 ## Data flow
 
 There is none at runtime beyond the search filter:
@@ -122,7 +163,8 @@ There is none at runtime beyond the search filter:
 
 ## Conventions
 - **Slugs** are kebab-case; topic file = `topics/<slug>.html`.
-- **Topic cards** are kept alphabetical in `index.html`.
+- **Topic cards** are **grouped by cluster** in `index.html`, not alphabetical — see
+  *Landing page card order* below.
 - **External links** use `target="_blank" rel="noopener"`.
 - **Internal cross-links** use a bare sibling filename and *no* `target`/`rel` — same tab.
 - **Level pills** use `data-level="beginner|intermediate|advanced"` (drives pill color).

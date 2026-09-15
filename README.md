@@ -36,7 +36,9 @@ resources, writes `topics/<slug>.html` from the template, and links it from `ind
 **Prefer to do it by hand?**
 1. Copy [`templates/topic-template.html`](templates/topic-template.html) to `topics/<slug>.html`.
 2. Fill in the description and resource sections (delete sections you can't fill well).
-3. Add a card for it in `index.html` (keep cards alphabetical).
+3. Add a card for it in `index.html`, inside the cluster it belongs to — cards are grouped so
+   related topics sit together, not sorted alphabetically. Each cluster is marked by an HTML
+   comment in the grid.
 
 ## Local preview
 

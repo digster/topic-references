@@ -396,3 +396,34 @@ embeddings line to the AI family, but a reader studying structuralism is not the
 for `large-language-models`, and `CLAUDE.md`'s test is "a next step for each other", not a
 shared idea. `ARCHITECTURE.md` updated to record the first humanities page and why it is
 isolated; `README.md` left alone, as in previous topic-add sessions.
+
+## 2026-09-15 — Regroup landing page cards by related topic
+
+> Arrange the cards on the homepage so that the related topics are near each other.
+
+No content change — a pure reordering of the 16 cards in `#topic-grid`, which had been
+alphabetical since the site was built. Alphabetical order scattered the families: *Deep
+Learning* sat between *Decentralized Finance* and *Ethereum*, and the six AI pages were
+spread across the whole grid.
+
+The clusters were **derived from the site's own cross-link graph** rather than invented —
+each page was grouped with the pages it already links to. That gave four groups: AI &
+machine learning (6, a complete graph), crypto & blockchain (7, hub-and-spoke), traditional
+finance (*Starting a New Bank*, 1), and standalone topics with no cross-links at all
+(*Data Structures and Algorithms*, *Structuralism and Post-Structuralism*, 2). Within each
+cluster the order is a learning path — parent field first, then what builds on it — the same
+principle already used for resources inside a topic page. Two adjacencies were placed
+deliberately: L2 next to ZK (the strongest edge in the crypto family) and DeFi immediately
+before *Starting a New Bank*, which puts the site's only cross-family edge side by side.
+
+Grouping is source order only. Headings inside `#topic-grid` were rejected: a heading would
+become a grid item, and the filter only toggles `.topic-card`, so filtering would strand
+headings above hidden cards — fixing that would mean editing the inline `<script>`, which
+`CLAUDE.md` forbids. Cluster boundaries are HTML comments instead, which create no boxes.
+The reorder was scripted so every card block moved byte-for-byte; a verifier confirmed the
+16 blocks are an identical set in a new order, with the `<script>` untouched.
+
+Also updated the three places that documented the old rule — `CLAUDE.md`, `ARCHITECTURE.md`
+and `README.md` all said "keep cards alphabetical", which would have had the next topic-add
+session silently re-sort the grid and undo this. `ARCHITECTURE.md` gained a *Landing page
+card order* decision section recording the cluster table and the reasoning.

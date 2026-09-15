@@ -104,16 +104,32 @@ from the *source* page's point of view rather than reusing the same sentence in 
 Only link pages that are actually a next step for each other — a shared field is not enough.
 
 ### 4. Link it from the landing page
-Add **one card** to the `#topic-grid` in `index.html`, kept in **alphabetical order by title**:
+Add **one card** to the `#topic-grid` in `index.html`. Cards are **grouped by cluster, not
+alphabetical** — put the new card in the cluster it belongs to, so related topics sit next to
+each other on the page:
 ```html
 <a class="topic-card" href="topics/<slug>.html" data-tags="lowercase synonyms keywords">
   <h3>Topic Title</h3>
   <p>One-line description.</p>
 </a>
 ```
+- **Clusters** are marked by an HTML comment above each group in `#topic-grid`. Today they are:
+  AI & machine learning → crypto & blockchain → traditional finance → standalone topics.
+  Within a cluster, order by **learning path** (prerequisites first, then what builds on them),
+  the same principle used for resources inside a page.
+- **Which cluster?** Use the page's cross-links as the test — a new page belongs with the pages
+  it links to and that link back to it. A topic with no cross-links goes in the standalone group
+  at the end; a genuinely new area starts a new cluster with its own comment.
+- **Keep the bridge adjacencies.** Where one cluster's page is the next step from another's, put
+  them next to each other (e.g. `decentralized-finance` is immediately followed by
+  `starting-a-new-bank`, the site's one cross-family link).
+- The grid is `repeat(auto-fill, minmax(250px, 1fr))` and flows in source order across 3 / 2 / 1
+  columns, so **source adjacency is the whole mechanism** — there are no per-group containers.
 - `data-tags` feeds the client-side search filter — include lowercase synonyms, acronyms, and
   related terms a user might type (e.g. for transformers: `attention nlp llm gpt bert`).
-- Do **not** touch the `<script>` filter logic; it reads cards generically.
+- Do **not** touch the `<script>` filter logic; it reads cards generically. In particular, do not
+  add group headings *inside* `#topic-grid` — the filter only toggles `.topic-card`, so a heading
+  would be left stranded above hidden cards.
 
 ### 5. Housekeeping (per the user's global conventions)
 - Append the user's prompt to `PROMPT.md`.
