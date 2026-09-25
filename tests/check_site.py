@@ -47,6 +47,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import html as html_lib
+import http.cookiejar
 import json
 import os
 import re
@@ -406,6 +407,10 @@ def classify_http_error(code: int, body: str) -> tuple[str, str]:
     """Map an HTTP error status (plus its body) to a result status."""
     if CHALLENGE_RE.search(body):
         return "SKIP", f"HTTP {code} bot challenge — check in a browser"
+    if 300 <= code < 400:
+        # urllib raises a 3xx when it detects a redirect loop — almost always a
+        # cookie or bot check (e.g. occ.gov), not a dead page.
+        return "SKIP", f"HTTP {code} redirect loop (usually a cookie or bot check) — check in a browser"
     if code in (404, 410):
         return "FAIL", f"HTTP {code}"
     if code in (401, 403, 429, 451):
@@ -424,7 +429,10 @@ def host_resolves(url: str) -> bool:
 def _fetch(url: str, timeout: int = 30) -> tuple[int, str, str, str]:
     """GET a URL (following redirects) → (status, final_url, content_type, body_prefix)."""
     req = urllib.request.Request(url, headers=HEADERS)
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
+    # A fresh cookie jar per request, like a browser, so cookie-set-then-redirect
+    # flows resolve instead of looping; per-call jars keep the threads independent.
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+    with opener.open(req, timeout=timeout) as resp:
         body = resp.read(400_000).decode("utf-8", "replace")
         return resp.status, resp.geturl(), resp.headers.get("Content-Type", ""), body
 

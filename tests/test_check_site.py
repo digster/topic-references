@@ -152,6 +152,8 @@ class OnlineHelpers(unittest.TestCase):
         self.assertEqual(cs.classify_http_error(403, "<title>Just a moment...</title>")[0], "SKIP")
         self.assertEqual(cs.classify_http_error(429, "")[0], "SKIP")
         self.assertEqual(cs.classify_http_error(503, "")[0], "ERROR")
+        # A redirect loop (urllib reports it as the 3xx) is a bot/cookie symptom, not a dead page.
+        self.assertEqual(cs.classify_http_error(302, "")[0], "SKIP")
 
     def test_youtube_and_github_routing(self) -> None:
         self.assertIsNotNone(cs.youtube_oembed_url("https://www.youtube.com/watch?v=bBC-nXj3Ng4"))
