@@ -21,7 +21,7 @@
 
     <div class="topic-header">
       <h1>Decentralized Finance (DeFi)</h1>
-      <p class="last-updated">Last updated: 2026-08-01</p>
+      <p class="last-updated">Last updated: 2026-09-25</p>
     </div>
 
     <section class="description">
@@ -77,6 +77,18 @@
           <p class="resource-note">Concentrated liquidity: letting providers choose a price range, which turns a passive pool into an active position. The maths is heavier and worth the effort.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://app.uniswap.org/whitepaper-v4.pdf" target="_blank" rel="noopener">Uniswap v4 Core</a>
+          <span class="res-source">— Adams et al., Uniswap Labs (2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Hooks — custom code a pool runs at points in its lifecycle — plus a single contract holding every pool. It turned the AMM from one fixed design into a platform; live since January 2025.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2208.06046" target="_blank" rel="noopener">Automated Market Making and Loss-Versus-Rebalancing</a>
+          <span class="res-source">— Milionis, Moallemi, Roughgarden &amp; Zhang (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Prices what liquidity providers really lose: arbitrageurs trading against a pool whose price lags the market. "LVR" is now the standard way to ask whether an AMM's fees actually compensate its LPs.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/2101.08778" target="_blank" rel="noopener">SoK: Decentralized Finance (DeFi)</a>
           <span class="res-source">— Werner, Perez, Gudgeon, Klages-Mundt, Harz &amp; Knottenbelt (2021)</span>
           <span class="level" data-level="advanced">Advanced</span>
@@ -118,6 +130,24 @@
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">A neutral regulator's map of the stack and its risks — leverage, liquidity mismatch, operational fragility. Useful for how supervisors see this, which increasingly shapes what ships.</p>
         </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.nber.org/papers/w31160" target="_blank" rel="noopener">Anatomy of a Run: The Terra Luna Crash</a>
+          <span class="res-source">— Liu, Makarov &amp; Schoar, NBER Working Paper 31160 (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How a $50bn ecosystem built on an algorithmic stablecoin collapsed in three days in May 2022, reconstructed from on-chain data: large holders moved first, public ledgers let everyone watch and sped the run up, and there's little sign of the outside attack many blamed.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.govinfo.gov/app/details/PLAW-119publ27" target="_blank" rel="noopener">Guiding and Establishing National Innovation for U.S. Stablecoins (GENIUS) Act</a>
+          <span class="res-source">— U.S. Congress, Public Law 119-27 (2025)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The US stablecoin law signed in July 2025: payment stablecoins must be backed at least 1:1 by cash-like reserves and issued by licensed issuers, and are defined as neither securities nor commodities. Read it after the Terra paper to see what its reserve rules rule out.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2212.06888" target="_blank" rel="noopener">Fundamentals of Perpetual Futures</a>
+          <span class="res-source">— He, Manela, Ross &amp; von Wachter (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The most-traded crypto derivative: leveraged exposure with no expiry, held near spot by a funding rate. Derives no-arbitrage prices and shows crypto perps stray from them far more than traditional markets do.</p>
+        </li>
       </ul>
     </section>
 
@@ -134,7 +164,7 @@
           <a class="res-title" href="https://finematics.com/impermanent-loss-explained/" target="_blank" rel="noopener">Impermanent Loss Explained</a>
           <span class="res-source">— Finematics</span>
           <span class="level" data-level="beginner">Beginner</span>
-          <p class="resource-note">The most misunderstood concept in DeFi, worked through with numbers: why providing liquidity can lose against simply holding the two tokens.</p>
+          <p class="resource-note">The most misunderstood concept in DeFi, worked through with numbers: why providing liquidity can lose against simply holding the two tokens. Researchers now measure the arbitrage part of that loss as LVR, above.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://blog.uniswap.org/uniswap-v3-math-primer" target="_blank" rel="noopener">Uniswap v3 Math Primer</a>
@@ -188,7 +218,7 @@
           <a class="res-title" href="https://defi-learning.org/" target="_blank" rel="noopener">Decentralized Finance MOOC</a>
           <span class="res-source">— UC Berkeley RDI</span>
           <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">Free lectures from the researchers who wrote much of the literature above — mechanism design, oracles, MEV, security and regulation. The most rigorous course available.</p>
+          <p class="resource-note">Free lectures from the researchers who wrote much of the literature above — mechanism design, oracles, MEV, security and regulation. Still the most rigorous course available, though the recorded edition is from Fall 2022 — check later protocol changes against the docs below.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://www.coursera.org/learn/decentralized-finance-infrastructure-duke" target="_blank" rel="noopener">Decentralized Finance Infrastructure</a>
@@ -221,16 +251,16 @@
           <p class="resource-note">How a large lending market is actually parameterised: interest-rate curves, health factors, liquidation thresholds and flash loans, all documented.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://docs.compound.finance/" target="_blank" rel="noopener">Compound Documentation</a>
+          <a class="res-title" href="https://docs.compound.xyz/" target="_blank" rel="noopener">Compound Documentation</a>
           <span class="res-source">— Compound</span>
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">The other canonical lending design, worth reading beside Aave — the differences in collateral and rate models are where the interesting trade-offs live.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://docs.makerdao.com/" target="_blank" rel="noopener">MakerDAO Documentation</a>
-          <span class="res-source">— MakerDAO</span>
+          <a class="res-title" href="https://developers.skyeco.com/" target="_blank" rel="noopener">Sky Protocol Documentation (formerly MakerDAO)</a>
+          <span class="res-source">— Sky</span>
           <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">The technical documentation for the original crypto-collateralised stablecoin — vaults, the debt auction, the emergency shutdown. Dense but the definitive worked example.</p>
+          <p class="resource-note">The original crypto-collateralised stablecoin, renamed Sky in 2024: DAI now sits beside its successor USDS, and MKR is being upgraded to SKY. Vaults, collateral liquidation and flash minting are all still documented here, with emergency shutdown moved to the archive. Dense, but still the definitive worked example.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://docs.chain.link/" target="_blank" rel="noopener">Chainlink Documentation</a>

@@ -46,6 +46,11 @@ out consistent and trustworthy.
   (e.g. an author's free draft), link that. Where the best resource is simply paid, list it anyway
   and flag the cost in its note — cost is a caveat to disclose, not grounds for exclusion.
 - Aim for a useful spread across levels (Beginner → Advanced) and formats.
+- **A `200` is not verification.** Confirm the live page is the resource you mean (title, author,
+  edition). Recycled URLs, soft redirects to home pages and plausible-but-wrong IDs have all
+  shipped before. Read `LEARNINGS.md` for how to verify through bot walls (oEmbed, `git
+  ls-remote`, Crossref, `WebFetch`) and for the free-copy rule; if nothing verifies a link,
+  leave it out and note it for a browser retry.
 
 ### 3. Write the page from the template
 - Copy `templates/topic-template.html` to `topics/<slug>.html` and fill every `{{PLACEHOLDER}}`.
@@ -153,8 +158,14 @@ each other on the page:
 - Open the new `topics/<slug>.html`: description appears first, sections render, the level pills are
   colored, and the back link returns home. The theme is deliberately **fixed light** — there is no
   dark mode to check (see `ARCHITECTURE.md`), and the site should look identical in either OS mode.
-- Optional structural check: `uv run tests/check_site.py` (verifies every topic page is linked from
-  `index.html` and vice-versa).
+- Structural check: `uv run tests/check_site.py` — index ↔ page linkage, `target`/`rel` on every
+  external link, the cross-link row format, cross-link reciprocity, level pills and dates. Run it
+  after every change; it is fast and offline.
+- Link health: `uv run tests/check_site.py --online` fetches every external URL and reports
+  `FAIL` (dead), `ERROR` (couldn't connect), `WARN` (redirected elsewhere, or the live page title no
+  longer matches the listed resource) and `SKIP` (bot-walled — check those in a browser). A `WARN`
+  is a prompt to look, not proof of a problem; a `200` alone never proves a link is right.
+- If you change the checker, run its self-tests: `uv run tests/test_check_site.py`.
 
 ## File map
 ```
@@ -162,5 +173,7 @@ index.html                 landing page (cards + search filter)
 styles.css                 shared styles for all pages
 topics/<slug>.html         one page per topic
 templates/topic-template.html   skeleton to copy for new topics
-tests/check_site.py        optional dev-only structure check (uv run)
+tests/check_site.py        dev-only structure + link checker (uv run; --online for link health)
+tests/test_check_site.py   self-tests for the checker
+LEARNINGS.md               link-verification pitfalls — read before researching resources
 ```

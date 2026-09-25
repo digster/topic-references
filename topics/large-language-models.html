@@ -21,7 +21,7 @@
 
     <div class="topic-header">
       <h1>Large Language Models</h1>
-      <p class="last-updated">Last updated: 2026-07-30</p>
+      <p class="last-updated">Last updated: 2026-09-25</p>
     </div>
 
     <section class="description">
@@ -90,6 +90,12 @@
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">The book for the layer above the model: evaluation, prompt and context design, RAG, finetuning decisions, latency and cost. Paid.</p>
         </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://rlhfbook.com/" target="_blank" rel="noopener">Reinforcement Learning from Human Feedback</a>
+          <span class="res-source">— Nathan Lambert, Manning (2026)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The book on post-training, by someone who does it for open models at Ai2: instruction tuning, reward models, rejection sampling, policy-gradient RL, direct alignment methods such as DPO, and RL with verifiable rewards. Free online; print edition paid.</p>
+        </li>
       </ul>
     </section>
 
@@ -130,7 +136,13 @@
           <a class="res-title" href="https://arxiv.org/abs/2305.18290" target="_blank" rel="noopener">Direct Preference Optimization: Your Language Model is Secretly a Reward Model</a>
           <span class="res-source">— Rafailov et al., NeurIPS (2023)</span>
           <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">Gets RLHF's result with a plain classification loss and no reward model or RL loop — now the default way most teams do alignment.</p>
+          <p class="resource-note">Gets RLHF's result with a plain classification loss and no reward model or RL loop — now the most common way open models are preference-tuned, though frontier labs still lean on reinforcement learning.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener">Constitutional AI: Harmlessness from AI Feedback</a>
+          <span class="res-source">— Bai et al., Anthropic (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Replaces most human harm labels with a model critiquing and revising its own outputs against a written set of principles — the origin of RLAIF, and the "AI preference signals" half of post-training.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a>
@@ -145,10 +157,22 @@
           <p class="resource-note">The paper that named RAG. Worth reading before you build one, because most production designs quietly diverge from it.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">ReAct: Synergizing Reasoning and Acting in Language Models</a>
+          <span class="res-source">— Yao et al., ICLR (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Interleave reasoning traces with tool calls — think, act, observe, repeat. The loop underneath almost every agent framework, stated in its original form.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener">LoRA: Low-Rank Adaptation of Large Language Models</a>
           <span class="res-source">— Hu et al., Microsoft (2021)</span>
           <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">Freeze the model, train two small matrices per layer. The reason fine-tuning a useful model no longer needs a datacentre.</p>
+          <p class="resource-note">Freeze the model, train two small matrices per layer. The reason fine-tuning a useful model no longer needs a datacentre — and <a href="https://arxiv.org/abs/2305.14314" target="_blank" rel="noopener">QLoRA</a> goes further, fine-tuning a 4-bit quantised model so a 65B model fits on a single GPU.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2309.06180" target="_blank" rel="noopener">Efficient Memory Management for Large Language Model Serving with PagedAttention</a>
+          <span class="res-source">— Kwon et al., SOSP (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Serving is a memory problem: page the KV cache the way an operating system pages memory and throughput rises 2–4× at the same latency. The paper behind vLLM, one of the most widely used open serving engines.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/2407.21783" target="_blank" rel="noopener">The Llama 3 Herd of Models</a>
@@ -222,6 +246,18 @@
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">The corrective to endless prompt-fiddling: without a measurement loop you cannot tell whether a change helped. The single most useful post here if you're shipping.</p>
         </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://applied-llms.org/" target="_blank" rel="noopener">What We've Learned From A Year of Building with LLMs</a>
+          <span class="res-source">— Yan, Bischof, Frye, Husain, Liu &amp; Shankar (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Six practitioners on the tactical, operational and strategic lessons of shipping — evals first, retrieval before fine-tuning, and where the real costs hide. The best long read for anyone building on top of a model.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://genai.owasp.org/llm-top-10/" target="_blank" rel="noopener">OWASP Top 10 for LLM Applications</a>
+          <span class="res-source">— OWASP Gen AI Security Project (2025)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Prompt injection, sensitive-data disclosure, excessive agency, data poisoning — each risk with attack scenarios and mitigations. The checklist for anything that lets a model read untrusted text or call tools; Simon Willison's <a href="https://simonwillison.net/series/prompt-injection/" target="_blank" rel="noopener">prompt injection series</a> is the running commentary.</p>
+        </li>
       </ul>
     </section>
 
@@ -259,7 +295,7 @@
           <p class="resource-note">Tokenization explains a startling share of LLM weirdness — spelling failures, arithmetic errors, non-English cost. Build one and it stops being mysterious.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://www.youtube.com/playlist?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_" target="_blank" rel="noopener">Stanford CS336: Language Modeling from Scratch (2025 lectures)</a>
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV" target="_blank" rel="noopener">Stanford CS336: Language Modeling from Scratch (2026 lectures)</a>
           <span class="res-source">— Tatsunori Hashimoto &amp; Percy Liang, Stanford</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">Full lecture recordings of the build-it-yourself course below, free on YouTube — tokenization through GPU kernels through alignment.</p>
@@ -274,7 +310,7 @@
           <a class="res-title" href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank" rel="noopener">ChatGPT Prompt Engineering for Developers</a>
           <span class="res-source">— Isa Fulford &amp; Andrew Ng, DeepLearning.AI</span>
           <span class="level" data-level="beginner">Beginner</span>
-          <p class="resource-note">Ninety free minutes of notebooks that get you productive with the API immediately. The cheapest useful first step.</p>
+          <p class="resource-note">Ninety free minutes of notebooks. Recorded in 2023 against an older model, so skim the API specifics — the principles (clear instructions, room to reason, iterate) still hold, which makes it the cheapest useful first step.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank" rel="noopener">Prompt Engineering Interactive Tutorial</a>
@@ -301,8 +337,8 @@
           <p class="resource-note">Roadmaps plus runnable Colab notebooks across fundamentals, fine-tuning, quantization and deployment. Free, and kept current.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://stanford-cs336.github.io/spring2025/" target="_blank" rel="noopener">Stanford CS336: Language Modeling from Scratch</a>
-          <span class="res-source">— Tatsunori Hashimoto &amp; Percy Liang, Stanford (Spring 2025)</span>
+          <a class="res-title" href="https://cs336.stanford.edu/" target="_blank" rel="noopener">Stanford CS336: Language Modeling from Scratch</a>
+          <span class="res-source">— Tatsunori Hashimoto &amp; Percy Liang, Stanford (Spring 2026)</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">Five assignments that make you build the whole stack — tokenizer, architecture, GPU optimisation, data pipeline, alignment. Materials free; expect to rent a GPU.</p>
         </li>
@@ -338,9 +374,14 @@
           <p class="resource-note">Talk to any model from the terminal, pipe files in, log every response to SQLite. Ideal for building intuition through sheer volume of prompts.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://lmarena.ai/" target="_blank" rel="noopener">LM Arena</a>
+          <a class="res-title" href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol</a>
+          <span class="res-source">— open standard for connecting models to tools and data</span>
+          <p class="resource-note">The protocol now widely used across assistants, IDEs and agent frameworks to plug in tools, files and APIs. Its docs show concretely what an "agent with tools" exchanges with the outside world.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arena.ai/" target="_blank" rel="noopener">Arena AI (formerly LM Arena)</a>
           <span class="res-source">— blind head-to-head model comparison</span>
-          <p class="resource-note">Vote on anonymised answers from two models, then see the leaderboard. The quickest calibration of which models are genuinely ahead.</p>
+          <p class="resource-note">Vote on anonymised answers from two models, then see the leaderboard. A fast read on which models people prefer — but preference votes reward style and can be gamed, so treat small rank gaps with suspicion; <a href="https://arxiv.org/abs/2504.20879" target="_blank" rel="noopener">The Leaderboard Illusion</a> shows how.</p>
         </li>
       </ul>
     </section>

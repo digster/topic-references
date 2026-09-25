@@ -21,7 +21,7 @@
 
     <div class="topic-header">
       <h1>Transformers</h1>
-      <p class="last-updated">Last updated: 2026-07-30</p>
+      <p class="last-updated">Last updated: 2026-09-25</p>
     </div>
 
     <section class="description">
@@ -81,6 +81,12 @@
       <h2>📄 Papers &amp; Primary References</h2>
       <ul class="resource-list">
         <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1409.0473" target="_blank" rel="noopener">Neural Machine Translation by Jointly Learning to Align and Translate</a>
+          <span class="res-source">— Bahdanau, Cho &amp; Bengio, ICLR (2015)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Where attention came from: a recurrent translator that learns to look back at the relevant source words instead of squeezing a whole sentence into one vector. The problem the Transformer finished solving.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention Is All You Need</a>
           <span class="res-source">— Vaswani et al., NeurIPS (2017)</span>
           <span class="level" data-level="advanced">Advanced</span>
@@ -93,10 +99,22 @@
           <p class="resource-note">The encoder branch of the family, and the paper that established pre-train-then-fine-tune as the default recipe. Still the right model class for embeddings and classification.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">Language Models are Few-Shot Learners (GPT-3)</a>
-          <span class="res-source">— Brown et al., NeurIPS (2020)</span>
+          <a class="res-title" href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf" target="_blank" rel="noopener">Language Models are Unsupervised Multitask Learners (GPT-2)</a>
+          <span class="res-source">— Radford et al., OpenAI (2019)</span>
           <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">Where in-context learning showed up: scale the decoder far enough and the model starts doing tasks from examples in the prompt, with no weight updates.</p>
+          <p class="resource-note">The decoder-only branch every GPT-style model descends from: a stack of masked self-attention trained only to predict the next token. It's the model nanoGPT reproduces and Transformer Explainer runs below, so paper and code line up.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1910.10683" target="_blank" rel="noopener">Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer (T5)</a>
+          <span class="res-source">— Raffel et al., JMLR (2020)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The encoder–decoder branch, plus a systematic ablation of architectures and pretraining objectives — the paper to read for why the three branches exist and when each one wins.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2010.11929" target="_blank" rel="noopener">An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (ViT)</a>
+          <span class="res-source">— Dosovitskiy et al., ICLR (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Cut an image into patches, treat them as tokens, and a plain transformer matches convolutional networks once there's enough data. The paper that carried the architecture beyond text.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/2104.09864" target="_blank" rel="noopener">RoFormer: Enhanced Transformer with Rotary Position Embedding</a>
@@ -105,16 +123,16 @@
           <p class="resource-note">RoPE replaced the original sinusoidal position encoding almost everywhere — read it to understand why modern models extend to long contexts as gracefully as they do.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2101.03961" target="_blank" rel="noopener">Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity</a>
+          <span class="res-source">— Fedus, Zoph &amp; Shazeer, JMLR (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The clearest primary source on mixture-of-experts layers: route each token to one expert feed-forward block, so parameters grow while compute per token doesn't. Pairs with the visual MoE guide below.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/2205.14135" target="_blank" rel="noopener">FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness</a>
           <span class="res-source">— Dao et al., NeurIPS (2022)</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">Same attention, reorganized around GPU memory hierarchy. The clearest example of how hardware-aware engineering, not new math, unlocked long contexts.</p>
-        </li>
-        <li class="resource-item">
-          <a class="res-title" href="https://arxiv.org/abs/2203.15556" target="_blank" rel="noopener">Training Compute-Optimal Large Language Models (Chinchilla)</a>
-          <span class="res-source">— Hoffmann et al., DeepMind (2022)</span>
-          <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">Showed the field had been training models far too large on far too little data. The scaling-law result that still shapes how training budgets get spent.</p>
         </li>
       </ul>
     </section>
@@ -175,12 +193,6 @@
           <span class="res-source">— Andrej Karpathy</span>
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">Two hours from empty file to a working, training GPT. The canonical hands-on video — type along rather than watch.</p>
-        </li>
-        <li class="resource-item">
-          <a class="res-title" href="https://www.youtube.com/watch?v=7xTGNNLPyMI" target="_blank" rel="noopener">Deep Dive into LLMs like ChatGPT</a>
-          <span class="res-source">— Andrej Karpathy</span>
-          <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">The full pipeline around the architecture — tokenization, pretraining, post-training, hallucination, reasoning — in one long, unusually candid lecture.</p>
         </li>
       </ul>
     </section>
@@ -279,6 +291,12 @@
           <p class="resource-note">The most serious challenger to attention's quadratic cost. Worth reading to see which parts of the transformer are essential and which are just convention.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2207.09238" target="_blank" rel="noopener">Formal Algorithms for Transformers</a>
+          <span class="res-source">— Mary Phuong &amp; Marcus Hutter, DeepMind (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Every major transformer variant written out as precise pseudocode in one consistent notation — the reference to check when a blog post and a paper disagree about what a layer actually computes.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="deep-learning.html">Deep Learning</a>
           <span class="res-source">— on this site</span>
           <p class="resource-note">The foundations underneath all of this — backpropagation, residual connections, normalisation and the training mechanics a transformer inherits rather than invents.</p>
@@ -296,7 +314,7 @@
         <li class="resource-item">
           <a class="res-title" href="large-language-models.html">Large Language Models</a>
           <span class="res-source">— on this site</span>
-          <p class="resource-note">What gets built on top: pretraining and post-training, prompting, retrieval, evals and agents.</p>
+          <p class="resource-note">What gets built on top: scaling laws (GPT-3, Chinchilla), pretraining and post-training, prompting, retrieval, evals and agents.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="generative-ai-beyond-llms.html">Generative AI (Beyond LLMs)</a>

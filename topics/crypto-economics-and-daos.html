@@ -21,7 +21,7 @@
 
     <div class="topic-header">
       <h1>Crypto Economics and DAOs</h1>
-      <p class="last-updated">Last updated: 2026-08-01</p>
+      <p class="last-updated">Last updated: 2026-09-25</p>
     </div>
 
     <section class="description">
@@ -56,12 +56,36 @@
           <span class="level" data-level="beginner">Beginner</span>
           <p class="resource-note">The broadest survey of token types and their economics — money, NFTs, DeFi, DAOs and purpose-driven tokens — readable free online, print editions paid. Written by an academic, not a promoter.</p>
         </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://press.princeton.edu/books/hardcover/9780691177502/radical-markets" target="_blank" rel="noopener">Radical Markets: Uprooting Capitalism and Democracy for a Just Society</a>
+          <span class="res-source">— Eric A. Posner &amp; E. Glen Weyl, Princeton University Press (2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The book the quadratic-voting and quadratic-funding ideas on this page came from, arguing for them as fixes for markets and democracy in general, not just for tokens. Paid.</p>
+        </li>
       </ul>
     </section>
 
     <section class="resource-section">
       <h2>📄 Papers &amp; Primary References</h2>
       <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1311.0243" target="_blank" rel="noopener">Majority is not Enough: Bitcoin Mining is Vulnerable</a>
+          <span class="res-source">— Ittay Eyal &amp; Emin Gün Sirer (2013)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Selfish mining: a pool with well under half the hash power can earn more than its fair share by withholding blocks. The classic proof that a protocol's incentives, not just its cryptography, decide whether it is secure.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2012.00854" target="_blank" rel="noopener">Transaction Fee Mechanism Design for the Ethereum Blockchain: An Economic Analysis of EIP-1559</a>
+          <span class="res-source">— Tim Roughgarden (2020)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A game-theoretic audit of the fee market Ethereum adopted in 2021 — a burned base fee that tracks demand, plus tips — including which incentive guarantees it provides and which it can't. Fee markets as mechanism design, done properly.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ethereum.org/developers/docs/consensus-mechanisms/pos/rewards-and-penalties/" target="_blank" rel="noopener">Proof-of-stake rewards and penalties</a>
+          <span class="res-source">— ethereum.org</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How staking incentives actually work on Ethereum: rewards for timely attestations and proposals, the inactivity leak that restores finality, and slashing for provable misbehaviour. The staking half of crypto economics, specified.</p>
+        </li>
         <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/1809.06421" target="_blank" rel="noopener">A Flexible Design for Funding Public Goods</a>
           <span class="res-source">— Vitalik Buterin, Zoë Hitzig &amp; E. Glen Weyl (2019)</span>
@@ -73,6 +97,18 @@
           <span class="res-source">— ethereum.org</span>
           <span class="level" data-level="beginner">Beginner</span>
           <p class="resource-note">The maintained reference: what a DAO is, how membership and voting are typically implemented, and the legal status question that has no clean answer yet.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2302.12125" target="_blank" rel="noopener">The Hidden Shortcomings of (D)AOs — An Empirical Study of On-Chain Governance</a>
+          <span class="res-source">— Feichtinger, Fritsch, Vonlanthen &amp; Wattenhofer (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Data from 21 DAOs: highly concentrated voting power, significant hidden costs of running on-chain governance, and a remarkable amount of pointless proposal activity. The evidence behind "voters who rationally don't vote".</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cftc.gov/PressRoom/PressReleases/8715-23" target="_blank" rel="noopener">CFTC v. Ooki DAO: statement on the court's ruling</a>
+          <span class="res-source">— U.S. Commodity Futures Trading Commission (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The first court to hold that a DAO is a legal "person" that can be sued: a $643,542 penalty, trading bans and an order to take the site down. The clearest answer yet to "who is liable when the code breaks the law?"</p>
         </li>
       </ul>
     </section>
@@ -90,13 +126,19 @@
           <a class="res-title" href="https://vitalik.eth.limo/general/2022/09/20/daos.html" target="_blank" rel="noopener">DAOs are not corporations</a>
           <span class="res-source">— Vitalik Buterin (2022)</span>
           <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">Argues decentralised governance is the right choice for censorship resistance and *wrong* for efficiency, so the question is which decisions need which. The most useful framing on this page.</p>
+          <p class="resource-note">Argues decentralised governance is the right choice for censorship resistance and <em>wrong</em> for efficiency, so the question is which decisions need which. The most useful framing on this page.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://vitalik.eth.limo/general/2021/08/16/voting3.html" target="_blank" rel="noopener">Moving beyond coin voting governance</a>
           <span class="res-source">— Vitalik Buterin (2021)</span>
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">A direct critique of one-token-one-vote by the person most associated with it — vote buying, whale dominance, and why bribery attacks are cheap. Read this before designing any governance.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://rekt.news/beanstalk-rekt/" target="_blank" rel="noopener">Beanstalk — REKT</a>
+          <span class="res-source">— rekt.news (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">An attacker flash-borrowed enough voting power to pass a proposal sending the treasury to themselves, netting about $76m in one transaction. Token voting failing exactly the way the essay above predicts.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://vitalik.eth.limo/general/2017/12/17/voting.html" target="_blank" rel="noopener">Notes on Blockchain Governance</a>
@@ -121,6 +163,18 @@
           <span class="res-source">— RadicalxChange Foundation</span>
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">The wider mechanism-design movement quadratic voting and funding came out of — partial common ownership, plural voting, data dignity. The intellectual source, largely outside crypto.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLEGCF-WLh2RLOHv_xUGLqRts_9JxrckiA" target="_blank" rel="noopener">Foundations of Blockchains</a>
+          <span class="res-source">— Tim Roughgarden, Columbia University</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A full graduate lecture course on how blockchains reach agreement and why the incentives hold — classical consensus, longest-chain consensus, proof-of-work versus proof-of-stake, difficulty adjustment and selfish mining — from a leading mechanism-design theorist. Free.</p>
         </li>
       </ul>
     </section>

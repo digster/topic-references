@@ -56,12 +56,21 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 
 ## Optional: validate the site
 
-A small, dependency-free Python script checks that every topic page is linked from `index.html`
-and vice-versa. It is **dev-only** and not required to view the site:
+A small, dependency-free Python script checks the hand-maintained links. It is **dev-only** and
+not required to view the site:
 
 ```sh
-uv run tests/check_site.py
+uv run tests/check_site.py            # fast, offline structure checks
+uv run tests/check_site.py --online   # also fetch every external link (takes a few minutes)
+uv run tests/test_check_site.py       # self-tests for the checker itself
 ```
+
+The offline run checks that every topic page is linked from `index.html` and vice-versa, that
+external links open in a new tab, that cross-links between topic pages follow the house format
+and link back to each other, and that level pills and dates are valid. `--online` additionally
+reports links that are dead, redirected to another site, or now showing a page whose title no
+longer matches the resource, and lists the hosts that block scripts so you can check them in a
+browser.
 
 ## Deploy to GitHub Pages
 

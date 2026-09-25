@@ -397,6 +397,8 @@ for `large-language-models`, and `CLAUDE.md`'s test is "a next step for each oth
 shared idea. `ARCHITECTURE.md` updated to record the first humanities page and why it is
 isolated; `README.md` left alone, as in previous topic-add sessions.
 
+---
+
 ## 2026-09-15 — Regroup landing page cards by related topic
 
 > Arrange the cards on the homepage so that the related topics are near each other.
@@ -427,3 +429,70 @@ Also updated the three places that documented the old rule — `CLAUDE.md`, `ARC
 and `README.md` all said "keep cards alphabetical", which would have had the next topic-add
 session silently re-sort the grid and undo this. `ARCHITECTURE.md` gained a *Landing page
 card order* decision section recording the cluster table and the reasoning.
+
+---
+
+## 2026-09-25 — Review every topic page (feedback only)
+
+> Give a feedback on all the topics in terms of -
+> - the resources - good, bad, missing
+> - any gaps
+> Do not make any actual changes yet.
+
+> you can update to prompt and memory.
+
+A read-only audit of all 16 pages: 571 resource rows, and a live check of every one of
+the 519 external links. Each link was fetched with redirects followed, and every 200 was
+then compared against the title it is listed under. That comparison caught two links that
+return a healthy 200 but now show something else entirely: the NFT page's Beeple auction
+lot is a 1990 Château Lafite-Rothschild wine lot, and the bank page's *Banking On It* link
+opens a different Penguin book, *Dresden* (both its ISBN and book ID were wrong). A status
+check alone would have passed both. Two ZK links are genuinely dead: Electric Coin Co.'s
+*Explaining SNARKs* 404s, and `docs.circom.io` no longer exists in DNS. Several more have
+moved or been renamed (a retired Coursera specialization, MakerDAO → Sky, LM Arena →
+Arena AI, the Foundry Book, Cyfrin Updraft). The rest of the non-200s were scraper blocks,
+confirmed through YouTube's oEmbed endpoint, `git ls-remote` and DNS-over-HTTPS rather
+than assumed.
+
+Beyond links, the review found stale copy (the AI and Deep Learning descriptions promise
+"four sibling pages" and each links five), 14 shared resources between Transformers and
+LLMs, advanced-heavy level mixes on GenAI, Layer 2 and DeFi, and crypto pages that missed
+2024–26 events (Fusaka/PeerDAS going live, Pectra, the GENIUS Act, MiCA). Crypto
+Economics & DAOs is the weakest page: it promises incentive failures and documents none.
+Every suggested addition was itself checked before being recommended, which corrected
+two misdated books and several guessed publisher URLs.
+
+Outcome: no site changes. The findings, every verified replacement URL, the per-topic
+backlog and the method are recorded in `memory/2026-09-25.md` for the fix pass that
+follows. Also restored the missing `---` separator above the 2026-09-15 entry in this file.
+
+---
+
+## 2026-09-25 — Apply the review's suggestions
+
+> Ok, start working on the suggestions.
+
+Worked through the review in seven commits. First the eight broken or moved links, replaced
+with the URLs verified during the review, and the stale "four sibling pages" copy removed. Then
+the site checker was rebuilt so it could police the rest of the work: it now parses every page,
+enforces the cross-link contract and reciprocity, and has an `--online` mode that compares each
+live page title with the listed resource — the check that would have caught the recycled
+Christie's and Penguin URLs. Its first real run also exposed a bug in itself (a redirect loop on
+occ.gov counted as a dead link), fixed with a test.
+
+The content pass added 89 resources across all 16 pages (571 → 660), every one fetched before it
+shipped. The AI pages gained what their own descriptions promised but didn't deliver (probabilistic
+reasoning, ViT and a primary mixture-of-experts paper, Constitutional AI, the autoregressive image
+family), current course editions, and a Transformers page that no longer repeats the LLM page.
+The crypto pages caught up with 2024–26 — PeerDAS shipping, account abstraction, MiCA, the GENIUS
+Act, the spot-ETF approval — and the DAO page finally documents failures instead of only theory.
+The bank page gained a bank failure (SVB), a BaaS failure (Synapse), the OCC and ECB licensing
+routes and AML; DSA gained interview preparation; structuralism gained "The Structural Study of
+Myth", missing since the page was written, now verified through Crossref.
+
+A real-browser pass over every page at desktop and phone widths found two older bugs: a 58px
+horizontal overflow on phones (fixed with one CSS rule) and Markdown-style `*emphasis*` rendering
+as literal asterisks on three pages. Four resources were left out because no available client
+could verify them; they, the new-topic suggestions and a possible DSA ↔ AI cross-link are
+recorded in `memory/2026-09-25.md` for the user to decide. A new `LEARNINGS.md` collects the
+link-verification lessons so the next session doesn't have to rediscover them.

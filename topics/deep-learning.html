@@ -21,7 +21,7 @@
 
     <div class="topic-header">
       <h1>Deep Learning</h1>
-      <p class="last-updated">Last updated: 2026-07-30</p>
+      <p class="last-updated">Last updated: 2026-09-25</p>
     </div>
 
     <section class="description">
@@ -51,8 +51,9 @@
       <p>
         This page is the end-to-end route: the fundamentals first, then convolutional and
         recurrent networks, then the attention-based architectures that took over from both. Once
-        you reach the far end, the four sibling pages linked at the bottom pick up individual
-        branches in far more depth than a single page can.
+        you reach the far end, the sibling pages linked at the bottom pick up individual branches —
+        transformers, language models, generative models — in far more depth than a single page
+        can.
       </p>
       <div class="prereq">
         <strong>Good to know first:</strong> Python and NumPy, linear algebra up to comfortable
@@ -224,6 +225,12 @@
           <p class="resource-note">"Neural net training fails silently." A six-stage process — inspect the data, get a dumb baseline, overfit deliberately, then regularise — that will save you more time than any architecture choice.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://horace.io/brrr_intro.html" target="_blank" rel="noopener">Making Deep Learning Go Brrrr From First Principles</a>
+          <span class="res-source">— Horace He (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Why your model is slow: every operation is bound by compute, memory bandwidth or overhead, and knowing which tells you what to fix. The clearest mental model of what the GPU is actually doing.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://distill.pub/2020/circuits/zoom-in/" target="_blank" rel="noopener">Zoom In: An Introduction to Circuits</a>
           <span class="res-source">— Olah, Cammarata, Schubert, Goh, Petrov &amp; Carter, Distill (2020)</span>
           <span class="level" data-level="advanced">Advanced</span>
@@ -254,10 +261,10 @@
           <p class="resource-note">MIT's intensive bootcamp, re-recorded every year and posted free — so the material stays current in a way most university lecture series don't. Labs at <a href="https://introtodeeplearning.com/" target="_blank" rel="noopener">introtodeeplearning.com</a>.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv" target="_blank" rel="noopener">CS231n: Convolutional Neural Networks for Visual Recognition (Spring 2017)</a>
-          <span class="res-source">— Fei-Fei Li, Justin Johnson &amp; Serena Yeung, Stanford</span>
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16" target="_blank" rel="noopener">CS231n: Deep Learning for Computer Vision (Spring 2025)</a>
+          <span class="res-source">— Fei-Fei Li, Ehsan Adeli, Justin Johnson &amp; Zane Durante, Stanford</span>
           <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">The complete lecture collection, free. Dated on the newest architectures but unmatched on convolution, backprop through a computational graph, and training mechanics.</p>
+          <p class="resource-note">The complete 2025 lecture series, free. Still unmatched on convolution, backprop through a computational graph and training mechanics — and now carries on through attention, self-supervised learning and generative models. The <a href="https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv" target="_blank" rel="noopener">2017 recording</a> is the classic if you prefer it.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://www.youtube.com/playlist?list=PLoROMvodv4rOABXSygHTsbvUz4G_YQhOb" target="_blank" rel="noopener">Stanford CS230: Deep Learning</a>
@@ -296,7 +303,7 @@
           <p class="resource-note">Free lectures, notes and notebooks from a Turing laureate, with an unusually strong thread on energy-based and self-supervised learning that other courses barely mention.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://pytorch.org/tutorials/beginner/basics/intro.html" target="_blank" rel="noopener">PyTorch: Learn the Basics</a>
+          <a class="res-title" href="https://docs.pytorch.org/tutorials/beginner/basics/intro.html" target="_blank" rel="noopener">PyTorch: Learn the Basics</a>
           <span class="res-source">— official PyTorch tutorials</span>
           <span class="level" data-level="beginner">Beginner</span>
           <p class="resource-note">Tensors, autograd, datasets and a training loop in one sitting. Do this early — nearly every paper implementation and course exercise you meet will be PyTorch.</p>
@@ -358,6 +365,16 @@
           <a class="res-title" href="https://distill.pub/" target="_blank" rel="noopener">Distill</a>
           <span class="res-source">— archive, on hiatus since 2021</span>
           <p class="resource-note">No longer publishing, but the back catalogue of interactive explanations — momentum, feature visualisation, circuits, RNN memory — remains some of the best expository work the field has produced.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://distill.pub/2021/gnn-intro/" target="_blank" rel="noopener">A Gentle Introduction to Graph Neural Networks</a>
+          <span class="res-source">— Sanchez-Lengeling, Reif, Pearce &amp; Wiltschko, Distill (2021)</span>
+          <p class="resource-note">Deep learning on data that is neither a grid nor a sequence — molecules, social networks, road maps — built up interactively from message passing. The branch this page otherwise leaves out.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2304.12210" target="_blank" rel="noopener">A Cookbook of Self-Supervised Learning</a>
+          <span class="res-source">— Balestriero, LeCun et al., Meta AI (2023)</span>
+          <p class="resource-note">How networks learn representations without labels — contrastive, distillation and masked-prediction methods — with the practical tricks that make each one work. The pretraining idea underneath modern foundation models.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="machine-learning.html">Machine Learning</a>

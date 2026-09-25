@@ -21,7 +21,7 @@
 
     <div class="topic-header">
       <h1>Generative AI (Beyond LLMs)</h1>
-      <p class="last-updated">Last updated: 2026-07-30</p>
+      <p class="last-updated">Last updated: 2026-09-25</p>
     </div>
 
     <section class="description">
@@ -35,9 +35,10 @@
         autoregressive models over discrete tokens, and <strong>diffusion</strong> models.
       </p>
       <p>
-        Diffusion is the one that won. It displaced GANs on image quality and stability around 2021
-        and now underpins essentially all of text-to-image, text-to-video and text-to-audio
-        generation, while converging with <em>flow matching</em> into a single framework. That
+        Diffusion won the last round. It displaced GANs on image quality and stability around 2021,
+        underpins most text-to-image, text-to-video and text-to-audio generation, and is converging
+        with <em>flow matching</em> into a single framework — though autoregressive models came back
+        in 2025, when OpenAI's native image generation in GPT-4o turned out to be one. That
         convergence is what makes the topic worth studying as a whole rather than one modality at a
         time: the same denoising objective, guidance trick and sampler design reappear whether the
         output is a photograph, a cello line or a 3D scene.
@@ -108,6 +109,18 @@
           <p class="resource-note">VQ-VAE: compress continuous data into discrete tokens. This is the trick that lets a transformer generate images and audio at all, and it powers modern audio codecs.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2102.12092" target="_blank" rel="noopener">Zero-Shot Text-to-Image Generation (DALL·E)</a>
+          <span class="res-source">— Ramesh et al., OpenAI / ICML (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The autoregressive route to images: turn pictures into discrete tokens, then train one transformer over text and image tokens together. <a href="https://arxiv.org/abs/2404.02905" target="_blank" rel="noopener">VAR</a> (NeurIPS 2024) made the approach competitive again by predicting coarse-to-fine scales instead of one token at a time.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://cdn.openai.com/11998be9-5319-4302-bfbf-1167e093f1fb/Native_Image_Generation_System_Card.pdf" target="_blank" rel="noopener">Addendum to GPT-4o System Card: Native image generation</a>
+          <span class="res-source">— OpenAI (2025)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Thin on architecture but explicit on the fact that matters here: unlike diffusion-based DALL·E 2 and 3, 4o image generation is autoregressive. Mostly a safety document, so also a look at the provenance and misuse controls shipped with it.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/1503.03585" target="_blank" rel="noopener">Deep Unsupervised Learning using Nonequilibrium Thermodynamics</a>
           <span class="res-source">— Sohl-Dickstein et al., ICML (2015)</span>
           <span class="level" data-level="advanced">Advanced</span>
@@ -174,6 +187,12 @@
           <p class="resource-note">Replaces the U-Net with a transformer and shows diffusion obeys familiar scaling laws. The DiT backbone behind Sora and most current video models.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2403.03206" target="_blank" rel="noopener">Scaling Rectified Flow Transformers for High-Resolution Image Synthesis (Stable Diffusion 3)</a>
+          <span class="res-source">— Esser et al., Stability AI / ICML (2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Rectified flow (straight-line flow matching) plus a transformer that keeps separate weights for text and image tokens, in one production model — the convergence described above, backed by a large-scale study of which choices matter.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/2302.05543" target="_blank" rel="noopener">Adding Conditional Control to Text-to-Image Diffusion Models</a>
           <span class="res-source">— Zhang, Rao &amp; Agrawala, ICCV (2023)</span>
           <span class="level" data-level="intermediate">Intermediate</span>
@@ -192,10 +211,22 @@
           <p class="resource-note">MusicGen: one transformer over EnCodec tokens, conditioned on text or a melody. The clearest illustration of why discrete audio tokens matter.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2301.02111" target="_blank" rel="noopener">Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers (VALL-E)</a>
+          <span class="res-source">— Wang et al., Microsoft (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Speech synthesis recast as language modelling over audio-codec tokens: three seconds of someone's voice is enough to continue in it. WaveNet's modern successor — and why voice cloning became a real misuse risk.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/2204.03458" target="_blank" rel="noopener">Video Diffusion Models</a>
           <span class="res-source">— Ho et al., Google / NeurIPS (2022)</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">Extends diffusion to time with a 3D U-Net and factorised space-time attention. The starting point for every text-to-video system that followed.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2410.13720" target="_blank" rel="noopener">Movie Gen: A Cast of Media Foundation Models</a>
+          <span class="res-source">— Polyak et al., Meta (2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A 30B-parameter transformer generating 16-second 1080p video with synchronised audio, with the architecture, training objective, data curation, evaluation and parallelism all written up — far more detail than any closed video model has published.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/2003.08934" target="_blank" rel="noopener">NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis</a>
@@ -280,6 +311,12 @@
           <span class="res-source">— Mike Pound, Computerphile</span>
           <span class="level" data-level="beginner">Beginner</span>
           <p class="resource-note">Seventeen minutes, a whiteboard, and no equations — the clearest short answer to "how does this actually work?"</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=iv-5mZ_9CPY" target="_blank" rel="noopener">But how do AI images and videos actually work?</a>
+          <span class="res-source">— Welch Labs, guest video on 3Blue1Brown (2025)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Diffusion models, CLIP and the maths of turning text into images, animated in 3Blue1Brown's style — the visual intuition the papers above assume, without needing to follow the derivations.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://www.youtube.com/watch?v=Dmm4UG-6jxA" target="_blank" rel="noopener">MIT 6.S191: Deep Generative Modeling</a>
@@ -393,6 +430,16 @@
           <a class="res-title" href="https://arxiv.org/abs/2306.04141" target="_blank" rel="noopener">Art and the science of generative AI: A deeper dive</a>
           <span class="res-source">— Epstein et al. (2023)</span>
           <p class="resource-note">On training-data consent, authorship and what generative imagery does to creative work. Free extended version; the shorter original is paywalled in <em>Science</em>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1706.08500" target="_blank" rel="noopener">GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium</a>
+          <span class="res-source">— Heusel et al., NeurIPS (2017)</span>
+          <p class="resource-note">Best known for introducing the Fréchet Inception Distance — the image-quality number reported by nearly every paper on this page. Read it to know what an FID score does and doesn't measure.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://c2pa.org/" target="_blank" rel="noopener">C2PA — Coalition for Content Provenance and Authenticity</a>
+          <span class="res-source">— open technical standard</span>
+          <p class="resource-note">Signed "content credentials" that record how a piece of media was made and edited — the industry's main answer to telling generated images from captured ones, and what the provenance controls above plug into.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="large-language-models.html">Large Language Models</a>

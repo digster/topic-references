@@ -21,7 +21,7 @@
 
     <div class="topic-header">
       <h1>Artificial Intelligence</h1>
-      <p class="last-updated">Last updated: 2026-07-30</p>
+      <p class="last-updated">Last updated: 2026-09-25</p>
     </div>
 
     <section class="description">
@@ -46,8 +46,7 @@
         Learning is one technique inside that picture rather than the whole of it — a point worth
         keeping in view now that "AI" is often used to mean "a large language model." This page is
         the map and the classical core; the depth on statistical learning, deep networks,
-        transformers, LLMs and image generation lives on the four sibling pages linked at the
-        bottom.
+        transformers, LLMs and image generation lives on the sibling pages linked at the bottom.
       </p>
       <div class="prereq">
         <strong>Good to know first:</strong> comfortable programming in some language (Python for
@@ -80,6 +79,12 @@
           <p class="resource-note">The free alternative to AIMA — full text online, same agent-centred structure, tighter and more current on representation and reasoning. Start here if you'd rather not buy anything.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://bayes.cs.ucla.edu/WHY/" target="_blank" rel="noopener">The Book of Why: The New Science of Cause and Effect</a>
+          <span class="res-source">— Judea Pearl &amp; Dana Mackenzie, Basic Books (2018)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Probabilistic and causal reasoning for a general reader, from the Turing laureate behind Bayesian networks — the part of AI that asks <em>why</em>, not just what comes next. Paid; Pearl's page for the book collects the companion papers free.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="http://www.incompleteideas.net/book/the-book-2nd.html" target="_blank" rel="noopener">Reinforcement Learning: An Introduction (2nd ed.)</a>
           <span class="res-source">— Richard Sutton &amp; Andrew Barto, MIT Press (2018)</span>
           <span class="level" data-level="advanced">Advanced</span>
@@ -108,6 +113,12 @@
           <span class="res-source">— Brian Christian, W. W. Norton (2020)</span>
           <span class="level" data-level="beginner">Beginner</span>
           <p class="resource-note">Reported rather than argued: how bias, reward hacking and specification failures actually showed up in deployed systems. Paid, and the most concrete of the AI-safety books.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.aisafetybook.com/" target="_blank" rel="noopener">Introduction to AI Safety, Ethics, and Society</a>
+          <span class="res-source">— Dan Hendrycks, Taylor &amp; Francis (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The textbook the two books above aren't: risks from misuse to loss of control, plus the ethics and governance around them, laid out as a structured course by the director of the Center for AI Safety. Free to read online; print edition paid.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://github.com/norvig/paip-lisp" target="_blank" rel="noopener">Paradigms of Artificial Intelligence Programming</a>
@@ -149,7 +160,7 @@
           <a class="res-title" href="https://www.nature.com/articles/nature16961" target="_blank" rel="noopener">Mastering the game of Go with deep neural networks and tree search</a>
           <span class="res-source">— Silver et al., DeepMind / Nature (2016)</span>
           <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">AlphaGo — the clearest demonstration that classical search and learned evaluation are complementary, not rivals. Monte Carlo tree search guided by policy and value networks. Paywalled at Nature.</p>
+          <p class="resource-note">AlphaGo — the clearest demonstration that classical search and learned evaluation are complementary, not rivals. Monte Carlo tree search guided by policy and value networks. Paywalled at Nature; its successor <a href="https://arxiv.org/abs/1712.01815" target="_blank" rel="noopener">AlphaZero</a> dropped the human games and learned chess, shogi and Go from self-play alone.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://www.nature.com/articles/s41586-021-03819-2" target="_blank" rel="noopener">Highly accurate protein structure prediction with AlphaFold</a>
@@ -168,6 +179,12 @@
           <span class="res-source">— Melanie Mitchell (2021)</span>
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">Four fallacies behind seventy years of over-confident predictions, including the assumption that narrow progress scales to general intelligence. The best short antidote to hype in either direction.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1911.01547" target="_blank" rel="noopener">On the Measure of Intelligence</a>
+          <span class="res-source">— François Chollet (2019)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Defines intelligence as how efficiently a system acquires new skills, not how many it has, and introduces the ARC benchmark to measure it. The most influential modern attempt to say what "general" should mean.</p>
         </li>
       </ul>
     </section>
@@ -198,6 +215,12 @@
           <span class="res-source">— Stanford Encyclopedia of Philosophy</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">Book-length and rigorous on the questions engineering texts skip: what would count as intelligence, what the Turing test does and doesn't establish, strong versus weak AI.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://plato.stanford.edu/entries/chinese-room/" target="_blank" rel="noopener">The Chinese Room Argument</a>
+          <span class="res-source">— Stanford Encyclopedia of Philosophy</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Searle's 1980 argument that running the right program is not the same as understanding — the standing counterweight to Turing's paper above, with forty years of replies and counter-replies laid out fairly.</p>
         </li>
       </ul>
     </section>
@@ -254,8 +277,8 @@
           <p class="resource-note">Seven weeks of projects — minimax tic-tac-toe, a knowledge-base puzzle solver, PageRank, a Minesweeper agent. Free to take; only the certificate costs money.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://inst.eecs.berkeley.edu/~cs188/sp26/" target="_blank" rel="noopener">CS 188: Introduction to Artificial Intelligence</a>
-          <span class="res-source">— UC Berkeley (Spring 2026)</span>
+          <a class="res-title" href="https://inst.eecs.berkeley.edu/~cs188/fa26/" target="_blank" rel="noopener">CS 188: Introduction to Artificial Intelligence</a>
+          <span class="res-source">— UC Berkeley (Fall 2026)</span>
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">Slides, notes and the famous Pac-Man projects, all public — you implement A*, minimax with alpha-beta, and Q-learning against a real game. The best free hands-on route through AIMA.</p>
         </li>
@@ -266,10 +289,16 @@
           <p class="resource-note">The 2011 Stanford course that started the MOOC era, taught by AIMA's co-author and the leader of Stanford's DARPA Grand Challenge team. Free to audit.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://stanford-cs221.github.io/autumn2025/" target="_blank" rel="noopener">CS221: Artificial Intelligence — Principles and Techniques</a>
-          <span class="res-source">— Stanford University</span>
+          <a class="res-title" href="https://stanford-cs221.github.io/autumn2026/" target="_blank" rel="noopener">CS221: Artificial Intelligence — Principles and Techniques</a>
+          <span class="res-source">— Stanford University (Autumn 2026)</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">Public slides, notes and assignments, organised around the models rather than the applications — search, MDPs, games, CSPs, logic. Heavier on maths than CS 188.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/specializations/probabilistic-graphical-models" target="_blank" rel="noopener">Probabilistic Graphical Models Specialization</a>
+          <span class="res-source">— Daphne Koller, Stanford (Coursera)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Bayesian networks, Markov networks, inference and learning, taught by the co-author of the standard textbook on them — the rigorous version of AIMA's reasoning-under-uncertainty chapters. Free to enrol; graded work and certificates are paid.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://spinningup.openai.com/en/latest/" target="_blank" rel="noopener">Spinning Up in Deep RL</a>
@@ -313,6 +342,16 @@
           <a class="res-title" href="https://ai100.stanford.edu/" target="_blank" rel="noopener">One Hundred Year Study on Artificial Intelligence (AI100)</a>
           <span class="res-source">— Stanford University</span>
           <p class="resource-note">A century-long study issuing a panel report every five years on AI's effects on society. The long view, written by researchers rather than commentators.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://internationalaisafetyreport.org/" target="_blank" rel="noopener">International AI Safety Report 2026</a>
+          <span class="res-source">— chaired by Yoshua Bengio, with 100+ experts and 30+ countries (2026)</span>
+          <p class="resource-note">The scientific consensus review of what general-purpose AI can do and what could go wrong, updated annually. The AI Index's counterpart for risks rather than capabilities.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="http://www.masfoundations.org/" target="_blank" rel="noopener">Multiagent Systems: Algorithmic, Game-Theoretic, and Logical Foundations</a>
+          <span class="res-source">— Yoav Shoham &amp; Kevin Leyton-Brown, Cambridge University Press (2009)</span>
+          <p class="resource-note">What changes when there is more than one agent — game theory, auctions, voting, learning in the presence of others. The part of AI the single-agent textbooks leave out; free as a PDF from the authors.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="machine-learning.html">Machine Learning</a>

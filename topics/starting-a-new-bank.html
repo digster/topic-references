@@ -21,7 +21,7 @@
 
     <div class="topic-header">
       <h1>Starting a New Bank</h1>
-      <p class="last-updated">Last updated: 2026-08-01</p>
+      <p class="last-updated">Last updated: 2026-09-25</p>
     </div>
 
     <section class="description">
@@ -38,7 +38,8 @@
         Underneath, the business is the same in every jurisdiction: gather deposits cheaply, lend or
         invest them profitably (the <em>net interest margin</em>), move money safely, earn fees, and
         stay solvent and trusted while doing it. What changes by country is the licence — the FDIC and
-        OCC in the US, the PRA and FCA in the UK, the RBI in India — and whether a standalone digital
+        OCC in the US, the PRA and FCA in the UK, the ECB in the euro area, the RBI in India — and
+        whether a standalone digital
         bank is a thing the regulator will even license. The resources below lead with the business and
         the plumbing, then point at the specific rulebooks.
       </p>
@@ -53,7 +54,7 @@
       <h2>📚 Books</h2>
       <ul class="resource-list">
         <li class="resource-item">
-          <a class="res-title" href="https://www.penguin.co.uk/books/442174/banking-on-it-by-boden-anne/9780241986011" target="_blank" rel="noopener">Banking On It: How I Disrupted an Industry</a>
+          <a class="res-title" href="https://www.penguin.co.uk/books/319118/banking-on-it-by-boden-anne/9780241453599" target="_blank" rel="noopener">Banking On It: How I Disrupted an Industry</a>
           <span class="res-source">— Anne Boden, Penguin (2020)</span>
           <span class="level" data-level="beginner">Beginner</span>
           <p class="resource-note">The founder of Starling on actually getting a banking licence and building the bank behind it — the closest thing to a first-hand log of the whole process. Paid.</p>
@@ -65,7 +66,7 @@
           <p class="resource-note">The argument that banking is becoming a utility embedded in software rather than a place you visit — the worldview most neobanks are built on. Paid.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://www.anatomyoftheswipe.com/" target="_blank" rel="noopener">The Anatomy of the Swipe: Making Money Move</a>
+          <a class="res-title" href="https://www.academyoftheswipe.com/" target="_blank" rel="noopener">The Anatomy of the Swipe: Making Money Move</a>
           <span class="res-source">— Ahmed Siddiqui (2020)</span>
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">A builder's tour of what happens between tapping a card and money landing — issuers, acquirers, networks, interchange. Essential if you'll issue accounts or cards. Paid.</p>
@@ -101,6 +102,18 @@
           <p class="resource-note">The US equivalent, written for organizers: what a de novo application contains, what examiners look for, and how long each stage takes.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://www.occ.gov/topics/charters-and-licensing/de-novo-chartering/index-de-novo-chartering.html" target="_blank" rel="noopener">De Novo Chartering</a>
+          <span class="res-source">— Office of the Comptroller of the Currency, United States</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The national-bank route: what the OCC's chartering unit evaluates, its 120-day decision target for a complete application, and the <em>Charters</em> booklet of the Licensing Manual that sets out the full process. The counterpart to the FDIC handbook above.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guides_202609.en.pdf" target="_blank" rel="noopener">Guide to licence applications</a>
+          <span class="res-source">— ECB Banking Supervision, euro area (September 2026)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How a new bank is licensed anywhere in the euro area — the ECB grants every licence on a national supervisor's proposal — and what it assesses: capital, programme of operations, business model and the suitability of the people running it.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=37658" target="_blank" rel="noopener">Guidelines for 'on tap' Licensing of Universal Banks in the Private Sector</a>
           <span class="res-source">— Reserve Bank of India (2016)</span>
           <span class="level" data-level="intermediate">Intermediate</span>
@@ -111,6 +124,30 @@
           <span class="res-source">— Federal Reserve, FDIC &amp; OCC (2023)</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">The rules a sponsor bank is judged against when it lets you build on its charter — which is to say, the real constraints behind every BaaS contract you'll sign.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.fdic.gov/news/speeches/2024/notice-proposed-rulemaking-custodial-deposit-accounts-transaction-features-and" target="_blank" rel="noopener">Notice of Proposed Rulemaking on Custodial Deposit Accounts with Transaction Features</a>
+          <span class="res-source">— statement by FDIC Vice Chairman Travis Hill (2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The regulatory response to the Synapse collapse, where fintech customers who believed their money sat in insured bank accounts couldn't get it back: banks would have to keep and reconcile per-customer records for pooled "for benefit of" accounts. Proposed in September 2024 — check whether it has since been finalised.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.fincen.gov/resources/statutes-and-regulations/bank-secrecy-act" target="_blank" rel="noopener">The Bank Secrecy Act</a>
+          <span class="res-source">— FinCEN, U.S. Treasury</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The anti-money-laundering law every US bank — and every fintech riding on a sponsor bank's charter — builds compliance around: records, cash-transaction reports and suspicious-activity reports. Most BaaS enforcement actions trace back to it; examiners work from the FFIEC's BSA/AML manual.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.federalreserve.gov/publications/files/svb-review-20230428.pdf" target="_blank" rel="noopener">Review of the Federal Reserve's Supervision and Regulation of Silicon Valley Bank</a>
+          <span class="res-source">— Michael S. Barr, Federal Reserve Board (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How a $200bn bank failed within days in March 2023: concentrated uninsured deposits, long-dated bonds losing value as rates rose, and supervisors who saw the problems without forcing a fix. The best primary document on how a bank actually fails.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.bis.org/basel_framework/" target="_blank" rel="noopener">The Basel Framework</a>
+          <span class="res-source">— Basel Committee on Banking Supervision, BIS</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The consolidated global rulebook for bank capital and liquidity that national regulators implement — risk-weighted assets, leverage and liquidity ratios. Where the thin-equity argument in <em>The Bankers' New Clothes</em> turns into actual numbers.</p>
         </li>
       </ul>
     </section>
