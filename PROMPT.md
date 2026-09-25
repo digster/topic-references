@@ -465,3 +465,34 @@ two misdated books and several guessed publisher URLs.
 Outcome: no site changes. The findings, every verified replacement URL, the per-topic
 backlog and the method are recorded in `memory/2026-09-25.md` for the fix pass that
 follows. Also restored the missing `---` separator above the 2026-09-15 entry in this file.
+
+---
+
+## 2026-09-25 — Apply the review's suggestions
+
+> Ok, start working on the suggestions.
+
+Worked through the review in seven commits. First the eight broken or moved links, replaced
+with the URLs verified during the review, and the stale "four sibling pages" copy removed. Then
+the site checker was rebuilt so it could police the rest of the work: it now parses every page,
+enforces the cross-link contract and reciprocity, and has an `--online` mode that compares each
+live page title with the listed resource — the check that would have caught the recycled
+Christie's and Penguin URLs. Its first real run also exposed a bug in itself (a redirect loop on
+occ.gov counted as a dead link), fixed with a test.
+
+The content pass added 89 resources across all 16 pages (571 → 660), every one fetched before it
+shipped. The AI pages gained what their own descriptions promised but didn't deliver (probabilistic
+reasoning, ViT and a primary mixture-of-experts paper, Constitutional AI, the autoregressive image
+family), current course editions, and a Transformers page that no longer repeats the LLM page.
+The crypto pages caught up with 2024–26 — PeerDAS shipping, account abstraction, MiCA, the GENIUS
+Act, the spot-ETF approval — and the DAO page finally documents failures instead of only theory.
+The bank page gained a bank failure (SVB), a BaaS failure (Synapse), the OCC and ECB licensing
+routes and AML; DSA gained interview preparation; structuralism gained "The Structural Study of
+Myth", missing since the page was written, now verified through Crossref.
+
+A real-browser pass over every page at desktop and phone widths found two older bugs: a 58px
+horizontal overflow on phones (fixed with one CSS rule) and Markdown-style `*emphasis*` rendering
+as literal asterisks on three pages. Four resources were left out because no available client
+could verify them; they, the new-topic suggestions and a possible DSA ↔ AI cross-link are
+recorded in `memory/2026-09-25.md` for the user to decide. A new `LEARNINGS.md` collects the
+link-verification lessons so the next session doesn't have to rediscover them.

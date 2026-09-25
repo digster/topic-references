@@ -282,6 +282,11 @@ a:hover { text-decoration: underline; }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 8px;
+  /* Long unbroken tokens in a row (repo paths like "owner/Very_Long_Repo_Name")
+     must wrap instead of widening the page on phones. `anywhere` — unlike
+     `break-word` — also shrinks the flex items' min-content width, which is
+     what lets them wrap here. It only breaks inside a word when nothing else fits. */
+  overflow-wrap: anywhere;
 }
 .resource-item .res-title { font-weight: 700; }
 .resource-item .res-source { color: var(--text-muted); }

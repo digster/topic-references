@@ -17,6 +17,7 @@ topic-references/
 │   ├── check_site.py         # dev-only structure + link checker (stdlib, `uv run`; `--online`)
 │   └── test_check_site.py    # self-tests for the checker
 ├── CLAUDE.md                 # the workflow contract for adding topics
+├── LEARNINGS.md              # hard-won pitfalls, mostly about verifying links
 ├── README.md / PROMPT.md / LICENSE
 ├── .nojekyll                 # serve files as-is on GitHub Pages
 └── memory/                   # dated work summaries
