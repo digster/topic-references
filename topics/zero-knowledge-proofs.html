@@ -70,6 +70,12 @@
       <h2>📄 Papers &amp; Primary References</h2>
       <ul class="resource-list">
         <li class="resource-item">
+          <a class="res-title" href="https://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Proof%20Systems/The_Knowledge_Complexity_Of_Interactive_Proof_Systems.pdf" target="_blank" rel="noopener">The Knowledge Complexity of Interactive Proof Systems</a>
+          <span class="res-source">— Goldwasser, Micali &amp; Rackoff (1985; SIAM J. Computing, 1989)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The paper that defined zero knowledge — a proof that conveys nothing beyond the fact that the statement is true — and gave the first examples. A free scan of the journal version on co-author Silvio Micali's site.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://eprint.iacr.org/2016/260" target="_blank" rel="noopener">On the Size of Pairing-based Non-interactive Arguments</a>
           <span class="res-source">— Jens Groth, EUROCRYPT (2016)</span>
           <span class="level" data-level="advanced">Advanced</span>
@@ -86,6 +92,12 @@
           <span class="res-source">— Ben-Sasson, Bentov, Horesh &amp; Riabzev (2018)</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">The STARK paper: no trusted setup, hash-based so plausibly post-quantum, at the cost of much larger proofs. The other branch of the family tree.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://eprint.iacr.org/2014/349" target="_blank" rel="noopener">Zerocash: Decentralized Anonymous Payments from Bitcoin</a>
+          <span class="res-source">— Ben-Sasson et al., IEEE S&amp;P (2014)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The protocol behind Zcash: a SNARK proves each payment valid without revealing sender, receiver or amount. The canonical privacy application, and the first large deployment of the machinery on this page.</p>
         </li>
       </ul>
     </section>
@@ -231,6 +243,18 @@
     <section class="resource-section">
       <h2>🔗 Further Reading / Going Deeper</h2>
       <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://a16zcrypto.com/posts/article/17-misconceptions-about-snarks/" target="_blank" rel="noopener">17 misconceptions about SNARKs (and why they hold us back)</a>
+          <span class="res-source">— Justin Thaler, a16z crypto (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Where the popular picture of SNARKs is wrong or out of date — what is actually zero-knowledge, what is actually expensive, what the security rests on — from the author of the textbook above.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/0xPARC/zk-bug-tracker" target="_blank" rel="noopener">ZK Bug Tracker</a>
+          <span class="res-source">— 0xPARC and contributors</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A community-maintained catalogue of real bugs found in ZK apps, plus the common vulnerability classes — under-constrained circuits above all. Read it before you trust a circuit you wrote.</p>
+        </li>
         <li class="resource-item">
           <a class="res-title" href="layer-2-and-scaling.html">Layer 2 and Scaling</a>
           <span class="res-source">— on this site</span>

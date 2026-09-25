@@ -21,7 +21,7 @@
 
     <div class="topic-header">
       <h1>Blockchain and Cryptocurrency</h1>
-      <p class="last-updated">Last updated: 2026-08-01</p>
+      <p class="last-updated">Last updated: 2026-09-25</p>
     </div>
 
     <section class="description">
@@ -93,6 +93,12 @@
           <p class="resource-note">Nine pages that started all of it. Genuinely readable, and short enough that there's no excuse for taking anyone else's word for what it says.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://lamport.azurewebsites.net/pubs/byz.pdf" target="_blank" rel="noopener">The Byzantine Generals Problem</a>
+          <span class="res-source">— Lamport, Shostak &amp; Pease, ACM TOPLAS (1982)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The problem every blockchain is an answer to: agree on one history when some participants may lie. Bitcoin's novelty was solving it among anonymous strangers — this paper shows why that is hard. Free PDF from Lamport's site.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/" target="_blank" rel="noopener">Proof of Stake — Ethereum developer docs</a>
           <span class="res-source">— ethereum.org</span>
           <span class="level" data-level="intermediate">Intermediate</span>
@@ -105,10 +111,28 @@
           <p class="resource-note">Every known email, forum post and code comment from Bitcoin's pseudonymous author, indexed and dated. Primary source material for the design decisions.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://developer.bitcoin.org/" target="_blank" rel="noopener">Bitcoin Developer Documentation</a>
+          <span class="res-source">— Bitcoin Project</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The protocol reference: transaction format, script, P2P messages, RPC. Largely unmaintained — the site is copyright 2009–2020 and predates Taproot — so cross-check anything recent against Learn Me A Bitcoin and Bitcoin Optech below.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://www.bis.org/publ/arpdf/ar2022e3.htm" target="_blank" rel="noopener">The Future Monetary System</a>
           <span class="res-source">— Bank for International Settlements, Annual Economic Report (2022)</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">The central bankers' technical critique — fragmentation, the scalability trilemma and why they think the structural flaws are inherent rather than fixable. Worth reading precisely because it argues the other side well.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.sec.gov/newsroom/speeches-statements/gensler-statement-spot-bitcoin-011023" target="_blank" rel="noopener">Statement on the Approval of Spot Bitcoin Exchange-Traded Products</a>
+          <span class="res-source">— Gary Gensler, U.S. SEC (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The January 2024 decision that put bitcoin into ordinary brokerage accounts, made after a court overturned the SEC's earlier refusal — with the chair's own caveat that approving the products was not an endorsement of bitcoin.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://eur-lex.europa.eu/eli/reg/2023/1114/oj/eng" target="_blank" rel="noopener">Regulation (EU) 2023/1114 on Markets in Crypto-Assets (MiCA)</a>
+          <span class="res-source">— European Parliament &amp; Council (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The first comprehensive crypto rulebook in a major economy, fully applicable since December 2024: licences for exchanges and custodians, and reserve rules for stablecoin issuers. The primary text — dense, but it is what the industry now builds to.</p>
         </li>
       </ul>
     </section>
@@ -153,7 +177,7 @@
           <p class="resource-note">A running, sourced timeline of hacks, rug pulls and collapses with dollar figures attached. The single most efficient antidote to reading only the optimistic material.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://www.chainalysis.com/blog/2025-crypto-crime-report-introduction/" target="_blank" rel="noopener">Crypto Crime Report</a>
+          <a class="res-title" href="https://www.chainalysis.com/blog/2026-crypto-crime-report-introduction/" target="_blank" rel="noopener">Crypto Crime Report</a>
           <span class="res-source">— Chainalysis (annual)</span>
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">Actual numbers on illicit volume, scams, ransomware and stolen funds, from the firm that does the on-chain forensics. Useful for arguing about crypto crime with data instead of vibes.</p>
@@ -182,6 +206,12 @@
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">The opening lecture of the Princeton course that accompanies the textbook above — hash functions and digital signatures built up properly before any coins appear.</p>
         </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ocw.mit.edu/courses/15-s12-blockchain-and-money-fall-2018/video_galleries/video-lectures/" target="_blank" rel="noopener">Blockchain and Money — video lectures</a>
+          <span class="res-source">— Gary Gensler, MIT OpenCourseWare (Fall 2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A full MIT Sloan course, free, from the future SEC chair: the technology first, then what it means for payments, banking, capital markets and regulation. Predates DeFi and the ETFs, but the framework holds.</p>
+        </li>
       </ul>
     </section>
 
@@ -189,16 +219,16 @@
       <h2>🎓 Courses &amp; Tutorials</h2>
       <ul class="resource-list">
         <li class="resource-item">
+          <a class="res-title" href="https://learnmeabitcoin.com/" target="_blank" rel="noopener">Learn Me A Bitcoin</a>
+          <span class="res-source">— Greg Walker</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Bitcoin explained from first principles, from beginner guides down to byte-by-byte transaction and script detail, with interactive tools alongside. Free, from one programmer who has maintained it since 2015.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://www.coursera.org/learn/cryptocurrency" target="_blank" rel="noopener">Bitcoin and Cryptocurrency Technologies</a>
           <span class="res-source">— Princeton University, Coursera</span>
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">The full course behind the textbook, free to audit. Eleven weeks from cryptographic primitives to mining economics, altcoins and the politics of the thing.</p>
-        </li>
-        <li class="resource-item">
-          <a class="res-title" href="https://developer.bitcoin.org/" target="_blank" rel="noopener">Bitcoin Developer Documentation</a>
-          <span class="res-source">— Bitcoin Project</span>
-          <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">The protocol reference: transaction format, script, P2P messages, RPC. Where to go once you want to build against Bitcoin rather than read about it.</p>
         </li>
       </ul>
     </section>
@@ -213,10 +243,10 @@
           <p class="resource-note">Type into a block, watch the hash go red, then watch every later block break. Five minutes here explains immutability better than any paragraph.</p>
         </li>
         <li class="resource-item">
-          <a class="res-title" href="https://en.bitcoin.it/wiki/Main_Page" target="_blank" rel="noopener">Bitcoin Wiki</a>
-          <span class="res-source">— community-maintained</span>
-          <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">The old community reference for opcodes, protocol details and historical trivia. Uneven and sometimes dated, but it has things documented nowhere else.</p>
+          <a class="res-title" href="https://mempool.space/" target="_blank" rel="noopener">mempool.space</a>
+          <span class="res-source">— open-source Bitcoin explorer</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Watch blocks being mined and transactions queue by fee rate in real time. The fastest way to see the fee market and scarce block space — the constraint the scaling page is about — as live data.</p>
         </li>
       </ul>
     </section>
@@ -229,6 +259,18 @@
           <span class="res-source">— Nakamoto Institute</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">The pre-history: Chaum's digital cash, Szabo's bit gold, Dai's b-money, the cypherpunk mailing lists. Bitcoin makes much more sense once you see what it was assembled from.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://en.bitcoin.it/wiki/Main_Page" target="_blank" rel="noopener">Bitcoin Wiki</a>
+          <span class="res-source">— community-maintained</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The old community reference for opcodes, protocol details and historical trivia. Uneven and sometimes dated, but it has things documented nowhere else.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://bitcoinops.org/" target="_blank" rel="noopener">Bitcoin Optech Newsletter</a>
+          <span class="res-source">— Bitcoin Optech</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A weekly, carefully sourced digest of Bitcoin protocol and wallet development — soft-fork proposals, Lightning, mempool policy. How to follow what changed after the books were printed.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="ethereum-and-smart-contracts.html">Ethereum and Smart Contracts</a>

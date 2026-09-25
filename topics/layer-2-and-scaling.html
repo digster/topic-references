@@ -21,7 +21,7 @@
 
     <div class="topic-header">
       <h1>Layer 2 and Scaling</h1>
-      <p class="last-updated">Last updated: 2026-08-01</p>
+      <p class="last-updated">Last updated: 2026-09-25</p>
     </div>
 
     <section class="description">
@@ -32,12 +32,16 @@
         back to it that anyone can reconstruct and challenge the result. The dominant design is the
         <em>rollup</em>, in two flavours — <em>optimistic</em> rollups assume batches are valid and
         allow a fraud proof during a challenge window, <em>ZK</em> rollups post a validity proof so
-        there is nothing to challenge.
+        there is nothing to challenge. Earlier designs moved activity off-chain too — payment
+        channels such as Bitcoin's Lightning Network, and Plasma — but each fit only narrow use
+        cases; rollups generalised them.
       </p>
       <p>
         This is where Ethereum's roadmap actually went: since 2020 the base layer has been optimised
         to be a settlement and data-availability layer for rollups rather than an execution layer for
-        users, with EIP-4844's blobs cutting L2 costs by orders of magnitude. It matters because it
+        users, with EIP-4844's blobs cutting L2 costs by orders of magnitude in 2024 and PeerDAS
+        (December 2025) raising blob capacity by letting nodes sample data rather than download all
+        of it. It matters because it
         determines where applications get deployed, what a transaction costs, and — through
         sequencers, upgrade keys and escape hatches — how much of the security story is real.
       </p>
@@ -46,6 +50,18 @@
         The ZK rollup material is much easier after a first pass at zero-knowledge proofs, but you can
         treat validity proofs as a black box on a first read.
       </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/lnbook/lnbook" target="_blank" rel="noopener">Mastering the Lightning Network</a>
+          <span class="res-source">— Antonopoulos, Osuntokun &amp; Pickhardt, O'Reilly (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The layer 2 that came before rollups, explained end to end: payment channels, routing, invoices and the failure modes. Free to read on GitHub under CC BY-SA; paid in print.</p>
+        </li>
+      </ul>
     </section>
 
     <section class="resource-section">
@@ -64,6 +80,12 @@
           <p class="resource-note">"Proto-danksharding": a transaction type carrying data that's cheap, verifiable and deliberately deleted after ~18 days. The change that made L2 fees negligible.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://eips.ethereum.org/EIPS/eip-7594" target="_blank" rel="noopener">EIP-7594: PeerDAS — Peer Data Availability Sampling</a>
+          <span class="res-source">— Ryan, Feist, D'Amato, Wang &amp; Stokes (2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Each node custodies and samples only part of every blob's erasure-coded data, so blob capacity can grow without every node downloading everything. Live since the Fusaka upgrade in December 2025 — the first real step of the danksharding plan below.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://ethereum.org/en/developers/docs/scaling/" target="_blank" rel="noopener">Scaling — Ethereum developer docs</a>
           <span class="res-source">— ethereum.org</span>
           <span class="level" data-level="beginner">Beginner</span>
@@ -79,13 +101,31 @@
           <a class="res-title" href="https://ethereum.org/en/roadmap/danksharding/" target="_blank" rel="noopener">Danksharding</a>
           <span class="res-source">— ethereum.org</span>
           <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">Where the blob design is heading — many more blobs per block, secured by data-availability sampling rather than by every node downloading everything.</p>
+          <p class="resource-note">The full plan the blob design is working towards — many more blobs per block, secured by data-availability sampling rather than by every node downloading everything. PeerDAS, above, shipped the sampling; the rest is still roadmap.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://arxiv.org/abs/1908.04756" target="_blank" rel="noopener">A scalable verification solution for blockchains</a>
           <span class="res-source">— Jason Teutsch &amp; Christian Reitwießner (2019)</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">The TrueBit paper, where interactive dispute resolution — bisecting a disagreement down to a single step — was worked out. Every optimistic rollup's fraud proof is a descendant.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://l2beat.com/stages" target="_blank" rel="noopener">The Stages Framework</a>
+          <span class="res-source">— L2BEAT</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Grades each rollup from Stage 0 (controlled by a few entities) to Stage 2 (controlled by code), based on who can override the proof system and how long users get to exit. Grew out of Vitalik Buterin's <a href="https://ethereum-magicians.org/t/proposed-milestones-for-rollups-taking-off-training-wheels/11571" target="_blank" rel="noopener">"training wheels" milestones</a>; the honest answer to "is this L2 actually secured by Ethereum?"</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lightning.network/lightning-network-paper.pdf" target="_blank" rel="noopener">The Bitcoin Lightning Network: Scalable Off-Chain Instant Payments</a>
+          <span class="res-source">— Joseph Poon &amp; Thaddeus Dryja (2016)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The original layer 2: two parties lock funds on-chain and trade signed balance updates off-chain, settling only when they're done. Read it for the channel and penalty mechanics that every later design argues with.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://plasma.io/plasma-deprecated.pdf" target="_blank" rel="noopener">Plasma: Scalable Autonomous Smart Contracts</a>
+          <span class="res-source">— Joseph Poon &amp; Vitalik Buterin (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Child chains that post only commitments to Ethereum, with exits for when the operator misbehaves. It stalled on data availability — the exact problem rollups solve by posting the data — which makes it the best explanation of why rollups look the way they do.</p>
         </li>
       </ul>
     </section>
@@ -151,7 +191,7 @@
           <a class="res-title" href="https://l2beat.com/scaling/summary" target="_blank" rel="noopener">L2BEAT</a>
           <span class="res-source">— L2BEAT</span>
           <span class="level" data-level="intermediate">Intermediate</span>
-          <p class="resource-note">Independent analytics on every L2, and far more useful than the TVL numbers: the <a href="https://l2beat.com/scaling/risk" target="_blank" rel="noopener">risk framework</a> grades each one on proof systems, sequencer failure and upgrade keys. The reality check on marketing claims.</p>
+          <p class="resource-note">Independent analytics on every L2, and far more useful than the TVL numbers: the <a href="https://l2beat.com/scaling/risk" target="_blank" rel="noopener">risk framework</a> grades each one on proof systems, sequencer failure and upgrade keys, and its <a href="https://l2beat.com/bridges/summary" target="_blank" rel="noopener">interoperability section</a> does the same for bridges, historically the costliest place to get this wrong. The reality check on marketing claims.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://growthepie.com/" target="_blank" rel="noopener">growthepie</a>
