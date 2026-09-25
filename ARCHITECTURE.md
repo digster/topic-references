@@ -14,7 +14,8 @@ topic-references/
 ├── templates/
 │   └── topic-template.html   # skeleton copied to create each new topic page
 ├── tests/
-│   └── check_site.py         # dev-only structural validator (stdlib, run via `uv run`)
+│   ├── check_site.py         # dev-only structure + link checker (stdlib, `uv run`; `--online`)
+│   └── test_check_site.py    # self-tests for the checker
 ├── CLAUDE.md                 # the workflow contract for adding topics
 ├── README.md / PROMPT.md / LICENSE
 ├── .nojekyll                 # serve files as-is on GitHub Pages
@@ -108,8 +109,26 @@ differences" to the distributional semantics behind word embeddings, but a reade
 structuralism is not thereby ready for `large-language-models`, and vice versa — an intellectual
 resemblance is not a next step, so no edge was added in either direction.
 
-Note that `tests/check_site.py` cannot see these links — its regex only matches `href="topics/…"`
-from `index.html` — so cross-link correctness is checked in the browser pass, not by the validator.
+`tests/check_site.py` enforces both properties. It parses every topic page, checks each
+cross-link row's four differences from an external row, and derives reciprocity from the actual
+link graph rather than a hardcoded family list — so a new family, or a new bridge like
+DeFi ↔ bank, is checked without editing the validator. It reports the pair count on success
+(33 as of 2026-09-25: 15 AI, 17 crypto, 1 bridge).
+
+### Link health is checked by title, not just by status code
+`tests/check_site.py --online` fetches every external URL, but a `200` is treated as necessary,
+not sufficient. The 2026-09-25 review found two links that returned a healthy `200` while
+showing unrelated content — a Christie's lot URL recycled for a wine lot, and a Penguin URL whose
+ISBN pointed at a different book. The checker therefore compares each live page `<title>` with
+the listed resource title and flags low overlap as `WARN`, alongside cross-site redirects.
+
+It also refuses to call a link dead on weak evidence. Hosts that block scripts are `SKIP`, not
+failures: YouTube is verified through its oEmbed endpoint and GitHub repositories through
+`git ls-remote`, because both reject scripted page loads; Cloudflare-style challenges (and
+`global.oup.com`'s empty `202`) are listed for a browser check. A connection error only becomes
+`FAIL` when the host genuinely no longer resolves in DNS, which is how `docs.circom.io` went.
+Online mode is opt-in because it is slow and needs the network; the offline checks are what
+every change should pass.
 
 ### Landing page card order: clusters, not alphabetical
 Cards in `#topic-grid` are ordered so that **related topics sit next to each other**. The grid was
@@ -174,4 +193,5 @@ There is none at runtime beyond the search filter:
 - New topic → follow `CLAUDE.md` (research & verify links, fill the template, add a card).
 - New resource section type or layout change → update `templates/topic-template.html`,
   `styles.css`, and this file together so they stay in sync.
-- Keep `tests/check_site.py` passing (`uv run tests/check_site.py`).
+- Keep `tests/check_site.py` passing (`uv run tests/check_site.py`); run `--online` when adding or
+  refreshing resources, and `uv run tests/test_check_site.py` after changing the checker itself.
