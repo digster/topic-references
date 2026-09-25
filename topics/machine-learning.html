@@ -82,6 +82,12 @@
           <p class="resource-note">ISL's rigorous older sibling and the field's reference text — same authors, full mathematics. The free PDF is linked from the book's download page.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/" target="_blank" rel="noopener">Pattern Recognition and Machine Learning</a>
+          <span class="res-source">— Christopher M. Bishop, Springer (2006)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The Bayesian counterpart to ESL: every method derived as probabilistic inference, with some of the clearest figures in the field. Free as a PDF from Microsoft Research; its deep-learning successor is on the deep learning page.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/" target="_blank" rel="noopener">Understanding Machine Learning: From Theory to Algorithms</a>
           <span class="res-source">— Shalev-Shwartz &amp; Ben-David, Cambridge University Press (2014)</span>
           <span class="level" data-level="advanced">Advanced</span>
@@ -100,6 +106,12 @@
           <p class="resource-note">Ten pages of the folk wisdom that usually takes years to accumulate — why more data beats a cleverer algorithm, why intuition fails in high dimensions. Read it early, then again later.</p>
         </li>
         <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1811.12808" target="_blank" rel="noopener">Model Evaluation, Model Selection, and Algorithm Selection in Machine Learning</a>
+          <span class="res-source">— Sebastian Raschka (2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Holdout, cross-validation, the bootstrap and the statistical tests for comparing models, with the trap in each spelled out. Everything "evaluate honestly" means, in one free paper.</p>
+        </li>
+        <li class="resource-item">
           <a class="res-title" href="https://www.stat.uchicago.edu/~lekheng/courses/191f09/breiman.pdf" target="_blank" rel="noopener">Statistical Modeling: The Two Cultures</a>
           <span class="res-source">— Leo Breiman, Statistical Science (2001)</span>
           <span class="level" data-level="advanced">Advanced</span>
@@ -115,7 +127,19 @@
           <a class="res-title" href="https://arxiv.org/abs/1603.02754" target="_blank" rel="noopener">XGBoost: A Scalable Tree Boosting System</a>
           <span class="res-source">— Chen &amp; Guestrin, KDD (2016)</span>
           <span class="level" data-level="advanced">Advanced</span>
-          <p class="resource-note">Gradient-boosted trees remain the thing to beat on tabular problems. This is the paper behind the implementation that made them fast enough to win everything.</p>
+          <p class="resource-note">Gradient-boosted trees are still the default to beat on tabular problems. This is the paper behind the implementation that made them fast enough to win everything.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2207.08815" target="_blank" rel="noopener">Why do tree-based models still outperform deep learning on tabular data?</a>
+          <span class="res-source">— Grinsztajn, Oyallon &amp; Varoquaux, NeurIPS Datasets &amp; Benchmarks (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A careful benchmark showing boosted trees beating neural networks on typical tables — and explaining why, through irregular target functions and uninformative features. The evidence behind this page's focus.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.nature.com/articles/s41586-024-08328-6" target="_blank" rel="noopener">Accurate predictions on small data with a tabular foundation model</a>
+          <span class="res-source">— Hollmann et al., Nature (2025)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">TabPFN: a transformer pretrained on millions of synthetic datasets that outperforms tuned boosted trees on small tables in seconds, with no training on your data. The first serious challenge to the result above — read them together. Open access.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html" target="_blank" rel="noopener">Hidden Technical Debt in Machine Learning Systems</a>
@@ -152,6 +176,12 @@
           <span class="res-source">— scikit-learn documentation</span>
           <span class="level" data-level="intermediate">Intermediate</span>
           <p class="resource-note">Data leakage, preprocessing outside the cross-validation loop, misused random state — the specific mistakes that silently inflate your scores, with code showing right and wrong.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://distill.pub/2016/misread-tsne/" target="_blank" rel="noopener">How to Use t-SNE Effectively</a>
+          <span class="res-source">— Wattenberg, Viégas &amp; Johnson, Distill (2016)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Interactive demonstrations of how perplexity and step count reshape a t-SNE plot, and why cluster sizes and gaps in one mean less than they appear. The best short lesson in the traps of unsupervised learning.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="https://docs.cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning" target="_blank" rel="noopener">MLOps: Continuous delivery and automation pipelines in machine learning</a>
@@ -276,6 +306,18 @@
           <span class="res-source">— Kevin P. Murphy, MIT Press (2022)</span>
           <span class="level" data-level="advanced">Advanced</span>
           <p class="resource-note">The modern encyclopedic treatment, unified under a probabilistic view. Free draft PDF, with a second volume on advanced topics. Where to go when you want everything.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://fairmlbook.org/" target="_blank" rel="noopener">Fairness and Machine Learning: Limitations and Opportunities</a>
+          <span class="res-source">— Barocas, Hardt &amp; Narayanan, MIT Press (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">What "fair" can mean formally, why the definitions conflict, and where the data itself encodes the bias. The standard text on the subject, free online.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://otexts.com/fpp3/intro.html" target="_blank" rel="noopener">Forecasting: Principles and Practice (3rd ed.)</a>
+          <span class="res-source">— Rob J Hyndman &amp; George Athanasopoulos, OTexts (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Time series, which the rest of this page skips: decomposition, exponential smoothing, ARIMA and honest forecast evaluation. Free online, with R code throughout.</p>
         </li>
         <li class="resource-item">
           <a class="res-title" href="deep-learning.html">Deep Learning</a>
