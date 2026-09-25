@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genetic Algorithms and Genetic Programming — Topic References</title>
+  <meta name="description" content="Evolving solutions instead of designing them — how genetic algorithms and genetic programming work, where they beat gradient-based methods, plus curated books, papers, articles, videos, courses and tools." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Genetic Algorithms and Genetic Programming</h1>
+      <p class="last-updated">Last updated: 2026-09-25</p>
+    </div>
+
+    <section class="description">
+      <p>
+        A <strong>genetic algorithm</strong> (GA) solves a problem by breeding answers rather than
+        deriving one. It keeps a <em>population</em> of candidate solutions, scores each with a
+        <strong>fitness function</strong>, and lets the better ones reproduce: pieces of two parents
+        are recombined (<strong>crossover</strong>), small random changes are added
+        (<strong>mutation</strong>), and over many generations the population drifts toward good
+        solutions. John Holland worked the idea out at the University of Michigan in the 1960s and
+        70s. <strong>Genetic programming</strong> (GP), popularised by John Koza in 1992, runs the
+        same loop on computer programs themselves — usually expression trees — so what evolves is a
+        formula or a piece of code rather than a list of numbers.
+      </p>
+      <p>
+        The appeal is how little either one assumes. There is no gradient to compute and no model of
+        the problem to write, only a way to score a candidate, so they work where calculus-based
+        optimisation can't: schedules, engineering designs, game controllers, several conflicting
+        objectives at once. The price is thousands of evaluations and no guarantee of finding the
+        optimum — and the No Free Lunch theorems make precise that no optimiser wins on every problem.
+        The payoffs are real all the same: an evolved antenna flew on NASA's ST5 mission in 2006,
+        GP-based symbolic regression recovers readable equations from data, and since 2023 FunSearch
+        and AlphaEvolve have put a language model in the mutation step to discover new algorithms.
+      </p>
+      <p>
+        This page starts with the classic GA and GP, then follows them into neuroevolution, evolution
+        strategies, open-ended search and LLM-guided program evolution.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> comfortable programming (Python for most tutorials),
+        basic probability (random sampling, distributions), and the idea of an optimisation problem —
+        a score to maximise over a space of candidates. Trees and recursion help for genetic
+        programming. Calculus and neural networks only matter for the evolution-strategies and
+        neuroevolution material.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://mitpress.mit.edu/9780262631853/an-introduction-to-genetic-algorithms/" target="_blank" rel="noopener">An Introduction to Genetic Algorithms</a>
+          <span class="res-source">— Melanie Mitchell, MIT Press (1996)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The classic first book: short, clear, and serious about both sides of the field — GAs as problem solvers and as models of evolution — with thought and computer exercises throughout. Paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://people.cs.gmu.edu/~sean/book/metaheuristics/" target="_blank" rel="noopener">Essentials of Metaheuristics (2nd ed.)</a>
+          <span class="res-source">— Sean Luke, Lulu (2013, online version still updated)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free PDF written for programmers rather than theorists: hill climbing and simulated annealing, then evolution strategies, the GA and tree-based GP, every algorithm as plain pseudocode. The quickest free overview of the whole toolkit.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.packtpub.com/en-us/product/hands-on-genetic-algorithms-with-python-9781805123798" target="_blank" rel="noopener">Hands-On Genetic Algorithms with Python (2nd ed.)</a>
+          <span class="res-source">— Eyal Wirsansky, Packt (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Applied GAs in Python with DEAP: scheduling and routing problems first, then feature selection, hyperparameter tuning, architecture search and reinforcement learning. Paid; all the code is free on <a href="https://github.com/PacktPublishing/Hands-On-Genetic-Algorithms-with-Python-Second-Edition" target="_blank" rel="noopener">GitHub</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://link.springer.com/book/10.1007/978-3-662-44874-8" target="_blank" rel="noopener">Introduction to Evolutionary Computing (2nd ed.)</a>
+          <span class="res-source">— A. E. Eiben &amp; J. E. Smith, Springer (2015)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The standard textbook for the field as a whole: GAs, evolution strategies, evolutionary programming and GP as dialects of one framework, then parameter control, multi-objective search, constraints and theory. Paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="http://www.gp-field-guide.org.uk/" target="_blank" rel="noopener">A Field Guide to Genetic Programming</a>
+          <span class="res-source">— Riccardo Poli, William B. Langdon &amp; Nicholas F. McPhee (2008)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The GP book to read first: tree-based GP from scratch, then linear, graph and grammar-based variants, bloat, and a tour of real applications. Free as a Creative Commons PDF, with a small GP system (TinyGP) in an appendix.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://algorithmsbook.com/optimization/" target="_blank" rel="noopener">Algorithms for Optimization</a>
+          <span class="res-source">— Mykel J. Kochenderfer &amp; Tim A. Wheeler, MIT Press (2019)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Puts GAs where they belong — one chapter of population methods beside gradient descent, direct search and surrogate models — which is what you need to decide whether a GA is the right tool at all. Free PDF with Julia code; a second edition is due in January 2027.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.informit.com/store/genetic-algorithms-in-search-optimization-and-machine-9780201157673" target="_blank" rel="noopener">Genetic Algorithms in Search, Optimization, and Machine Learning</a>
+          <span class="res-source">— David E. Goldberg, Addison-Wesley (1989)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The book that took GAs mainstream, by Holland's student: schema theory, the building-block hypothesis and complete implementations (in Pascal). Dated in places, still the most-cited GA text. Paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://mitpress.mit.edu/9780262111706/genetic-programming/" target="_blank" rel="noopener">Genetic Programming: On the Programming of Computers by Means of Natural Selection</a>
+          <span class="res-source">— John R. Koza, MIT Press (1992)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The founding text of GP: 800-plus pages of programs bred to solve problems from symbolic regression to robot control, with the method laid out in full. Paid, and more reference than read-through.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://mitpress.mit.edu/9780262581110/adaptation-in-natural-and-artificial-systems/" target="_blank" rel="noopener">Adaptation in Natural and Artificial Systems</a>
+          <span class="res-source">— John H. Holland, MIT Press (1992; first published 1975)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Where it began: the GA as a general model of adaptation, and the schema theorem arguing that recombining good building blocks is why it works. Dense and mathematical — read it for the ideas, not the practice. Paid.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://link.springer.com/book/10.1007/978-3-319-15524-1" target="_blank" rel="noopener">Why Greatness Cannot Be Planned: The Myth of the Objective</a>
+          <span class="res-source">— Kenneth O. Stanley &amp; Joel Lehman, Springer (2015)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The lesson of novelty search, written for anyone: ambitious objectives are deceptive, so collecting interesting stepping stones often beats chasing the goal directly. Paid.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.scientificamerican.com/article/genetic-algorithms/" target="_blank" rel="noopener">Genetic Algorithms</a>
+          <span class="res-source">— John H. Holland, Scientific American 267(1) (1992)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The inventor's own popular account of how selection and recombination find solutions nobody designed. Paywalled in the Scientific American archive; Holland's free Scholarpedia article below covers the same ground.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1803.03453" target="_blank" rel="noopener">The Surprising Creativity of Digital Evolution</a>
+          <span class="res-source">— Lehman, Clune, Misevic et al., Artificial Life 26(2) (2020)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Dozens of researchers' stories of evolution exploiting simulator bugs, gaming fitness functions and finding answers nobody expected. The best short read on what these algorithms actually do. Free.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cs.colostate.edu/~genitor/MiscPubs/tutorial.pdf" target="_blank" rel="noopener">A Genetic Algorithm Tutorial</a>
+          <span class="res-source">— Darrell Whitley, Statistics and Computing 4(2) (1994)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The standard tutorial paper: the canonical GA, the schema theorem, exact models and parallel island GAs, precise without being heavy. Free from Whitley's research group at Colorado State.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="http://www.genetic-programming.com/jkpdf/ijcai1989.pdf" target="_blank" rel="noopener">Hierarchical Genetic Algorithms Operating on Populations of Computer Programs</a>
+          <span class="res-source">— John R. Koza, IJCAI (1989)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Koza's first paper on breeding programs as trees of LISP expressions — the method his 1992 book scaled up, building on Nichael Cramer's 1985 tree representation. Free from Koza's site as his manuscript version.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ntrs.nasa.gov/citations/20060024675" target="_blank" rel="noopener">Automated Antenna Design with Evolutionary Algorithms</a>
+          <span class="res-source">— Hornby, Globus, Linden &amp; Lohn, AIAA Space (2006)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How evolution designed the oddly bent wire antenna for NASA's Space Technology 5 spacecraft — the standard example of an evolved design meeting a real engineering specification. Free on NASA's technical reports server.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ieeexplore.ieee.org/document/585893" target="_blank" rel="noopener">No Free Lunch Theorems for Optimization</a>
+          <span class="res-source">— David H. Wolpert &amp; William G. Macready, IEEE Transactions on Evolutionary Computation 1(1) (1997)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Averaged over every possible problem, all optimisers perform equally well. The result that explains why a GA is only as good as its fit to your problem. Paywalled at IEEE.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://ieeexplore.ieee.org/document/996017" target="_blank" rel="noopener">A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II</a>
+          <span class="res-source">— Deb, Pratap, Agarwal &amp; Meyarivan, IEEE Transactions on Evolutionary Computation 6(2) (2002)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The default GA for several objectives at once — fast non-dominated sorting, crowding distance and elitism — and one of the most-cited papers in the field. Paywalled at IEEE; pymoo and DEAP below both implement it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf" target="_blank" rel="noopener">Evolving Neural Networks through Augmenting Topologies</a>
+          <span class="res-source">— Kenneth O. Stanley &amp; Risto Miikkulainen, Evolutionary Computation 10(2) (2002)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">NEAT: evolve a network's structure along with its weights, starting minimal and growing, with speciation to protect new innovations. The founding paper of modern neuroevolution; free from the authors' lab.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.science.org/doi/10.1126/science.1165893" target="_blank" rel="noopener">Distilling Free-Form Natural Laws from Experimental Data</a>
+          <span class="res-source">— Michael Schmidt &amp; Hod Lipson, Science 324 (2009)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Evolutionary symbolic regression recovers Hamiltonians, Lagrangians and conservation laws from motion-tracking data of oscillators and double pendulums, with no physics built in. The landmark for GP as a scientific tool. Paywalled at Science.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://stars.library.ucf.edu/facultybib2010/1530" target="_blank" rel="noopener">Abandoning Objectives: Evolution Through the Search for Novelty Alone</a>
+          <span class="res-source">— Joel Lehman &amp; Kenneth O. Stanley, Evolutionary Computation 19(2) (2011)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Reward only new behaviour, ignore the goal, and search can beat objective-driven evolution on deceptive problems such as maze navigation. The paper behind novelty search and quality diversity; free from UCF's institutional repository.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1712.06567" target="_blank" rel="noopener">Deep Neuroevolution: Genetic Algorithms Are a Competitive Alternative for Training Deep Neural Networks for Reinforcement Learning</a>
+          <span class="res-source">— Such, Madhavan, Conti, Lehman, Stanley &amp; Clune, Uber AI Labs (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">A plain GA with no gradients evolves networks of over four million parameters for Atari and humanoid locomotion, and trains faster than DQN or A3C. Read it with OpenAI's <a href="https://arxiv.org/abs/1703.03864" target="_blank" rel="noopener">evolution strategies paper</a>, which scaled ES to over a thousand workers the same year.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.nature.com/articles/s41586-023-06924-6" target="_blank" rel="noopener">Mathematical discoveries from program search with large language models</a>
+          <span class="res-source">— Romera-Paredes et al., Google DeepMind / Nature (2023)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">FunSearch: a pretrained LLM proposes program edits, an evaluator scores them, and an evolutionary loop keeps the best — finding new cap-set constructions and better bin-packing heuristics. Open access; the <a href="https://github.com/google-deepmind/funsearch" target="_blank" rel="noopener">code and discovered programs</a> are on GitHub.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="http://www.scholarpedia.org/article/Genetic_algorithms" target="_blank" rel="noopener">Genetic algorithms</a>
+          <span class="res-source">— John H. Holland, Scholarpedia (2012)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A short, free overview from the person who invented the method: the basic loop, the building-block intuition behind it, and where it has been used.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://machinelearningmastery.com/simple-genetic-algorithm-from-scratch-in-python/" target="_blank" rel="noopener">Simple Genetic Algorithm From Scratch in Python</a>
+          <span class="res-source">— Jason Brownlee, Machine Learning Mastery (2021)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A complete GA in a page of Python — first on OneMax bit strings, then on a continuous function — so every operator is code you can read and change.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.oreilly.com/radar/neuroevolution-a-different-kind-of-deep-learning/" target="_blank" rel="noopener">Neuroevolution: A different kind of deep learning</a>
+          <span class="res-source">— Kenneth O. Stanley, O'Reilly Radar (2017)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">NEAT's co-author on why you might evolve a network instead of training it, and what evolution offers that gradient descent doesn't: structure search, diversity and open-endedness.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://blog.otoro.net/2017/10/29/visual-evolution-strategies/" target="_blank" rel="noopener">A Visual Guide to Evolution Strategies</a>
+          <span class="res-source">— David Ha (2017)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Animated populations searching toy landscapes: a simple GA, then evolution strategies, CMA-ES and OpenAI's ES. The fastest route to an intuition for population-based search over continuous parameters.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2019-09-05-evolution-strategies/" target="_blank" rel="noopener">Evolution Strategies</a>
+          <span class="res-source">— Lilian Weng, Lil'Log (2019)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The maths behind that intuition — Gaussian ES, CMA-ES and natural evolution strategies — and how each is used in deep reinforcement learning.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://research.google/blog/using-evolutionary-automl-to-discover-neural-network-architectures/" target="_blank" rel="noopener">Using Evolutionary AutoML to Discover Neural Network Architectures</a>
+          <span class="res-source">— Esteban Real, Google Research (2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Evolution searching image-classifier architectures at scale; the <a href="https://arxiv.org/abs/1802.01548" target="_blank" rel="noopener">regularized ("ageing") evolution paper</a> behind it held its own against reinforcement-learning search and produced the state-of-the-art AmoebaNets.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://research.google/blog/automl-zero-evolving-code-that-learns/" target="_blank" rel="noopener">AutoML-Zero: Evolving Code that Learns</a>
+          <span class="res-source">— Esteban Real &amp; Chen Liang, Google Research (2020)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">GP-style search starting from basic maths operations rediscovered linear regression and two-layer networks trained with backpropagation. The <a href="https://arxiv.org/abs/2003.03384" target="_blank" rel="noopener">ICML 2020 paper</a> has the details.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/" target="_blank" rel="noopener">AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms</a>
+          <span class="res-source">— Google DeepMind (2025)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">FunSearch scaled up to whole codebases: it multiplied 4×4 complex matrices with 48 multiplications, beating Strassen's 1969 algorithm, and recovers about 0.7% of Google's compute in data-centre scheduling. <a href="https://arxiv.org/abs/2506.13131" target="_blank" rel="noopener">Technical paper</a>.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://ocw.mit.edu/courses/6-034-artificial-intelligence-fall-2010/resources/lecture-13-learning-genetic-algorithms/" target="_blank" rel="noopener">Lecture 13: Learning: Genetic Algorithms</a>
+          <span class="res-source">— Patrick Winston, MIT 6.034 (Fall 2010)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">One lecture that builds the GA from the ground up and ends on why ranking candidates by diversity as well as fitness keeps a population from stalling. Free on OpenCourseWare.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://archive.org/details/sims_evolved_virtual_creatures_1994" target="_blank" rel="noopener">Evolved Virtual Creatures</a>
+          <span class="res-source">— Karl Sims (1994), SIGGRAPH collection on the Internet Archive</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Block creatures whose bodies and brains were both evolved, learning to swim, walk, jump and fight over a cube. Still the most vivid demonstration there is; the <a href="https://www.karlsims.com/papers/siggraph94.pdf" target="_blank" rel="noopener">SIGGRAPH '94 paper</a> explains how.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=qv6UVOQ0F44" target="_blank" rel="noopener">MarI/O — Machine Learning for Video Games</a>
+          <span class="res-source">— SethBling (2015)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">NEAT learning a Super Mario World level from nothing, with the evolving network drawn on screen as it plays. The neuroevolution demo that brought NEAT to a general audience.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=VDuF4onPmuE" target="_blank" rel="noopener">Why Greatness Cannot Be Planned</a>
+          <span class="res-source">— Kenneth O. Stanley, TTI/Vanguard talk</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The ideas behind novelty search as a talk: why objectives deceive, and what search looks like without one. Reposted by Stanley on his own channel after the original was taken down.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=fk2r8y5TfNY" target="_blank" rel="noopener">The Next Great Scientific Theory is Hiding Inside a Neural Network</a>
+          <span class="res-source">— Miles Cranmer, Simons Foundation (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Train a neural network, then use evolutionary symbolic regression to distil it into an equation a scientist can read. The case for evolved formulas in modern science, from the author of PySR.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://natureofcode.com/genetic-algorithms/" target="_blank" rel="noopener">The Nature of Code — Chapter 9: Evolutionary Computing</a>
+          <span class="res-source">— Daniel Shiffman, No Starch Press (2nd ed., 2024)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free online and runnable in the browser: a GA that types Shakespeare, then smart rockets, interactive selection and an evolving ecosystem. Pairs with the <a href="https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bJM3VgzjNV5YxVxUwzALHV" target="_blank" rel="noopener">Coding Train video series</a> on the same chapter.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.complexityexplorer.org/courses/165-introduction-to-complexity" target="_blank" rel="noopener">Introduction to Complexity</a>
+          <span class="res-source">— Melanie Mitchell, Santa Fe Institute / Complexity Explorer (2023)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free and self-paced with no prerequisites; Unit 5 teaches genetic algorithms through Robby the Robot, a can-collecting robot whose strategy is evolved rather than programmed, with a <a href="https://www.complexityexplorer.org/explore/virtual-laboratory/119-robby-the-robot-ga" target="_blank" rel="noopener">NetLogo model</a> to run yourself.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://gplearn.readthedocs.io/en/stable/intro.html" target="_blank" rel="noopener">Introduction to GP</a>
+          <span class="res-source">— Trevor Stephens, gplearn documentation</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The clearest walk through GP's moving parts — program trees, tournaments, subtree, hoist and point mutation, and bloat control with a parsimony penalty — tied to a scikit-learn-compatible library you can run straight away.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://rednuht.org/genetic_cars_2/" target="_blank" rel="noopener">HTML5 Genetic Algorithm 2D Car Thingy</a>
+          <span class="res-source">— rednuht.org, in the browser</span>
+          <p class="resource-note">Watch a GA breed two-wheeled cars over random terrain, and change the mutation rate, mutation size and number of elite clones mid-run. A shared seed gives everyone the same track.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/DEAP/deap" target="_blank" rel="noopener">DEAP</a>
+          <span class="res-source">— Université Laval, Python</span>
+          <p class="resource-note">The standard Python framework for evolutionary computation: GAs, GP, evolution strategies and NSGA-II assembled from small parts, with a <a href="https://deap.readthedocs.io/en/master/tutorials/advanced/gp.html" target="_blank" rel="noopener">GP tutorial</a> in the docs. Described in <a href="https://jmlr.org/papers/v13/fortin12a.html" target="_blank" rel="noopener">JMLR (2012)</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://pygad.readthedocs.io/" target="_blank" rel="noopener">PyGAD</a>
+          <span class="res-source">— Ahmed Gad, Python</span>
+          <p class="resource-note">The quickest way to run a GA on your own fitness function, single- or multi-objective. It can also evolve the weights of Keras and PyTorch models.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/MilesCranmer/PySR" target="_blank" rel="noopener">PySR</a>
+          <span class="res-source">— Miles Cranmer, Python with a Julia engine</span>
+          <p class="resource-note">High-performance symbolic regression: a multi-population evolutionary search over equations that returns a readable formula instead of a black box. Described in <a href="https://arxiv.org/abs/2305.01582" target="_blank" rel="noopener">this paper</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/EpistasisLab/tpot" target="_blank" rel="noopener">TPOT</a>
+          <span class="res-source">— Epistasis Lab, Python</span>
+          <p class="resource-note">Genetic programming over whole machine learning pipelines — preprocessing, model and hyperparameters — as an AutoML tool. Recently rewritten with multi-objective search; the <a href="https://arxiv.org/abs/1603.06212" target="_blank" rel="noopener">original paper</a> explains the idea.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://pymoo.org/" target="_blank" rel="noopener">pymoo</a>
+          <span class="res-source">— Julian Blank &amp; Kalyanmoy Deb, Python</span>
+          <p class="resource-note">Multi-objective optimisation done properly: NSGA-II, NSGA-III and their relatives, plus the Pareto-front plots and decision-making tools you need to read the results.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/CodeReclaimers/neat-python" target="_blank" rel="noopener">neat-python</a>
+          <span class="res-source">— CodeReclaimers, Python</span>
+          <p class="resource-note">A pure-Python NEAT small enough to read, with a walkthrough of the classic XOR example to start from.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/SakanaAI/ShinkaEvolve" target="_blank" rel="noopener">ShinkaEvolve</a>
+          <span class="res-source">— Sakana AI, Python</span>
+          <p class="resource-note">Open-source LLM-driven program evolution in the AlphaEvolve mould, built to need far fewer evaluations. Apache-licensed; <a href="https://arxiv.org/abs/2509.19349" target="_blank" rel="noopener">paper (2025)</a>.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1604.00772" target="_blank" rel="noopener">The CMA Evolution Strategy: A Tutorial</a>
+          <span class="res-source">— Nikolaus Hansen (2016)</span>
+          <p class="resource-note">The method to reach for once your problem is continuous: an evolution strategy that learns the shape of the landscape as it searches, explained by its inventor. <a href="https://github.com/CMA-ES/pycma" target="_blank" rel="noopener">pycma</a> is his reference implementation.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.frontiersin.org/articles/10.3389/frobt.2016.00040/full" target="_blank" rel="noopener">Quality Diversity: A New Frontier for Evolutionary Computation</a>
+          <span class="res-source">— Justin K. Pugh, Lisa B. Soros &amp; Kenneth O. Stanley, Frontiers in Robotics and AI (2016)</span>
+          <p class="resource-note">Where novelty search led: algorithms that return a whole map of diverse, high-performing solutions instead of one winner. Open access; <a href="https://arxiv.org/abs/1504.04909" target="_blank" rel="noopener">MAP-Elites</a> is the method to try first.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2206.08896" target="_blank" rel="noopener">Evolution through Large Models</a>
+          <span class="res-source">— Joel Lehman et al. (2022)</span>
+          <p class="resource-note">An early proposal to use a code-trained language model as GP's mutation operator — the idea FunSearch and AlphaEvolve went on to scale.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2107.14351" target="_blank" rel="noopener">Contemporary Symbolic Regression Methods and their Relative Performance</a>
+          <span class="res-source">— La Cava et al., NeurIPS Datasets &amp; Benchmarks (2021)</span>
+          <p class="resource-note">SRBench: 14 symbolic regression methods and 7 machine learning baselines on 252 problems. The best on real-world data combined genetic algorithms with parameter estimation — the place to check any symbolic regression claim.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://vkrakovna.wordpress.com/2018/04/02/specification-gaming-examples-in-ai/" target="_blank" rel="noopener">Specification gaming examples in AI</a>
+          <span class="res-source">— Victoria Krakovna (maintained list)</span>
+          <p class="resource-note">A running catalogue of systems that satisfy the letter of their objective and miss the point, many of the classics from evolutionary algorithms. Read it before writing your first fitness function.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.human-competitive.org/" target="_blank" rel="noopener">Annual "Humies" Awards for Human-Competitive Results</a>
+          <span class="res-source">— held at GECCO each year since 2004</span>
+          <p class="resource-note">Prizes for results from genetic and evolutionary computation that compete with human work — patentable inventions, new records, flown hardware. The best index of what the field can actually do.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="http://gpbib.cs.ucl.ac.uk/" target="_blank" rel="noopener">The Genetic Programming Bibliography</a>
+          <span class="res-source">— William B. Langdon et al.</span>
+          <p class="resource-note">Some 19,000 GP references, searchable by author and subject. Where to look once you know what you're looking for.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="artificial-intelligence.html">Artificial Intelligence</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The parent field. GAs sit in its local-search chapter beside hill climbing and simulated annealing, and evolution strategies compete directly with its reinforcement learning.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="machine-learning.html">Machine Learning</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The evaluation discipline GP needs once it is fitting data — held-out tests, overfitting, and the gradient-boosted trees any evolved formula has to beat.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="deep-learning.html">Deep Learning</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The networks neuroevolution evolves, and the gradient-based training it is usually up against.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="large-language-models.html">Large Language Models</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The models doing the mutating in FunSearch and AlphaEvolve — how they are trained, and why their code proposals are good enough to evolve.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>

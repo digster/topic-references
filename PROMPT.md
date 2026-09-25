@@ -496,3 +496,28 @@ as literal asterisks on three pages. Four resources were left out because no ava
 could verify them; they, the new-topic suggestions and a possible DSA ↔ AI cross-link are
 recorded in `memory/2026-09-25.md` for the user to decide. A new `LEARNINGS.md` collects the
 link-verification lessons so the next session doesn't have to rediscover them.
+
+---
+
+## 2026-09-25 — Add Genetic Algorithms and Genetic Programming
+
+> add a topic for genetic algorithm and genetic programming.
+
+Planned first (the plan was approved as written), then built. The new page opens with the GA
+loop (population, fitness, selection, crossover, mutation) and GP as the same loop run over
+programs, then lists 53 external resources: beginner books (Mitchell, Luke's free *Essentials
+of Metaheuristics*), the textbooks (Eiben & Smith, the free *Field Guide to Genetic
+Programming*), the founding texts (Holland, Goldberg, Koza), and primary papers from Whitley's
+tutorial and Koza's first GP paper through NEAT, NSGA-II, novelty search and Schmidt & Lipson's
+symbolic regression to FunSearch and AlphaEvolve. Every link was checked first. Publishers that
+block every client here (MIT Press, Packt, IEEE, Science, Springer, Nature) were confirmed
+through Crossref, doi.org redirects, Open Library ISBNs, search-index hits and the book's own
+repo. Several candidates were dropped: a textbook companion site whose domain now points at a
+restaurant, three dead paper hosts, and IJCAI's copy of Koza's paper, which turned out to be a
+single page (Koza's own complete copy is linked instead).
+
+The page joins the AI cluster with four reciprocal cross-links (AI, ML, Deep Learning, LLMs), and
+its card is the last one in that cluster. Transformers and GenAI were left unlinked. A link to
+Data Structures and Algorithms was plausible but is left for the user to decide. The checker
+reports 17 pages and 37 reciprocal pairs; the `--online` sweep has 0 FAIL, and the new page's only
+non-OK results are the expected bot-wall SKIPs. A browser pass at 1280px and 375px was clean.
