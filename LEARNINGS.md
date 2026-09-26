@@ -23,6 +23,11 @@ Most of it is about one problem: **proving a link is right, not just alive.**
 - **Check who uploaded a video.** oEmbed's `author_name` separates the creator's channel from a
   re-upload. For 1990s SIGGRAPH work the Internet Archive's `siggraph` collection is the official
   copy (used for Karl Sims's *Evolved Virtual Creatures*).
+- **A URL printed in a paper can die.** The Segment Anything abstract still points at
+  `segment-anything.com`, which no longer resolves; Meta's demo moved to
+  `aidemos.meta.com/segment-anything/`. Don't copy project links from a paper without fetching them.
+- **No `<title>` means the title check can't help.** `fpcv.cs.columbia.edu` has no title element,
+  so the checker passes it on content type alone. Confirm such pages by their body text.
 - **Wrong identifiers look plausible.** A guessed JSTOR stable ID and a guessed ISBN each
   resolved to a real but unrelated work. For DOIs and JSTOR IDs, confirm the metadata through
   Crossref (`https://api.crossref.org/works/<doi>`), which returns title, journal, volume and
@@ -52,6 +57,14 @@ Most of it is about one problem: **proving a link is right, not just alive.**
   via `https://dns.google/resolve?name=<host>&type=A`). NXDOMAIN (`Status: 3`) means dead, as
   with `docs.circom.io`. A reset or timeout means retry, and several transient resets
   (rekt.news, zkhack.dev, stephendiehl.com) passed on the second try.
+- **A 406 can just be user-agent filtering.** `szeliski.org` and `export.arxiv.org` answer curl's
+  default agent with 406; the checker's browser-like headers get a 200 from szeliski.org. For
+  arXiv metadata in bulk, read the `citation_title` / `citation_author` / `citation_date` meta tags
+  on `arxiv.org/abs/<id>` instead of the export API. `ai.meta.com/research/…` returns 400 to scripts.
+- **Certificate failures aren't dead links, but keep them out of the sweep.** `web.eecs.umich.edu`
+  (incomplete chain) and `vision.stanford.edu` (certificate for another host) fail verification from
+  scripts. Link an equivalent that verifies — the course's YouTube playlist, another university's
+  copy of the same PDF — rather than adding a known `ERROR`.
 - **Headless Chromium here doesn't trust the session proxy's CA.** Don't work around it by
   ignoring certificate errors. Use curl, `urllib` (which honours `SSL_CERT_FILE`) or `WebFetch`
   instead. Localhost needs no proxy (`--no-proxy-server`) for browser checks of the site itself.
