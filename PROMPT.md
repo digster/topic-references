@@ -545,3 +545,27 @@ Algorithms and Genetic Programming)") or mark the GP-specific rows. If it grows 
 research community, not GA vs GP: neuroevolution and open-ended search first, then program
 evolution and algorithm discovery (GP plus FunSearch/AlphaEvolve). No page, `index.html` or doc
 was changed. The full analysis is in `memory/2026-09-26.md`.
+
+---
+
+## 2026-09-26 — Add a Computer Vision topic
+
+> Add a topic on computer vision.
+
+Planned first; after the user dismissed a clarifying question, the plan was built as written
+("Work on the plan."). The new page opens with what makes vision hard and its two traditions,
+geometry and recognition, and how they are now meeting. It then lists 55 external resources along a
+learning path: Fei-Fei Li's memoir and the free Torralba–Isola–Freeman and Szeliski textbooks,
+Hartley & Zisserman for geometry, then primary papers from Papert's 1966 *Summer Vision Project*,
+SIFT, RANSAC and Viola–Jones through ImageNet, U-Net, the R-CNN line, YOLO and COLMAP to ViT, DETR,
+CLIP, DINOv2, Segment Anything, LLaVA and VGGT. Articles, lectures (Nayar, Johnson, Geiger,
+Stachniss), courses (Kaggle, OpenCV, Hugging Face, CS231n, CS231A notes, a PyTorch detection
+tutorial), tools and further reading (CVF Open Access, surveys, ImageNet's generalisation and
+texture-bias results, *Gender Shades*, *Excavating AI*) round it out. Every link was checked first;
+the three bot-walled ones (ACM, Kaggle, Packt) were confirmed through Crossref and OpenAlex, the live
+page title, and an Open Library ISBN plus the book's official repo.
+
+The page joins the AI cluster with six reciprocal cross-links (AI, ML, Deep Learning, Transformers,
+LLMs, GenAI), so the original six pages plus Computer Vision are still a complete graph; GA/GP is
+left unlinked. Its card sits between LLMs and GenAI. The checker reports 18 pages and 43 reciprocal
+pairs; the `--online` sweep has 0 FAIL, and a browser pass at 1280px and 375px was clean.
