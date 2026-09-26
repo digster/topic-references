@@ -81,10 +81,15 @@ Two properties follow from that and are easy to break:
 
 There are currently two families, and they are shaped differently on purpose:
 
-- The **AI** family has seven pages. The original six (`artificial-intelligence`,
+- The **AI** family has eight pages. The original six (`artificial-intelligence`,
   `deep-learning`, `machine-learning`, `transformers`, `large-language-models`,
   `generative-ai-beyond-llms`) form a **complete graph** — every pair really is a next step for
-  the other. The seventh, `genetic-algorithms-and-genetic-programming` (added 2026-09-25), is a
+  the other — and `computer-vision` (added 2026-09-26) joined it as a full member, so those seven
+  are still complete. Each of CV's six edges has its own reason: DL is its prerequisite, ViT and
+  DETR come from Transformers, GenAI is vision run in reverse (U-Net, CLIP, and NeRF/3DGS start
+  from structure-from-motion camera poses), LLMs meet it in vision-language models, ML supplies
+  the evaluation and the classifiers inside the classical pipelines, and AI's agent loop begins
+  with perception. It does not link GA/GP: the shared field is all they have. The eighth page, `genetic-algorithms-and-genetic-programming` (added 2026-09-25), is a
   gradient-free side branch wired to **four** of them: AI (GAs are its evolutionary local search;
   evolution strategies compete with its RL), ML (GP symbolic regression and TPOT-style AutoML are
   learning by evolving programs), DL (neuroevolution and evolutionary architecture search) and
@@ -123,7 +128,8 @@ resemblance is not a next step, so no edge was added in either direction.
 cross-link row's four differences from an external row, and derives reciprocity from the actual
 link graph rather than a hardcoded family list — so a new family, or a new bridge like
 DeFi ↔ bank, is checked without editing the validator. It reports the pair count on success
-(37 as of 2026-09-25: 19 AI — 15 among the original six plus GA/GP's 4 — 17 crypto, 1 bridge).
+(43 as of 2026-09-26: 25 AI — 21 among the original six plus Computer Vision, and GA/GP's 4 — 17
+crypto, 1 bridge).
 
 ### Link health is checked by title, not just by status code
 `tests/check_site.py --online` fetches every external URL, but a `200` is treated as necessary,
@@ -151,7 +157,7 @@ beside the pages it links to. Current order:
 
 | # | Cluster | Pages |
 |---|---|---|
-| 1 | AI & machine learning | `artificial-intelligence` → `machine-learning` → `deep-learning` → `transformers` → `large-language-models` → `generative-ai-beyond-llms` → `genetic-algorithms-and-genetic-programming` |
+| 1 | AI & machine learning | `artificial-intelligence` → `machine-learning` → `deep-learning` → `transformers` → `large-language-models` → `computer-vision` → `generative-ai-beyond-llms` → `genetic-algorithms-and-genetic-programming` |
 | 2 | Crypto & blockchain | `blockchain-and-cryptocurrency` → `ethereum-and-smart-contracts` → `layer-2-and-scaling` → `zero-knowledge-proofs` → `nfts-and-digital-ownership` → `crypto-economics-and-daos` → `decentralized-finance` |
 | 3 | Traditional finance | `starting-a-new-bank` |
 | 4 | Standalone | `data-structures-and-algorithms`, `structuralism-and-post-structuralism` |
@@ -160,7 +166,10 @@ Within a cluster the order is a **learning path** — the parent field first, th
 — mirroring how resources are ordered inside a topic page. A side branch goes after the main
 path rather than inside it: GA/GP closes the AI cluster because its advanced material
 (neuroevolution, LLM-guided evolution) builds on the DL and LLM pages, and placing it there left
-the existing AI → ML → DL → Transformers → LLMs → GenAI path untouched. Two adjacencies are load-bearing and
+the existing AI → ML → DL → Transformers → LLMs → GenAI path untouched. A main-path page goes
+inside it instead: Computer Vision is an application of the DL and Transformers foundations, like
+its neighbours, so it sits between LLMs (which meet it in vision-language models) and GenAI (which
+builds on its pieces — U-Net, CLIP, structure-from-motion poses). Two adjacencies are load-bearing and
 should survive future edits: `layer-2-and-scaling` next to `zero-knowledge-proofs` (the strongest
 edge in the crypto family), and `decentralized-finance` immediately before `starting-a-new-bank`,
 which puts the site's only cross-family edge side by side on the page.
@@ -183,7 +192,8 @@ Three constraints shaped the implementation:
 The group sizes used to land well on the grid: with six AI cards the cluster filled rows 1–2
 exactly at 3 columns, and at 2 columns every cluster boundary fell on a row boundary. The
 seventh AI card (GA/GP) ended that, as expected — it was always a bonus, not a constraint to
-preserve. Linear adjacency is what holds a cluster together at every width.
+preserve. (The eighth, Computer Vision, happens to line the 2-column layout up again.) Linear
+adjacency is what holds a cluster together at every width.
 
 ## Data flow
 

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Vision — Topic References</title>
+  <meta name="description" content="Computer vision from pixels to 3D — image formation, features and camera geometry, deep recognition (classification, detection, segmentation) and vision foundation models — plus curated books, papers, articles, videos, courses and tools." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Computer Vision</h1>
+      <p class="last-updated">Last updated: 2026-09-26</p>
+    </div>
+
+    <section class="description">
+      <p>
+        <strong>Computer vision</strong> is the problem of getting a computer to understand what a
+        camera sees: which objects are in a picture, where they are, how far away they are and how
+        they move. It is much harder than it looks. An image is only a grid of brightness values —
+        a flat projection of a 3D world, in which the same object can look completely different
+        under new lighting, from a new viewpoint, or half hidden behind something else. In 1966 an
+        MIT memo proposed building "a significant part of a visual system" as a summer project;
+        the field has been at it ever since.
+      </p>
+      <p>
+        Two traditions run through it. <strong>Geometry</strong> treats the camera as a measuring
+        instrument: model how a lens projects the world, match the same points across several
+        photos, and you can recover depth, camera motion and whole 3D scenes — the machinery
+        behind panoramas, photogrammetry and the tracking in robots and headsets.
+        <strong>Recognition</strong> is about naming what is in the picture, and it was rebuilt in
+        2012, when a convolutional network trained on ImageNet decisively beat pipelines built on
+        hand-designed features such as SIFT and HOG. Vision transformers and large pretrained
+        models — CLIP, DINOv2, Segment Anything — have since produced features that transfer to
+        new tasks with little or no labelled data.
+      </p>
+      <p>
+        The two traditions are now meeting. A single network such as VGGT recovers cameras and
+        depth from a set of photos in one forward pass, a job that used to need a hand-built
+        geometry pipeline, and vision encoders have become the eyes of multimodal language models.
+        This page follows that arc: image formation and filtering, features and geometry, deep
+        recognition — classification, detection, segmentation — and finally 3D and the foundation
+        models. Generating images is a topic of its own, on the sibling page linked at the bottom.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> comfortable Python and NumPy — an image is just an
+        array — plus linear algebra through matrix multiplication, with eigenvectors and the SVD for
+        the geometry half, and calculus up to gradients. For the recognition half, know what a
+        layer, a loss and backpropagation are; the deep learning page covers that, and its
+        convolutional-network material is the direct on-ramp to this one.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://us.macmillan.com/books/9781250897930/theworldsisee/" target="_blank" rel="noopener">The Worlds I See</a>
+          <span class="res-source">— Fei-Fei Li, Flatiron Books (2023)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Paid. A memoir from the scientist who built ImageNet, and the clearest account of why a dataset — not a cleverer algorithm — turned out to be the missing piece. The human story behind 2012.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://visionbook.mit.edu/" target="_blank" rel="noopener">Foundations of Computer Vision</a>
+          <span class="res-source">— Antonio Torralba, Phillip Isola &amp; William T. Freeman, MIT Press (2024)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free to read online. The newest textbook, written with learning built in from the start rather than bolted onto a classical course — imaging and filtering, neural networks and representation learning, geometry and generative models in one voice.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.packtpub.com/en-us/product/modern-computer-vision-with-pytorch-9781803231334" target="_blank" rel="noopener">Modern Computer Vision with PyTorch (2nd ed.)</a>
+          <span class="res-source">— V Kishore Ayyadevara &amp; Yeshwanth Reddy, Packt (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Paid. The hands-on route: detection, segmentation, pose and OCR built in PyTorch, then CLIP, Segment Anything and diffusion. Every chapter's notebooks are on <a href="https://github.com/PacktPublishing/Modern-Computer-Vision-with-PyTorch-2E" target="_blank" rel="noopener">GitHub</a> and open in Colab.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://szeliski.org/Book/" target="_blank" rel="noopener">Computer Vision: Algorithms and Applications (2nd ed.)</a>
+          <span class="res-source">— Richard Szeliski, Springer (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free PDF for personal use from the author's site. The field's standard reference, from image formation through features, stereo and 3D reconstruction to deep recognition — best read by topic rather than cover to cover.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.robots.ox.ac.uk/~vgg/hzbook/" target="_blank" rel="noopener">Multiple View Geometry in Computer Vision (2nd ed.)</a>
+          <span class="res-source">— Richard Hartley &amp; Andrew Zisserman, Cambridge University Press (2004)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Paid. The definitive text on the geometry half — projective geometry, camera calibration, epipolar geometry and bundle adjustment. The book's page has free sample chapters, including the one on epipolar geometry and the fundamental matrix.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://dspace.mit.edu/handle/1721.1/6125" target="_blank" rel="noopener">The Summer Vision Project</a>
+          <span class="res-source">— Seymour Papert, MIT AI Memo AIM-100 (1966)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A few pages proposing to build "a significant part of a visual system" over one summer with student workers. The field's most famous underestimate, and a good reminder of why seeing is hard.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cs.ubc.ca/~lowe/papers/ijcv04.pdf" target="_blank" rel="noopener">Distinctive Image Features from Scale-Invariant Keypoints</a>
+          <span class="res-source">— David G. Lowe, International Journal of Computer Vision (2004)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">SIFT: find keypoints that survive changes of scale and rotation, and describe each one well enough to match it in another photo. The backbone of panorama stitching and structure from motion for a decade. Free PDF from Lowe's page.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://dl.acm.org/doi/10.1145/358669.358692" target="_blank" rel="noopener">Random Sample Consensus</a>
+          <span class="res-source">— Martin A. Fischler &amp; Robert C. Bolles, Communications of the ACM (1981)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">RANSAC: fit a model to the smallest random sample of points, keep the fit most of the data agrees with, repeat. Still how nearly every geometry pipeline survives bad matches. Free from the ACM Digital Library.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf" target="_blank" rel="noopener">Rapid Object Detection using a Boosted Cascade of Simple Features</a>
+          <span class="res-source">— Paul Viola &amp; Michael Jones, CVPR (2001)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Integral images, boosted Haar-like features and an attentional cascade made face detection real-time on 2001 hardware — OpenCV's Haar cascades still implement it. Free copy hosted by CMU; the IEEE version is paywalled. <a href="https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf" target="_blank" rel="noopener">Dalal &amp; Triggs's HOG</a> (2005) is the other classic hand-designed detector.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.image-net.org/static_files/papers/imagenet_cvpr09.pdf" target="_blank" rel="noopener">ImageNet: A Large-Scale Hierarchical Image Database</a>
+          <span class="res-source">— Deng, Dong, Socher, Li, Li &amp; Fei-Fei, CVPR (2009)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Millions of labelled images organised by WordNet — the dataset that made deep recognition possible. Its annual challenge is where AlexNet won in 2012; that paper is on the deep learning page.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1505.04597" target="_blank" rel="noopener">U-Net: Convolutional Networks for Biomedical Image Segmentation</a>
+          <span class="res-source">— Olaf Ronneberger, Philipp Fischer &amp; Thomas Brox, MICCAI (2015)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Segmentation as an encoder–decoder with skip connections, built for biomedical images with few labels. The same shape later became the backbone of diffusion image generators.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1506.01497" target="_blank" rel="noopener">Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks</a>
+          <span class="res-source">— Shaoqing Ren, Kaiming He, Ross Girshick &amp; Jian Sun, NeurIPS (2015)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The two-stage detector: a region proposal network shares features with the classifier, so finding and recognising objects become one network. The end of the line that began with <a href="https://arxiv.org/abs/1311.2524" target="_blank" rel="noopener">R-CNN</a> in 2014.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1506.02640" target="_blank" rel="noopener">You Only Look Once: Unified, Real-Time Object Detection</a>
+          <span class="res-source">— Joseph Redmon, Santosh Divvala, Ross Girshick &amp; Ali Farhadi, CVPR (2016)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Detection as a single regression over a grid: one pass, real time, less accurate at first. The ancestor of the YOLO family most practitioners actually deploy.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1703.06870" target="_blank" rel="noopener">Mask R-CNN</a>
+          <span class="res-source">— Kaiming He, Georgia Gkioxari, Piotr Dollár &amp; Ross Girshick, ICCV (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Adds a small mask branch to Faster R-CNN and gets instance segmentation — a separate outline for every object. ICCV 2017's best paper, and for years the standard baseline on <a href="https://arxiv.org/abs/1405.0312" target="_blank" rel="noopener">COCO</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://openaccess.thecvf.com/content_cvpr_2016/html/Schonberger_Structure-From-Motion_Revisited_CVPR_2016_paper.html" target="_blank" rel="noopener">Structure-from-Motion Revisited</a>
+          <span class="res-source">— Johannes L. Schönberger &amp; Jan-Michael Frahm, CVPR (2016)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The paper behind COLMAP: incremental reconstruction of cameras and 3D points from unordered photos, plus the engineering that makes it robust. Free on CVF Open Access.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2010.11929" target="_blank" rel="noopener">An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (ViT)</a>
+          <span class="res-source">— Dosovitskiy et al., ICLR (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Cut an image into patches, treat them as tokens, and a plain transformer matches convolutional networks once there is enough pretraining data. The encoder design most of the models below build on.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2005.12872" target="_blank" rel="noopener">End-to-End Object Detection with Transformers (DETR)</a>
+          <span class="res-source">— Carion et al., ECCV (2020)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Detection as set prediction: a transformer outputs a fixed set of boxes matched one-to-one against the ground truth, which removes anchor boxes and non-maximum suppression.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2103.00020" target="_blank" rel="noopener">Learning Transferable Visual Models From Natural Language Supervision (CLIP)</a>
+          <span class="res-source">— Radford et al., OpenAI / ICML (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Trained on 400 million image–caption pairs to match pictures with text, so any list of class names becomes a zero-shot classifier. Its image encoder is the eye inside many vision-language models.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2304.07193" target="_blank" rel="noopener">DINOv2: Learning Robust Visual Features without Supervision</a>
+          <span class="res-source">— Oquab et al., Meta AI / TMLR (2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Self-supervised pretraining on curated images gives all-purpose features that work across tasks without fine-tuning — a common frozen backbone for depth, segmentation and retrieval. <a href="https://arxiv.org/abs/2508.10104" target="_blank" rel="noopener">DINOv3</a> (2025) scales the recipe further and keeps its dense features from degrading in long training.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2304.02643" target="_blank" rel="noopener">Segment Anything</a>
+          <span class="res-source">— Kirillov et al., Meta AI / ICCV (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Click a point or draw a box and get a mask: a promptable segmenter trained on over a billion masks gathered by a model-in-the-loop data engine. <a href="https://arxiv.org/abs/2408.00714" target="_blank" rel="noopener">SAM 2</a> (2024) extends it to video; <a href="https://arxiv.org/abs/2511.16719" target="_blank" rel="noopener">SAM 3</a> (2025) takes phrases like "yellow school bus".</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2304.08485" target="_blank" rel="noopener">Visual Instruction Tuning (LLaVA)</a>
+          <span class="res-source">— Haotian Liu, Chunyuan Li, Qingyang Wu &amp; Yong Jae Lee, NeurIPS (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Connect a CLIP image encoder to a language model through a small projection and fine-tune on GPT-4-generated instructions — the simple recipe behind most open vision-language models.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2503.11651" target="_blank" rel="noopener">VGGT: Visual Geometry Grounded Transformer</a>
+          <span class="res-source">— Wang, Chen, Karaev, Vedaldi, Rupprecht &amp; Novotny, CVPR (2025)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">One feed-forward network predicts cameras, depth maps and point maps from one to hundreds of views in under a second, often beating pipelines that need a geometry optimisation step afterwards. CVPR 2025's best paper, building on <a href="https://arxiv.org/abs/2312.14132" target="_blank" rel="noopener">DUSt3R</a>.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://karpathy.github.io/2012/10/22/state-of-computer-vision/" target="_blank" rel="noopener">The state of Computer Vision and AI: we are really, really far away</a>
+          <span class="res-source">— Andrej Karpathy (2012)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">One photo — Obama with his foot on a colleague's scale — and everything you would need to understand to find it funny. The shortest argument that recognising objects is not the same as understanding a scene.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/" target="_blank" rel="noopener">Understanding Convolutions</a>
+          <span class="res-source">— Christopher Olah (2014)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Builds convolution from a ball dropped twice, then shows the same operation blurring an image and finding its edges — all before a neural network appears.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://karpathy.github.io/2014/09/02/what-i-learned-from-competing-against-a-convnet-on-imagenet/" target="_blank" rel="noopener">What I learned from competing against a ConvNet on ImageNet</a>
+          <span class="res-source">— Andrej Karpathy (2014)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Karpathy labelled ImageNet test images himself: 5.1% top-5 error against GoogLeNet's 6.7%, a human baseline networks passed within months. Just as useful for what it shows about the dataset's quirks.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://distill.pub/2017/feature-visualization/" target="_blank" rel="noopener">Feature Visualization</a>
+          <span class="res-source">— Chris Olah, Alexander Mordvintsev &amp; Ludwig Schubert, Distill (2017)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Optimise an input image to excite one neuron and you see what it detects — edges, then textures, then object parts — layer by layer. Interactive, and the best look inside a trained vision network.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2017-12-31-object-recognition-part-3/" target="_blank" rel="noopener">Object Detection for Dummies Part 3: R-CNN Family</a>
+          <span class="res-source">— Lilian Weng (2017)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">R-CNN, Fast R-CNN, Faster R-CNN and Mask R-CNN in one pass, with the losses written out. <a href="https://lilianweng.github.io/posts/2018-12-27-object-recognition-part-4/" target="_blank" rel="noopener">Part 4</a> covers the one-stage detectors: YOLO, SSD and RetinaNet.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://huggingface.co/blog/vlms" target="_blank" rel="noopener">Vision Language Models Explained</a>
+          <span class="res-source">— Merve Noyan &amp; Edward Beeching, Hugging Face (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">What a vision-language model is, how its image encoder and language model are joined and trained, and how to pick and fine-tune an open one. The <a href="https://huggingface.co/blog/vlms-2025" target="_blank" rel="noopener">2025 follow-up</a> covers what has changed since.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2021-05-31-contrastive/" target="_blank" rel="noopener">Contrastive Representation Learning</a>
+          <span class="res-source">— Lilian Weng (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The losses and tricks behind self-supervised vision — SimCLR, MoCo, BYOL, SwAV, Barlow Twins — and CLIP's image–text version of the same idea, in one long survey post.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=KuXjwB4LzSA" target="_blank" rel="noopener">But what is a convolution?</a>
+          <span class="res-source">— 3Blue1Brown</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Convolution animated from sums of dice through image blurs and edge-detection kernels. The intuition every filter and CNN on this page assumes.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.ted.com/talks/fei_fei_li_how_we_re_teaching_computers_to_understand_pictures" target="_blank" rel="noopener">How we're teaching computers to understand pictures</a>
+          <span class="res-source">— Fei-Fei Li, TED2015</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Eighteen minutes on why a three-year-old still out-sees the best machines, and how ImageNet set out to close the gap — <em>The Worlds I See</em> in brief.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://fpcv.cs.columbia.edu/" target="_blank" rel="noopener">First Principles of Computer Vision</a>
+          <span class="res-source">— Shree Nayar, Columbia University</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A free lecture series designed for people with no computer vision background: image formation, features, stereo, structure from motion, optical flow, tracking and segmentation, each derived from first principles in short videos.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PL5-TkQAfAZFbzxjBHtzdVCWE0Zbhomg7r" target="_blank" rel="noopener">Deep Learning for Computer Vision (EECS 498-007 / 598-005)</a>
+          <span class="res-source">— Justin Johnson, University of Michigan (Fall 2019)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free lectures from one of CS231n's instructors, running from linear classifiers through CNNs to detection, segmentation, 3D vision and video. Slides and assignments are on the course website.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PL05umP7R6ij35L2MHGzis8AEHz7mg381_" target="_blank" rel="noopener">Computer Vision</a>
+          <span class="res-source">— Andreas Geiger, University of Tübingen (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A full lecture course with a strong emphasis on 3D: structure from motion, stereo, optical flow and shape-from-X, then recognition and self-supervised learning.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLgnQpQtFTOGRYjqjdZxTEQPZuFHQa7O7Y" target="_blank" rel="noopener">Photogrammetry I &amp; II</a>
+          <span class="res-source">— Cyrill Stachniss, University of Bonn (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The geometry half at full depth — camera models, calibration, epipolar geometry and bundle adjustment — taught by a robotics and SLAM researcher who makes the least-squares machinery feel practical.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.kaggle.com/learn/computer-vision" target="_blank" rel="noopener">Computer Vision</a>
+          <span class="res-source">— Kaggle Learn</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free and short, in browser notebooks: build a Keras image classifier on a pretrained base, then take it apart — convolution, pooling, stride — and finish with data augmentation.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html" target="_blank" rel="noopener">OpenCV-Python Tutorials</a>
+          <span class="res-source">— official OpenCV documentation</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">The practical classical toolkit: filtering, edges, contours, feature detection and matching. The <a href="https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html" target="_blank" rel="noopener">camera calibration</a> chapter turns the geometry half into working code.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://huggingface.co/learn/computer-vision-course/unit0/welcome/welcome" target="_blank" rel="noopener">Community Computer Vision Course</a>
+          <span class="res-source">— Hugging Face &amp; contributors</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free and current: fundamentals, CNNs and vision transformers, then multimodal, generative, video, 3D and zero-shot models, with a unit on ethics and bias.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://cs231n.stanford.edu/" target="_blank" rel="noopener">CS231n: Deep Learning for Computer Vision</a>
+          <span class="res-source">— Stanford University (Spring 2026)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Slides, notes and assignments for the course that taught a generation deep learning through vision. The <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16" target="_blank" rel="noopener">2025 lectures</a> are free on YouTube.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://web.stanford.edu/class/cs231a/course_notes.html" target="_blank" rel="noopener">CS231A Course Notes</a>
+          <span class="res-source">— Stanford University</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Self-contained notes on the geometry half — camera models, single-view metrology, epipolar geometry, stereo, fitting and matching. A gentler way in than Hartley &amp; Zisserman.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.pytorch.org/tutorials/intermediate/torchvision_tutorial.html" target="_blank" rel="noopener">TorchVision Object Detection Finetuning Tutorial</a>
+          <span class="res-source">— official PyTorch tutorials</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Fine-tune a pretrained Mask R-CNN on a small pedestrian dataset — the quickest route from the detection papers above to a model that works on your own data.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://setosa.io/ev/image-kernels/" target="_blank" rel="noopener">Image Kernels Explained Visually</a>
+          <span class="res-source">— Victor Powell, Setosa, in the browser</span>
+          <p class="resource-note">Pick a kernel and watch it slide over a photo: blur, sharpen and edge detection happening pixel by pixel.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener">Teachable Machine</a>
+          <span class="res-source">— Google, in the browser</span>
+          <p class="resource-note">Train an image classifier from your webcam in minutes with no code — a feel for what transfer learning does before you write it yourself.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://opencv.org/" target="_blank" rel="noopener">OpenCV</a>
+          <span class="res-source">— open-source C++ and Python library</span>
+          <p class="resource-note">The standard classical toolkit: filtering, features, calibration, stereo and a deep-learning inference module. <a href="https://scikit-image.org/" target="_blank" rel="noopener">scikit-image</a> is the more Pythonic choice for image processing.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.pytorch.org/vision/stable/index.html" target="_blank" rel="noopener">torchvision</a>
+          <span class="res-source">— PyTorch's vision library</span>
+          <p class="resource-note">Datasets, transforms and pretrained classification, detection and segmentation models in one import. <a href="https://huggingface.co/docs/timm/index" target="_blank" rel="noopener">timm</a> has the much larger zoo of pretrained backbones.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.ultralytics.com/" target="_blank" rel="noopener">Ultralytics YOLO</a>
+          <span class="res-source">— Ultralytics, Python</span>
+          <p class="resource-note">The quickest way to train and run a modern detector or segmenter on your own data. AGPL-3.0, so commercial use needs their enterprise licence.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://aidemos.meta.com/segment-anything/" target="_blank" rel="noopener">Segment Anything Playground</a>
+          <span class="res-source">— Meta AI Demos, in the browser</span>
+          <p class="resource-note">Try SAM 3 without installing anything: type a phrase or click an object and watch it segmented and tracked through a video.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://colmap.github.io/" target="_blank" rel="noopener">COLMAP</a>
+          <span class="res-source">— Schönberger et al., open source</span>
+          <p class="resource-note">Structure from motion and multi-view stereo from a folder of photos, with a GUI. Also the usual first step before training NeRF or Gaussian splatting.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://openaccess.thecvf.com/menu" target="_blank" rel="noopener">CVF Open Access</a>
+          <span class="res-source">— Computer Vision Foundation</span>
+          <p class="resource-note">Every CVPR and ICCV paper since 2013, and WACV since 2020, free. Where the field actually publishes, and where to go once the classics above feel familiar.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1905.05055" target="_blank" rel="noopener">Object Detection in 20 Years: A Survey</a>
+          <span class="res-source">— Zhengxia Zou, Keyan Chen, Zhenwei Shi, Yuhong Guo &amp; Jieping Ye, Proceedings of the IEEE (2023)</span>
+          <p class="resource-note">From Viola–Jones through the R-CNN and YOLO families to transformers, with the datasets and metrics each generation was judged on.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2405.17247" target="_blank" rel="noopener">An Introduction to Vision-Language Modeling</a>
+          <span class="res-source">— Florian Bordes et al. (2024)</span>
+          <p class="resource-note">A tutorial-length survey of how vision-language models are built, trained and evaluated, family by family — the next step after LLaVA and the Hugging Face explainer.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1902.10811" target="_blank" rel="noopener">Do ImageNet Classifiers Generalize to ImageNet?</a>
+          <span class="res-source">— Benjamin Recht, Rebecca Roelofs, Ludwig Schmidt &amp; Vaishaal Shankar, ICML (2019)</span>
+          <p class="resource-note">Rebuild ImageNet's test set by the original recipe and accuracy drops 11–14 points — yet gains on the old test set still carry over. What a benchmark number does and doesn't tell you.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1811.12231" target="_blank" rel="noopener">ImageNet-trained CNNs are biased towards texture</a>
+          <span class="res-source">— Robert Geirhos et al., ICLR (2019)</span>
+          <p class="resource-note">Show a network a cat's outline filled with elephant skin and it answers "elephant". Humans go by shape, ImageNet CNNs by texture — and training on stylised images shifts them back.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://proceedings.mlr.press/v81/buolamwini18a.html" target="_blank" rel="noopener">Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification</a>
+          <span class="res-source">— Joy Buolamwini &amp; Timnit Gebru, FAT* / PMLR 81 (2018)</span>
+          <p class="resource-note">Three commercial face-analysis systems misclassified darker-skinned women at error rates up to 34.7%, against at most 0.8% for lighter-skinned men. Read it before trusting a single accuracy number for a face system.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://excavating.ai/" target="_blank" rel="noopener">Excavating AI: The Politics of Images in Machine Learning Training Sets</a>
+          <span class="res-source">— Kate Crawford &amp; Trevor Paglen (2019)</span>
+          <p class="resource-note">What the labels in ImageNet's person categories actually say, and what it means to classify people from photographs at all.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="deep-learning.html">Deep Learning</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The engine under the recognition half of this page: backpropagation, convolutional networks, and the AlexNet and ResNet papers that set the field's direction.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="transformers.html">Transformers</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Attention taken apart properly — the mechanism inside ViT, DETR and every modern vision encoder above.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="generative-ai-beyond-llms.html">Generative AI (Beyond LLMs)</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Vision run in reverse: diffusion models that generate images, and NeRF and Gaussian splatting, which turn structure-from-motion camera poses into photorealistic 3D scenes.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="large-language-models.html">Large Language Models</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The other half of a vision-language model — pretraining, post-training and prompting — for when an encoder like CLIP's is plugged into one.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="machine-learning.html">Machine Learning</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The ground floor under every benchmark here: honest evaluation, overfitting, and the boosting and SVM classifiers inside the pre-deep-learning pipelines.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="artificial-intelligence.html">Artificial Intelligence</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The wider field perception serves — agents that plan and act on what they see, from search and planning to reinforcement learning.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>
