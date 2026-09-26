@@ -521,3 +521,27 @@ its card is the last one in that cluster. Transformers and GenAI were left unlin
 Data Structures and Algorithms was plausible but is left for the user to decide. The checker
 reports 17 pages and 37 reciprocal pairs; the `--online` sweep has 0 FAIL, and the new page's only
 non-OK results are the expected bot-wall SKIPs. A browser pass at 1280px and 375px was clean.
+
+---
+
+## 2026-09-26 — Should GA and GP be separate topics? (advice only, no site changes)
+
+> should generic algorithms and genetic programming be separate topics or they make more sense
+> together? Do not make any changes yet.
+> https://digster.github.io/topic-references/topics/genetic-algorithms-and-genetic-programming.html
+
+Asked in a different session that was opened in the wrong repo, so it answered from the live
+page without this repo attached. The user pasted the answer here to be recorded.
+
+Outcome: **keep them together.** GP is the GA loop run over programs (expression trees)
+instead of fixed-length strings, and Koza introduced it that way. Splitting would duplicate
+most of the page (Eiben & Smith, Luke, No Free Lunch, NSGA-II, specification gaming, DEAP,
+pymoo), and a GP-only page would be thin, with about 9–10 of the 53 external resources. The
+bigger issue is that the title undersells the page: it covers evolutionary computation as a
+whole. Classic GA is about a third of it; the rest is GP and symbolic regression,
+neuroevolution and open-ended search, evolution strategies, and LLM-guided program evolution.
+The recommendation was to retitle the page now (e.g. "Evolutionary Computation (Genetic
+Algorithms and Genetic Programming)") or mark the GP-specific rows. If it grows later, split by
+research community, not GA vs GP: neuroevolution and open-ended search first, then program
+evolution and algorithm discovery (GP plus FunSearch/AlphaEvolve). No page, `index.html` or doc
+was changed. The full analysis is in `memory/2026-09-26.md`.
