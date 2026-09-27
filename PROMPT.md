@@ -569,3 +569,31 @@ The page joins the AI cluster with six reciprocal cross-links (AI, ML, Deep Lear
 LLMs, GenAI), so the original six pages plus Computer Vision are still a complete graph; GA/GP is
 left unlinked. Its card sits between LLMs and GenAI. The checker reports 18 pages and 43 reciprocal
 pairs; the `--online` sweep has 0 FAIL, and a browser pass at 1280px and 375px was clean.
+
+---
+
+## 2026-09-27 — Add a Reinforcement Learning topic
+
+> add a topic on reinforcement learning.
+
+Planned first; the user approved with "implement the plan." The new page explains RL as learning
+by trial and error from a reward (agent, environment, policy, delayed credit, exploring versus
+exploiting, MDPs and value functions), its two roots and Barto and Sutton's 2024 Turing Award, the
+deep-RL milestones and RL's role in post-training language models, and why it is hard to get
+working. It then lists 51 external resources along a learning path: Morales, Sutton & Barto, Lapan,
+Kochenderfer's free *Algorithms for Decision Making*, Murphy's free overview, *Bandit Algorithms* and
+the MARL book; primary papers from Sutton's 1988 TD paper, Q-learning, TD-Gammon and the policy
+gradient theorem through DQN, PPO, SAC, AlphaZero, DreamerV3 and champion drone racing to
+Christiano's RLHF paper, GRPO and two evaluation critiques; articles (Karpathy's *Pong from Pixels*,
+Weng, Distill, Irpan, reward hacking, Raschka, PPO's 37 details, RL debugging), lectures
+(hide-and-seek, Mutual Information, DeepMind × UCL 2021, Abbeel, Schulman ×2), courses (Hugging
+Face, Alberta, Spinning Up, PyTorch DQN, CS234, CS 185/285, CS224R), tools (an in-browser
+playground, Gymnasium, Stable-Baselines3, CleanRL, TRL) and further reading (RL theory, Bertsekas,
+offline RL, *Era of Experience*). Every link was checked first; the bot-walled ones (ACM, Packt,
+Nature, ScienceDirect) were confirmed through Crossref, OpenAlex, doi.org and search-index hits.
+
+The page joins the AI cluster with five reciprocal cross-links (AI, ML, Deep Learning, LLMs, GA/GP);
+Transformers, GenAI and CV are left unlinked, and an RL ↔ DSA edge is left to the user. Its card sits
+between GenAI and GA/GP, so the two reward-driven branches sit together. The checker reports 19
+pages and 48 reciprocal pairs; the `--online` sweep has 0 FAIL, and the new page's only
+non-OK results are the five expected bot-wall SKIPs; a browser pass at 1280px and 375px was clean.
