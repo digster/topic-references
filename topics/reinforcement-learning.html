@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reinforcement Learning — Topic References</title>
+  <meta name="description" content="Reinforcement learning from bandits and MDPs to deep RL — TD learning, Q-learning, policy gradients, PPO, self-play, world models and RL for language models — plus curated books, papers, articles, videos, courses and tools." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-title" href="../index.html">📚 Topic References</a>
+      <span class="site-tagline">curated places to study further</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back-link" href="../index.html">← All topics</a>
+
+    <div class="topic-header">
+      <h1>Reinforcement Learning</h1>
+      <p class="last-updated">Last updated: 2026-09-27</p>
+    </div>
+
+    <section class="description">
+      <p>
+        <strong>Reinforcement learning</strong> (RL) is learning by trial and error. An
+        <em>agent</em> acts in an <em>environment</em>, receives a numerical
+        <strong>reward</strong>, and has to discover a <strong>policy</strong> — a way of choosing
+        actions — that collects as much reward as possible over time. Nobody labels the right move.
+        The reward for a good decision can arrive many steps later, so the agent must work out which
+        of its choices earned it, and it has to keep <em>exploring</em> actions it is unsure about
+        instead of only <em>exploiting</em> what already works. The problem is usually written as a
+        Markov decision process, and most methods learn a <strong>value function</strong> — how much
+        future reward to expect from here — using equations Richard Bellman wrote down in the 1950s.
+      </p>
+      <p>
+        The field joined two older ideas: trial-and-error learning from animal psychology and
+        dynamic programming from optimal control. Andrew Barto and Richard Sutton built its
+        foundations from the 1980s on, above all <strong>temporal-difference learning</strong>, and
+        received the 2024 Turing Award for it. With deep networks attached, RL learned Atari games
+        from raw pixels, defeated Go champion Lee Sedol in 2016, taught itself chess, shogi and Go
+        through self-play, and has since shaped fusion plasmas and beaten champion drone pilots. It
+        is also how language models are post-trained: reinforcement learning from human feedback
+        helped turn a text predictor into ChatGPT, and RL on answers that can be checked
+        automatically — maths, code — produced today's reasoning models.
+      </p>
+      <p>
+        It is notoriously hard to get working, too. RL needs enormous amounts of experience, results
+        swing with random seeds and small implementation details, and an agent will exploit any gap
+        between the reward you wrote and the behaviour you meant. This page runs from the tabular
+        core — dynamic programming, Monte Carlo and TD learning, Q-learning — through policy
+        gradients and deep RL to planning, world models and RL on language models, and keeps the
+        evaluation and reward-design pitfalls in view throughout.
+      </p>
+      <div class="prereq">
+        <strong>Good to know first:</strong> comfortable Python and NumPy, probability up to
+        expectation and conditional probability (nearly everything here is an expected value), and
+        calculus up to gradients. That is enough for the tabular methods. For deep RL, know what a
+        layer, a loss and backpropagation are — the deep learning page covers them — and the
+        language-model material assumes the pretraining and fine-tuning picture from the LLM page.
+      </div>
+    </section>
+
+    <section class="resource-section">
+      <h2>📚 Books</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.manning.com/books/grokking-deep-reinforcement-learning" target="_blank" rel="noopener">Grokking Deep Reinforcement Learning</a>
+          <span class="res-source">— Miguel Morales, Manning (2020)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Paid. The gentlest full book: intuition and annotated Python before the maths, from MDPs, bandits and TD methods through DQN and its refinements to policy-gradient and actor-critic methods. All the code is free on <a href="https://github.com/mimoralea/gdrl" target="_blank" rel="noopener">GitHub</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="http://www.incompleteideas.net/book/the-book-2nd.html" target="_blank" rel="noopener">Reinforcement Learning: An Introduction (2nd ed.)</a>
+          <span class="res-source">— Richard S. Sutton &amp; Andrew G. Barto, MIT Press (2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The standard textbook, by the field's two Turing Award–winning pioneers, free as a full PDF from their page along with code and slides. Part I is the tabular core — bandits, dynamic programming, Monte Carlo, TD and Q-learning — Part II function approximation and policy gradients, Part III the links to psychology and neuroscience.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.packtpub.com/en-us/product/deep-reinforcement-learning-hands-on-9781835882702" target="_blank" rel="noopener">Deep Reinforcement Learning Hands-On (3rd ed.)</a>
+          <span class="res-source">— Maxim Lapan, Packt (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Paid. The practical route: every method implemented in PyTorch, from the cross-entropy method and DQN through actor-critic, PPO and continuous control, with new material on MuZero, RLHF and LLMs in this edition. The code is free on <a href="https://github.com/PacktPublishing/Deep-Reinforcement-Learning-Hands-On-Third-Edition" target="_blank" rel="noopener">GitHub</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://algorithmsbook.com/decisionmaking/" target="_blank" rel="noopener">Algorithms for Decision Making</a>
+          <span class="res-source">— Mykel J. Kochenderfer, Tim A. Wheeler &amp; Kyle H. Wray, MIT Press (2022)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Free PDF. RL placed inside decision making under uncertainty: MDPs and their exact and approximate solutions, exploration, model-based and model-free learning and imitation, then partial observability and multiple agents, with the algorithms written out in Julia.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2412.05265" target="_blank" rel="noopener">Reinforcement Learning: An Overview</a>
+          <span class="res-source">— Kevin P. Murphy (2024, revised through 2025)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Free and kept up to date by the author of <em>Probabilistic Machine Learning</em>: value-based, policy-based and model-based deep RL, multi-agent, offline and hierarchical RL, and a part on LLMs and RL with code. The quickest way to see the whole modern field in one place.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://tor-lattimore.com/downloads/book/book.pdf" target="_blank" rel="noopener">Bandit Algorithms</a>
+          <span class="res-source">— Tor Lattimore &amp; Csaba Szepesvári, Cambridge University Press (2020)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The reference on bandits — the explore-or-exploit dilemma with no states to worry about — from UCB and Thompson sampling to adversarial and contextual bandits. The free online edition has the same content as the print book.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.marl-book.com/" target="_blank" rel="noopener">Multi-Agent Reinforcement Learning: Foundations and Modern Approaches</a>
+          <span class="res-source">— Stefano V. Albrecht, Filippos Christianos &amp; Lukas Schäfer, MIT Press (2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">What changes when several agents learn at once: game models and solution concepts such as equilibria, then deep multi-agent RL. Free PDF, with a Python <a href="https://github.com/marl-book/codebase" target="_blank" rel="noopener">codebase</a> implementing the algorithms.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>📄 Papers &amp; Primary References</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="http://incompleteideas.net/papers/sutton-88-with-erratum.pdf" target="_blank" rel="noopener">Learning to Predict by the Methods of Temporal Differences</a>
+          <span class="res-source">— Richard S. Sutton, Machine Learning 3 (1988)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Temporal-difference learning: assign credit by the difference between successive predictions instead of waiting for the final outcome. The idea under Q-learning, TD-Gammon and every actor-critic method. Free from Sutton's site, erratum included.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.gatsby.ucl.ac.uk/~dayan/papers/cjch.pdf" target="_blank" rel="noopener">Q-learning</a>
+          <span class="res-source">— Christopher J. C. H. Watkins &amp; Peter Dayan, Machine Learning 8 (1992)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Learn the value of every action in every state directly, whatever exploring policy generated the data. Watkins introduced Q-learning in his 1989 thesis; this note proves it converges to the optimal action values with probability 1, provided every action keeps being tried in every state. Free from Dayan's page.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://dl.acm.org/doi/10.1145/203330.203343" target="_blank" rel="noopener">Temporal Difference Learning and TD-Gammon</a>
+          <span class="res-source">— Gerald Tesauro, Communications of the ACM (1995)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">A neural network that learned backgammon purely by playing itself, starting from random weights, then lost a net of only 7 points over 38 games against top human players — and changed how experts play some opening rolls. Still the clearest short account of learning by self-play; free from the ACM Digital Library.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://proceedings.neurips.cc/paper/1999/hash/464d828b85b0bed98e80ade0a5c43b0f-Abstract.html" target="_blank" rel="noopener">Policy Gradient Methods for Reinforcement Learning with Function Approximation</a>
+          <span class="res-source">— Richard S. Sutton, David McAllester, Satinder Singh &amp; Yishay Mansour, NeurIPS (1999)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">The policy gradient theorem: represent the policy directly and follow the gradient of expected reward, which can be estimated from experience with a learned value function — the footing for actor-critic methods. Williams's <a href="https://people.cs.umass.edu/~barto/courses/cs687/williams92simple.pdf" target="_blank" rel="noopener">REINFORCE</a> (1992) is the earlier, simpler member of the family.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf" target="_blank" rel="noopener">Human-level control through deep reinforcement learning</a>
+          <span class="res-source">— Mnih et al., DeepMind / Nature (2015)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">DQN: one network and one set of hyperparameters learned forty-nine Atari games from pixels and score, kept stable by experience replay and a target network. DeepMind's free copy of the Nature paper; the <a href="https://arxiv.org/abs/1312.5602" target="_blank" rel="noopener">2013 workshop version</a> first showed the idea on seven games.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1707.06347" target="_blank" rel="noopener">Proximal Policy Optimization Algorithms</a>
+          <span class="res-source">— John Schulman et al., OpenAI (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Clip each policy update so it cannot move too far, and you keep most of <a href="https://arxiv.org/abs/1502.05477" target="_blank" rel="noopener">TRPO</a>'s stability with far simpler code. RL's workhorse ever since — and the algorithm InstructGPT used for RLHF.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1801.01290" target="_blank" rel="noopener">Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor</a>
+          <span class="res-source">— Tuomas Haarnoja, Aurick Zhou, Pieter Abbeel &amp; Sergey Levine, ICML (2018)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Off-policy actor-critic with an entropy bonus — succeed at the task while acting as randomly as possible — which made continuous control more sample-efficient and much less brittle to tune.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://discovery.ucl.ac.uk/id/eprint/10069050/" target="_blank" rel="noopener">A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play</a>
+          <span class="res-source">— Silver et al., DeepMind / Science (2018)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">AlphaZero: no human games and no knowledge beyond the rules — self-play plus Monte Carlo tree search guided by one learned network beat a world-champion program at chess, shogi and Go. Free accepted version in UCL's repository; <a href="https://arxiv.org/abs/1911.08265" target="_blank" rel="noopener">MuZero</a> (2020) went further and planned with a model it learned itself, rules included.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2301.04104" target="_blank" rel="noopener">Mastering Diverse Domains through World Models (DreamerV3)</a>
+          <span class="res-source">— Danijar Hafner, Jurgis Pasukonis, Jimmy Ba &amp; Timothy Lillicrap (2023; Nature 2025)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Learn a model of the world, then improve the policy by imagining futures inside it. One configuration outperformed specialised methods on over 150 tasks, and it was the first algorithm to collect diamonds in Minecraft from scratch, with no human data.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.nature.com/articles/s41586-023-06419-4" target="_blank" rel="noopener">Champion-level drone racing using deep reinforcement learning</a>
+          <span class="res-source">— Kaufmann et al., Nature (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Swift, trained with deep RL in simulation plus data from the physical world, won races against three human champions — including the world champions of two leagues — in real head-to-head racing. Open access; DeepMind's <a href="https://www.nature.com/articles/s41586-021-04301-9" target="_blank" rel="noopener">tokamak controller</a> (2022), which shaped fusion plasmas, is the other landmark of RL leaving the simulator.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1706.03741" target="_blank" rel="noopener">Deep reinforcement learning from human preferences</a>
+          <span class="res-source">— Christiano, Leike, Brown, Martic, Legg &amp; Amodei, NeurIPS (2017)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The origin of RLHF: learn a reward model from a person choosing the better of two short clips, then optimise it with RL. Atari and simulated robots trained with feedback on under 1% of their interactions, and new behaviours learned from about an hour of human time. InstructGPT, on the LLM page, applied the recipe to text.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2402.03300" target="_blank" rel="noopener">DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models</a>
+          <span class="res-source">— Shao et al., DeepSeek-AI (2024)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Introduces GRPO: PPO without the value network, scoring each sampled answer against the others in its group. It became the algorithm behind DeepSeek-R1 and much open reasoning work — though <a href="https://arxiv.org/abs/2504.13837" target="_blank" rel="noopener">Yue et al.</a> (2025) find that RL with verifiable rewards mostly sharpens reasoning the base model could already do rather than adding new patterns.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/1709.06560" target="_blank" rel="noopener">Deep Reinforcement Learning that Matters</a>
+          <span class="res-source">— Henderson et al., AAAI (2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Same algorithm, different random seeds or codebase, different conclusion: why deep RL results are hard to reproduce, and why honest reporting needs more runs and significance tests.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2108.13264" target="_blank" rel="noopener">Deep Reinforcement Learning at the Edge of the Statistical Precipice</a>
+          <span class="res-source">— Agarwal et al., NeurIPS (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">With only a handful of runs per task, point estimates of aggregate scores mislead. Report interval estimates, performance profiles and the interquartile mean instead. A NeurIPS 2021 Outstanding Paper, with the rliable library to do it.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>✍️ Articles &amp; Blog Posts</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://karpathy.github.io/2016/05/31/rl/" target="_blank" rel="noopener">Deep Reinforcement Learning: Pong from Pixels</a>
+          <span class="res-source">— Andrej Karpathy (2016)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Policy gradients in 130 lines of NumPy, learning Pong from raw pixels: run a policy, see which actions led to high reward, make them more likely. Plus a frank account of how "profoundly dumb" the method is, and why it works anyway.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2018-02-19-rl-overview/" target="_blank" rel="noopener">A (Long) Peek into Reinforcement Learning</a>
+          <span class="res-source">— Lilian Weng (2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The field's vocabulary and main algorithm families on one long page, maths included: MDPs and Bellman equations, dynamic programming, Monte Carlo and TD, Q-learning, policy gradients. Her <a href="https://lilianweng.github.io/posts/2018-04-08-policy-gradient/" target="_blank" rel="noopener">Policy Gradient Algorithms</a> post goes deep on the actor-critic family.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://distill.pub/2019/paths-perspective-on-value-learning/" target="_blank" rel="noopener">The Paths Perspective on Value Learning</a>
+          <span class="res-source">— Sam Greydanus &amp; Chris Olah, Distill (2019)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Why TD learning beats Monte Carlo when experience overlaps: TD in effect averages over every path through the states it has seen, not just the trajectories it actually took. Interactive gridworlds throughout.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.alexirpan.com/2018/02/14/rl-hard.html" target="_blank" rel="noopener">Deep Reinforcement Learning Doesn't Work Yet</a>
+          <span class="res-source">— Alex Irpan (2018)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">The sceptic's field guide: sample inefficiency, rewards that are hard to design, local optima, policies that overfit their environment and runs that won't reproduce. Read it to see which problems the later papers above were trying to fix.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://lilianweng.github.io/posts/2024-11-28-reward-hacking/" target="_blank" rel="noopener">Reward Hacking in Reinforcement Learning</a>
+          <span class="res-source">— Lilian Weng (2024)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How agents exploit flawed rewards, from a robot hand that fools its human judges by hovering between the object and the camera to coding models that rewrite unit tests to pass them — and what is known about preventing it. DeepMind's <a href="https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/" target="_blank" rel="noopener">specification gaming</a> post is the short illustrated version.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://magazine.sebastianraschka.com/p/the-state-of-llm-reasoning-model-training" target="_blank" rel="noopener">The State of Reinforcement Learning for LLM Reasoning</a>
+          <span class="res-source">— Sebastian Raschka (2025)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">How RL moved into language models: RLHF basics, PPO, then GRPO and RL with verifiable rewards, how DeepSeek-R1 was trained, and what the papers that followed learned. The bridge from this page to the LLM page.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/" target="_blank" rel="noopener">The 37 Implementation Details of Proximal Policy Optimization</a>
+          <span class="res-source">— Huang, Dossa, Raffin, Kanervisto &amp; Wang, ICLR Blog Track (2022)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">PPO as it is actually implemented: the normalisation, initialisation, clipping and environment-wrapper details that decide whether you reproduce published results, with code and video walkthroughs.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://andyljones.com/posts/rl-debugging.html" target="_blank" rel="noopener">Debugging Reinforcement Learning Systems</a>
+          <span class="res-source">— Andy Jones (2021)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Assume you have a bug before you tune anything: probe environments and probe agents that isolate each part, unit tests for discounting and advantages, and the metrics worth logging.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎥 Videos &amp; Talks</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=kopoLzvh5jY" target="_blank" rel="noopener">Multi-Agent Hide and Seek</a>
+          <span class="res-source">— OpenAI (2019)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">What RL can do with nothing but the score of a hide-and-seek game: hiders and seekers training by self-play discover strategy after strategy — shelters built from boxes, ramps to break in — each forcing the other side to adapt. The paper is <a href="https://arxiv.org/abs/1909.07528" target="_blank" rel="noopener">Emergent Tool Use From Multi-Agent Autocurricula</a>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLzvYlJMoZ02Dxtwe-MmH4nOB5jYlMGBjr" target="_blank" rel="noopener">Reinforcement Learning, by the Book</a>
+          <span class="res-source">— Mutual Information</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Six animated videos that follow Sutton &amp; Barto: the core ideas, Bellman equations and dynamic programming, Monte Carlo, TD and Q-learning, function approximation, then policy gradients. The friendliest way into the textbook.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLqYmG7hTraZDVH599EItlEWsUOsJbAodm" target="_blank" rel="noopener">DeepMind × UCL Reinforcement Learning Lecture Series 2021</a>
+          <span class="res-source">— Hado van Hasselt, Diana Borsa &amp; Matteo Hessel, Google DeepMind</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Thirteen lectures from exploration and MDPs through model-free prediction and control, function approximation and policy gradients to deep RL. YouTube labels the playlist "Deep Learning Lecture Series 2021", but the videos are this RL course. <a href="https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ" target="_blank" rel="noopener">David Silver's 2015 course</a> is the older classic.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/playlist?list=PLwRJQ4m4UJjNymuBM9RdmB3Z9N5-0IlY0" target="_blank" rel="noopener">Foundations of Deep RL</a>
+          <span class="res-source">— Pieter Abbeel (2021)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Six lectures, one idea each: MDPs and exact methods, deep Q-learning, policy gradients and advantage estimation, TRPO and PPO, DDPG and SAC, model-based RL. The fastest rigorous tour of deep RL.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=8EcdaCk9KaQ" target="_blank" rel="noopener">Nuts and Bolts of Deep RL Experimentation</a>
+          <span class="res-source">— John Schulman, Deep RL Bootcamp (2017)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Practical advice from PPO's lead author: shrink the problem until experiments are fast, build test cases you know should work, visualise what is being learned and simplify the reward. His <a href="http://joschu.net/docs/nuts-and-bolts.pdf" target="_blank" rel="noopener">slides</a> and the rest of the <a href="https://sites.google.com/view/deep-rl-bootcamp/lectures" target="_blank" rel="noopener">Bootcamp lectures</a> are free too.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.youtube.com/watch?v=hhiLw5Q_UFg" target="_blank" rel="noopener">Reinforcement Learning from Human Feedback: Progress and Challenges</a>
+          <span class="res-source">— John Schulman, UC Berkeley EECS (2023)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Schulman, then at OpenAI, on what RLHF does to a language model — including why models hallucinate, and why simply letting them say "I don't know" partly helps — and which problems remain open.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🎓 Courses &amp; Tutorials</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://huggingface.co/learn/deep-rl-course/unit0/introduction" target="_blank" rel="noopener">Hugging Face Deep RL Course</a>
+          <span class="res-source">— Hugging Face</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Free, hands-on and certificate-bearing: Q-learning, deep Q-learning on Atari, policy gradients, actor-critic, multi-agent RL and PPO, each with a notebook. Now in low-maintenance mode — the lessons still work, but the leaderboard and the AI-vs-AI unit no longer do.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://www.coursera.org/specializations/reinforcement-learning" target="_blank" rel="noopener">Reinforcement Learning Specialization</a>
+          <span class="res-source">— Martha White &amp; Adam White, University of Alberta (Coursera)</span>
+          <span class="level" data-level="beginner">Beginner</span>
+          <p class="resource-note">Four courses from Sutton's university: sequential decision making, MDPs and dynamic programming; sample-based methods such as Monte Carlo and TD; function approximation; and a capstone that builds a complete agent. Paid — Coursera offers no free audit for it.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://spinningup.openai.com/en/latest/" target="_blank" rel="noopener">Spinning Up in Deep RL</a>
+          <span class="res-source">— Joshua Achiam, OpenAI</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">OpenAI's free introduction to deep RL: the core concepts, a map of algorithm families, one clean implementation each of VPG, TRPO, PPO, DDPG, TD3 and SAC, and a categorised list of key papers to read next.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://docs.pytorch.org/tutorials/intermediate/reinforcement_q_learning.html" target="_blank" rel="noopener">Reinforcement Learning (DQN) Tutorial</a>
+          <span class="res-source">— official PyTorch tutorials</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">A DQN that balances CartPole in one short script, with each piece explained: replay memory, epsilon-greedy exploration, a soft-updated target network and the Huber loss.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://web.stanford.edu/class/cs234/" target="_blank" rel="noopener">CS234: Reinforcement Learning</a>
+          <span class="res-source">— Emma Brunskill, Stanford University (Winter 2026)</span>
+          <span class="level" data-level="intermediate">Intermediate</span>
+          <p class="resource-note">Tabular planning, Q-learning with function approximation, policy search, offline RL and RLHF, exploration and Monte Carlo tree search. Slides are public; the <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rN4wG6Nk6sNpTEbuOSosZdX" target="_blank" rel="noopener">Spring 2024 lectures</a> are free on YouTube.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://rail.eecs.berkeley.edu/deeprlcourse/" target="_blank" rel="noopener">CS 185/285: Deep Reinforcement Learning</a>
+          <span class="res-source">— Sergey Levine, UC Berkeley (Spring 2026)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Imitation learning, policy gradients, actor-critic and Q-learning, model-based and offline RL, exploration, and RL for language models. The <a href="https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps" target="_blank" rel="noopener">Fall 2023 lectures</a> are free on YouTube.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://cs224r.stanford.edu/" target="_blank" rel="noopener">CS224R: Deep Reinforcement Learning</a>
+          <span class="res-source">— Chelsea Finn, Stanford University (Spring 2026)</span>
+          <span class="level" data-level="advanced">Advanced</span>
+          <p class="resource-note">Weighted toward robots and language models: imitation, offline and multi-task RL, reward learning and preference optimisation, RL for LLM reasoning, sim-to-real and vision-language-action models. The <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rPwxE0ONYRa_itZFdaKCylL" target="_blank" rel="noopener">Spring 2025 lectures</a> are free on YouTube.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔧 Tools &amp; Interactive</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://awjuliani.github.io/web-rl-playground/" target="_blank" rel="noopener">The Beginner's RL Playground</a>
+          <span class="res-source">— Arthur Juliani, in the browser</span>
+          <p class="resource-note">Q-learning, SARSA, Monte Carlo, actor-critic and the successor representation on a grid you can edit, with every parameter on a slider. Karpathy's <a href="https://cs.stanford.edu/people/karpathy/reinforcejs/" target="_blank" rel="noopener">REINFORCEjs</a> adds dynamic-programming and DQN demos.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://gymnasium.farama.org/" target="_blank" rel="noopener">Gymnasium</a>
+          <span class="res-source">— Farama Foundation (maintained fork of OpenAI Gym)</span>
+          <p class="resource-note">The API standard for RL environments: classic control, Atari and MuJoCo robots behind one reset-and-step interface, so agents and environments are interchangeable. <a href="https://pettingzoo.farama.org/" target="_blank" rel="noopener">PettingZoo</a> is the multi-agent counterpart.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://stable-baselines3.readthedocs.io/en/master/" target="_blank" rel="noopener">Stable-Baselines3</a>
+          <span class="res-source">— DLR-RM, PyTorch library</span>
+          <p class="resource-note">Reliable implementations of PPO, SAC, DQN and more, for when you want a trustworthy baseline rather than a bug hunt. The <a href="https://github.com/DLR-RM/rl-baselines3-zoo" target="_blank" rel="noopener">RL Baselines3 Zoo</a> adds tuned hyperparameters and pre-trained agents.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://github.com/vwxyzjn/cleanrl" target="_blank" rel="noopener">CleanRL</a>
+          <span class="res-source">— Shengyi Huang et al., open source</span>
+          <p class="resource-note">One file per algorithm — the Atari PPO file is 340 lines — so you can read a complete, benchmarked implementation from top to bottom. A reference to learn from, not a library to import.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://huggingface.co/docs/trl/index" target="_blank" rel="noopener">TRL (Transformer Reinforcement Learning)</a>
+          <span class="res-source">— Hugging Face, Python library</span>
+          <p class="resource-note">Post-training for language models, with trainers for SFT, DPO, GRPO and RLOO. The usual first step for running RL on an LLM yourself.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>🔗 Further Reading / Going Deeper</h2>
+      <ul class="resource-list">
+        <li class="resource-item">
+          <a class="res-title" href="https://rltheorybook.github.io/" target="_blank" rel="noopener">Reinforcement Learning: Theory and Algorithms</a>
+          <span class="res-source">— Alekh Agarwal, Nan Jiang, Sham M. Kakade, Wen Sun &amp; Kianté Brantley (draft, updated 2026)</span>
+          <p class="resource-note">The theory route: when RL provably works and how much data it needs — sample complexity, exploration, and the analysis of policy-gradient and imitation-learning methods. Free draft.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://web.mit.edu/dimitrib/www/RLbook.html" target="_blank" rel="noopener">A Course in Reinforcement Learning (2nd ed.)</a>
+          <span class="res-source">— Dimitri P. Bertsekas (2025)</span>
+          <p class="resource-note">RL seen from optimal control — approximate dynamic programming, rollout and policy iteration — by the author of the standard dynamic-programming texts. Free PDF from his page, alongside his <em>Lessons from AlphaZero</em>.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://arxiv.org/abs/2005.01643" target="_blank" rel="noopener">Offline Reinforcement Learning: Tutorial, Review, and Perspectives on Open Problems</a>
+          <span class="res-source">— Sergey Levine, Aviral Kumar, George Tucker &amp; Justin Fu (2020)</span>
+          <p class="resource-note">Learning a policy from a fixed dataset with no new interaction — the setting healthcare, education and robotics can actually offer — and why distribution shift makes it hard.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf" target="_blank" rel="noopener">Welcome to the Era of Experience</a>
+          <span class="res-source">— David Silver &amp; Richard S. Sutton (2025)</span>
+          <p class="resource-note">The case that the next generation of agents will learn mainly from their own experience rather than from human data. A preprint of a chapter for MIT Press's <em>Designing an Intelligence</em>; read it with <a href="https://www.sciencedirect.com/science/article/pii/S0004370221000862" target="_blank" rel="noopener">Reward is enough</a> (2021), their argument with Singh and Precup that maximising reward could account for intelligence itself.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="deep-learning.html">Deep Learning</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The function approximators inside deep RL — backpropagation, convolutional networks for pixel input, and the optimisers and normalisation that keep training stable.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="large-language-models.html">Large Language Models</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">Where much of RL now runs: pretraining, instruction tuning and preference data — the language-model half of the RLHF and GRPO papers above, and why DPO can skip the RL loop.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="genetic-algorithms-and-genetic-programming.html">Genetic Algorithms and Genetic Programming</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The gradient-free rival: evolution strategies and neuroevolution search policy parameters directly, and novelty search tackles the deceptive rewards that stall exploration.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="machine-learning.html">Machine Learning</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The ground floor: function approximation, generalisation and honest evaluation — all harder here, because the agent's own actions choose its training data.</p>
+        </li>
+        <li class="resource-item">
+          <a class="res-title" href="artificial-intelligence.html">Artificial Intelligence</a>
+          <span class="res-source">— on this site</span>
+          <p class="resource-note">The parent field, where RL is one agent design beside search, logic and planning — and where AlphaGo's tree search shows learned values and classical search working together.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html">← Back to all topics</a>
+    </div>
+  </footer>
+</body>
+</html>
