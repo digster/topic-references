@@ -26,6 +26,13 @@ Most of it is about one problem: **proving a link is right, not just alive.**
 - **A URL printed in a paper can die.** The Segment Anything abstract still points at
   `segment-anything.com`, which no longer resolves; Meta's demo moved to
   `aidemos.meta.com/segment-anything/`. Don't copy project links from a paper without fetching them.
+- **Playlist titles can be wrong, and search hits can be copies.** Google DeepMind's own playlist
+  for the *RL Lecture Series 2021* is titled "Deep Learning Lecture Series 2021" on YouTube, while
+  the top search results for the course were playlists re-uploaded by individuals. List the
+  playlist's `videoId`s from its page and oEmbed each one: the video titles and `author_name`
+  settle both questions.
+- **Official hubs die quietly too.** `deepmind.com/learning-resources/…` pages and `dpmd.ai`
+  short links now redirect to deepmind.google's home page — the site-root rule above applies.
 - **No `<title>` means the title check can't help.** `fpcv.cs.columbia.edu` has no title element,
   so the checker passes it on content type alone. Confirm such pages by their body text.
 - **Wrong identifiers look plausible.** A guessed JSTOR stable ID and a guessed ISBN each
@@ -49,6 +56,11 @@ Most of it is about one problem: **proving a link is right, not just alive.**
   redirects (`curl -o /dev/null -w '%{redirect_url}'`). For a book, confirm the ISBN at
   `https://openlibrary.org/isbn/<isbn>.json` (follow redirects) *and* find the exact URL in a
   search index or an official source such as the publisher's repo for the book.
+- **Springer articles sit behind a cookie redirect.** `link.springer.com/article/…` and its PDFs
+  bounce through `idp.springer.com`, which curl, `urllib` and `WebFetch` can't complete, so an
+  OpenAlex "bronze" (free-to-read) label can't be confirmed from here. For the classic
+  *Machine Learning* papers, the authors' own copies verify cleanly (Sutton's and Dayan's pages);
+  a garbled text layer can be checked by rendering page 1 with `uv run --with pymupdf`.
 - **OpenAlex finds the legitimate free copy.** `https://api.openalex.org/works/doi:<doi>` reports
   whether a paper is open access and where (e.g. a university repository), with no key or email.
   Check it before calling a paper paywalled or hunting for a copy by hand. (`api.github.com`
@@ -97,6 +109,11 @@ Most of it is about one problem: **proving a link is right, not just alive.**
   pages at phone width anyway.
 - **Semester-scoped course URLs rot** (`/sp26/`, `/autumn2025/`). Prefer the current edition
   and date it in the source line; keep an older recording in the note if it's still the classic.
+  The public videos are often from a different term than the page (CS234 is Winter 2026 on its
+  site, but its public lectures are Spring 2024), so date the videos separately in the note.
+- **The landing search is a substring match.** Short queries hit inside words: `ppo` already
+  matches "support" (ML) and "opposition" (Structuralism). Pick distinctive queries such as
+  `grpo` when checking that a new card's tags work.
 - **Fast-moving fields need a date check on every refresh**: Ethereum upgrades (Pectra, Fusaka),
   regulation (MiCA, the GENIUS Act), rebrands (MakerDAO → Sky, LM Arena → Arena AI) and retired
   courses (Coursera's MLOps specialization) all changed after the pages were written.

@@ -57,7 +57,9 @@
     ==================================================================== -->
     <section class="topic-grid" id="topic-grid">
       <!-- AI and machine learning — parent field, then foundations, architectures, applications,
-           and last the gradient-free evolutionary branch (links back to AI, ML, DL and LLMs). -->
+           and last the two branches that learn from a score rather than from labels:
+           reinforcement learning, then the gradient-free evolutionary methods (each links back
+           to AI, ML, DL and LLMs, and to the other). -->
       <a class="topic-card" href="topics/artificial-intelligence.html"
          data-tags="ai artificial intelligence aima russell norvig intelligent agents rational agent search a-star heuristic pathfinding adversarial search minimax alpha-beta monte carlo tree search constraint satisfaction csp logic knowledge representation first order logic inference automated planning pddl probabilistic reasoning bayesian networks mdp markov decision process reinforcement learning rl q-learning bandits robotics perception computer vision nlp expert systems symbolic ai gofai ai winter turing test chinese room agi artificial general intelligence ai safety alignment ethics history of ai deep blue alphago alphafold deepmind">
         <h3>Artificial Intelligence</h3>
@@ -92,6 +94,11 @@
          data-tags="generative ai genai beyond llms non-llm diffusion models ddpm ddim stable diffusion latent diffusion score based sde flow matching gan gans generative adversarial networks stylegan vae variational autoencoder vq-vae normalizing flows text-to-image image generation dall-e midjourney flux imagen sora veo clip controlnet lora dreambooth inpainting upscaling text-to-video video generation audio generation music generation text-to-speech tts wavenet musicgen encodec stable audio voice cloning nerf neural radiance fields gaussian splatting text-to-3d dreamfusion 3d neural rendering multimodal comfyui diffusers deepfakes">
         <h3>Generative AI (Beyond LLMs)</h3>
         <p>Diffusion, GANs and the models that generate images, audio, video and 3D — everything that isn't a language model.</p>
+      </a>
+      <a class="topic-card" href="topics/reinforcement-learning.html"
+         data-tags="reinforcement learning rl deep reinforcement learning deep rl drl agent environment reward return policy value function markov decision process mdp bellman equation dynamic programming value iteration policy iteration monte carlo temporal difference td learning td-gammon q-learning sarsa dqn deep q-network experience replay atari policy gradient reinforce actor-critic a2c a3c ppo proximal policy optimization trpo sac soft actor-critic exploration exploitation multi-armed bandits ucb thompson sampling model-based rl world models dreamer muzero alphazero alphago self-play monte carlo tree search mcts offline rl imitation learning multi-agent marl reward shaping reward hacking specification gaming rlhf rlvr verifiable rewards grpo reasoning models robotics sim-to-real optimal control gymnasium stable-baselines3 cleanrl spinning up sutton barto silver">
+        <h3>Reinforcement Learning</h3>
+        <p>Learning to act from reward alone — Q-learning and policy gradients, deep RL and self-play, and the RL behind reasoning models.</p>
       </a>
       <a class="topic-card" href="topics/genetic-algorithms-and-genetic-programming.html"
          data-tags="genetic algorithms genetic algorithm ga genetic programming gp evolutionary computation evolutionary algorithms evolutionary algorithm ea evolution darwinian natural selection population fitness function selection tournament selection roulette wheel crossover recombination mutation elitism chromosome genome schema theorem building blocks holland goldberg koza cramer metaheuristics optimization gradient-free black-box optimization derivative-free no free lunch multi-objective pareto nsga-ii pymoo evolution strategies es cma-es symbolic regression pysr gplearn eureqa program synthesis expression trees bloat neuroevolution neat novelty search quality diversity map-elites open-endedness evolved antenna nasa karl sims evolved virtual creatures automl tpot neural architecture search nas amoebanet automl-zero funsearch alphaevolve llm-guided evolution deap pygad">
