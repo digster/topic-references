@@ -35,6 +35,16 @@ Most of it is about one problem: **proving a link is right, not just alive.**
   short links now redirect to deepmind.google's home page — the site-root rule above applies.
 - **No `<title>` means the title check can't help.** `fpcv.cs.columbia.edu` has no title element,
   so the checker passes it on content type alone. Confirm such pages by their body text.
+- **Meta-refresh redirects are a 200 too.** marcuse.org's old `/herbert/pubs/60spubs/…` URLs
+  answer 200 with a "Redirecting…" page and a meta refresh to `/herbert/publications/1960s/…`.
+  It is the same host, so the cross-site `WARN` can't catch it; a `<title>` of "Redirecting…"
+  is the tell. Link the destination.
+- **Encyclopedias move and rewrite entries.** IEP's `/frankfur/` now redirects to
+  `/critical-theory-frankfurt-school/`, and the SEP replaced its *Critical Theory* entry
+  outright in 2023 (new authors). Recheck slugs and author names in source lines on a refresh.
+- **Web headlines differ from print titles.** The New Yorker's "The Naysayers" (its `og:title`)
+  serves the `<title>` "Pop Culture and Power". Keep the print title and name the magazine in the
+  source line, so the title check still has words in common.
 - **Wrong identifiers look plausible.** A guessed JSTOR stable ID and a guessed ISBN each
   resolved to a real but unrelated work. For DOIs and JSTOR IDs, confirm the metadata through
   Crossref (`https://api.crossref.org/works/<doi>`), which returns title, journal, volume and
@@ -56,6 +66,13 @@ Most of it is about one problem: **proving a link is right, not just alive.**
   redirects (`curl -o /dev/null -w '%{redirect_url}'`). For a book, confirm the ISBN at
   `https://openlibrary.org/isbn/<isbn>.json` (follow redirects) *and* find the exact URL in a
   search index or an official source such as the publisher's repo for the book.
+- **More hosts that refuse every client here:** `sup.org` (a Vercel Security Checkpoint `429`
+  for curl *and* `WebFetch`), `bloomsbury.com` (Cloudflare; `WebFetch` can't reach it and
+  `WebSearch` refuses the domain, as it does `theguardian.com`). `politybooks.com` is a
+  client-rendered app: a 200 with an empty `<title>`, which the checker passes on status alone.
+  Confirm these books through the Open Library ISBN plus a search-index hit for the exact URL.
+  YouTube watch pages and `yt-dlp` now demand a sign-in; oEmbed still gives title and channel,
+  but not duration or language.
 - **Springer articles sit behind a cookie redirect.** `link.springer.com/article/…` and its PDFs
   bounce through `idp.springer.com`, which curl, `urllib` and `WebFetch` can't complete, so an
   OpenAlex "bronze" (free-to-read) label can't be confirmed from here. For the classic
@@ -94,6 +111,10 @@ Most of it is about one problem: **proving a link is right, not just alive.**
   font encodings that garble text extraction. If the text won't come out, confirm the file
   through the host's own page that links it — a group's publication list, a proceedings contents
   page.
+- **Official lecture PDFs exist for prize and named lectures.** The Kyoto Prize hosts each
+  laureate's lecture script (`kyotoprize.org/wp-content/uploads/2019/07/<year>_<A|B|C>.pdf`,
+  C = Arts and Philosophy) and the Tanner Lectures host their texts. The Kyoto files are
+  bilingual OCR with the Japanese first — Habermas's English starts on page 13 — so say where.
 - **Free-copy rule.** Link single canonical papers and essays hosted by their author, a
   university or a legitimate public archive. Don't link scans of whole in-print books or
   chapters, or copies stamped with JSTOR's "personal use only" terms on a course page. Link the
@@ -103,6 +124,14 @@ Most of it is about one problem: **proving a link is right, not just alive.**
 
 - **Descriptions go stale when they count things.** "The four sibling pages" stayed in two
   descriptions after a fifth page was added. Don't hard-code counts of other pages.
+- **People die; descriptions say "is".** Habermas died on 14 March 2026, which only turned up
+  because the Kyoto Prize's notice appeared while verifying his lecture. When a page names
+  living thinkers, look for an obituary (the SEP now reads "b. 1929, d. 2026").
+- **marxists.org's layout is uneven.** Its "Value of Knowledge" `works/ge/` folder has only
+  `benjamin.htm`; Horkheimer, Adorno, Marcuse and Habermas live under
+  `reference/archive/<name>/`, listed from `subject/frankfurt-school/`. Horkheimer's
+  "Traditional and Critical Theory" has no legitimate free copy anywhere — only course-site
+  scans — so it is named in a note rather than linked.
 - **Markdown habits leak into HTML.** `*word*` renders as literal asterisks; use `<em>`.
 - **Long unbroken tokens overflow on phones.** A repo path in a note widened a page by 58px
   at 375px. `styles.css` now sets `overflow-wrap: anywhere` on `.resource-item`, but check new
