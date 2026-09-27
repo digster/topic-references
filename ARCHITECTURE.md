@@ -79,7 +79,7 @@ Two properties follow from that and are easy to break:
   B links back to A. Unrelated pages stay isolated; symmetry is a rule *inside* a family, not a
   requirement that every page link to every other.
 
-There are currently two families, and they are shaped differently on purpose:
+There are currently three families, and they are shaped differently on purpose:
 
 - The **AI** family has nine pages. The original six (`artificial-intelligence`,
   `deep-learning`, `machine-learning`, `transformers`, `large-language-models`,
@@ -114,6 +114,13 @@ There are currently two families, and they are shaped differently on purpose:
   the 21 possible pairs. `blockchain-and-cryptocurrency` is the hub and links to all six others;
   the rest are wired only where one page is genuinely the next step from the other. ZK↔DeFi,
   ZK↔NFTs, ZK↔DAOs and L2↔DAOs are omitted for that reason.
+- The **humanities** family is two pages and one edge: `structuralism-and-post-structuralism` ↔
+  `critical-theory` (added 2026-09-27). The two traditions are in open argument with each other,
+  which is what makes each a next step from the other: Habermas's critique of Foucault and
+  Derrida (*The Philosophical Discourse of Modernity*, listed on the Structuralism page, and his
+  1980 Adorno Prize speech, listed on Critical Theory) is the Frankfurt School's answer to
+  post-structuralism, and the feminist, postcolonial and queer theory at the end of the Critical
+  Theory page builds on post-structuralist ideas (Butler on Foucault, Said's use of "discourse").
 
 **Symmetry is not the same as completeness.** A family being cross-linked never means every page in
 it links to every other — forcing the missing edges would put rows on the page that no reader
@@ -123,23 +130,24 @@ then make it reciprocal.
 
 Families are also not sealed off from each other: `decentralized-finance` ↔ `starting-a-new-bank`
 is a single edge between the crypto family and an otherwise isolated page, because each really is
-the next step from the other. `data-structures-and-algorithms` and
-`structuralism-and-post-structuralism` remain fully isolated.
+the next step from the other. `data-structures-and-algorithms` remains fully isolated.
 
 `structuralism-and-post-structuralism` is worth calling out because it is the site's first
 **humanities** topic, and it shows the taxonomy is domain-agnostic rather than tech-only: the same
 seven sections, level pills and prose conventions carry a philosophy page without modification.
-It is isolated on purpose. There is a tempting line from Saussure's "language is a system of
-differences" to the distributional semantics behind word embeddings, but a reader studying
-structuralism is not thereby ready for `large-language-models`, and vice versa — an intellectual
-resemblance is not a next step, so no edge was added in either direction.
+It was isolated until `critical-theory` arrived, and the reason it stayed unlinked to the AI family
+still holds. There is a tempting line from Saussure's "language is a system of differences" to the
+distributional semantics behind word embeddings, but a reader studying structuralism is not
+thereby ready for `large-language-models`, and vice versa — an intellectual resemblance is not a
+next step, so no edge was added in either direction. The Critical Theory edge passes the same test
+because it is a documented argument between the two traditions, not a resemblance.
 
 `tests/check_site.py` enforces both properties. It parses every topic page, checks each
 cross-link row's four differences from an external row, and derives reciprocity from the actual
 link graph rather than a hardcoded family list — so a new family, or a new bridge like
 DeFi ↔ bank, is checked without editing the validator. It reports the pair count on success
-(48 as of 2026-09-27: 30 AI — 21 among the original six plus Computer Vision, GA/GP's 4 and
-Reinforcement Learning's 5 — 17 crypto, 1 bridge).
+(49 as of 2026-09-27: 30 AI — 21 among the original six plus Computer Vision, GA/GP's 4 and
+Reinforcement Learning's 5 — 17 crypto, 1 bridge, 1 humanities).
 
 ### Link health is checked by title, not just by status code
 `tests/check_site.py --online` fetches every external URL, but a `200` is treated as necessary,
@@ -170,7 +178,8 @@ beside the pages it links to. Current order:
 | 1 | AI & machine learning | `artificial-intelligence` → `machine-learning` → `deep-learning` → `transformers` → `large-language-models` → `computer-vision` → `generative-ai-beyond-llms` → `reinforcement-learning` → `genetic-algorithms-and-genetic-programming` |
 | 2 | Crypto & blockchain | `blockchain-and-cryptocurrency` → `ethereum-and-smart-contracts` → `layer-2-and-scaling` → `zero-knowledge-proofs` → `nfts-and-digital-ownership` → `crypto-economics-and-daos` → `decentralized-finance` |
 | 3 | Traditional finance | `starting-a-new-bank` |
-| 4 | Standalone | `data-structures-and-algorithms`, `structuralism-and-post-structuralism` |
+| 4 | Humanities | `structuralism-and-post-structuralism` → `critical-theory` |
+| 5 | Standalone | `data-structures-and-algorithms` |
 
 Within a cluster the order is a **learning path** — the parent field first, then what builds on it
 — mirroring how resources are ordered inside a topic page. A side branch goes after the main
@@ -183,7 +192,11 @@ builds on its pieces — U-Net, CLIP, structure-from-motion poses). Reinforcemen
 branch like GA/GP — its deep-RL and RL-for-LLMs material builds on the DL and LLM pages — so it
 also goes after the main path, immediately before GA/GP: the two are the branches that learn from
 a score rather than from labels, RL ↔ GA/GP is an edge (evolution strategies versus policy
-gradients), and adjacency puts that edge side by side on the page. Two adjacencies are load-bearing and
+gradients), and adjacency puts that edge side by side on the page. The humanities cluster follows
+the same rule: Structuralism comes first because the last part of the Critical Theory page (its
+feminist, postcolonial and queer heirs) builds on post-structuralism, while nothing on the
+Structuralism page needs Critical Theory first. The cluster sits before Standalone, which stays
+last. Two adjacencies are load-bearing and
 should survive future edits: `layer-2-and-scaling` next to `zero-knowledge-proofs` (the strongest
 edge in the crypto family), and `decentralized-finance` immediately before `starting-a-new-bank`,
 which puts the site's only cross-family edge side by side on the page.
@@ -208,7 +221,9 @@ exactly at 3 columns, and at 2 columns every cluster boundary fell on a row boun
 seventh AI card (GA/GP) ended that, as expected — it was always a bonus, not a constraint to
 preserve. (The eighth, Computer Vision, happened to line the 2-column layout up again; the ninth,
 Reinforcement Learning, fills three full rows at 3 columns and leaves the 2-column boundary
-mid-row.) Linear adjacency is what holds a cluster together at every width.
+mid-row.) Linear adjacency is what holds a cluster together at every width: the two humanities
+cards (18th and 19th of 20) straddle a row break at both 3 and 2 columns, with Structuralism
+ending one row and Critical Theory starting the next, and still read as a pair in reading order.
 
 ## Data flow
 

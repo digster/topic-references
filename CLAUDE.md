@@ -119,7 +119,7 @@ each other on the page:
 </a>
 ```
 - **Clusters** are marked by an HTML comment above each group in `#topic-grid`. Today they are:
-  AI & machine learning → crypto & blockchain → traditional finance → standalone topics.
+  AI & machine learning → crypto & blockchain → traditional finance → humanities → standalone topics.
   Within a cluster, order by **learning path** (prerequisites first, then what builds on them),
   the same principle used for resources inside a page.
 - **Which cluster?** Use the page's cross-links as the test — a new page belongs with the pages
