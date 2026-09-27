@@ -597,3 +597,41 @@ Transformers, GenAI and CV are left unlinked, and an RL ↔ DSA edge is left to 
 between GenAI and GA/GP, so the two reward-driven branches sit together. The checker reports 19
 pages and 48 reciprocal pairs; the `--online` sweep has 0 FAIL, and the new page's only
 non-OK results are the five expected bot-wall SKIPs; a browser pass at 1280px and 375px was clean.
+
+---
+
+## 2026-09-27 — Add a Critical Theory topic
+
+> add a topic on critical theory.
+
+Planned first. "Critical theory" has a narrow meaning (the Frankfurt School) and a broad one
+(any theory that criticises society in order to change it), so the scope was asked before any
+research. The user chose **"Frankfurt School + heirs"**: the page is built around the school's
+generations and ends with a short part on the feminist, critical race, postcolonial and queer
+theory that took up the name. After the plan was written, the user asked twice to reread the
+question and its choices; the plan-approval prompt was hiding the text replies, so the exact
+wording was put at the top of the plan file for them to read and then removed on request. The
+user then approved with "implement the plan."
+
+The new page explains the Institute for Social Research (1923), Horkheimer's 1937 contrast
+between critical and "traditional" theory, exile and the question of why fascism and mass
+culture came instead of revolution; then Habermas (who died on 14 March 2026, confirmed on the
+Kyoto Prize's official notice and in the SEP) and his quarrel with Foucault and Derrida, Honneth
+and Fraser on recognition, and the broad sense of the term. It lists 47 external resources:
+Bronner, Jeffries, Jay, *Dialectic of Enlightenment*, *Minima Moralia*, *The Authoritarian
+Personality*, *One-Dimensional Man*, *Structural Transformation*, Honneth, Fraser & Honneth,
+Jaeggi and Geuss; free primary texts from Marx's 1843 letter, Lukács, Horkheimer's 1931 address,
+Benjamin ×2, "The Culture Industry" and "Repressive Tolerance", Habermas's Kyoto lecture and
+three JSTOR papers; SEP/IEP entries and Alex Ross's *New Yorker* essay; three videos and two
+courses (Yale ENGL 300, *Philosophize This!*); and a Further Reading section that follows the
+name into feminist, critical race, postcolonial and queer theory, adds Kołakowski's critique and
+Martin Jay on the "cultural Marxism" conspiracy theory. Horkheimer's "Traditional and Critical
+Theory" has no legitimate free copy and its publisher can't be reached from here, so it is named
+in a note rather than linked.
+
+The page is cross-linked both ways with Structuralism and Post-Structuralism — the two
+traditions argued with each other directly, so each is a next step from the other — and the two
+now form a **Humanities** cluster on the landing page, before the Standalone group (which keeps
+DSA only). The checker reports 20 pages and 49 reciprocal pairs; the `--online` sweep has 0 FAIL,
+and the new page's only non-OK results are nine expected bot-wall SKIPs; a browser pass at 1280px
+and 375px was clean.
